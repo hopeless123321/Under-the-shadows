@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Directional_abiltiy" load_steps=4 format=3 uid="uid://bmwbwhy4l2ntd"]
+
+[ext_resource type="Texture2D" uid="uid://don5tpwr1ihe1" path="res://All ability/Icon/just sword.png" id="1_6tnq7"]
+[ext_resource type="Script" path="res://All ability/Ability script/Sword sweep.gd" id="1_uubhh"]
+[ext_resource type="Script" path="res://All ability/Base ability/directional.gd" id="2_l1rqj"]
+
+[resource]
+script = ExtResource("2_l1rqj")
+points = Array[Vector2i]([Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1), Vector2i(1, -1)])
+radius = 8
+piercing = true
+id = 5
+name = "Sword sweep"
+description = "Наносит урон вдоль линии всем врагам"
+cost_hp = 0
+cost_will = 0
+cooldown = 0
+icon_in_description = ExtResource("1_6tnq7")
+type_spell = "No type"
+type_unit = "Enemy"
+activity = "Active"
+ability_script = ExtResource("1_uubhh")
+type_dmg = ""
+self_target = false

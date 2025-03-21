@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx27kx7nrm4rr"]
+
+[ext_resource type="Script" path="res://UI/Scene/Main menu/Script/Main menu.gd" id="1_s0yki"]
+[ext_resource type="Texture2D" uid="uid://uu5801j4ko8j" path="res://UI/Sprites/Main menu.png" id="2_w05yx"]
+[ext_resource type="Theme" uid="uid://bpjp5yk6ov1s8" path="res://UI/All theme/Button/Main menu buttons.tres" id="3_thnct"]
+[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="4_4lwo0"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="5_71635"]
+[ext_resource type="PackedScene" uid="uid://476be5v88k5w" path="res://UI/Scene/Settings/Scene/Settings.tscn" id="6_fj0tg"]
+
+[node name="Main menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s0yki")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+texture = ExtResource("2_w05yx")
+expand_mode = 1
+
+[node name="Initial" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.695
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = -0.600098
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Continue" type="Button" parent="Initial"]
+layout_mode = 2
+theme = ExtResource("3_thnct")
+theme_override_fonts/font = ExtResource("4_4lwo0")
+text = "Продолжать"
+flat = true
+
+[node name="New game" type="Button" parent="Initial"]
+layout_mode = 2
+theme = ExtResource("3_thnct")
+theme_override_fonts/font = ExtResource("4_4lwo0")
+text = "Новый забег"
+flat = true
+
+[node name="Options" type="Button" parent="Initial"]
+layout_mode = 2
+theme = ExtResource("3_thnct")
+theme_override_fonts/font = ExtResource("4_4lwo0")
+text = "Настройки"
+flat = true
+
+[node name="Journal" type="Button" parent="Initial"]
+layout_mode = 2
+theme = ExtResource("3_thnct")
+theme_override_fonts/font = ExtResource("4_4lwo0")
+text = "Журнал"
+flat = true
+
+[node name="About" type="Button" parent="Initial"]
+layout_mode = 2
+theme = ExtResource("3_thnct")
+theme_override_fonts/font = ExtResource("4_4lwo0")
+text = "Об авторе"
+flat = true
+
+[node name="Exit" type="Button" parent="Initial"]
+layout_mode = 2
+theme = ExtResource("3_thnct")
+theme_override_fonts/font = ExtResource("4_4lwo0")
+text = "Выход
+"
+flat = true
+
+[node name="Choose difficult" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 840.0
+offset_bottom = 638.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Choose difficult"]
+layout_mode = 2
+theme = ExtResource("5_71635")
+text = "Выбери сложность"
+horizontal_alignment = 1
+
+[node name="Radiant" type="Button" parent="Choose difficult"]
+layout_mode = 2
+theme = ExtResource("3_thnct")
+theme_override_fonts/font = ExtResource("4_4lwo0")
+text = "Свечение"
+flat = true
+
+[node name="Twilight" type="Button" parent="Choose difficult"]
+layout_mode = 2
+theme = ExtResource("3_thnct")
+theme_override_fonts/font = ExtResource("4_4lwo0")
+text = "Сумрак"
+flat = true
+
+[node name="Eclipse" type="Button" parent="Choose difficult"]
+layout_mode = 2
+theme = ExtResource("3_thnct")
+theme_override_fonts/font = ExtResource("4_4lwo0")
+text = "Затмение"
+flat = true
+
+[node name="Setting" parent="." instance=ExtResource("6_fj0tg")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -1.471
+anchor_bottom = -0.471
+offset_top = 0.280029
+offset_bottom = 0.279999
+
+[connection signal="pressed" from="Initial/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Initial/New game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Initial/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Initial/Journal" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Initial/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="Initial/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Choose difficult/Radiant" to="." method="_on_radiant_pressed"]
+[connection signal="pressed" from="Choose difficult/Twilight" to="." method="_on_twilight_pressed"]
+[connection signal="pressed" from="Choose difficult/Eclipse" to="." method="_on_eclipse_pressed"]
+[connection signal="pressed" from="Setting/Return" to="." method="_on_return_pressed"]
+
+[editable path="Setting"]

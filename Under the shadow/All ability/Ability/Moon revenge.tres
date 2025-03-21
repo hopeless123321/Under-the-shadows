@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="All_area_ability" load_steps=4 format=3 uid="uid://cgaj51ea5njy0"]
+
+[ext_resource type="Script" path="res://All ability/Ability script/Moon revenge.gd" id="1_nvtjk"]
+[ext_resource type="Texture2D" uid="uid://lqepdavqmiqi" path="res://All ability/Icon/moon revenge.png" id="1_uiu5m"]
+[ext_resource type="Script" path="res://All ability/Base ability/all_in_area.gd" id="2_clfyo"]
+
+[resource]
+script = ExtResource("2_clfyo")
+radius = 5
+id = 3
+name = "Moon revenge"
+description = "Наносит урон всем врагам в радиусе "
+cost_hp = 0
+cost_will = 10
+cooldown = 2
+icon_in_description = ExtResource("1_uiu5m")
+type_spell = "Lunar"
+type_unit = "Either"
+activity = "Active"
+ability_script = ExtResource("1_nvtjk")
+type_dmg = "Pure"
+self_target = false

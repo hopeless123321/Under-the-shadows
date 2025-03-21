@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bpjp5yk6ov1s8"]
+
+[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="1_r0l8i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjdj7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xnh1"]
+
+[resource]
+Button/colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+Button/colors/font_outline_color = Color(0.568627, 0.0235294, 0.0235294, 1)
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_r0l8i")
+Button/styles/focus = SubResource("StyleBoxEmpty_sjdj7")
+Button/styles/hover = SubResource("StyleBoxEmpty_7xnh1")

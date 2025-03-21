@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://em3bhn56pvxb"]
+
+[ext_resource type="TileSet" uid="uid://b1sx67xs8rg80" path="res://Tile/tilesets/first try.tres" id="1_dg0ho"]
+
+[node name="TileMap" type="TileMap"]
+tile_set = ExtResource("1_dg0ho")
+format = 2
+layer_0/name = "floor"
+layer_1/name = "triggers, trap"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "fill_floor"
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "wall"
+layer_3/tile_data = PackedInt32Array()

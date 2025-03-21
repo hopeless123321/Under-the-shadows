@@ -1,0 +1,325 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqoe8jc5ucobr"]
+
+[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Menu in gameplay.gd" id="1_uu8p3"]
+[ext_resource type="Shader" path="res://Shaders/blur_pause-meu.gdshader" id="2_56dgi"]
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="3_skfd3"]
+[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="4_vawfo"]
+[ext_resource type="PackedScene" uid="uid://476be5v88k5w" path="res://UI/Scene/Settings/Scene/Settings.tscn" id="5_pg3l3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ribyg"]
+shader = ExtResource("2_56dgi")
+shader_parameter/blur_amount = 1.235
+shader_parameter/mix_amount = 0.342
+shader_parameter/color_over = null
+
+[sub_resource type="Theme" id="Theme_lchmw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cqig"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7f7n"]
+atlas = ExtResource("3_skfd3")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gkrj"]
+atlas = ExtResource("3_skfd3")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1o18"]
+
+[sub_resource type="Theme" id="Theme_4nskk"]
+Button/colors/font_hover_color = Color(0.94902, 0.501961, 0.490196, 1)
+Button/colors/font_pressed_color = Color(1, 1, 0.419608, 1)
+Button/fonts/font = ExtResource("4_vawfo")
+Button/styles/focus = SubResource("StyleBoxEmpty_f1o18")
+
+[node name="Menu in gameplay" type="Control"]
+top_level = true
+z_index = -200
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_uu8p3")
+timer = 0.5
+
+[node name="Blur screen" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ribyg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 178.0
+offset_top = 78.0
+offset_right = -178.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_lchmw")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4cqig")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_j7f7n")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -462.0
+offset_top = -241.0
+offset_right = 462.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 208
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 208
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Resume" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Resume"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_0gkrj")
+patch_margin_left = 11
+patch_margin_top = 2
+patch_margin_right = 11
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Resume"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="Resume" type="Button" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Resume/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_4nskk")
+text = "Resume"
+flat = true
+
+[node name="Restart" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Restart"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_0gkrj")
+patch_margin_left = 11
+patch_margin_top = 2
+patch_margin_right = 11
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Restart"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="Restart" type="Button" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Restart/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_4nskk")
+text = "Restart"
+flat = true
+
+[node name="Diary" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Diary"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_0gkrj")
+patch_margin_left = 11
+patch_margin_top = 2
+patch_margin_right = 11
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Diary"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="Diary" type="Button" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Diary/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_4nskk")
+text = "Diary"
+flat = true
+
+[node name="Setting" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Setting"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_0gkrj")
+patch_margin_left = 11
+patch_margin_top = 2
+patch_margin_right = 11
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Setting"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="Setting" type="Button" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Setting/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_4nskk")
+text = "Setting"
+flat = true
+
+[node name="Main menu" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Main menu"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_0gkrj")
+patch_margin_left = 11
+patch_margin_top = 2
+patch_margin_right = 11
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Main menu"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="Main menu" type="Button" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Main menu/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_4nskk")
+text = "Main menu"
+flat = true
+
+[node name="Exit" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Exit"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_0gkrj")
+patch_margin_left = 11
+patch_margin_top = 2
+patch_margin_right = 11
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Exit"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="Exit" type="Button" parent="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Exit/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_4nskk")
+text = "Exit
+"
+flat = true
+
+[node name="Setting" parent="." instance=ExtResource("5_pg3l3")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -1.471
+anchor_bottom = -0.471
+offset_top = 0.280029
+offset_bottom = 0.279999
+
+[node name="TabContainer" parent="Setting" index="0"]
+anchor_left = 0.05
+anchor_top = 0.076
+anchor_right = 0.95
+anchor_bottom = 0.924
+offset_left = 0.0
+offset_top = 0.319996
+offset_right = 0.0
+offset_bottom = -0.320007
+current_tab = 2
+
+[node name="Video" parent="Setting/TabContainer" index="2"]
+visible = false
+
+[node name="MarginContainer2" parent="Setting/TabContainer/Video" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 15.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Aberration" parent="Setting/TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2" index="5"]
+step = 0.005
+value = 0.005
+
+[node name="Audio" parent="Setting/TabContainer" index="3"]
+visible = true
+
+[connection signal="pressed" from="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Resume/MarginContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Restart/MarginContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Diary/MarginContainer/Diary" to="." method="_on_diary_pressed"]
+[connection signal="pressed" from="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Setting/MarginContainer/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Main menu/MarginContainer/Main menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PanelContainer/NinePatchRect/MarginContainer/VBoxContainer/Exit/MarginContainer/Exit" to="." method="_on_exit_pressed"]
+
+[editable path="Setting"]

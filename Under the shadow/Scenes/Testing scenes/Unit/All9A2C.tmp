@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://clkci5y6mgsfm"]
+
+[ext_resource type="Script" path="res://Scenes/Testing scenes/template level/Ally.gd" id="1_q2aam"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/unit/state_machine_enemy/States.gd" id="2_qarfu"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/unit/state machine/Idle.gd" id="3_qdo4g"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/unit/state machine/Wait.gd" id="4_u18c6"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/unit/state machine/Spell_cast.gd" id="5_adcb4"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/unit/state machine/Move.gd" id="6_t4all"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/unit/state machine/End_turn.gd" id="7_mnegh"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/unit/state machine/Dying.gd" id="8_bcbkm"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/unit/Animation Control.gd" id="9_oaoxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mx54"]
+size = Vector2(64, 64)
+
+[node name="Ally" type="CharacterBody2D"]
+z_index = 60
+input_pickable = true
+script = ExtResource("1_q2aam")
+type = 0
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 71.0
+offset_right = 314.0
+offset_bottom = 23.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3mx54")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 25
+vframes = 4
+
+[node name="Animation сontrol" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_oaoxx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation сontrol"]
+
+[node name="States" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_qarfu")
+
+[node name="Idle" type="Node2D" parent="States"]
+script = ExtResource("3_qdo4g")
+
+[node name="Wait" type="Node2D" parent="States"]
+script = ExtResource("4_u18c6")
+
+[node name="Move" type="Node2D" parent="States"]
+script = ExtResource("6_t4all")
+
+[node name="Spell_cast" type="Node2D" parent="States"]
+script = ExtResource("5_adcb4")
+
+[node name="End_turn" type="Node2D" parent="States"]
+script = ExtResource("7_mnegh")
+
+[node name="Dying" type="Node2D" parent="States"]
+script = ExtResource("8_bcbkm")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

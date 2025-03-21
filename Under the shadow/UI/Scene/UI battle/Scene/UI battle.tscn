@@ -1,0 +1,422 @@
+[gd_scene load_steps=32 format=3 uid="uid://b0v8e7ytofvta"]
+
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="1_w41g3"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="2_u5k2f"]
+[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Class note.gd" id="3_31trf"]
+[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Add ability child.gd" id="4_was1u"]
+[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Left stats ui.gd" id="5_pisu1"]
+[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Right stats ui.gd" id="6_ixnex"]
+[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Manager upper ui.gd" id="7_gpwg6"]
+[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Queue.gd" id="8_ioi7v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2cm6p"]
+
+[sub_resource type="Theme" id="Theme_rsgnl"]
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_2cm6p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrn10"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(0, 384, 384, 64)
+
+[sub_resource type="Theme" id="Theme_3ocqj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2fq0"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(0, 448, 512, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fycd7"]
+texture = SubResource("AtlasTexture_f2fq0")
+texture_margin_top = 10.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xlj1"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Theme" id="Theme_w303x"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_f4qtt"]
+color = Color(1, 0.843137, 0.352941, 1)
+grow_begin = 9.0
+grow_end = 8.0
+thickness = 4
+vertical = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1yic"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co5u8"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s20qm"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(64, 128, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c14ia"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(192, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4b3r"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(256, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stvvg"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(192, 128, 64, 128)
+
+[sub_resource type="Theme" id="Theme_kf8b3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiavs"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(0, 256, 512, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_psvos"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("AtlasTexture_eiavs")
+texture_margin_bottom = 2.0
+expand_margin_bottom = 1.0
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wtmy3"]
+color = Color(0.439216, 0.121569, 0.0901961, 1)
+grow_begin = 4.0
+grow_end = 3.0
+thickness = 2
+vertical = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkcwo"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x64ej"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odiaa"]
+atlas = ExtResource("1_w41g3")
+region = Rect2(320, 0, 192, 64)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqop1"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Classname" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -218.0
+offset_right = 384.0
+offset_bottom = -154.0
+theme = SubResource("Theme_rsgnl")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Classname"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jrn10")
+
+[node name="Label" type="Label" parent="Classname/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.109
+anchor_right = 0.674
+anchor_bottom = 1.062
+offset_left = 3.0
+offset_top = -0.976
+offset_right = 105.184
+offset_bottom = -0.968002
+theme = ExtResource("2_u5k2f")
+text = "Class
+lunar. skelet, dead"
+script = ExtResource("3_31trf")
+
+[node name="Under_Ui" type="PanelContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -154.0
+grow_horizontal = 2
+theme = SubResource("Theme_3ocqj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_fycd7")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Under_Ui"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Under_Ui/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+script = ExtResource("4_was1u")
+
+[node name="Icon" type="TextureRect" parent="Under_Ui/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6xlj1")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Under_Ui/MarginContainer/VBoxContainer/Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_w303x")
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Icon" type="TextureRect" parent="Under_Ui/MarginContainer/VBoxContainer/Icon/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Under_Ui/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+script = ExtResource("5_pisu1")
+
+[node name="HP" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "Health "
+
+[node name="HP_VALUE" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "98/124"
+
+[node name="Will" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "Will"
+
+[node name="Will_value" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "34/100"
+
+[node name="Speed" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "Speed"
+
+[node name="Speed_value" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "6"
+
+[node name="Reaction" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "Reaction"
+
+[node name="Reaction speed" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "12"
+
+[node name="VSeparator" type="VSeparator" parent="Under_Ui/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_f4qtt")
+
+[node name="GridContainer2" type="GridContainer" parent="Under_Ui/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+script = ExtResource("6_ixnex")
+
+[node name="Damage amp" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "Damage amp."
+
+[node name="Damage amp value" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+
+[node name="Mag_resist" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "Magic Resist"
+
+[node name="Mag_resist value" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+
+[node name="Phys_resist" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "Physical resist"
+
+[node name="Phys_resist value" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+
+[node name="Will_resist" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "Will resist"
+
+[node name="Will_resist value" type="Label" parent="Under_Ui/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "    "
+
+[node name="Will" type="TextureProgressBar" parent="Under_Ui/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+stretch_margin_left = 32
+stretch_margin_top = 32
+stretch_margin_bottom = 32
+texture_under = SubResource("AtlasTexture_h1yic")
+texture_over = SubResource("AtlasTexture_co5u8")
+texture_progress = SubResource("AtlasTexture_s20qm")
+
+[node name="Hp" type="TextureProgressBar" parent="Under_Ui/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 64.0
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_c14ia")
+texture_over = SubResource("AtlasTexture_i4b3r")
+texture_progress = SubResource("AtlasTexture_stvvg")
+tint_progress = Color(1, 0, 1, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme = SubResource("Theme_kf8b3")
+theme_override_styles/panel = SubResource("StyleBoxTexture_psvos")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = -20.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_constants/separation = 13
+script = ExtResource("7_gpwg6")
+
+[node name="Turn" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_u5k2f")
+text = "Turn: 1"
+
+[node name="VSeparator3" type="VSeparator" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_wtmy3")
+
+[node name="Stage" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "Stage: 1"
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_wtmy3")
+
+[node name="In Game timer" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+
+[node name="VSeparator" type="VSeparator" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_wtmy3")
+
+[node name="Souls" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_u5k2f")
+text = "99"
+
+[node name="Souls icon" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gkcwo")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="HboxCont relics" type="HBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Map button" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "       "
+icon = SubResource("AtlasTexture_x64ej")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Queue" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(96, 64)
+layout_mode = 2
+anchor_left = 0.462
+anchor_top = 0.106
+anchor_right = 0.537
+anchor_bottom = 0.106
+offset_left = 0.640015
+offset_top = 0.160004
+offset_right = 0.640015
+offset_bottom = 64.16
+grow_horizontal = 2
+pivot_offset = Vector2(47.625, 0)
+texture = SubResource("AtlasTexture_odiaa")
+patch_margin_left = 48
+patch_margin_right = 48
+axis_stretch_horizontal = 1
+script = ExtResource("8_ioi7v")
+
+[node name="Stash queue" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.111
+anchor_right = 0.5
+anchor_bottom = 0.134
+offset_left = -2.0
+offset_top = -0.0400085
+offset_right = 2.0
+offset_bottom = 2.24
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jqop1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stash queue"]
+clip_contents = true
+layout_mode = 2
+alignment = 1
+
+[connection signal="resized" from="Stash queue/HBoxContainer" to="Queue" method="_on_h_box_container_resized"]

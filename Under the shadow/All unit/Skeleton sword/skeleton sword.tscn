@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=3 uid="uid://frf50ukgfwpo"]
+
+[ext_resource type="PackedScene" uid="uid://clkci5y6mgsfm" path="res://Scenes/Testing scenes/Unit/Ally.tscn" id="1_jiedh"]
+[ext_resource type="Resource" uid="uid://cn4bxxh7wq3xl" path="res://All ability/Ability/Eclipse.tres" id="2_6dmo8"]
+[ext_resource type="Texture2D" uid="uid://cpuaik2awcpcj" path="res://All unit/Skeleton sword/Skeleto sword.png" id="3_vauet"]
+[ext_resource type="Texture2D" uid="uid://bo0ceigfs1t2p" path="res://All unit/Skeleton sword/Skeleton sword.png" id="4_a2h15"]
+
+[sub_resource type="Curve" id="Curve_ikxhf"]
+min_value = 1.0
+max_value = 2.0
+_data = [Vector2(0.233333, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1.527), 0.0, 0.0, 0, 0, Vector2(0.745833, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1dbxs"]
+diffuse_texture = ExtResource("3_vauet")
+normal_texture = ExtResource("4_a2h15")
+
+[sub_resource type="Animation" id="Animation_ad4it"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_o077t"]
+resource_name = "stay"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 23]
+}
+
+[sub_resource type="Animation" id="Animation_a7l15"]
+resource_name = "to stay"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [72, 84]
+}
+
+[sub_resource type="Animation" id="Animation_r2n4d"]
+resource_name = "to walk"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [48, 60]
+}
+
+[sub_resource type="Animation" id="Animation_tjrps"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [24, 47]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a6q2v"]
+_data = {
+"RESET": SubResource("Animation_ad4it"),
+"stay": SubResource("Animation_o077t"),
+"to stay": SubResource("Animation_a7l15"),
+"to walk": SubResource("Animation_r2n4d"),
+"walk": SubResource("Animation_tjrps")
+}
+
+[node name="Ally" instance=ExtResource("1_jiedh")]
+move_curve = SubResource("Curve_ikxhf")
+forename = "Skeleton sword"
+max_hp = 80
+hp = 80
+will = 100
+dmg_amp = 1.0
+resist_phys_dmg = 115.0
+resist_mag_dmg = 115.0
+resist_will = 100.0
+speed = 4
+reaction = 5
+ability = Array[Resource("res://All ability/Base ability/class_ability.gd")]([ExtResource("2_6dmo8")])
+type = 7
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -32)
+texture = SubResource("CanvasTexture_1dbxs")
+hframes = 24
+
+[node name="Animation сontrol" parent="." index="3"]
+type_move = "Walk"
+
+[node name="AnimationPlayer" parent="Animation сontrol" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_a6q2v")
+}

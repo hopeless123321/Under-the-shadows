@@ -1,0 +1,328 @@
+[gd_scene load_steps=12 format=3 uid="uid://476be5v88k5w"]
+
+[ext_resource type="Script" path="res://UI/Scene/Settings/Scripts/Settings.gd" id="1_swiu1"]
+[ext_resource type="Theme" uid="uid://yigd5uaiecns" path="res://UI/All theme/Tabs/Settings_tabs.tres" id="2_xabo4"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="3_d4j3a"]
+[ext_resource type="Theme" uid="uid://qnpd5dj141jh" path="res://UI/All theme/Checkbox/Checkbox_settings.tres" id="4_akgib"]
+[ext_resource type="Script" path="res://UI/Scene/Settings/Scripts/Video.gd" id="5_2ixli"]
+[ext_resource type="Theme" uid="uid://c0ce0r05m4sws" path="res://UI/All theme/Option bar/Option bar.tres" id="6_8kshl"]
+[ext_resource type="Theme" uid="uid://cy82owlntjhru" path="res://UI/All theme/Sliders/Sliders_h.tres" id="7_dvpn7"]
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="8_iposn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1beb"]
+
+[sub_resource type="Theme" id="Theme_6ux5l"]
+Button/styles/hover = SubResource("StyleBoxEmpty_t1beb")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb4p2"]
+atlas = ExtResource("8_iposn")
+region = Rect2(384, 128, 64, 64)
+
+[node name="Setting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_swiu1")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -288.0
+offset_right = 576.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_xabo4")
+tab_alignment = 1
+current_tab = 1
+
+[node name="Game" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Game/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Game/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="TabContainer/Game/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Enable timer"
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Game/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_akgib")
+
+[node name="Language" type="Label" parent="TabContainer/Game/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Language"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Game/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Русский"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+script = ExtResource("5_2ixli")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TabContainer/Video"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 1135.0
+offset_bottom = 525.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/MarginContainer2"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Video/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Resolution2" type="Label" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Resolution"
+
+[node name="Resolution" type="OptionButton" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("6_8kshl")
+alignment = 1
+item_count = 11
+selected = 10
+popup/item_0/text = "1024x768"
+popup/item_0/id = 0
+popup/item_1/text = "1152x864"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+popup/item_3/text = "1280x800"
+popup/item_3/id = 3
+popup/item_4/text = "1280x960"
+popup/item_4/id = 4
+popup/item_5/text = "1280x1024"
+popup/item_5/id = 5
+popup/item_6/text = "1360x768"
+popup/item_6/id = 6
+popup/item_7/text = "1366x768"
+popup/item_7/id = 7
+popup/item_8/text = "1600x900"
+popup/item_8/id = 8
+popup/item_9/text = "1680x1050"
+popup/item_9/id = 9
+popup/item_10/text = "1920x1080"
+popup/item_10/id = 10
+
+[node name="fullscreen" type="Label" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Fullscreen"
+
+[node name="fullscreen2" type="CheckBox" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_akgib")
+button_pressed = true
+flat = true
+
+[node name="Vsync2" type="Label" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Vsync"
+
+[node name="vsync" type="CheckBox" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_akgib")
+button_pressed = true
+flat = true
+
+[node name="Label" type="Label" parent="TabContainer/Video/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Overlay Effects"
+horizontal_alignment = 1
+
+[node name="GridContainer2" type="GridContainer" parent="TabContainer/Video/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Vineete_l" type="Label" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Vineete effect"
+
+[node name="Vineete" type="HSlider" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_dvpn7")
+max_value = 1.0
+step = 0.01
+value = 0.1
+
+[node name="Vineet opacity_l" type="Label" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Vineet opacity"
+
+[node name="Vinneete opacity" type="HSlider" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_dvpn7")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Aberration_l" type="Label" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Aberration"
+
+[node name="Aberration" type="HSlider" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_dvpn7")
+min_value = -0.1
+max_value = 0.1
+step = 0.01
+value = 0.1
+
+[node name="Britness_l" type="Label" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Britness"
+
+[node name="Britness" type="HSlider" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_dvpn7")
+min_value = 0.5
+max_value = 2.0
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="Warp" type="Label" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Curve screen"
+
+[node name="Curve_screen" type="HSlider" parent="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme = ExtResource("7_dvpn7")
+max_value = 5.0
+step = 0.01
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer3"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Audio/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Master" type="Label" parent="TabContainer/Audio/MarginContainer3/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Master"
+
+[node name="HSlider2" type="HSlider" parent="TabContainer/Audio/MarginContainer3/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_dvpn7")
+
+[node name="Music" type="Label" parent="TabContainer/Audio/MarginContainer3/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer3/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_dvpn7")
+
+[node name="Label" type="Label" parent="TabContainer/Audio/MarginContainer3/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_d4j3a")
+text = "Sfx"
+
+[node name="HSlider3" type="HSlider" parent="TabContainer/Audio/MarginContainer3/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("7_dvpn7")
+
+[node name="Return" type="Button" parent="."]
+layout_mode = 2
+anchor_left = 0.002
+anchor_top = 0.115
+anchor_right = 0.058
+anchor_bottom = 0.221
+offset_left = -0.56
+offset_top = -0.200005
+offset_right = -0.240005
+offset_bottom = -0.280014
+theme = SubResource("Theme_6ux5l")
+icon = SubResource("AtlasTexture_mb4p2")
+flat = true
+expand_icon = true
+
+[connection signal="item_selected" from="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer/Resolution" to="TabContainer/Video" method="_on_resolution_item_selected"]
+[connection signal="pressed" from="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer/fullscreen2" to="TabContainer/Video" method="_on_fulscreen_pressed"]
+[connection signal="pressed" from="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer/vsync" to="TabContainer/Video" method="_on_vsync_pressed"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2/Vineete" to="TabContainer/Video" method="_on_vineete_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2/Vinneete opacity" to="TabContainer/Video" method="_on_vinneete_opacity_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2/Aberration" to="TabContainer/Video" method="_on_aberration_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2/Britness" to="TabContainer/Video" method="_on_britness_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer2/VBoxContainer/GridContainer2/Curve_screen" to="TabContainer/Video" method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

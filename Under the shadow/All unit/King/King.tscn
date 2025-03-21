@@ -1,0 +1,139 @@
+[gd_scene load_steps=16 format=3 uid="uid://rkvrwesy6xes"]
+
+[ext_resource type="PackedScene" uid="uid://clkci5y6mgsfm" path="res://Scenes/Testing scenes/Unit/Ally.tscn" id="1_5bj3j"]
+[ext_resource type="Resource" uid="uid://b8ow45kmybnk5" path="res://All ability/Ability/Connection.tres" id="2_h4e3c"]
+[ext_resource type="Resource" uid="uid://7fkq11ccwhpm" path="res://All ability/Ability/Planning.tres" id="3_3c8hs"]
+[ext_resource type="Texture2D" uid="uid://dlqjf3wkyqqb1" path="res://All unit/King/king stay.png" id="4_nir3i"]
+[ext_resource type="Texture2D" uid="uid://ckh472p8n8qee" path="res://All unit/King/King normal map.png" id="5_2c7tn"]
+
+[sub_resource type="Curve" id="Curve_q07up"]
+min_value = 1.0
+max_value = 2.0
+_data = [Vector2(0.00833334, 1), 0.0, 0.0, 0, 0, Vector2(0.25, 1.25), 0.0, 0.0, 0, 0, Vector2(0.75, 1.25), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_mp8gy"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g0uns"]
+gradient = SubResource("Gradient_mp8gy")
+fill_from = Vector2(0.824786, 0.132479)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8ggwe"]
+diffuse_texture = ExtResource("4_nir3i")
+normal_texture = ExtResource("5_2c7tn")
+
+[sub_resource type="Animation" id="Animation_t5l15"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q7klr"]
+resource_name = "stay"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 24]
+}
+
+[sub_resource type="Animation" id="Animation_qefnd"]
+resource_name = "to stay"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75, 87]
+}
+
+[sub_resource type="Animation" id="Animation_lmwly"]
+resource_name = "to walk"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [50, 62]
+}
+
+[sub_resource type="Animation" id="Animation_fyrji"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Animation сontrol/../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [25, 49]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_18vsj"]
+_data = {
+"RESET": SubResource("Animation_t5l15"),
+"stay": SubResource("Animation_q7klr"),
+"to stay": SubResource("Animation_qefnd"),
+"to walk": SubResource("Animation_lmwly"),
+"walk": SubResource("Animation_fyrji")
+}
+
+[node name="Ally" instance=ExtResource("1_5bj3j")]
+move_curve = SubResource("Curve_q07up")
+forename = "King"
+max_hp = 60
+hp = 60
+will = 100
+dmg_amp = 1.0
+resist_phys_dmg = 100.0
+resist_mag_dmg = 100.0
+resist_will = 100.0
+speed = 4
+reaction = 8
+ability = Array[Resource("res://All ability/Base ability/class_ability.gd")]([ExtResource("2_h4e3c"), ExtResource("3_3c8hs")])
+icon_select = SubResource("GradientTexture2D_g0uns")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -32)
+texture = SubResource("CanvasTexture_8ggwe")
+
+[node name="Animation сontrol" parent="." index="3"]
+type_move = "Walk"
+
+[node name="AnimationPlayer" parent="Animation сontrol" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_18vsj")
+}

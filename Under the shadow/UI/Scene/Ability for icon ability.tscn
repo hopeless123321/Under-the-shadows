@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://civwxjm46ytj3"]
+
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="1_nln31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsoeu"]
+atlas = ExtResource("1_nln31")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nedgb"]
+bg_color = Color(0, 0, 0, 0.568627)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlu5l"]
+bg_color = Color(1, 1, 1, 0.294118)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5ppn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i40kk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wx54p"]
+bg_color = Color(0.631373, 0.517647, 0.917647, 0)
+shadow_color = Color(0.705882, 0.803922, 1, 1)
+shadow_size = 10
+
+[sub_resource type="Theme" id="Theme_rgloy"]
+Button/styles/disabled = SubResource("StyleBoxFlat_nedgb")
+Button/styles/focus = SubResource("StyleBoxFlat_qlu5l")
+Button/styles/hover = SubResource("StyleBoxFlat_f5ppn")
+Button/styles/normal = SubResource("StyleBoxFlat_i40kk")
+Button/styles/pressed = SubResource("StyleBoxFlat_wx54p")
+
+[node name="ability" type="VBoxContainer"]
+alignment = 1
+
+[node name="TextureRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+texture = SubResource("AtlasTexture_rsoeu")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect"]
+layout_mode = 2
+anchor_right = 1.009
+anchor_bottom = 1.049
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.576
+offset_bottom = -7.136
+
+[node name="button" type="Button" parent="TextureRect/CenterContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(96, 96)
+layout_direction = 3
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_rgloy")
+action_mode = 0
+icon_alignment = 1
+expand_icon = true

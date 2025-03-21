@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Generator_unit" load_steps=2 format=3 uid="uid://b8wbfj4mtffng"]
+
+[ext_resource type="Script" path="res://Unit lists/Unit info.gd" id="1_r5ue0"]
+
+[resource]
+script = ExtResource("1_r5ue0")
+id = 2
+name_unit = "Skeleton"
+weight = 7

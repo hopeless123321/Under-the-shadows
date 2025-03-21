@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Target_world_ability" load_steps=4 format=3 uid="uid://b6roetw6meldw"]
+
+[ext_resource type="Texture2D" uid="uid://bb6wudamioaf4" path="res://All ability/Icon/darkest hour.png" id="1_3ksov"]
+[ext_resource type="Script" path="res://All ability/Ability script/Darkest hour.gd" id="1_855o6"]
+[ext_resource type="Script" path="res://All ability/Base ability/target_world.gd" id="2_vcvc7"]
+
+[resource]
+script = ExtResource("2_vcvc7")
+id = 7
+name = "Darkest hour"
+description = "Сильно снижает кол-во воли и здоровья и у выбранного юнита"
+cost_hp = 10
+cost_will = 10
+cooldown = 0
+icon_in_description = ExtResource("1_3ksov")
+type_spell = "No type"
+type_unit = "Either"
+activity = "Active"
+ability_script = ExtResource("1_855o6")
+type_dmg = ""
+self_target = false

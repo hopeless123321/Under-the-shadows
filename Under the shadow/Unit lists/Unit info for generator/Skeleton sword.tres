@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Generator_unit" load_steps=2 format=3 uid="uid://dogs75vgx46yd"]
+
+[ext_resource type="Script" path="res://Unit lists/Unit info.gd" id="1_bwt21"]
+
+[resource]
+script = ExtResource("1_bwt21")
+id = 3
+name_unit = "Skeleton sword"
+weight = 50

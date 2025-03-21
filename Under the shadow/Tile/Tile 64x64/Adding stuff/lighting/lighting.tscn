@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbvfj5wjmtg0i"]
+
+[ext_resource type="Texture2D" uid="uid://bylvcmwo1ivfg" path="res://Tile/Tile 64x64/Adding stuff/Светильник.png" id="1_r4l86"]
+[ext_resource type="Texture2D" uid="uid://bjducqoxh61go" path="res://Tile/Tile 64x64/Adding stuff/Normal map lighing.png" id="2_mmbab"]
+[ext_resource type="Script" path="res://Tile/Tile 64x64/Adding stuff/lighting/PointLight2D.gd" id="3_b88a3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wn6qo"]
+diffuse_texture = ExtResource("1_r4l86")
+normal_texture = ExtResource("2_mmbab")
+
+[sub_resource type="Animation" id="Animation_jxryd"]
+resource_name = "fire"
+length = 5.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vlo5"]
+_data = {
+"fire": SubResource("Animation_jxryd")
+}
+
+[sub_resource type="Gradient" id="Gradient_pie7a"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_33oev"]
+gradient = SubResource("Gradient_pie7a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tsxe7"]
+polygon = PackedVector2Array(0, 1, -4, 0, -6, -1, -7, -1, -6, 0, -3, 2, 3, 2, 6, 0, 7, -1, 6, -1, 4, 0)
+
+[node name="Lighting" type="Sprite2D"]
+texture = SubResource("CanvasTexture_wn6qo")
+
+[node name="AnimationTree" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5vlo5")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -9)
+color = Color(0.780392, 0.101961, 0.101961, 1)
+energy = 7.42
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_33oev")
+height = 10.0
+script = ExtResource("3_b88a3")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_tsxe7")
+occluder_light_mask = 3

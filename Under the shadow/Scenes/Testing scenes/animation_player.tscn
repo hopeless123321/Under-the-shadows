@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp6bomdrm0tgc"]
+
+[sub_resource type="Animation" id="Animation_mgnw8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(24, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_d85d5"]
+resource_name = "stay"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 24]
+}
+
+[sub_resource type="Animation" id="Animation_us841"]
+resource_name = "to stay"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [50, 62]
+}
+
+[sub_resource type="Animation" id="Animation_cxr78"]
+resource_name = "to walk"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [76, 87]
+}
+
+[sub_resource type="Animation" id="Animation_xdu8g"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [25, 49]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xpjp7"]
+_data = {
+"RESET": SubResource("Animation_mgnw8"),
+"stay": SubResource("Animation_d85d5"),
+"to stay": SubResource("Animation_us841"),
+"to walk": SubResource("Animation_cxr78"),
+"walk": SubResource("Animation_xdu8g")
+}
+
+[sub_resource type="GDScript" id="GDScript_4ywus"]
+script/source = "extends AnimationPlayer
+
+
+@export_enum (\"teleporting\", \"moving\", \"moving without\") var type_move : String
+
+func move() -> void:
+	match type_move:
+		\"teleporting\":
+			pass
+		\"moving\":
+			pass
+		\"moving without\":
+			pass
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_xpjp7")
+}
+next/RESET = &"to walk"
+script = SubResource("GDScript_4ywus")

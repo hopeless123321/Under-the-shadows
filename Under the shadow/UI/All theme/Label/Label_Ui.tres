@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dgb1fpy0jmrhl"]
+
+[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="1_05bbw"]
+
+[resource]
+Label/colors/font_color = Color(0.819608, 0.819608, 0.819608, 1)
+Label/colors/font_outline_color = Color(0.133333, 0.0705882, 1, 0.466667)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 1
+Label/font_sizes/font_size = 19
+Label/fonts/font = ExtResource("1_05bbw")

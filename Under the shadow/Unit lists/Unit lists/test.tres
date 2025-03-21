@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Unit_list" load_steps=5 format=3 uid="uid://c5l82mr585vfu"]
+
+[ext_resource type="Script" path="res://Unit lists/Unit list.gd" id="1_j54gc"]
+[ext_resource type="Resource" uid="uid://djln6hbslg21e" path="res://Unit lists/Unit info for generator/King.tres" id="2_5lbmx"]
+[ext_resource type="Resource" uid="uid://bkl1unnh4b8nj" path="res://Unit lists/Unit info for generator/Moon guide.tres" id="3_hx85f"]
+[ext_resource type="Resource" uid="uid://dogs75vgx46yd" path="res://Unit lists/Unit info for generator/Skeleton sword.tres" id="4_pw8r1"]
+
+[resource]
+script = ExtResource("1_j54gc")
+unit_list = Array[Resource("res://Unit lists/Unit info.gd")]([ExtResource("2_5lbmx"), ExtResource("3_hx85f"), ExtResource("4_pw8r1")])

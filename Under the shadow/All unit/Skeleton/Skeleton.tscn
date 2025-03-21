@@ -1,0 +1,149 @@
+[gd_scene load_steps=17 format=3 uid="uid://bqssbs8xlevtr"]
+
+[ext_resource type="PackedScene" uid="uid://clkci5y6mgsfm" path="res://Scenes/Testing scenes/Unit/Ally.tscn" id="1_rrvv6"]
+[ext_resource type="Resource" uid="uid://dnwm5v4oduws1" path="res://All ability/Ability/Bloodbending.tres" id="3_8v0hk"]
+[ext_resource type="Resource" uid="uid://cgaj51ea5njy0" path="res://All ability/Ability/Moon revenge.tres" id="4_wqba8"]
+[ext_resource type="Resource" uid="uid://b6roetw6meldw" path="res://All ability/Ability/Darkest hour.tres" id="5_nqkik"]
+[ext_resource type="Texture2D" uid="uid://cp7yg7k018njh" path="res://All unit/Skeleton/skeleton.png" id="6_4pbsu"]
+[ext_resource type="Texture2D" uid="uid://dphtcbsj80etc" path="res://All unit/Skeleton/Skeleton normals.png" id="7_uvq4v"]
+
+[sub_resource type="Curve" id="Curve_4bogc"]
+min_value = 1.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_flf1e"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bgpjb"]
+gradient = SubResource("Gradient_flf1e")
+fill_to = Vector2(0.674312, 0.674312)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7il0o"]
+diffuse_texture = ExtResource("6_4pbsu")
+normal_texture = ExtResource("7_uvq4v")
+
+[sub_resource type="Animation" id="Animation_q22a7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_loy22"]
+resource_name = "stay"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 24]
+}
+
+[sub_resource type="Animation" id="Animation_efm5f"]
+resource_name = "to stay"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75, 87]
+}
+
+[sub_resource type="Animation" id="Animation_saxo1"]
+resource_name = "to move"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [50, 62]
+}
+
+[sub_resource type="Animation" id="Animation_ap44d"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [25, 49]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6yae"]
+_data = {
+"RESET": SubResource("Animation_q22a7"),
+"stay": SubResource("Animation_loy22"),
+"to stay": SubResource("Animation_efm5f"),
+"to walk": SubResource("Animation_saxo1"),
+"walk": SubResource("Animation_ap44d")
+}
+
+[node name="Skeleton" instance=ExtResource("1_rrvv6")]
+move_curve = SubResource("Curve_4bogc")
+forename = "Skeleton"
+max_hp = 200
+hp = 10
+will = 99
+dmg_amp = 1.0
+resist_phys_dmg = 1.25
+resist_mag_dmg = 0.9
+resist_will = 1.0
+speed = 6
+reaction = 2
+ability = Array[Resource("res://All ability/Base ability/class_ability.gd")]([ExtResource("3_8v0hk"), ExtResource("5_nqkik"), ExtResource("4_wqba8")])
+icon_select = SubResource("GradientTexture2D_bgpjb")
+type = 14
+
+[node name="Label" parent="." index="0"]
+offset_left = 37.0
+offset_right = 214.0
+scale = Vector2(0.937577, 1.12162)
+
+[node name="Sprite2D" parent="." index="2"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0, -37.175)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("CanvasTexture_7il0o")
+
+[node name="Animation сontrol" parent="." index="3"]
+type_move = "Walk"
+
+[node name="AnimationPlayer" parent="Animation сontrol" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_i6yae")
+}

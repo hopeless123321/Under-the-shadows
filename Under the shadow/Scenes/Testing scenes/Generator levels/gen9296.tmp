@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqt5f0gn8rghh"]
+
+[ext_resource type="Script" path="res://Scenes/Testing scenes/Generator levels/Generator_level.gd" id="1_3tocy"]
+
+[node name="Generator_level" type="Node2D"]
+script = ExtResource("1_3tocy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1486.0
+offset_top = -880.0
+offset_right = 8723.0
+offset_bottom = 4756.0
+mouse_filter = 2
+color = Color(0.180392, 0, 0.00392157, 1)
