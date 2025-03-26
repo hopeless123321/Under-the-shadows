@@ -4,6 +4,7 @@ signal save_all
 signal new_level
 signal update_prop_ui
 signal call_setting
+signal reveal_map
 signal next_room(room_type : String)
 signal select_char(character_stats : Dictionary) 
 signal target_camera_to(charachter_pos : Vector2i)

@@ -5,32 +5,35 @@ const ROOM_SPACE := Vector2i(256, 256)
 const GRID_SIZE := Rect2i(Vector2i(-128, -128), Vector2i(256, 256))
 const ROOMS_THEME = preload("res://UI/All theme/Button/Rooms.tres")
 const FIGHT_ROOM = preload("res://Scenes/Testing scenes/Generator levels/Generate level.tscn")
+const VECTORS_TO_LOOP : Array[Vector2i] = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2.RIGHT]
 
-
-@onready var tile_map_path = $Paths
-@onready var stash_room = $"Stash room"
+@onready var tile_map_path : TileMap = $Paths
+@onready var stash_room : Node2D = $"Stash room"
+@onready var camera : Camera2D= $Camera2D
 
 
 var create_room := 0
-var count_rooms := 50
+var count_rooms : int = 50
 var real_size : Vector2i
 var rooms : Dictionary
 var escaped_rooms : Dictionary
-var paths_to_room = AStarGrid2D.new()
+var paths_to_room : AStarGrid2D = AStarGrid2D.new()
 var counts_escaped : int = 4
-
+var on_fight : bool = false
 
 func _ready():
 	Eventbus.connect("next_room", get_to_room)
 	Eventbus.connect("save_all", save_map)
+	Eventbus.connect("reveal_map", reveal_hide_map)
 	paths_to_room.region = GRID_SIZE
 	paths_to_room.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	paths_to_room.cell_size = CELL_SIZE
 	paths_to_room.update()
+	
 	create_dungeon()
 
 func create_dungeon() -> void:
-	var init_pos := Vector2i(0, 0)
+	var init_pos : Vector2i = Vector2i(0, 0)
 	make_room(init_pos)
 	while create_room != count_rooms:
 		if create_room != 0:
@@ -43,8 +46,21 @@ func create_dungeon() -> void:
 			rooms.find_key(init_pos).connected_room.append(room)
 			rng_room_offset(room)
 			create_path(room.global_position,rooms.find_key(init_pos).global_position)
-	pick_rng_room() 
 	escaped_room()
+	make_rng_loop()
+	for room in rooms.keys():
+		room.create()
+	pick_rng_room() 
+	
+func make_rng_loop() -> void:
+	for room : Room in rooms.keys():
+		if room.connected_room.size() >= 3 and randi() % 5 < 2:
+			for vector in VECTORS_TO_LOOP:
+				var room_to_coon : Room = rooms.find_key(room.room_coords + vector)
+				if room_to_coon != null and room.connected_room.has(room_to_coon) == false:
+					room.connected_room.append(room_to_coon)
+					room_to_coon.connected_room.append(room)
+					create_path(room_to_coon.global_position, room.global_position)
 
 func create_path(next_pos : Vector2i , init_pos : Vector2i) -> void:
 	next_pos = tile_map_path.local_to_map(next_pos) + Vector2i.ONE
@@ -89,10 +105,6 @@ func escaped_room() -> void:
 		if room.connected_room.size() == 1 and room.id > count_rooms / 2:
 			escaped_rooms[room] = room.set_escaped_room()
 
-func _unhandled_input(event) -> void:
-	if Input.is_action_just_pressed("Map"):
-		visible = !visible
-
 func get_to_room(room_type : Room.Type_room) -> void:
 	var room_i : Object
 	match room_type:
@@ -108,9 +120,21 @@ func get_to_room(room_type : Room.Type_room) -> void:
 			pass
 		5: #escape
 			pass
-	add_child(room_i)
-	if room_i != null:
+	if room_i != null and !on_fight:
+		get_parent().add_child(room_i)
+		reveal_hide_map()
 		room_i.create()
+		room_i.cost_dif = calculate_general_diff()
+		on_fight = true
+
+func calculate_general_diff() -> int:
+	return GlobalInfo.stage * 3\
+	+ GlobalInfo.stage * GlobalInfo.DIFFICULT.get(GlobalInfo.diffucult)\
+	* randi_range(0.9, 1.1)
+
+func reveal_hide_map() -> void:
+	visible = !visible
+	camera.enabled = !camera.enabled
 
 func save_map() -> void:
 	pass

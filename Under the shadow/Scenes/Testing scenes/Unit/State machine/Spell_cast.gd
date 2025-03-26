@@ -1,11 +1,11 @@
 extends States
 
-const AREA_TILE = Vector2i(1, 2)
-const CHOICE_TILE = Vector2i(2, 2)
-const SELECTED_TILE =  Vector2i(3, 2)
-const SELF_TILE = Vector2i(2, 3)
+const AREA_TILE : Vector2i = Vector2i(1, 2)
+const CHOICE_TILE : Vector2i = Vector2i(2, 2)
+const SELECTED_TILE : Vector2i = Vector2i(3, 2)
+const SELF_TILE : Vector2i = Vector2i(2, 3)
 
-var ability :  Base_ability
+var ability : Base_ability
 var ability_points : Array[Vector2i] #переменная принимающая все тайлы на кого действует способность
 var tile_pos_mouse : Vector2i:
 	set(value):

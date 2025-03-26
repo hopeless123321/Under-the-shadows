@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlqjf3wkyqqb1"
-path="res://.godot/imported/king stay.png-f63623ceed755fd86419eaac4a2e9381.ctex"
+uid="uid://d1aimfjrmflil"
+path="res://.godot/imported/Kingcheck_Normal buffer.png-233796e3cc2c4224e03f5657e7febed5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All unit/King/king stay.png"
-dest_files=["res://.godot/imported/king stay.png-f63623ceed755fd86419eaac4a2e9381.ctex"]
+source_file="res://All unit/King/Kingcheck_Normal buffer.png"
+dest_files=["res://.godot/imported/Kingcheck_Normal buffer.png-233796e3cc2c4224e03f5657e7febed5.ctex"]
 
 [params]
 

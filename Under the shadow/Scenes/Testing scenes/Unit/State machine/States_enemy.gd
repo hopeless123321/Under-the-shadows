@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var idle = $Idle
-@onready var wait = $Wait
-@onready var dying = $Dying
-@onready var move = $Move
-@onready var spell_cast = $"Spell cast"
-@onready var end_turn = $"End turn"
+@onready var idle : Node2D = $Idle
+@onready var wait : Node2D = $Wait
+@onready var dying : Node2D = $Dying
+@onready var move : Node2D = $Move
+@onready var spell_cast : Node2D = $"Spell cast"
+@onready var end_turn : Node2D = $"End turn"
 

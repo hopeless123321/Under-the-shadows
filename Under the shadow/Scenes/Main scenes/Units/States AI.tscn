@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://cln8y8klu6qsk"]
+
+[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State machine/States_enemy.gd" id="1_pyx0a"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Idle.gd" id="2_hmanh"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Wait.gd" id="3_jdouy"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Move.gd" id="4_w70tf"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Spell cast.gd" id="5_g4721"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/End turn.gd" id="6_unoaw"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Dying.gd" id="7_0tm31"]
+
+[node name="States" type="Node2D"]
+script = ExtResource("1_pyx0a")
+
+[node name="Idle" type="Node2D" parent="."]
+script = ExtResource("2_hmanh")
+
+[node name="Wait" type="Node2D" parent="."]
+script = ExtResource("3_jdouy")
+
+[node name="Move" type="Node2D" parent="."]
+script = ExtResource("4_w70tf")
+
+[node name="Spell cast" type="Node2D" parent="."]
+script = ExtResource("5_g4721")
+
+[node name="End turn" type="Node2D" parent="."]
+script = ExtResource("6_unoaw")
+
+[node name="Dying" type="Node2D" parent="."]
+script = ExtResource("7_0tm31")

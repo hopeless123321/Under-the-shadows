@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Unit_prop" load_steps=5 format=3 uid="uid://djwuu7m4c0pm8"]
+
+[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="1_5m75i"]
+
+[sub_resource type="Gradient" id="Gradient_gd7sh"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_332jg"]
+gradient = SubResource("Gradient_gd7sh")
+fill_from = Vector2(1, 0.448718)
+fill_to = Vector2(0.747863, 0.944444)
+
+[sub_resource type="Curve" id="Curve_u2sle"]
+min_value = 1.0
+max_value = 2.0
+_data = [Vector2(0.00384615, 0.961661), 0.0, 2.10913, 0, 1, Vector2(0.496154, 2), 0.0, 0.0, 0, 0, Vector2(1, 1), -1.98473, 0.0, 1, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("1_5m75i")
+name = "Skeleton"
+hp = 35
+dmg_amp = -20
+resist_phys_dmg = 0
+resist_mag_dmg = 0
+resist_will = 30
+speed = 3
+reaction = 6
+move_after_skill = false
+free_move = false
+ability = Array[Resource("res://All ability/Base ability/class_ability.gd")]([])
+icon_select = SubResource("GradientTexture2D_332jg")
+type = 2
+cost = 15
+move_curve = SubResource("Curve_u2sle")
+move_to = "Close"
+distance = 0

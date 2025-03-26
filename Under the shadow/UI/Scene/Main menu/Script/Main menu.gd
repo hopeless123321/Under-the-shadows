@@ -32,7 +32,6 @@ func _on_new_game_pressed():
 	choose_difficult.visible = true
 	initial.visible = false
 	
-
 func _on_options_pressed():
 	Eventbus.emit_signal("call_setting")
 func _on_about_pressed():
@@ -55,4 +54,6 @@ func _on_eclipse_pressed():
 	map_generated()
 	
 func map_generated() -> void:
+	Teaminfo.add_unit("Skeleton sword")
+	GlobalInfo.current_location = "Chambers"
 	get_tree().change_scene_to_packed(MapGenerator)

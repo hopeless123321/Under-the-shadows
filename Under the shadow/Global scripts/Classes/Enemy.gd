@@ -2,20 +2,17 @@ extends Unit
 class_name Enemy
 const Classname := "Enemy"
 
-@export_enum ("Close", 
-			"Far", 
-			"Low hp", 
-			"High hp", 
-			"King", 
-			"Low will", 
-			"High will", 
-			"Random") var move_to : String
-@export var distance : int
 
-func _ready() -> void:
-	_initiation()
+func creation() -> void:
+	connect("input_event", pressed)
+	hp = max_hp
+	initiation()
 	add_to_group("Enemy")
 	z_index = int(global_position.y / 64)
+
+func pressed(viewport, event, idx) -> void:
+	if event is InputEventMouseButton and event.pressed and GlobalInfo.select_ability_anybody == false:
+		select()
 
 func find_path() -> Array[Vector2i]:
 	var path_id : Array[Vector2i] = []
@@ -88,10 +85,6 @@ func move_to_target() -> void:
 	global_position = global_position.move_toward(target_position, 6)
 	if global_position == target_position:
 		path.pop_front()
-
-func _on_input_event(_viewport, _event, _shape_idx) -> void:
-	if Input.is_action_just_pressed("LMB") and GlobalInfo.select_ability_anybody == false:
-		select()
 
 func select() -> void:
 	var data := {

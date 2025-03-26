@@ -1,19 +1,18 @@
 extends Node2D
 
-var grid_ghosts := AStarGrid2D.new()
-var grid_normals := AStarGrid2D.new()
+var grid_ghosts : AStarGrid2D = AStarGrid2D.new()
+var grid_normals : AStarGrid2D = AStarGrid2D.new()
 
-func init_level(tm : TileMap):
+func init_level(tm : TileMap) -> void:
 	grid_ghosts.clear()
 	grid_normals.clear()
-	
 	Eventbus.connect("dying", char_die)
 	
 	grid_normals.cell_size = GlobalInfo.CELL_SIZE
 	grid_normals.region = tm.get_used_rect()
 	grid_normals.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	grid_normals.update()
-	for cell in tm.get_used_cells(1):
+	for cell : Vector2i in tm.get_used_cells(1):
 		grid_normals.set_point_solid(cell)
 	await get_tree().create_timer(0.1).timeout
 
@@ -21,13 +20,13 @@ func init_level(tm : TileMap):
 	grid_ghosts.region = tm.get_used_rect()
 	grid_ghosts.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	grid_ghosts.update()
-	for cell in tm.get_used_cells(3):
+	for cell : Vector2i in tm.get_used_cells(3):
 		grid_ghosts.set_point_solid(cell)
 		grid_normals.set_point_solid(cell)
-	for unit in get_tree().get_nodes_in_group("Units"):
+	for unit : Node in get_tree().get_nodes_in_group("Units"):
 		grid_ghosts.set_point_solid(unit.tile_pos)
 		grid_normals.set_point_solid(unit.tile_pos)
-	for altars in get_tree().get_nodes_in_group("Altars"):
+	for altars : Node in get_tree().get_nodes_in_group("Altars"):
 		grid_ghosts.set_point_solid(altars.global_position / 64)
 		grid_normals.set_point_solid(altars.global_position / 64)
 func check_point_in_grid(tile_pos : Vector2i) -> bool:
@@ -51,7 +50,7 @@ func update(new_solid : Vector2i, old_solid : Vector2i) -> void:
 	grid_ghosts.set_point_solid(old_solid, false)
 
 func get_unit(tile_pos : Vector2i) -> Unit:
-	for unit in get_tree().get_nodes_in_group("Units"):
+	for unit : Unit in get_tree().get_nodes_in_group("Units"):
 		if unit.tile_pos == tile_pos:
 			return unit
 	return null
@@ -77,19 +76,19 @@ func valid_line_skill(start_point : Vector2i, end_point : Vector2i) -> Array[Vec
 	var vectors : Array[Vector2i] = []
 	var valid_points : Array[Vector2i] = []
 	if start_point != end_point:
-		var dx = start_point.x - end_point.x
-		var dy = start_point.y - end_point.y
-		var step = max(abs(dx),abs(dy))
-		var inc_x = float(dx) / float(step)
-		var inc_y = float(dy) / float(step)
+		var dx : int = start_point.x - end_point.x
+		var dy : int = start_point.y - end_point.y
+		var step : int = max(abs(dx),abs(dy))
+		var inc_x : int = float(dx) / float(step)
+		var inc_y : int = float(dy) / float(step)
 		if end_point != start_point:
-			for steps in step + 1:
+			for steps : int in step + 1:
 				vectors.append(start_point - Vector2i(round(Vector2(inc_x*steps, inc_y*steps))))
 		vectors.pop_front()
-		for point in vectors:
+		for point : Vector2i in vectors:
 			if GlobalInfo.size_map.has_point(point) == false or (grid_ghosts.is_point_solid(point) and get_unit(point) == null):
 				break
 			valid_points.append(point)
-		for unit in get_tree().get_nodes_in_group("Units"):
+		for unit : Unit in get_tree().get_nodes_in_group("Units"):
 			vectors.erase(unit.tile_pos)
 	return valid_points

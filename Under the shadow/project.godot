@@ -11,18 +11,24 @@ config_version=5
 [application]
 
 config/name="Under the shadow"
-run/main_scene="res://Scenes/Dungeon generator/Generator/Map generator.tscn"
+config/version="0.06"
+run/main_scene="res://UI/Scene/Main menu/Scene/Main menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 
 [autoload]
 
 Overlay="*res://UI/Scene/Shader/vhs_shader.tscn"
-GlobalSeed="*res://Global scripts/Global script/Global seed.gd"
 GlobalInfo="*res://Global scripts/Global script/Global info.gd"
 Eventbus="*res://Global scripts/Global script/Eventbus.gd"
 Grid="*res://Global scripts/Global script/Grid.gd"
 Config="*res://Global scripts/Config.gd"
+Teaminfo="*res://Global scripts/Classes/Resource/Team.gd"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/integer_division=0
 
 [display]
 

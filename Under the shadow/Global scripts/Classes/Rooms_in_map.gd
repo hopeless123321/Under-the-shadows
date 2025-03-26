@@ -28,7 +28,7 @@ const CONVERT_TO_ICON = {Type_room.Fight : FIGHT,
 							Type_room.Event : EVENT,
 							Type_room.Escape : ESCAPE}
 
-func _ready():
+func create() -> void:
 	connect("pressed", get_to)
 	expand_icon = true
 	flat = true
@@ -37,9 +37,9 @@ func _ready():
 	icon = UNKNOWN
 
 func get_role() -> Type_room:
-	var chance = PROBABILITY_ROOM.values().reduce(sum_of_chance)
-	var rng_number = randi() % chance
-	var culmalitive_chance := 0
+	var chance : int = PROBABILITY_ROOM.values().reduce(sum_of_chance)
+	var rng_number : int = randi() % chance
+	var culmalitive_chance : int = 0
 	for room_type in  PROBABILITY_ROOM.keys():
 		culmalitive_chance += PROBABILITY_ROOM[room_type]
 		if rng_number < culmalitive_chance:

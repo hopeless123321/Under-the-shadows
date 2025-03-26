@@ -2,7 +2,7 @@ extends States
 
 var abilities : Array[Base_ability]
 
-func start():
+func start() -> void:
 	abilities = unit.ability
 	abilities.shuffle()
 	for ability in abilities:

@@ -16,3 +16,6 @@ func update_ui(data : Dictionary) -> void:
 	
 func update_prop_ui() -> void:
 	selected_unit.select()
+
+
+

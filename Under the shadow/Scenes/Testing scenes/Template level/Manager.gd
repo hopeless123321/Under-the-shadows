@@ -49,13 +49,13 @@ func waiter(dif : int, prop : String, pos : Vector2) -> void:
 	call_deferred("create_label")
 
 func create_label() -> void:
-	var prop_label = Label.new()
+	var prop_label : Label = Label.new()
 	prop_label.z_index = 1000
 	prop_label.set("theme_override_font_sizes/font_size", 20)
-	var timer := 1.5
+	var timer : float = 1.5
 	var dif = queue_prop.front()[0]
-	var prop = queue_prop.front()[1]
-	var pos = queue_prop.front()[2]
+	var prop : String = queue_prop.front()[1]
+	var pos : Vector2 = queue_prop.front()[2]
 	prop_label.theme = label_theme
 	if dif > 0:
 		await get_tree().create_timer(1).timeout
@@ -66,8 +66,8 @@ func create_label() -> void:
 		prop_label.text = str(dif) + prop
 	add_child(prop_label)
 	prop_label.position = pos - Vector2(prop_label.size.x / 2, 40)
-	var tween1 := create_tween()
-	var tween2 := create_tween()
+	var tween1 : Tween = create_tween()
+	var tween2 : Tween = create_tween()
 	tween1.tween_property(prop_label, "position", prop_label.position - Vector2(0, 30), timer)
 	tween2.tween_property(prop_label, "modulate", Color("ffffff00"), timer)
 	queue_prop.pop_front()
@@ -76,7 +76,7 @@ func create_label() -> void:
 
 func give_queue(node : Node) -> void:
 	var actual_queue : Array[Unit] = []
-	for counter in queue.size():
+	for counter : int in queue.size():
 		actual_queue.append(queue[wrapi(index + counter, 0 ,queue.size())])
 	node.queue = actual_queue
 		

@@ -1,10 +1,10 @@
 extends Node
 
 
-var config = ConfigFile.new()
-var PATH_TO_CONFIG = "res://Config.ini"
+var config : ConfigFile = ConfigFile.new()
+var PATH_TO_CONFIG : String = "res://Config.ini"
 
-func _ready():
+func _ready() -> void:
 	if !FileAccess.file_exists(PATH_TO_CONFIG):
 		config.set_value("video", "resolution", "1920x1080")
 		config.set_value("video", "vsync", true)
@@ -26,42 +26,42 @@ func _ready():
 	else:
 		config.load(PATH_TO_CONFIG)
 
-func save_video(key : String, value):
+func save_video(key : String, value) -> void:
 	config.set_value("video", key, value)
 	config.save(PATH_TO_CONFIG)
 	
-func load_video():
-	var settings = {}
+func load_video() -> Dictionary:
+	var settings : Dictionary = {}
 	for key in config.get_section_keys("video"):
 		settings[key] = config.get_value("video", key)
 	return settings
 
-func save_overlay(key : String, value):
+func save_overlay(key : String, value) -> void:
 	config.set_value("overlay", key, value)
 	config.save(PATH_TO_CONFIG)
 
-func load_overlay():
-	var settings = {}
+func load_overlay() -> Dictionary:
+	var settings : Dictionary = {}
 	for key in config.get_section_keys("overlay"):
 		settings[key] = config.get_value("overlay", key)
 	return settings
 
-func load_game():
-	var settings = {}
+func load_game() -> Dictionary:
+	var settings : Dictionary = {}
 	for key in config.get_section_keys("game"):
 		settings[key] = config.get_value("game", key)
 	return settings
 
-func save_game(key : String, value):
+func save_game(key : String, value) -> void:
 	config.set_value("game", key, value)
 	config.save(PATH_TO_CONFIG)
 
-func load_audio():
-	var settings = {}
+func load_audio() -> Dictionary:
+	var settings : Dictionary = {}
 	for key in config.get_section_keys("audio"):
 		settings[key] = config.get_value("audio", key)
 	return settings
 
-func save_audio(key : String, value):
+func save_audio(key : String, value) -> void:
 	config.set_value("audio", key, value)
 	config.save(PATH_TO_CONFIG)

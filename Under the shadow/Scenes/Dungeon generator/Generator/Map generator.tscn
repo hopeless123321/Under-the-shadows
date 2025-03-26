@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://83uvu4m3msd"]
+[gd_scene load_steps=8 format=3 uid="uid://83uvu4m3msd"]
 
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Map generator.gd" id="1_hjbgk"]
 [ext_resource type="Texture2D" uid="uid://dtpngvp4naspi" path="res://Tile/Tile for map generator/dungeon generator tileset.png" id="2_nvusg"]
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Camera.gd" id="3_wmt2u"]
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="4_1vg8w"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="5_yh55e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cobdl"]
 texture = ExtResource("2_nvusg")
@@ -94,6 +96,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_cobdl")
 
 [node name="Map generator" type="Node2D"]
+z_index = 955
 script = ExtResource("1_hjbgk")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -126,3 +129,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/UI on map"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.817
+anchor_top = 0.012
+anchor_right = 0.993
+anchor_bottom = 0.404
+offset_left = 0.23999
+offset_top = -0.16
+offset_right = -0.0400391
+offset_bottom = 0.279999
+
+[node name="Texture" type="NinePatchRect" parent="CanvasLayer/UI on map/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("4_1vg8w")
+region_rect = Rect2(256, 128, 128, 128)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Margin legend" type="MarginContainer" parent="CanvasLayer/UI on map/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Title" type="Label" parent="CanvasLayer/UI on map/PanelContainer/Margin legend"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("5_yh55e")
+text = "Legend"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI on map/PanelContainer/Margin legend"]
+layout_mode = 2
+theme_override_constants/margin_top = 22
+
+[node name="Grid legend" type="GridContainer" parent="CanvasLayer/UI on map/PanelContainer/Margin legend/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/UI on map/PanelContainer/Margin legend/MarginContainer/Grid legend"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CanvasLayer/UI on map/PanelContainer/Margin legend/MarginContainer/Grid legend"]
+layout_mode = 2
+text = "adsadads"

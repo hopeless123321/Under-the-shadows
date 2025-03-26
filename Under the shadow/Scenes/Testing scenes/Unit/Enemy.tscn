@@ -16,6 +16,23 @@ size = Vector2(64, 64)
 [node name="Enemy" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_jiptl")
+forename = null
+max_hp = null
+hp = null
+will = null
+dmg_amp = null
+resist_phys_dmg = null
+resist_mag_dmg = null
+resist_will = null
+speed = null
+move_point = null
+reaction = null
+move_after_skill = null
+free_move = null
+ability = null
+cost = null
+move_to = null
+distance = null
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true

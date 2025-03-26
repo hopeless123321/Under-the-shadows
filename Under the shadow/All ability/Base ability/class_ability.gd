@@ -19,7 +19,7 @@ var cooldown_timer : int:
 		cooldown_timer = clamp(value, 0, 99)
 
 func check_unit(tile_pos : Vector2i) -> bool:
-	var character = Grid.get_unit(tile_pos)
+	var character : Unit = Grid.get_unit(tile_pos)
 	if character:
 		if character.Classname == type_unit or type_unit == "Either":
 			return true

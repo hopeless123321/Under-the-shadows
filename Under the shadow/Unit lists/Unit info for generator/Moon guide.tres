@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Generator_unit" load_steps=2 format=3 uid="uid://bkl1unnh4b8nj"]
-
-[ext_resource type="Script" path="res://Unit lists/Unit info.gd" id="1_v1v4u"]
-
-[resource]
-script = ExtResource("1_v1v4u")
-id = 3
-name_unit = "Moon guide"
-weight = 12

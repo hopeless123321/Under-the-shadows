@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cndr886j3r16p"]
+[gd_scene load_steps=17 format=3 uid="uid://cndr886j3r16p"]
 
 [ext_resource type="PackedScene" uid="uid://dyejlaprpu8ve" path="res://Scenes/Testing scenes/Camera/camera_2d.tscn" id="1_bmcg2"]
 [ext_resource type="Script" path="res://UI/Particles/Gpu ash generate.gd" id="2_kkhwf"]
 [ext_resource type="TileSet" uid="uid://b1sx67xs8rg80" path="res://Tile/tilesets/first try.tres" id="3_j5rqp"]
 [ext_resource type="Script" path="res://Scenes/Testing scenes/Template level/tile_map.gd" id="4_yw4of"]
 [ext_resource type="Script" path="res://Scenes/Testing scenes/Template level/Manager.gd" id="5_kxbvo"]
+[ext_resource type="Script" path="res://Scenes/Testing scenes/Template level/CanvasLayer.gd" id="6_6po06"]
 [ext_resource type="PackedScene" uid="uid://b0v8e7ytofvta" path="res://UI/Scene/UI battle/Scene/UI battle.tscn" id="6_rgf26"]
 [ext_resource type="Script" path="res://Scenes/Testing scenes/Template level/Regeneration button.gd" id="9_kuijj"]
 [ext_resource type="PackedScene" uid="uid://cqoe8jc5ucobr" path="res://UI/Scene/UI battle/Scene/Menu in gameplay.tscn" id="11_c1s0i"]
@@ -87,6 +88,7 @@ script = ExtResource("5_kxbvo")
 [node name="Enemy" type="Node2D" parent="Units"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("6_6po06")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 anchors_preset = -1

@@ -1,9 +1,8 @@
 extends Node2D
 class_name States
 
-@onready var unit : Unit = $"../../"
+@onready var unit = $"../../"
 var state_machine = null
-@onready var am_c = %"Animation сontrol"
 
 
 

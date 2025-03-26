@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Unit_prop" load_steps=5 format=3 uid="uid://b6156jnr04ymc"]
+
+[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="1_loiph"]
+
+[sub_resource type="Gradient" id="Gradient_2j2av"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ff35o"]
+gradient = SubResource("Gradient_2j2av")
+fill_from = Vector2(1, 0.452991)
+
+[sub_resource type="Curve" id="Curve_bp6el"]
+min_value = 1.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.507692, 2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("1_loiph")
+name = "Moon guide"
+hp = 85
+dmg_amp = 12
+resist_phys_dmg = -25
+resist_mag_dmg = 25
+resist_will = 10
+speed = 5
+reaction = 6
+move_after_skill = false
+free_move = false
+ability = Array[Resource("res://All ability/Base ability/class_ability.gd")]([])
+icon_select = SubResource("GradientTexture2D_ff35o")
+type = 20
+cost = 85
+move_curve = SubResource("Curve_bp6el")
+move_to = "Far"
+distance = 3

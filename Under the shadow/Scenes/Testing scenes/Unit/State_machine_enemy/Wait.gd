@@ -1,7 +1,7 @@
 extends States
 
 
-func start():
+func start() -> void:
 	pass
 func update():
 	if unit.find_path().size() >= 1:
@@ -9,6 +9,6 @@ func update():
 		return unit._st.move
 	else:
 		return unit._st.spell_cast
-func end():
+func end() -> void:
 	pass
 	

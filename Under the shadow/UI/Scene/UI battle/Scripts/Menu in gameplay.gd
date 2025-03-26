@@ -1,12 +1,11 @@
 extends Control
 
-@onready var blur_screen = $"Blur screen"
-@onready var panel_container = $PanelContainer
-var hide_setting := true
+@onready var blur_screen : ColorRect = $"Blur screen"
+@onready var panel_container: PanelContainer = $PanelContainer
+@onready var setting : Control = $Setting
 @export var timer : float
-@onready var setting = $Setting
-
-var dodos := true
+var dodos : bool = true
+var hide_setting : bool = true
 func _input(_event):
 	if Input.is_action_just_pressed("ESC") and dodos:
 		hide_setting = !hide_setting
@@ -17,6 +16,8 @@ func _input(_event):
 			reveal()
 		await get_tree().create_timer(timer).timeout
 		dodos = true
+	if Input.is_action_just_pressed("Map"):
+		Eventbus.emit_signal("reveal_map")
 		
 func hiding() -> void:
 	var blur_tween = create_tween()
@@ -42,7 +43,6 @@ func reveal() -> void:
 func _on_resume_pressed():
 	hiding()
 
-
 func _on_restart_pressed():
 	pass # Replace with function body.
 
@@ -61,4 +61,4 @@ func _on_exit_pressed():
 
 
 func _on_main_menu_pressed():
-	get_tree().change_scene_to_file("res://UI/Scene/Main menu/Scene/Main menu.tscn")
+	Eventbus.emit_signal("reveal_map")

@@ -30,3 +30,7 @@ func update_souls(value : int):
 	tween_label.set_ease(Tween.EASE_IN_OUT)
 	tween_label.set_trans(Tween.TRANS_BOUNCE)
 	tween_label.tween_property(souls, "text", str(value), 1)
+
+
+func _on_map_button_pressed():
+	Eventbus.emit_signal("reveal_map")
