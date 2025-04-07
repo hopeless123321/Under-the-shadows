@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbr8nibb3kyu1"]
+
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Skill description.gd" id="1_4emc8"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="2_em1bc"]
+
+[node name="Skill" type="VBoxContainer"]
+anchors_preset = -1
+anchor_left = -0.03
+anchor_top = -0.093
+anchor_right = -0.03
+anchor_bottom = 0.094
+offset_left = -0.599998
+offset_top = 0.240002
+offset_right = 78.4
+offset_bottom = 0.079998
+script = ExtResource("1_4emc8")
+
+[node name="Skill" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Skill icon" type="TextureRect" parent="Skill"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Skill"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_em1bc")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="Description skill" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_em1bc")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 3
+autowrap_mode = 2
+
+[node name="Prop" type="Label" parent="."]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_em1bc")
+text = "Хар-ки"
+horizontal_alignment = 1
+
+[node name="Prop Grid" type="GridContainer" parent="."]
+visible = false
+layout_mode = 2
+columns = 2

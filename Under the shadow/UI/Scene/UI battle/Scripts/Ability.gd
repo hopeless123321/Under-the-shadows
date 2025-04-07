@@ -3,7 +3,7 @@ extends TextureButton
 var text : String
 var ability_theme = preload("res://UI/All theme/Richtextlabel/ability_slot.tres")
 var unit : Unit
-var data_ability : Base_ability
+var data_ability : Skill
 var number_skill : int
 var action_button : String = "Num_"
 
@@ -29,5 +29,5 @@ func _make_custom_tooltip(_for_text):
 
 func _on_pressed() -> void:
 	if unit.current_state == unit._st.wait:
-		unit._st.spell_cast.ability = data_ability
+		unit._st.spell_cast.skill = data_ability
 		unit.change_state(unit._st.spell_cast)

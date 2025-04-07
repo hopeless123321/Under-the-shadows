@@ -1,17 +1,12 @@
-[gd_resource type="Resource" script_class="Unit_prop" load_steps=5 format=3 uid="uid://ch6trihvtf3vo"]
+[gd_resource type="Resource" script_class="Unit_prop" load_steps=5 format=3 uid="uid://c1onlxupvt7k6"]
 
 [ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="1_4egtm"]
+[ext_resource type="Resource" uid="uid://drp0ffopxr35t" path="res://All ability/Skills/Bloodbend.tres" id="1_cf1t0"]
+[ext_resource type="Texture2D" uid="uid://j6q0a326fybw" path="res://All unit/King/King icon_Preview.png" id="2_wagu1"]
 
-[sub_resource type="Gradient" id="Gradient_boio7"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7ynbi"]
-gradient = SubResource("Gradient_boio7")
-
-[sub_resource type="Curve" id="Curve_yuyxe"]
-min_value = 1.0
-max_value = 2.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.503846, 2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvwcb"]
+atlas = ExtResource("2_wagu1")
+region = Rect2(0, 16, 64, 64)
 
 [resource]
 script = ExtResource("1_4egtm")
@@ -20,15 +15,17 @@ max_hp = 135
 dmg_amp = 0
 resist_phys_dmg = 0
 resist_mag_dmg = 0
-resist_will = 0
-speed = 4
-reaction = 12
-move_after_skill = true
+resist_will = 200
+speed = 12
+reaction = 6
+move_after_skill = false
 free_move = false
-ability = Array[Resource("res://All ability/Base ability/class_ability.gd")]([])
-icon_select = SubResource("GradientTexture2D_7ynbi")
+ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([ExtResource("1_cf1t0")])
+icon_select = SubResource("AtlasTexture_lvwcb")
 type = 1
-cost = 100
-move_curve = SubResource("Curve_yuyxe")
+cost = 123
+animation_trans = 1
+animation_ease = 2
+duration = 1
 move_to = "Close"
-distance = 2
+distance = 1

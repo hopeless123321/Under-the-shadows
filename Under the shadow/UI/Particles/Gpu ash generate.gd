@@ -3,7 +3,7 @@ extends GPUParticles2D
 @onready var tile_map = $"../TileMap"
 
 
-func _ready():
+func _ready() -> void:
 	call_deferred("get_top_size")
 	
 func get_top_size() -> void:

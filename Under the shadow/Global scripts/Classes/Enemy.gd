@@ -1,6 +1,6 @@
 extends Unit
 class_name Enemy
-const Classname := "Enemy"
+const CLASSNAME := "Enemy"
 
 
 func creation() -> void:
@@ -81,11 +81,22 @@ func find_path() -> Array[Vector2i]:
 	return path_id
 
 func move_to_target() -> void:
-	var target_position = _tm.map_to_local(path.front())
-	global_position = global_position.move_toward(target_position, 6)
-	if global_position == target_position:
-		path.pop_front()
-
+	$"AnimationPlayer".play("walk")
+	var move_tween : Tween = create_tween()
+	move_tween.set_ease(animation_ease)
+	move_tween.set_trans(animation_trans)
+	for cell in path:
+		if cell.x < tile_pos.x:
+			$"Store sprite/Under".flip_h = false
+			$"Store sprite/Upper".flip_h = false
+		elif cell.x > tile_pos.x:
+			$"Store sprite/Under".flip_h = true
+			$"Store sprite/Upper".flip_h = true
+		move_tween.tween_property(self, "global_position", _tm.map_to_local(cell), duration)
+		move_point -= 1
+	await move_tween.finished
+	path.clear()
+	$"AnimationPlayer".play("stay")
 func select() -> void:
 	var data := {
 			"unit" : self,

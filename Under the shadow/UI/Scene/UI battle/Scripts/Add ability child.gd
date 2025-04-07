@@ -22,28 +22,28 @@ func update_ui(data : Dictionary) -> void:
 			var ability_instance = ability_container.instantiate()
 			ability_instance.number_skill = i + 1
 			add_child(ability_instance)
-			ability_instance.texture_normal = ability[i].icon_in_description
+			ability_instance.texture_normal = ability[i].icon
 			ability_instance.text = text_tooltip(ability[i])
 			ability_instance.unit = data.get("unit")
 			ability_instance.data_ability = ability[i]
 			ability_instance.init()
 			
-func text_tooltip(ability : Base_ability) -> String:
+func text_tooltip(ability : Skill) -> String:
 	var text : String
 	text = ability.description + '\n'
 	text += 'HP cost: ' + str(ability.cost_hp) + '\n'
 	text += 'Will cost: ' + str(ability.cost_will) +'\n'
 	text += 'Cooldown: ' + str(ability.cooldown) + ' turn(s)' + '\n'
 	text += 'Type spell: '
-	match ability.type_spell:
+	match ability.class_spell:
 		"No type":
-			text += ability.type_spell 
+			text += ability.class_spell 
 		"Lunar":
-			text += "[wave amp=20.0 freq=5.0 connected=1][color=beige] " + ability.type_spell + "[/color][/wave]"
+			text += "[wave amp=20.0 freq=5.0 connected=1][color=beige] " + ability.class_spell + "[/color][/wave]"
 		"Blood":
-			text += "[wave amp=20.0 freq=5.0 connected=1][color=crimson]" + ability.type_spell + "[/color][/wave]"
+			text += "[wave amp=20.0 freq=5.0 connected=1][color=crimson]" + ability.class_spell + "[/color][/wave]"
 		"Suicide":
-			text += "[wave amp=20.0 freq=5.0 connected=1][color=dim_gray]" + ability.type_spell + "[/color][/wave]"
+			text += "[wave amp=20.0 freq=5.0 connected=1][color=dim_gray]" + ability.class_spell + "[/color][/wave]"
 	text += '\nUnit: '
 	match ability.type_unit:
 		"Ally":
@@ -52,10 +52,12 @@ func text_tooltip(ability : Base_ability) -> String:
 			text += "[color=red]" + ability.type_unit + "[/color]"
 		"Either":
 			text += ability.type_unit
-	text += '\n' + ability.activity + ' skill'
-	if ability.activity == "Active":
+	if ability.active:
+		text += "active"
 		text += "\n" + "Cooldown : " + str(ability.cooldown) + "\n"
-	text += "class: " + ability.Classname
+	elif ability.active == false:
+		text += "passive"
+	text += "class: " + ability.class_spell
 	return text 
 
 func update_progress_bar(hp_v : int, will_v : int, max_hp : int) -> void:

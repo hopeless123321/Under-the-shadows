@@ -7,6 +7,7 @@ var index := 0
 var label_theme : Theme = preload("res://UI/All theme/Label/Label_Ui.tres")
 var turn := 0
 
+
 func init_level() -> void:
 	Eventbus.connect("dying", free_unit)
 	Eventbus.connect("prop_char_change", waiter)

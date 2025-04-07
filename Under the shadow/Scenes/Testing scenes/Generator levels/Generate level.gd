@@ -22,7 +22,7 @@ const NODE_PATH_UM : NodePath = "Template_level_node/Units"
 const PATH_TO_LIGHT : PackedScene = preload("res://Tile/Tile 64x64/Adding stuff/lighting/lighting.tscn")
 const PATH_TO_ALTAR : PackedScene = preload("res://Things on map/Temples/altar.tscn")
 
-const TEMPLATE_LVL : PackedScene = preload("res://Scenes/Testing scenes/template level/template_level_node.tscn")
+const TEMPLATE_LVL : PackedScene = preload("res://Scenes/Testing scenes/template level/Template level.tscn")
 const STATE_MAC_AI : PackedScene = preload("res://Scenes/Main scenes/Units/States AI.tscn")
 const STATE_MAC_PL : PackedScene = preload("res://Scenes/Main scenes/Units/States player.tscn")
 
@@ -84,6 +84,7 @@ func set_rng_pos(unit : Unit, PL : bool) -> void:
 	if PL:
 		var tile_pos : Vector2i = tile_for_ally.pick_random()
 		unit.global_position = tm.map_to_local(tile_pos)
+		
 		tile_for_ally.erase(tile_pos)
 	else:
 		var tile_pos : Vector2i = tile_for_enemy.pick_random()
@@ -107,12 +108,12 @@ func generate_level() -> void:
 					tile_for_enemy.append(Vector2i(x,y))
 				Color('DARK_SLATE_GRAY'):
 					if sprite.get_pixel(x, y+1) == Color("DARK_SLATE_GRAY"):
-						tm.set_cell(3, Vector2i(x, y), WALL, Vector2i(4, 0))
+						tm.set_cell(4, Vector2i(x, y), WALL, Vector2i(4, 0))
 					else:
-						tm.set_cells_terrain_connect(3, [Vector2i(x, y)],0, 0, false)
+						tm.set_cells_terrain_connect(4, [Vector2i(x, y)],0, 0, false)
 						if randi_range(0, 20) < 2: 
 							var light : Node2D = PATH_TO_LIGHT.instantiate()
-							add_child(light)
+							tm.add_child(light)
 							light.global_position = tm.map_to_local(Vector2i(x, y))
 				Color('LIGHT_PINK'):
 					tm.set_cell(1, Vector2i(x,y), OBSTACLE, Vector2i(0,0))
@@ -120,7 +121,7 @@ func generate_level() -> void:
 				Color('ORANGE'):
 					tm.set_cell(0, Vector2i(x,y), FLOOR, Vector2i(0,0))
 					var altar = PATH_TO_ALTAR.instantiate()
-					add_child(altar)
+					tm.add_child(altar)
 					altar.global_position = tm.map_to_local(Vector2i(x,y))
 				Color('MAROON'):
 					tm.set_cell(0, Vector2i(x,y), TRAP, Vector2i(0,0))
@@ -130,8 +131,8 @@ func generate_level() -> void:
 					var tile_coords : Vector2i = get_random_tile(FLOOR)
 					tm.set_cell(0, Vector2i(x,y), FLOOR, tile_coords)
 		#generate edging
-		if tm.get_cell_source_id(3, Vector2i(x, 0)) == -1:
-			tm.set_cell(3, Vector2i(x, -1), WALL, Vector2i(0,1))
+		if tm.get_cell_source_id(4, Vector2i(x, 0)) == -1:
+			tm.set_cell(4, Vector2i(x, -1), WALL, Vector2i(0,1))
 
 func choose_char(current_unit_list : Unit_list) -> Array[Unit_prop]:
 	var units_prop : Array[Unit_prop] = []
@@ -168,7 +169,7 @@ func get_random_map() -> String:
 	return filenames.pick_random()
 
 func rng_count_enemy() -> int:
-	return randi_range(GlobalInfo.stage / 10 + 2 , GlobalInfo.stage / 20 + 4 )
+	return randi_range(GlobalInfo.stage / 10 + 2 , GlobalInfo.stage / 20 + 4) + 2
 
 func get_random_tile(source_id : int) -> Vector2i:
 	var general_count_tiles : int = tm.tile_set.get_source(source_id).get_tiles_count()

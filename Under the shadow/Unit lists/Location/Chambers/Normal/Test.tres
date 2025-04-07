@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="Unit_list" load_steps=4 format=3 uid="uid://fb2reblur66a"]
+[gd_resource type="Resource" script_class="Unit_list" load_steps=7 format=3 uid="uid://fb2reblur66a"]
 
 [ext_resource type="Script" path="res://Unit lists/Unit list.gd" id="1_t7vrt"]
-[ext_resource type="Resource" uid="uid://ch6trihvtf3vo" path="res://All unit/King/King prop.tres" id="2_xfmwk"]
+[ext_resource type="Resource" uid="uid://baue0q8hetqpj" path="res://All unit/Skeleton spear/Skeleton spear prop.tres" id="3_ep140"]
 [ext_resource type="Resource" uid="uid://bhuql8ih7fce3" path="res://All unit/Skeleton sword/Skeleton sword prop.tres" id="3_sgs11"]
+[ext_resource type="Resource" uid="uid://dge5tfiu36rds" path="res://All unit/Moon guide/Moon guide prop.tres" id="4_r22b8"]
+[ext_resource type="Resource" uid="uid://dyw1ubcd0qp4o" path="res://All unit/Priest/Priest prop.tres" id="5_6xh1j"]
+[ext_resource type="Resource" uid="uid://bai3uak34my3k" path="res://All unit/Crossbow/Crossbow prop.tres" id="6_tcwg1"]
 
 [resource]
 script = ExtResource("1_t7vrt")
-unit_list = Array[Resource("res://Global scripts/Classes/Resource/Unit_property.gd")]([ExtResource("2_xfmwk"), ExtResource("3_sgs11")])
+unit_list = Array[Resource("res://Global scripts/Classes/Resource/Unit_property.gd")]([ExtResource("3_sgs11"), ExtResource("3_ep140"), ExtResource("4_r22b8"), ExtResource("5_6xh1j"), ExtResource("6_tcwg1")])

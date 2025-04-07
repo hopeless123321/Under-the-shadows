@@ -1,7 +1,7 @@
 extends Camera2D
 
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	if Input.is_action_pressed("MMB") and enabled:
 		global_position -= Input.get_last_mouse_velocity() / 100
 	zoom = clamp(zoom, Vector2(0.7, 0.7), Vector2(2, 2))

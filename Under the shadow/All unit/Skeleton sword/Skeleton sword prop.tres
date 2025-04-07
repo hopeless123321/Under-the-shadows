@@ -1,36 +1,31 @@
 [gd_resource type="Resource" script_class="Unit_prop" load_steps=5 format=3 uid="uid://bhuql8ih7fce3"]
 
+[ext_resource type="Resource" uid="uid://drp0ffopxr35t" path="res://All ability/Skills/Bloodbend.tres" id="1_5ay50"]
 [ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="1_scbwj"]
+[ext_resource type="Texture2D" uid="uid://c7g8pagypwwpo" path="res://All unit/Skeleton sword/Sword skeleton icon_Preview.png" id="2_tddnd"]
 
-[sub_resource type="Gradient" id="Gradient_le1xo"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tp8vn"]
-gradient = SubResource("Gradient_le1xo")
-fill_from = Vector2(0.935897, 0.452991)
-fill_to = Vector2(0.935897, 0.457265)
-
-[sub_resource type="Curve" id="Curve_2o3qa"]
-min_value = 1.0
-max_value = 2.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.496154, 2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g1gp"]
+atlas = ExtResource("2_tddnd")
+region = Rect2(0, 0, 64, 64)
 
 [resource]
 script = ExtResource("1_scbwj")
 forename = "Skeleton sword"
 max_hp = 75
-dmg_amp = 10
-resist_phys_dmg = 30
-resist_mag_dmg = -20
-resist_will = 30
-speed = 5
+dmg_amp = 0
+resist_phys_dmg = 35
+resist_mag_dmg = 25
+resist_will = 10
+speed = 3
 reaction = 7
 move_after_skill = false
 free_move = false
-ability = Array[Resource("res://All ability/Base ability/class_ability.gd")]([])
-icon_select = SubResource("GradientTexture2D_tp8vn")
+ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([ExtResource("1_5ay50")])
+icon_select = SubResource("AtlasTexture_3g1gp")
 type = 2
 cost = 45
-move_curve = SubResource("Curve_2o3qa")
+animation_trans = 0
+animation_ease = 0
+duration = 1
 move_to = "Close"
 distance = 0

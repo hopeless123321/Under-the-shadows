@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Unit_prop" load_steps=4 format=3 uid="uid://dyw1ubcd0qp4o"]
+
+[ext_resource type="Texture2D" uid="uid://dtklr17syxvjy" path="res://All unit/Priest/Icon.png" id="1_2eh8i"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="2_ciqk2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekt50"]
+atlas = ExtResource("1_2eh8i")
+region = Rect2(0, 16, 63, 64)
+
+[resource]
+script = ExtResource("2_ciqk2")
+forename = "Priest"
+max_hp = 75
+dmg_amp = 0
+resist_phys_dmg = 0
+resist_mag_dmg = 25
+resist_will = 25
+speed = 4
+reaction = 7
+move_after_skill = false
+free_move = false
+ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([])
+icon_select = SubResource("AtlasTexture_ekt50")
+type = 1
+cost = 50
+animation_trans = 0
+animation_ease = 0
+duration = 1
+move_to = "Far"
+distance = 3

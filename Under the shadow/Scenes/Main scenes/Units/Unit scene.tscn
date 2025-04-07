@@ -8,7 +8,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("Store sprite/Upper:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -16,6 +16,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Store sprite/Under:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
 }
 
 [sub_resource type="Animation" id="Animation_av733"]
@@ -33,7 +45,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("Store sprite/Upper:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,6 +54,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0, 23]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Store sprite/Under:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [24, 47]
+}
 
 [sub_resource type="Animation" id="Animation_r67u5"]
 resource_name = "walk"
@@ -49,14 +73,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("Store sprite/Upper:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [24, 47]
+"values": [48, 71]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Store sprite/Under:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [72, 95]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5pnxm"]
@@ -75,12 +111,26 @@ input_pickable = true
 [node name="Select zone" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d0utt")
 
-[node name="Sprite sheet" type="Sprite2D" parent="."]
-hframes = 24
-vframes = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite sheet"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5pnxm")
 }
 autoplay = "stay"
+
+[node name="Store sprite" type="Node2D" parent="."]
+
+[node name="Upper" type="Sprite2D" parent="Store sprite"]
+position = Vector2(0, -30)
+hframes = 24
+vframes = 4
+region_rect = Rect2(0, 0, 64, 112)
+region_filter_clip_enabled = true
+
+[node name="Under" type="Sprite2D" parent="Store sprite"]
+z_index = -1
+position = Vector2(0, 34)
+hframes = 24
+vframes = 4
+frame = 24
+region_rect = Rect2(0, 0, 64, 112)
+region_filter_clip_enabled = true

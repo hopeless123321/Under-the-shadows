@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://1i1o3imh3ck8"]
+
+[ext_resource type="PackedScene" uid="uid://drg4p5kmyedbw" path="res://Scenes/Main scenes/Units/Unit scene.tscn" id="1_ow030"]
+[ext_resource type="Texture2D" uid="uid://bk0j0wh3kw213" path="res://All unit/Priest/Priest.png" id="2_8mhaq"]
+[ext_resource type="Texture2D" uid="uid://c72fmcm8c1im6" path="res://All unit/Priest/Priest map.png" id="3_elrqg"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_50nao"]
+diffuse_texture = ExtResource("2_8mhaq")
+normal_texture = ExtResource("3_elrqg")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_nueai"]
+diffuse_texture = ExtResource("2_8mhaq")
+normal_texture = ExtResource("3_elrqg")
+
+[node name="Unit" instance=ExtResource("1_ow030")]
+
+[node name="Select zone" parent="." index="0"]
+visible = false
+
+[node name="Store sprite" parent="." index="2"]
+position = Vector2(0, -32.9)
+scale = Vector2(1.27, 1.27)
+
+[node name="Upper" parent="Store sprite" index="0"]
+texture = SubResource("CanvasTexture_50nao")
+
+[node name="Under" parent="Store sprite" index="1"]
+position = Vector2(0, 24)
+texture = SubResource("CanvasTexture_nueai")

@@ -24,6 +24,7 @@ Eventbus="*res://Global scripts/Global script/Eventbus.gd"
 Grid="*res://Global scripts/Global script/Grid.gd"
 Config="*res://Global scripts/Config.gd"
 Teaminfo="*res://Global scripts/Classes/Resource/Team.gd"
+SkillManager="*res://Global scripts/Classes/Skill manager.gd"
 
 [debug]
 
@@ -117,6 +118,15 @@ Map={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":109,"echo":false,"script":null)
 ]
 }
+"Add info"={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194328,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+
+[internationalization]
+
+locale/locale_filter_mode=1
 
 [rendering]
 

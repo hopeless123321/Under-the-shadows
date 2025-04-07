@@ -120,10 +120,10 @@ flat = true
 [node name="Setting" parent="." instance=ExtResource("6_fj0tg")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -1.471
-anchor_bottom = -0.471
-offset_top = 0.280029
-offset_bottom = 0.279999
+anchor_top = -1.242
+anchor_bottom = -0.242
+offset_top = -0.189941
+offset_bottom = -0.190109
 
 [connection signal="pressed" from="Initial/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Initial/New game" to="." method="_on_new_game_pressed"]

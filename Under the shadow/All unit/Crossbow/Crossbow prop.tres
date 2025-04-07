@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Unit_prop" load_steps=3 format=3 uid="uid://bai3uak34my3k"]
+
+[ext_resource type="Texture2D" uid="uid://b7nyg8lc2yblv" path="res://All unit/Crossbow/Icon_Preview.png" id="1_34hsv"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="2_lopr6"]
+
+[resource]
+script = ExtResource("2_lopr6")
+forename = "Crossbow"
+max_hp = 45
+dmg_amp = 0
+resist_phys_dmg = 15
+resist_mag_dmg = -15
+resist_will = 20
+speed = 3
+reaction = 13
+move_after_skill = false
+free_move = false
+ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([])
+icon_select = ExtResource("1_34hsv")
+type = 2
+cost = 30
+animation_trans = 1
+animation_ease = 2
+duration = 1
+move_to = "Low hp"
+distance = 4

@@ -43,7 +43,7 @@ var reaction : int:
 		reaction = value
 var move_after_skill : bool = false
 var free_move : bool = true
-var ability : Array[Base_ability]
+var ability : Array[Skill]
 var icon_select : Texture2D
 @export_flags("No class", "Skelet", "Lunar", "Dead", "Ghost") var type :
 	get:
@@ -60,7 +60,9 @@ var icon_select : Texture2D
 				enabled_flags.append(flag_names[flag])
 		return enabled_flags
 var cost : int
-var move_curve : Curve
+var animation_trans : Tween.TransitionType
+var animation_ease : Tween.EaseType
+var duration : int
 var move_to : String
 var distance : int
 
@@ -134,8 +136,8 @@ func recharge_skill() -> void:
 		if skill.cooldown != 0:
 			skill.cooldown_timer -= 1
 
-func unique_ability(skill : Base_ability) -> Base_ability:
-	return skill.duplicate() as Base_ability
+func unique_ability(skill : Skill) -> Skill:
+	return skill.duplicate() as Skill
 
 func self_destroy() -> void:
 	queue_free()

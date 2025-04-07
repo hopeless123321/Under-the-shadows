@@ -1,6 +1,5 @@
 extends States
 
-
 func start():
 	unit.fill_floor()
 func update():

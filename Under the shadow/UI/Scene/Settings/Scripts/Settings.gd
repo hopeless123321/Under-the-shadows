@@ -21,7 +21,7 @@ func change() -> void:
 		var tween_setting = create_tween()
 		tween_setting.set_trans(Tween.TRANS_BACK)
 		tween_setting.set_ease(Tween.EASE_IN_OUT)
-		tween_setting.tween_property(self, "position", Vector2(0, -GlobalInfo.win_size.y), 1.5)
+		tween_setting.tween_property(self, "position", Vector2(0, -size.y), 1.5)
 
 
 func _on_return_pressed():

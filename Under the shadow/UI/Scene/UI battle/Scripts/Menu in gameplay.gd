@@ -1,11 +1,16 @@
 extends Control
+var MAIN_MENU : PackedScene = load("res://UI/Scene/Main menu/Scene/Main menu.tscn")
 
-@onready var blur_screen : ColorRect = $"Blur screen"
-@onready var panel_container: PanelContainer = $PanelContainer
-@onready var setting : Control = $Setting
 @export var timer : float
+
 var dodos : bool = true
 var hide_setting : bool = true
+@onready var template_level_node = $"../.."
+@onready var setting : Control = $Setting
+@onready var panel_container: PanelContainer = $PanelContainer
+@onready var blur_screen : ColorRect = $"Blur screen"
+
+
 func _input(_event):
 	if Input.is_action_just_pressed("ESC") and dodos:
 		hide_setting = !hide_setting
@@ -44,7 +49,7 @@ func _on_resume_pressed():
 	hiding()
 
 func _on_restart_pressed():
-	pass # Replace with function body.
+	get_tree().reload_current_scene()
 
 
 func _on_diary_pressed():
@@ -61,4 +66,5 @@ func _on_exit_pressed():
 
 
 func _on_main_menu_pressed():
-	Eventbus.emit_signal("reveal_map")
+	get_tree().change_scene_to_packed(MAIN_MENU)
+	template_level_node.get_parent().queue_free()

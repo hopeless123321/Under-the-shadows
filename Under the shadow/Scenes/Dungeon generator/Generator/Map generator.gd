@@ -12,7 +12,7 @@ const VECTORS_TO_LOOP : Array[Vector2i] = [Vector2i.UP, Vector2i.DOWN, Vector2i.
 @onready var camera : Camera2D= $Camera2D
 
 
-var create_room := 0
+var create_room : int = 0
 var count_rooms : int = 50
 var real_size : Vector2i
 var rooms : Dictionary
@@ -21,7 +21,7 @@ var paths_to_room : AStarGrid2D = AStarGrid2D.new()
 var counts_escaped : int = 4
 var on_fight : bool = false
 
-func _ready():
+func _ready() -> void:
 	Eventbus.connect("next_room", get_to_room)
 	Eventbus.connect("save_all", save_map)
 	Eventbus.connect("reveal_map", reveal_hide_map)
@@ -29,7 +29,6 @@ func _ready():
 	paths_to_room.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	paths_to_room.cell_size = CELL_SIZE
 	paths_to_room.update()
-	
 	create_dungeon()
 
 func create_dungeon() -> void:
@@ -132,7 +131,9 @@ func calculate_general_diff() -> int:
 	+ GlobalInfo.stage * GlobalInfo.DIFFICULT.get(GlobalInfo.diffucult)\
 	* randi_range(0.9, 1.1)
 
-func reveal_hide_map() -> void:
+func reveal_hide_map(on_battle : bool = true) -> void:
+	if on_battle == false:
+		on_fight = false
 	visible = !visible
 	camera.enabled = !camera.enabled
 
