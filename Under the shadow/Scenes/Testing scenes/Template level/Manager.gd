@@ -45,7 +45,7 @@ func free_unit(unit : Unit) -> void:
 	
 func waiter(dif : int, prop : String, pos : Vector2) -> void:
 	queue_prop.append([dif, prop, pos])
-	var timer_await = queue_prop.size() * 0.5
+	var timer_await : float = queue_prop.size() * 0.5
 	await get_tree().create_timer(timer_await).timeout
 	call_deferred("create_label")
 

@@ -3,10 +3,11 @@ extends Control
 const PATH_TO_SAVE_FILE = "res://Save.ini"
 
 
-@onready var setting = $Setting
-@onready var choose_difficult = $"Choose difficult"
-@onready var initial = $Initial
-@onready var continue_b = $Initial/Continue
+@onready var setting : Control = $Setting
+@onready var choose_difficult : VBoxContainer = $"Choose difficult"
+@onready var initial : VBoxContainer = $Initial
+@onready var continue_b : Button = $Initial/Continue
+
 
 var MapGenerator : PackedScene = preload("res://Scenes/Dungeon generator/Generator/Map generator.tscn")
 
@@ -25,9 +26,9 @@ func back() -> void:
 	initial.visible = true
 
 func _on_continue_pressed() -> void:
-	print("211")
+	pass
+
 func _on_new_game_pressed() -> void:
-	print("12")
 	choose_difficult.visible = true
 	initial.visible = false
 	
@@ -54,6 +55,7 @@ func _on_eclipse_pressed() -> void:
 	map_generated()
 	
 func map_generated() -> void:
-	Teaminfo.add_unit("King")
+	Teaminfo.add_ally_to_team("King")
+	Teaminfo.add_ally_to_team("Skeleton sword")
 	GlobalInfo.current_location = "Chambers"
 	get_tree().change_scene_to_packed(MapGenerator)

@@ -11,7 +11,7 @@ func creation() -> void:
 func fill_floor() -> void:
 	for y in range(-move_point, move_point+1):
 		for x in range(-move_point, move_point+1):
-			var right_tile_pos = Vector2i(x,y) + tile_pos
+			var right_tile_pos : Vector2i = Vector2i(x,y) + tile_pos
 			if Grid.check_point_in_grid(right_tile_pos) and abs(x) + abs(y) <= move_point:
 				if Grid.is_point_solid(right_tile_pos) == false:
 					if Grid.get_path_id(tile_pos, right_tile_pos, free_move).size() <= move_point:
@@ -34,7 +34,8 @@ func move_to_target() -> void:
 	await move_tween.finished
 	path.clear()
 	$"AnimationPlayer".play("stay")
-func pressed(viewport, event, idx) -> void:
+
+func pressed(viewport : Node, event : InputEvent, idx : int) -> void:
 	if event is InputEventMouseButton and event.pressed and GlobalInfo.select_ability_anybody == false:
 		select()
 

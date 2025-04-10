@@ -20,6 +20,7 @@ reaction = 9
 move_after_skill = false
 free_move = false
 ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([])
+icon = ExtResource("1_y2ssp")
 icon_select = SubResource("AtlasTexture_u3r4r")
 type = 2
 cost = 45

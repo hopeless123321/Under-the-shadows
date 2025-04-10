@@ -20,10 +20,10 @@ script = ExtResource("3_rxjsh")
 [node name="Move" type="Node2D" parent="."]
 script = ExtResource("4_dfcpa")
 
-[node name="Spell_cast" type="Node2D" parent="."]
+[node name="Spell cast" type="Node2D" parent="."]
 script = ExtResource("5_g7oey")
 
-[node name="End_turn" type="Node2D" parent="."]
+[node name="End turn" type="Node2D" parent="."]
 script = ExtResource("6_6vqiq")
 
 [node name="Dying" type="Node2D" parent="."]

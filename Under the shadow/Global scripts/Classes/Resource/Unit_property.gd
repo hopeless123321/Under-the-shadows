@@ -13,8 +13,8 @@ class_name Unit_prop
 @export var move_after_skill : bool = false
 @export var free_move : bool = true
 @export var ability : Array[Skill]
-
 @export_category("Other info")
+@export var icon : Texture2D
 @export var icon_select : Texture2D
 @export_flags("No class", "Skelet", "Lunar", "Dead", "Ghost") var type
 @export var cost : int

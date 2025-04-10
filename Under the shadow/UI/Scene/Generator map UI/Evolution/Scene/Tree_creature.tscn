@@ -1,0 +1,547 @@
+[gd_scene load_steps=30 format=3 uid="uid://bbqtehn53mx44"]
+
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/Draggable.gd" id="1_vnpra"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Evolution node.gd" id="2_j7lvf"]
+[ext_resource type="Resource" uid="uid://bai3uak34my3k" path="res://All unit/Crossbow/Crossbow prop.tres" id="6_wvmxx"]
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="7_gg1o4"]
+[ext_resource type="Resource" uid="uid://dyw1ubcd0qp4o" path="res://All unit/Priest/Priest prop.tres" id="7_ii2lk"]
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/Manager unit_prop.gd" id="8_ccin3"]
+[ext_resource type="Resource" uid="uid://baue0q8hetqpj" path="res://All unit/Skeleton spear/Skeleton spear prop.tres" id="8_k1jre"]
+[ext_resource type="Resource" uid="uid://dge5tfiu36rds" path="res://All unit/Moon guide/Moon guide prop.tres" id="8_l2hbc"]
+[ext_resource type="Resource" uid="uid://c1onlxupvt7k6" path="res://All unit/King/King prop.tres" id="9_7a7cm"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="9_oe2jh"]
+[ext_resource type="Resource" uid="uid://bhuql8ih7fce3" path="res://All unit/Skeleton sword/Skeleton sword prop.tres" id="10_ok15b"]
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/Team container.gd" id="10_qhd3i"]
+[ext_resource type="Texture2D" uid="uid://bs5j04qe6ejxc" path="res://All unit/King/King.png" id="10_spfe1"]
+[ext_resource type="Theme" uid="uid://ba2xexmg6jjlf" path="res://UI/All theme/Button/Unit button.tres" id="11_aeajx"]
+[ext_resource type="Theme" uid="uid://dmt5neysaicbo" path="res://UI/All theme/Sep_H/Unit_list.tres" id="11_sew8x"]
+[ext_resource type="Theme" uid="uid://bbhj3rpceb6bx" path="res://UI/All theme/Richtextlabel/ability_slot.tres" id="12_bl1p4"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Button_unit.gd" id="12_dvn1m"]
+[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="13_fsrxw"]
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Scene/Souls counter.gd" id="19_hlk1k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gd22t"]
+bg_color = Color(0.145098, 0.129412, 0.121569, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.156863, 0.462745, 0.490196, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+corner_detail = 10
+
+[sub_resource type="Theme" id="Theme_medgc"]
+Button/colors/icon_disabled_color = Color(0.419608, 0.0392157, 0.0392157, 0.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4iqdt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m21ky"]
+atlas = ExtResource("7_gg1o4")
+region = Rect2(400, 192, 48, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcijr"]
+bg_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+border_blend = true
+shadow_offset = Vector2(-3.37, -2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynd36"]
+atlas = ExtResource("10_spfe1")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sohx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl4v0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tnham"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwcns"]
+atlas = ExtResource("7_gg1o4")
+region = Rect2(384, 224, 64, 32)
+
+[node name="Tree creature" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Clip frame" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Draggable" type="Control" parent="Clip frame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 340)
+mouse_filter = 1
+script = ExtResource("1_vnpra")
+
+[node name="Background" type="ColorRect" parent="Clip frame/Draggable"]
+z_index = -2
+texture_repeat = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1097.0
+offset_top = -637.0
+offset_right = 1412.0
+offset_bottom = 952.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.145098, 0.129412, 0.121569, 1)
+
+[node name="Initial" type="Button" parent="Clip frame/Draggable" node_paths=PackedStringArray("connected_up")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_gd22t")
+disabled = true
+script = ExtResource("2_j7lvf")
+connected_up = [NodePath("../Skeleton sword"), NodePath("../King")]
+
+[node name="Skeleton spear" type="Button" parent="Clip frame/Draggable"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -292.0
+offset_right = -32.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_medgc")
+expand_icon = true
+script = ExtResource("2_j7lvf")
+unit_prop = ExtResource("8_k1jre")
+
+[node name="King" type="Button" parent="Clip frame/Draggable"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = -132.0
+offset_right = 176.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_icon = true
+script = ExtResource("2_j7lvf")
+unit_prop = ExtResource("9_7a7cm")
+
+[node name="Crossbow" type="Button" parent="Clip frame/Draggable"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -84.0
+offset_right = -384.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_icon = true
+script = ExtResource("2_j7lvf")
+unit_prop = ExtResource("6_wvmxx")
+
+[node name="Skeleton sword" type="Button" parent="Clip frame/Draggable" node_paths=PackedStringArray("connected_up")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -68.0
+offset_right = -64.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_icon = true
+script = ExtResource("2_j7lvf")
+unit_prop = ExtResource("10_ok15b")
+connected_up = [NodePath("../Moon guide"), NodePath("../Priest"), NodePath("../Crossbow")]
+
+[node name="Priest" type="Button" parent="Clip frame/Draggable"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = 76.0
+offset_right = -192.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_icon = true
+script = ExtResource("2_j7lvf")
+unit_prop = ExtResource("7_ii2lk")
+
+[node name="Moon guide" type="Button" parent="Clip frame/Draggable" node_paths=PackedStringArray("connected_up")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -228.0
+offset_right = -192.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_icon = true
+script = ExtResource("2_j7lvf")
+unit_prop = ExtResource("8_l2hbc")
+connected_up = [NodePath("../Skeleton spear")]
+
+[node name="UI Evolve" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI Evolve"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -42.0
+offset_right = 158.0
+offset_bottom = 42.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4iqdt")
+
+[node name="Background" type="NinePatchRect" parent="UI Evolve/PanelContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m21ky")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Teaminfo" type="MarginContainer" parent="UI Evolve/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Team container" type="GridContainer" parent="UI Evolve/PanelContainer/Teaminfo"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+script = ExtResource("10_qhd3i")
+
+[node name="New unit" type="Button" parent="UI Evolve/PanelContainer/Teaminfo/Team container"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme = ExtResource("11_aeajx")
+theme_override_font_sizes/font_size = 40
+text = "+"
+script = ExtResource("12_dvn1m")
+
+[node name="Unit info" type="PanelContainer" parent="UI Evolve"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.851
+anchor_right = 1.002
+anchor_bottom = 1.0
+offset_left = -193.28
+offset_right = -0.559937
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcijr")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI Evolve/Unit info"]
+layout_mode = 2
+size_flags_stretch_ratio = 3.4
+horizontal_scroll_mode = 3
+
+[node name="Margin unit list" type="MarginContainer" parent="UI Evolve/Unit info/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="Manager unit_prop" type="VBoxContainer" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("8_ccin3")
+
+[node name="Name" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
+layout_mode = 2
+theme = ExtResource("9_oe2jh")
+theme_override_font_sizes/font_size = 20
+text = "King"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="Preview unit" type="TextureRect" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/CenterContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ynd36")
+stretch_mode = 5
+
+[node name="Class" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
+layout_mode = 2
+theme = ExtResource("9_oe2jh")
+text = "Class"
+horizontal_alignment = 1
+
+[node name="Class value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
+layout_mode = 2
+theme = ExtResource("9_oe2jh")
+text = "Skeleton"
+horizontal_alignment = 1
+
+[node name="Stats" type="GridContainer" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
+layout_mode = 2
+columns = 5
+
+[node name="Max hp" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "Max hp"
+
+[node name="Max hp value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "65"
+
+[node name="VSeparator" type="VSeparator" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("11_sew8x")
+
+[node name="Hp" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "Hp"
+
+[node name="Hp value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "65"
+
+[node name="Speed" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "Speed"
+
+[node name="Speed value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "6
+"
+
+[node name="VSeparator2" type="VSeparator" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("11_sew8x")
+
+[node name="Reaction" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "Reaction"
+
+[node name="Reaction value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "2"
+
+[node name="Phys resist" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "Phys res   
+"
+
+[node name="Phys resist value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "0
+"
+
+[node name="VSeparator3" type="VSeparator" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("11_sew8x")
+
+[node name="Magic resist" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "Mag res"
+
+[node name="Magic resist value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "0"
+
+[node name="Will resist" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "Will res"
+
+[node name="Will resist value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "0"
+
+[node name="VSeparator4" type="VSeparator" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("11_sew8x")
+
+[node name="Dmg amp" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "Dmg amp"
+
+[node name="Dmg amp value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
+layout_mode = 2
+size_flags_horizontal = 14
+theme = ExtResource("9_oe2jh")
+text = "0"
+
+[node name="Skills stores" type="PanelContainer" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2sohx")
+
+[node name="Description" type="RichTextLabel" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
+layout_mode = 2
+theme = ExtResource("12_bl1p4")
+theme_override_colors/default_color = Color(0.690196, 0.690196, 0.690196, 1)
+theme_override_fonts/normal_font = ExtResource("13_fsrxw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nl4v0")
+bbcode_enabled = true
+fit_content = true
+
+[node name="Souls container" type="PanelContainer" parent="UI Evolve"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tnham")
+
+[node name="Background" type="NinePatchRect" parent="UI Evolve/Souls container"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bwcns")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI Evolve/Souls container"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 2
+
+[node name="Hbox" type="HBoxContainer" parent="UI Evolve/Souls container/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("19_hlk1k")
+
+[node name="Souls" type="Label" parent="UI Evolve/Souls container/MarginContainer/Hbox"]
+layout_mode = 2
+theme = ExtResource("9_oe2jh")
+theme_override_font_sizes/font_size = 20
+text = "Souls:"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="UI Evolve/Souls container/MarginContainer/Hbox"]
+layout_mode = 2
+theme = ExtResource("9_oe2jh")
+theme_override_font_sizes/font_size = 20
+text = "12"
+
+[node name="Minus" type="Label" parent="UI Evolve/Souls container/MarginContainer/Hbox"]
+layout_mode = 2
+theme = ExtResource("9_oe2jh")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "-"
+
+[connection signal="pressed" from="UI Evolve/PanelContainer/Teaminfo/Team container/New unit" to="UI Evolve/PanelContainer/Teaminfo/Team container" method="_on_new_unit_pressed"]

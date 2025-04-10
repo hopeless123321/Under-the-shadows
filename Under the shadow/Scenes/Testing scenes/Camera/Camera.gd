@@ -8,9 +8,9 @@ func _ready() -> void:
 	Eventbus.connect("reveal_map",reveal_hide_map )
 	call_deferred("_def")
 
-func _unhandled_input(event) -> void:
-	var viewport_half_x = get_viewport_rect().size.x/2 * (1 / zoom.x)
-	var viewport_half_y = get_viewport_rect().size.y/2 * (1 / zoom.y)
+func _unhandled_input(event : InputEvent) -> void:
+	var viewport_half_x : float = get_viewport_rect().size.x/2 * (1 / zoom.x)
+	var viewport_half_y : float = get_viewport_rect().size.y/2 * (1 / zoom.y)
 	if Input.is_action_pressed("MMB") and enabled:
 		global_position -= Input.get_last_mouse_velocity() / 100
 	global_position.x = clamp(position.x, limit_left + viewport_half_x, limit_right - viewport_half_x)
@@ -25,7 +25,7 @@ func _unhandled_input(event) -> void:
 func target_to(tile_pos : Vector2i) -> void:
 	global_position = tile_pos
 
-func _def():
+func _def() -> void:
 	limit_bottom = GlobalInfo.size_map.size.y + OFFSET
 	limit_right = GlobalInfo.size_map.size.x + OFFSET
 	@warning_ignore("integer_division")

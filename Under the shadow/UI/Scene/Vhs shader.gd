@@ -1,6 +1,6 @@
 extends ColorRect
 
-func _ready():
+func _ready() -> void:
 	Eventbus.connect("change_overlay", change_overlay )
 	
 func change_overlay(prop : String, value : float) -> void:

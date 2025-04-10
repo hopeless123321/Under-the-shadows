@@ -57,7 +57,7 @@ func create(elite : bool = false) -> void:
 	get_node(NODE_PATH_UM).init_level()
 
 func add_ally() -> void:
-	for unit in Teaminfo.team:
+	for unit in Teaminfo.inst_ally():
 		var unit_scene : String = PATH_TO_UNIT.replace("?", unit.forename)
 		var unit_instant = load(unit_scene).instantiate()
 		var state_machine_pl : Node2D = STATE_MAC_PL.instantiate()
@@ -65,7 +65,6 @@ func add_ally() -> void:
 		unit_instant.replace_by(unit)
 		unit.add_child(state_machine_pl)
 		set_rng_pos(unit, true)
-		unit.hp = unit.max_hp
 		unit.creation()
 		
 func add_enemy(unit_list : Unit_list) -> void:

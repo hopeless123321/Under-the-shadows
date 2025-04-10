@@ -1,9 +1,9 @@
 extends GridContainer
 
-@onready var hp_value = $HP_VALUE
-@onready var will_value = $Will_value
-@onready var speed_value = $Speed_value
-@onready var reaction_speed = $"Reaction speed"
+@onready var hp_value : Label = $HP_value
+@onready var will_value : Label= $Will_value
+@onready var speed_value : Label = $Speed_value
+@onready var reaction_speed : Label = $"Reaction speed"
 
 
 func _ready() -> void:

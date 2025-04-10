@@ -1,14 +1,15 @@
 extends HBoxContainer
 
-@onready var will = $Will
-@onready var hp = $Hp
+@onready var will : TextureProgressBar = $Will
+@onready var hp : TextureProgressBar = $Hp
 
 var ability_container = preload("res://UI/Scene/UI battle/Scene/Ability slot.tscn")
 
-@onready var icon = $Icon/MarginContainer/Icon
+@onready var icon : TextureRect = $Icon/MarginContainer/Icon
 
 func _ready() -> void:
 	Eventbus.connect('select_char',update_ui)
+
 func update_ui(data : Dictionary) -> void:
 	icon.texture = data.get('icon')
 	hp.max_value = data["max_hp"]

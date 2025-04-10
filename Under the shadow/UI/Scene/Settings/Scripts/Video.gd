@@ -1,13 +1,13 @@
 extends TabBar
 
-@onready var resolution_n = $MarginContainer2/VBoxContainer/GridContainer/Resolution
-@onready var fullscreen_n = $MarginContainer2/VBoxContainer/GridContainer/fullscreen2
-@onready var vsync_n = $MarginContainer2/VBoxContainer/GridContainer/vsync
-@onready var vineete_n = $MarginContainer2/VBoxContainer/GridContainer2/Vineete
-@onready var vinneete_opacity_n = $"MarginContainer2/VBoxContainer/GridContainer2/Vinneete opacity"
-@onready var aberration_n = $MarginContainer2/VBoxContainer/GridContainer2/Aberration
-@onready var britness_n = $MarginContainer2/VBoxContainer/GridContainer2/Britness
-@onready var curve_screen_n = $MarginContainer2/VBoxContainer/GridContainer2/Curve_screen
+@onready var resolution_n : OptionButton = $MarginContainerVideo/VBoxContainer/GridContainer/Resolution
+@onready var fullscreen_n : CheckBox = $MarginContainerVideo/VBoxContainer/GridContainer/fullscreen
+@onready var vsync_n : CheckBox = $MarginContainerVideo/VBoxContainer/GridContainer/vsync
+@onready var vineete_n : HSlider = $MarginContainerVideo/VBoxContainer/GridContainer2/Vineete
+@onready var vinneete_opacity_n : HSlider = $"MarginContainerVideo/VBoxContainer/GridContainer2/Vinneete opacity"
+@onready var aberration_n : HSlider = $MarginContainerVideo/VBoxContainer/GridContainer2/Aberration
+@onready var britness_n : HSlider = $MarginContainerVideo/VBoxContainer/GridContainer2/Britness
+@onready var curve_screen_n : HSlider = $MarginContainerVideo/VBoxContainer/GridContainer2/Curve_screen
 
 
 const VHS = preload("res://Shaders/vhs.gdshader")
@@ -29,12 +29,12 @@ const RESOLUTION_SIZE := {
 }
 
 
-func _ready():
+func _ready() -> void:
 	Eventbus.connect("save_all", save_all)
 	call_deferred("load_settings")
 
 func load_settings() -> void:
-	var video_setting = Config.load_video()
+	var video_setting : Dictionary = Config.load_video()
 	#resolution setup
 	for index in range(0, resolution_n.item_count):
 		if resolution_n.get_item_text(index) == video_setting.resolution:
@@ -48,7 +48,7 @@ func load_settings() -> void:
 	vsync = !video_setting.vsync
 	_on_vsync_pressed()
 	
-	var overlay_setting = Config.load_overlay()
+	var overlay_setting : Dictionary = Config.load_overlay()
 	vineete_n.value = overlay_setting.vineete_intensity
 	_on_vineete_value_changed(overlay_setting.vineete_intensity)
 	vinneete_opacity_n.value = overlay_setting.vineete_opacity
@@ -60,8 +60,8 @@ func load_settings() -> void:
 	curve_screen_n.value = overlay_setting.curve_screen
 	_on_h_slider_value_changed(overlay_setting.curve_screen)
 	
-func _on_resolution_item_selected(index) -> void:
-	var key = resolution_n.get_item_text(index)
+func _on_resolution_item_selected(index : int) -> void:
+	var key : String= resolution_n.get_item_text(index)
 	DisplayServer.window_set_size(RESOLUTION_SIZE.get(key))
 
 func _on_fulscreen_pressed() -> void:
@@ -78,20 +78,20 @@ func _on_vsync_pressed() -> void:
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
-func _on_vineete_value_changed(value) -> void:
-	Eventbus.emit_signal("change_overlay", "vignette_intensity", float(value))
+func _on_vineete_value_changed(value : float) -> void:
+	Eventbus.emit_signal("change_overlay", "vignette_intensity", value)
 
-func _on_aberration_value_changed(value) -> void:
-	Eventbus.emit_signal("change_overlay", "aberration", float(value))
+func _on_aberration_value_changed(value : float) -> void:
+	Eventbus.emit_signal("change_overlay", "aberration", value)
 
-func _on_britness_value_changed(value) -> void:
-	Eventbus.emit_signal("change_overlay", "brightness", float(value))
+func _on_britness_value_changed(value : float) -> void:
+	Eventbus.emit_signal("change_overlay", "brightness", value)
 
-func _on_vinneete_opacity_value_changed(value) -> void:
-	Eventbus.emit_signal("change_overlay", "vignette_opacity", float(value))
+func _on_vinneete_opacity_value_changed(value : float) -> void:
+	Eventbus.emit_signal("change_overlay", "vignette_opacity", value)
 
-func _on_h_slider_value_changed(value) -> void:
-	Eventbus.emit_signal("change_overlay", "warp_amount", float(value))
+func _on_h_slider_value_changed(value : float) -> void:
+	Eventbus.emit_signal("change_overlay", "warp_amount", value)
 
 func save_all() -> void:
 	Config.save_video("resolution", resolution_n.get_item_text(resolution_n.selected))

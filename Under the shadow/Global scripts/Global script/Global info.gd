@@ -50,5 +50,10 @@ func next_stage() -> void:
 func set_party_info() -> void:
 	pass
 	
+func check_price(cost : int) -> bool:
+	if cost > souls:
+		return false
+	else:
+		return true
 func add_souls(cost : int) -> void:
 	souls += cost

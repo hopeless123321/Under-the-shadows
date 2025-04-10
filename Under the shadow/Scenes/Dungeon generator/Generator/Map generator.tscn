@@ -1,13 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://83uvu4m3msd"]
+[gd_scene load_steps=15 format=3 uid="uid://83uvu4m3msd"]
 
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Map generator.gd" id="1_hjbgk"]
 [ext_resource type="Texture2D" uid="uid://dtpngvp4naspi" path="res://Tile/Tile for map generator/dungeon generator tileset.png" id="2_nvusg"]
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Camera.gd" id="3_wmt2u"]
-[ext_resource type="Script" path="res://UI/Scene/Generator map UI/UI on map.gd" id="4_2pxod"]
+[ext_resource type="PackedScene" uid="uid://bbqtehn53mx44" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree_creature.tscn" id="4_4t84h"]
 [ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="5_ah6ki"]
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/UI on map.gd" id="6_36ked"]
 [ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="6_pe81x"]
-[ext_resource type="PackedScene" uid="uid://bbqtehn53mx44" path="res://UI/Scene/Generator map UI/tree_creature.tscn" id="7_ne04r"]
-[ext_resource type="PackedScene" uid="uid://0ol6bh768f8t" path="res://UI/Scene/Generator map UI/ui_unit_prop.tscn" id="8_32u2b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cobdl"]
 texture = ExtResource("2_nvusg")
@@ -140,7 +139,7 @@ script = ExtResource("3_wmt2u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Tree creature" parent="CanvasLayer" instance=ExtResource("7_ne04r")]
+[node name="Tree creature" parent="CanvasLayer" instance=ExtResource("4_4t84h")]
 z_index = 5
 anchors_preset = -1
 anchor_top = -1.0
@@ -152,6 +151,9 @@ pivot_offset = Vector2(640, 340)
 
 [node name="Draggable" parent="CanvasLayer/Tree creature/Clip frame" index="0"]
 anchors_preset = -1
+
+[node name="Crossbow" parent="CanvasLayer/Tree creature/Clip frame/Draggable" index="4" node_paths=PackedStringArray("connected_down")]
+connected_down = [null]
 
 [node name="Scroll Up" type="PanelContainer" parent="CanvasLayer/Tree creature"]
 custom_minimum_size = Vector2(0, 16)
@@ -187,13 +189,6 @@ size_flags_stretch_ratio = 2.28
 mouse_filter = 0
 texture = SubResource("AtlasTexture_8vqfg")
 
-[node name="UI unit prop" parent="CanvasLayer/Tree creature" instance=ExtResource("8_32u2b")]
-custom_minimum_size = Vector2(0, 0)
-layout_mode = 1
-anchors_preset = -1
-pivot_offset = Vector2(640, 380)
-mouse_filter = 2
-
 [node name="UI on map" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
@@ -202,7 +197,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("4_2pxod")
+script = ExtResource("6_36ked")
 
 [node name="Main Ui" type="Control" parent="CanvasLayer/UI on map"]
 layout_mode = 1
@@ -465,7 +460,7 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_25bq3")
 
 [connection signal="mouse_entered" from="CanvasLayer/Tree creature/Scroll Up/Container arrow/To main" to="CanvasLayer/UI on map" method="_on_to_main_mouse_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/Tree creature/Scroll Up/Container arrow/To evolution" to="CanvasLayer/Tree creature/UI unit prop" method="_on_to_evolution_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Tree creature/Scroll Up/Container arrow/To evolution" to="CanvasLayer/Tree creature/UI Evolve/PanelContainer/Teaminfo/Team container" method="_on_to_evolution_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/Tree creature/Scroll Up/Container arrow/To evolution" to="CanvasLayer/UI on map" method="_on_to_evolution_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/UI on map/Spells/Panel" to="CanvasLayer/UI on map" method="_on_panel_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/UI on map/Spells/Scroll right/Container arrow/To spell" to="CanvasLayer/UI on map" method="_on_to_spell_mouse_entered"]

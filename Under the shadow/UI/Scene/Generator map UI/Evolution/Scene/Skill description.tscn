@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbr8nibb3kyu1"]
 
-[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Skill description.gd" id="1_4emc8"]
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/Skill description.gd" id="1_4emc8"]
 [ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="2_em1bc"]
 
 [node name="Skill" type="VBoxContainer"]

@@ -17,6 +17,7 @@ move_after_skill = false
 free_move = false
 ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([])
 icon_select = ExtResource("1_34hsv")
+icon = ExtResource("1_34hsv")
 type = 2
 cost = 30
 animation_trans = 1

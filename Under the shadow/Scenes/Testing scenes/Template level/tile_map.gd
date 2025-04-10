@@ -59,7 +59,7 @@ func init(skill : Skill, init_tile_pos : Vector2i, ally : bool) -> Array[Vector2
 		"Directional":
 			if skill.with_vectors:
 				for n_cell in get_surrounding_cells(init_tile_pos):
-					var dir = init_tile_pos - n_cell
+					var dir : Vector2 = init_tile_pos - n_cell
 					for cell in skill.vectors:
 						if dir.x != 0:
 							set_cells_terrain_connect(FILL_FLOOR_L, [Vector2i(cell.x * dir.x, cell.y) + init_tile_pos], 1, 0, false)

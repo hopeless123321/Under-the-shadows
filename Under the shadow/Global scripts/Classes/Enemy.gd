@@ -10,7 +10,7 @@ func creation() -> void:
 	add_to_group("Enemy")
 	z_index = int(global_position.y / 64)
 
-func pressed(viewport, event, idx) -> void:
+func pressed(viewport : Node, event : InputEvent, idx : int) -> void:
 	if event is InputEventMouseButton and event.pressed and GlobalInfo.select_ability_anybody == false:
 		select()
 
@@ -18,7 +18,7 @@ func find_path() -> Array[Vector2i]:
 	var path_id : Array[Vector2i] = []
 	match move_to:
 		"Close":
-			for character in get_tree().get_nodes_in_group("Ally"):
+			for character : Ally in get_tree().get_nodes_in_group("Ally"):
 				Grid.temp_set_solid(character.tile_pos, false)
 				if path_id.is_empty():
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
@@ -26,14 +26,14 @@ func find_path() -> Array[Vector2i]:
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
 				Grid.temp_set_solid(character.tile_pos, true)
 		"Far":
-			for character in get_tree().get_nodes_in_group("Ally"):
+			for character : Ally in get_tree().get_nodes_in_group("Ally"):
 				Grid.temp_set_solid(character.tile_pos, false)
 				if Grid.get_path_id(tile_pos ,character.tile_pos, free_move).size() > path_id.size():
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
 				Grid.temp_set_solid(character.tile_pos, true)
 		"Low hp":
 			while path_id.is_empty():
-				var units = get_tree().get_nodes_in_group("Ally")
+				var units : Array[Node] = get_tree().get_nodes_in_group("Ally")
 				units.sort_custom(sort_by_hp.bind(true))
 				for character in units:
 					Grid.temp_set_solid(character.tile_pos, false)
@@ -43,7 +43,7 @@ func find_path() -> Array[Vector2i]:
 			while path_id.is_empty():
 				var units = get_tree().get_nodes_in_group("Ally")
 				units.sort_custom(sort_by_hp.bind(false))
-				for character in units:
+				for character : Unit in units:
 					Grid.temp_set_solid(character.tile_pos, false)
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
 					Grid.temp_set_solid(character.tile_pos, true)

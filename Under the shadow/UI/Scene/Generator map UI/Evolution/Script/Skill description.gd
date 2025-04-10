@@ -1,14 +1,14 @@
 extends VBoxContainer
 
-@onready var skill_icon = $"Skill/Skill icon"
-@onready var skill_name = $Skill/Name
-@onready var description_skill = $"Description skill"
-@onready var prop = $Prop
-@onready var prop_grid = $"Prop Grid"
+@onready var skill_icon : TextureRect = $"Skill/Skill icon"
+@onready var skill_name : Label = $Skill/Name
+@onready var description_skill : Label = $"Description skill"
+@onready var prop : Label = $Prop
+@onready var prop_grid : GridContainer = $"Prop Grid"
 
-const LABEL_UI = preload("res://UI/All theme/Label/Label_Ui.tres")
+const LABEL_UI : Theme = preload("res://UI/All theme/Label/Label_Ui.tres")
 
-func _input(event) -> void:
+func _input(event : InputEvent) -> void:
 	if Input.is_action_just_pressed("Add info"):
 		prop.visible = true
 		prop_grid.visible = true
@@ -19,13 +19,13 @@ func create_skill(skill : Skill) -> void:
 	skill_icon.texture = skill.icon
 	skill_name.text = skill.name
 	description_skill.text = skill.description
-	for prop in skill.skill_prop:
-		create_prop_des(prop, skill.skill_prop.get(prop))
+	for property in skill.skill_prop:
+		create_prop_des(property, skill.skill_prop.get(property))
 	
 	
 func create_prop_des(key : String, value : String) -> void:
-	var prop_label = Label.new()
-	var value_label = Label.new()
+	var prop_label : Label = Label.new()
+	var value_label : Label = Label.new()
 	prop_label.theme = LABEL_UI
 	prop_label.text = key
 	prop_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT

@@ -1,18 +1,18 @@
 [gd_scene load_steps=17 format=3 uid="uid://0ol6bh768f8t"]
 
-[ext_resource type="Script" path="res://UI/Scene/Generator map UI/ui_unit_prop.gd" id="1_k0bvv"]
-[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Manager unit_prop.gd" id="2_w84c1"]
-[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="3_e4n50"]
-[ext_resource type="Texture2D" uid="uid://bs5j04qe6ejxc" path="res://All unit/King/Kingcheck_Preview.png" id="4_krnjf"]
-[ext_resource type="Theme" uid="uid://dmt5neysaicbo" path="res://UI/All theme/Sep_H/Unit_list.tres" id="5_bknso"]
-[ext_resource type="Theme" uid="uid://bbhj3rpceb6bx" path="res://UI/All theme/Richtextlabel/ability_slot.tres" id="6_r32gy"]
-[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="7_5nbec"]
-[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="9_eu0aa"]
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/UI unit prop.gd" id="1_8l826"]
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="2_g0uee"]
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/Manager unit_prop.gd" id="3_vku3t"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="4_7mux7"]
+[ext_resource type="Texture2D" uid="uid://bs5j04qe6ejxc" path="res://All unit/King/King.png" id="5_c55ud"]
+[ext_resource type="Theme" uid="uid://dmt5neysaicbo" path="res://UI/All theme/Sep_H/Unit_list.tres" id="6_dp1p5"]
+[ext_resource type="Theme" uid="uid://bbhj3rpceb6bx" path="res://UI/All theme/Richtextlabel/ability_slot.tres" id="7_uu2h6"]
+[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="8_1edie"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glt5k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c8m7"]
-atlas = ExtResource("9_eu0aa")
+atlas = ExtResource("2_g0uee")
 region = Rect2(400, 192, 48, 64)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nu5a1"]
@@ -26,7 +26,7 @@ border_blend = true
 shadow_offset = Vector2(-3.37, -2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfm4y"]
-atlas = ExtResource("4_krnjf")
+atlas = ExtResource("5_c55ud")
 region = Rect2(0, 0, 64, 128)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fqj0i"]
@@ -36,7 +36,7 @@ region = Rect2(0, 0, 64, 128)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rbk6l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jc8ag"]
-atlas = ExtResource("9_eu0aa")
+atlas = ExtResource("2_g0uee")
 region = Rect2(384, 224, 64, 32)
 
 [node name="UI unit prop" type="Control"]
@@ -47,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_k0bvv")
+script = ExtResource("1_8l826")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -122,11 +122,11 @@ theme_override_constants/margin_bottom = 18
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
-script = ExtResource("2_w84c1")
+script = ExtResource("3_vku3t")
 
 [node name="Name" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
 layout_mode = 2
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 theme_override_font_sizes/font_size = 20
 text = "King"
 horizontal_alignment = 1
@@ -147,13 +147,13 @@ stretch_mode = 5
 
 [node name="Class" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
 layout_mode = 2
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Class"
 horizontal_alignment = 1
 
 [node name="Class value" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
 layout_mode = 2
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Skeleton"
 horizontal_alignment = 1
 
@@ -164,120 +164,120 @@ columns = 5
 [node name="Max hp" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Max hp"
 
 [node name="Max hp value" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "65"
 
 [node name="VSeparator" type="VSeparator" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("5_bknso")
+theme = ExtResource("6_dp1p5")
 
 [node name="Hp" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Hp"
 
 [node name="Hp value" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "65"
 
 [node name="Speed" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Speed"
 
 [node name="Speed value" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "6
 "
 
 [node name="VSeparator2" type="VSeparator" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("5_bknso")
+theme = ExtResource("6_dp1p5")
 
 [node name="Reaction" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Reaction"
 
 [node name="Reaction value" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "2"
 
 [node name="Phys resist" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Phys res   
 "
 
 [node name="Phys resist value" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "0
 "
 
 [node name="VSeparator3" type="VSeparator" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("5_bknso")
+theme = ExtResource("6_dp1p5")
 
 [node name="Magic resist" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Mag res"
 
 [node name="Magic resist value" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "0"
 
 [node name="Will resist" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Will res"
 
 [node name="Will resist value" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "0"
 
 [node name="VSeparator4" type="VSeparator" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("5_bknso")
+theme = ExtResource("6_dp1p5")
 
 [node name="Dmg amp" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "Dmg amp"
 
 [node name="Dmg amp value" type="Label" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2
 size_flags_horizontal = 14
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 text = "0"
 
 [node name="Skills stores" type="PanelContainer" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
@@ -286,9 +286,9 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_fqj0i")
 
 [node name="Description" type="RichTextLabel" parent="Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
 layout_mode = 2
-theme = ExtResource("6_r32gy")
+theme = ExtResource("7_uu2h6")
 theme_override_colors/default_color = Color(0.690196, 0.690196, 0.690196, 1)
-theme_override_fonts/normal_font = ExtResource("7_5nbec")
+theme_override_fonts/normal_font = ExtResource("8_1edie")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_nnsjk")
 bbcode_enabled = true
 fit_content = true
@@ -328,20 +328,20 @@ alignment = 1
 
 [node name="Souls" type="Label" parent="Souls container/MarginContainer/Hbox"]
 layout_mode = 2
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 theme_override_font_sizes/font_size = 20
 text = "Souls:"
 vertical_alignment = 1
 
 [node name="Value" type="Label" parent="Souls container/MarginContainer/Hbox"]
 layout_mode = 2
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 theme_override_font_sizes/font_size = 20
 text = "12"
 
 [node name="Minus" type="Label" parent="Souls container/MarginContainer/Hbox"]
 layout_mode = 2
-theme = ExtResource("3_e4n50")
+theme = ExtResource("4_7mux7")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://drg4p5kmyedbw" path="res://Scenes/Main scenes/Units/Unit scene.tscn" id="1_10dcg"]
 [ext_resource type="Texture2D" uid="uid://bo0ceigfs1t2p" path="res://All unit/Skeleton sword/Skeleton sword.png" id="2_glelr"]
-[ext_resource type="Texture2D" uid="uid://bscur8gfpyaql" path="res://All unit/Skeleton sword/Skeleton sword normal map.png" id="3_5yih4"]
+[ext_resource type="Texture2D" uid="uid://bscur8gfpyaql" path="res://All unit/Skeleton sword/Skeleton sword map.png" id="3_5yih4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_28pym"]
 diffuse_texture = ExtResource("2_glelr")

@@ -54,11 +54,11 @@ func dir_with_vec(vectors : Array[Vector2i], dir : Vector2i, init_pos : Vector2i
 func dir_without_vec(length : int, start_point : Vector2i, end_point : Vector2i) -> Array[Vector2i]:
 	var cells : Array[Vector2i] = []
 	if start_point != end_point:
-		var dx = start_point.x - end_point.x
-		var dy = start_point.y - end_point.y
-		var step = max(abs(dx),abs(dy))
-		var inc_x = float(dx) / float(step)
-		var inc_y = float(dy) / float(step)
+		var dx : float = start_point.x - end_point.x
+		var dy : float = start_point.y - end_point.y
+		var step : int = max(abs(dx),abs(dy))
+		var inc_x : float = dx / step
+		var inc_y : float = dy / step
 		for steps in step + 1:
 			cells.append(start_point - Vector2i(round(Vector2(inc_x*steps, inc_y*steps))))
 	return cells.slice(0, length)

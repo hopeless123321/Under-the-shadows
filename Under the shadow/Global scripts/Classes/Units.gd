@@ -44,21 +44,9 @@ var reaction : int:
 var move_after_skill : bool = false
 var free_move : bool = true
 var ability : Array[Skill]
+var icon : Texture2D
 var icon_select : Texture2D
-@export_flags("No class", "Skelet", "Lunar", "Dead", "Ghost") var type :
-	get:
-		var flag_names = {
-		1 << 0: "No class",
-		1 << 1: "Skelet",
-		1 << 2: "Lunar",
-		1 << 3: "Dead",
-		1 << 4: "Ghost"
-		}
-		var enabled_flags: Array = []
-		for flag in flag_names.keys():
-			if (type & flag) == flag:
-				enabled_flags.append(flag_names[flag])
-		return enabled_flags
+var type : Array[String]
 var cost : int
 var animation_trans : Tween.TransitionType
 var animation_ease : Tween.EaseType
@@ -67,14 +55,13 @@ var move_to : String
 var distance : int
 
 #inner varuable
-var pointer_curve : float = 0
 var tile_pos : Vector2i:
 	get:
 		return _tm.local_to_map(global_position)
 var statuses : Array[Status]
 var path : Array[Vector2i]
-var previous_state = null
-var current_state = null
+var previous_state : Node2D = null
+var current_state : Node2D = null
 #link to other node
 
 @onready var _tm : TileMap = $"../../../TileMap"

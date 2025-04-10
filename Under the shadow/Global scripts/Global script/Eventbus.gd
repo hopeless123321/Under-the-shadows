@@ -4,7 +4,7 @@ signal save_all
 signal update_prop_ui
 signal update_end_battle
 signal call_setting
-signal reveal_map
+signal reveal_map(on_battle : bool)
 signal next_room(room_type : String)
 signal select_char(character_stats : Dictionary) 
 signal target_camera_to(charachter_pos : Vector2i)

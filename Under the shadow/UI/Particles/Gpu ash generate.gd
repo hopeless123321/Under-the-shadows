@@ -1,6 +1,6 @@
 extends GPUParticles2D
 
-@onready var tile_map = $"../TileMap"
+@onready var tile_map : TileMap = $"../TileMap"
 
 
 func _ready() -> void:

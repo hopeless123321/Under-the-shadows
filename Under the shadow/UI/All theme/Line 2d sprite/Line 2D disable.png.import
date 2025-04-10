@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bscur8gfpyaql"
-path="res://.godot/imported/Skeleton sword normal map.png-d7a82039b536755cbe757fee5f0f1d45.ctex"
+uid="uid://cew64qjj53tyy"
+path="res://.godot/imported/Line 2D disable.png-1e42e722d4753fd0a20d85e83e867cf8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All unit/Skeleton sword/Skeleton sword normal map.png"
-dest_files=["res://.godot/imported/Skeleton sword normal map.png-d7a82039b536755cbe757fee5f0f1d45.ctex"]
+source_file="res://UI/All theme/Line 2d sprite/Line 2D disable.png"
+dest_files=["res://.godot/imported/Line 2D disable.png-1e42e722d4753fd0a20d85e83e867cf8.ctex"]
 
 [params]
 

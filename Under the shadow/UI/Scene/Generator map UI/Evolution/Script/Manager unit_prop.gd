@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-const SKILL_DESCRIPTION = preload("res://UI/Scene/Generator map UI/Skill description.tscn")
+const SKILL_DESCRIPTION = preload("res://UI/Scene/Generator map UI/Evolution/Scene/Skill description.tscn")
 
 @onready var name_l : Label = $Name
 @onready var preview_unit : TextureRect = $"CenterContainer/Preview unit"
@@ -19,25 +19,30 @@ const SKILL_DESCRIPTION = preload("res://UI/Scene/Generator map UI/Skill descrip
 func _ready() -> void:
 	Eventbus.connect("get_unit_prop", update)
 		
-func update(unit_prop : Unit_prop) -> void:
+func update(unit_prop : Resource, from_team : bool) -> void:
 	for skill in skills_stores.get_children():
 		skill.queue_free()
 	class_value.text = ""
-
+	preview_unit.texture = unit_prop.icon
 	name_l.text = unit_prop.forename
-	
-	for unit_class in unit_prop.get_class_flags():
-		class_value.text += unit_class + " "
 	max_hp_value.text = str(unit_prop.max_hp)
-	hp_value.text = str(unit_prop.max_hp)
 	speed_value.text = str(unit_prop.speed)
 	reaction_value.text = str(unit_prop.reaction)
 	phys_resist_value.text = str(unit_prop.resist_phys_dmg)
 	magic_resist_value.text = str(unit_prop.resist_mag_dmg)
 	will_resist_value.text = str(unit_prop.resist_will)
 	dmg_amp_value.text = str(unit_prop.dmg_amp)
+	
 	for skill in unit_prop.ability:
 		var skill_d : VBoxContainer = SKILL_DESCRIPTION.instantiate()
 		skills_stores.add_child(skill_d)
 		skill_d.create_skill(skill)
 	
+	if from_team:
+		for unit_class in unit_prop.type:
+			class_value.text += unit_class + " "
+			hp_value.text = str(unit_prop.hp)
+	else:
+		for unit_class in unit_prop.get_class_flags():
+			class_value.text += unit_class + " "
+		hp_value.text = str(unit_prop.max_hp)

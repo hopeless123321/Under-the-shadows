@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c6s5b3x6iwtv7"]
 
 [ext_resource type="PackedScene" uid="uid://drg4p5kmyedbw" path="res://Scenes/Main scenes/Units/Unit scene.tscn" id="1_43b1m"]
-[ext_resource type="Texture2D" uid="uid://bs5j04qe6ejxc" path="res://All unit/King/Kingcheck_Preview.png" id="2_kxpdm"]
-[ext_resource type="Texture2D" uid="uid://d1aimfjrmflil" path="res://All unit/King/Kingcheck_Normal buffer.png" id="3_qr3m6"]
+[ext_resource type="Texture2D" uid="uid://bs5j04qe6ejxc" path="res://All unit/King/King.png" id="2_kxpdm"]
+[ext_resource type="Texture2D" uid="uid://d1aimfjrmflil" path="res://All unit/King/King map.png" id="3_qr3m6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_04b3e"]
 diffuse_texture = ExtResource("2_kxpdm")

@@ -1,7 +1,7 @@
 extends TextureButton
 
 var text : String
-var ability_theme = preload("res://UI/All theme/Richtextlabel/ability_slot.tres")
+var ability_theme : Theme = preload("res://UI/All theme/Richtextlabel/ability_slot.tres")
 var unit : Unit
 var data_ability : Skill
 var number_skill : int
@@ -14,12 +14,12 @@ func init() -> void:
 			$PanelContainer/Label.text = str(data_ability.cooldown_timer)
 	action_button += str(number_skill)
 
-func _shortcut_input(_event) -> void:
+func _shortcut_input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed(action_button):
 		_on_pressed()
 
-func _make_custom_tooltip(_for_text):
-	var tooltip = RichTextLabel.new()
+func _make_custom_tooltip(_for_text) -> RichTextLabel:
+	var tooltip : RichTextLabel = RichTextLabel.new()
 	tooltip.bbcode_enabled = true
 	tooltip.theme = ability_theme
 	tooltip.text = text

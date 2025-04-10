@@ -1,9 +1,9 @@
 extends GridContainer
 
-@onready var mag_resist_value = $"Mag_resist value"
-@onready var phys_resist_value = $"Phys_resist value"
-@onready var will_resist_value = $"Will_resist value"
-@onready var damage_amp_value = $"Damage amp value"
+@onready var mag_resist_value : Label = $"Mag_resist value"
+@onready var phys_resist_value : Label = $"Phys_resist value"
+@onready var will_resist_value : Label= $"Will_resist value"
+@onready var damage_amp_value : Label = $"Damage amp value"
 
 
 func _ready() -> void:

@@ -14,6 +14,9 @@ normal_texture = ExtResource("3_5yoas")
 
 [node name="Unit" instance=ExtResource("1_vrcdp")]
 
+[node name="Store sprite" parent="." index="2"]
+position = Vector2(0, -60.43)
+
 [node name="Upper" parent="Store sprite" index="0"]
 texture = SubResource("CanvasTexture_4ob56")
 

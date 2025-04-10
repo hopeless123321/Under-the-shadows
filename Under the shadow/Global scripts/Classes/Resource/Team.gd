@@ -1,9 +1,31 @@
 extends Node
 
-var team : Array[Unit]
-const FLAG_RES : int = 4102
-const FLAG_RES_ANIM : int = 69638
+var team : Array[Unit_res]
+
 const PATH_TO_PROP : String = "res://All unit/?/? prop.tres"
+const TRANSLATE_PROP_NAME : Array[String] = [
+	"forename",
+	"max_hp",
+	"hp",
+	"dmg_amp",
+	"resist_phys_dmg",
+	"resist_mag_dmg",
+	"resist_will",
+	"speed",
+	"reaction",
+	"move_after_skill",
+	"free_move",
+	"ability",
+	"icon",
+	"icon_select",
+	"type",
+	"cost",
+	"initial_status",
+	"animation_trans",
+	"animation_ease",
+	"duration",
+	"distance",
+	"move_to"]
 
 func save_resource() -> void:
 	#if FileAccess.file_exists():
@@ -18,24 +40,51 @@ func save_team() -> void:
 func load_team() -> void:
 	pass
 
-func add_unit(name : String) -> void:
-	var new_member : Ally = Ally.new()
-	var to_resource : String = PATH_TO_PROP.replace("?", name)
+func update_team(allies : Array) -> void:
+	team.clear()
+	for unit in allies:
+		var unit_to_update : Unit_res = Unit_res.new()
+		copy_property(unit_to_update, unit)
+		team.append(unit_to_update)
+
+func add_ally_to_team(forename : String) -> void:
+	var new_ally : Unit_res = Unit_res.new()
+	var to_resource : String = PATH_TO_PROP.replace("?", forename)
 	if FileAccess.file_exists(to_resource):
 		var resouce_prop : Unit_prop = load(to_resource)
-		for prop in resouce_prop.get_property_list():
-			if prop.usage in [FLAG_RES, FLAG_RES_ANIM]:
-				new_member.set(prop.name, resouce_prop.get(prop.name))
-	new_member.input_pickable = true
-	team.append(new_member)
-	
-func set_stat_enemy(unit_prop : Unit_prop) -> Enemy:
-	var new_member : Enemy = Enemy.new()
-	for prop in unit_prop.get_property_list():
-		if prop.usage in [FLAG_RES, FLAG_RES_ANIM]:
-			new_member.set(prop.name, unit_prop.get(prop.name))
-	new_member.input_pickable = true
-	return new_member
+		copy_property(new_ally, resouce_prop)
+		new_ally.hp = resouce_prop.max_hp
+	team.append(new_ally)
 
-func get_unit(index : int) -> Unit:
-	return team[index]
+func inst_ally() -> Array:
+	return team.map(team_to_ally)
+
+func set_stat_enemy(unit_prop : Unit_prop) -> Enemy:
+	var new_enemy : Enemy = Enemy.new()
+	copy_property(new_enemy, unit_prop)
+	new_enemy.input_pickable = true
+	return new_enemy
+
+func update_whole_party(allies : Array) -> void:
+	team.clear()
+	#print(typeof(allies[0]))
+	team.append_array(allies)
+
+func upgrade_unit(upgrade_to : Unit_prop, upgrade_from : Unit_res = null) -> Unit_res:
+	if upgrade_from != null:
+		team.erase(upgrade_from)
+	var new_ally : Unit_res = Unit_res.new()
+	copy_property(new_ally, upgrade_to)
+	new_ally.hp = upgrade_to.max_hp
+	team.append(new_ally)
+	return new_ally
+
+func team_to_ally(ally_res : Unit_res) -> Ally:
+	var ins_ally : Ally = Ally.new()
+	copy_property(ins_ally, ally_res)
+	ins_ally.input_pickable = true
+	return ins_ally
+
+func copy_property(unit : Object, res : Object) -> void:
+	for prop in TRANSLATE_PROP_NAME:
+		unit.set(prop, res.get(prop))

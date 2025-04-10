@@ -3,10 +3,12 @@ extends Node2D
 var grid_ghosts : AStarGrid2D = AStarGrid2D.new()
 var grid_normals : AStarGrid2D = AStarGrid2D.new()
 
+func _ready() -> void:
+	Eventbus.connect("dying", char_die)
+
 func init_level(tm : TileMap) -> void:
 	grid_ghosts.clear()
 	grid_normals.clear()
-	Eventbus.connect("dying", char_die)
 	
 	grid_normals.cell_size = GlobalInfo.CELL_SIZE
 	grid_normals.region = tm.get_used_rect()

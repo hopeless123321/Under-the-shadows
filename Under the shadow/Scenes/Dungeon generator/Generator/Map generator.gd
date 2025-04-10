@@ -25,13 +25,14 @@ func _ready() -> void:
 	Eventbus.connect("next_room", get_to_room)
 	Eventbus.connect("save_all", save_map)
 	Eventbus.connect("reveal_map", reveal_hide_map)
+	Eventbus.connect("update_end_battle", battle_over)
 	paths_to_room.region = GRID_SIZE
 	paths_to_room.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	paths_to_room.cell_size = CELL_SIZE
 	paths_to_room.update()
 	create_dungeon()
 
-func create_dungeon() -> void:
+func create_dungeon() -> void: # создает данж
 	var init_pos : Vector2i = Vector2i(0, 0)
 	make_room(init_pos)
 	while create_room != count_rooms:
@@ -51,7 +52,7 @@ func create_dungeon() -> void:
 		room.create()
 	pick_rng_room() 
 	
-func make_rng_loop() -> void:
+func make_rng_loop() -> void: # создает лупы в данже
 	for room : Room in rooms.keys():
 		if room.connected_room.size() >= 3 and randi() % 5 < 2:
 			for vector in VECTORS_TO_LOOP:
@@ -61,7 +62,7 @@ func make_rng_loop() -> void:
 					room_to_coon.connected_room.append(room)
 					create_path(room_to_coon.global_position, room.global_position)
 
-func create_path(next_pos : Vector2i , init_pos : Vector2i) -> void:
+func create_path(next_pos : Vector2i , init_pos : Vector2i) -> void: # создает пути между
 	next_pos = tile_map_path.local_to_map(next_pos) + Vector2i.ONE
 	init_pos = tile_map_path.local_to_map(init_pos) + Vector2i.ONE
 	tile_map_path.set_cells_terrain_path(0, paths_to_room.get_id_path(next_pos, init_pos), 0, 0, false)
@@ -131,11 +132,12 @@ func calculate_general_diff() -> int:
 	+ GlobalInfo.stage * GlobalInfo.DIFFICULT.get(GlobalInfo.diffucult)\
 	* randi_range(0.9, 1.1)
 
-func reveal_hide_map(on_battle : bool = true) -> void:
-	if on_battle == false:
-		on_fight = false
+func reveal_hide_map() -> void:
 	visible = !visible
 	camera.enabled = !camera.enabled
 
 func save_map() -> void:
 	pass
+
+func battle_over() -> void:
+	on_fight = false
