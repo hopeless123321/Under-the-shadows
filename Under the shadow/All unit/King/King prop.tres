@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="Unit_prop" load_steps=5 format=3 uid="uid://c1onlxupvt7k6"]
+[gd_resource type="Resource" script_class="Unit_prop" load_steps=7 format=3 uid="uid://c1onlxupvt7k6"]
 
 [ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="1_4egtm"]
-[ext_resource type="Resource" uid="uid://drp0ffopxr35t" path="res://All ability/Skills/Bloodbend.tres" id="1_cf1t0"]
+[ext_resource type="Resource" uid="uid://bh3scipmqo7ac" path="res://All ability/Skills/Steal blood/Steal blood.tres" id="1_cf1t0"]
+[ext_resource type="Resource" uid="uid://jwat6prpcd6o" path="res://All ability/Skills/Eclipse/Eclipse.tres" id="2_atuhe"]
 [ext_resource type="Texture2D" uid="uid://j6q0a326fybw" path="res://All unit/King/King icon_Preview.png" id="2_wagu1"]
+[ext_resource type="Resource" uid="uid://yo0si5u6siw" path="res://All ability/Skills/Planning/Planning.tres" id="3_x1jlv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvwcb"]
 atlas = ExtResource("2_wagu1")
@@ -20,7 +22,7 @@ speed = 12
 reaction = 6
 move_after_skill = false
 free_move = false
-ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([ExtResource("1_cf1t0")])
+ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([ExtResource("1_cf1t0"), ExtResource("2_atuhe"), ExtResource("3_x1jlv")])
 icon = ExtResource("2_wagu1")
 icon_select = SubResource("AtlasTexture_lvwcb")
 type = 1

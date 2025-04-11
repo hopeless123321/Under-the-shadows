@@ -13,6 +13,8 @@ var tile_pos_mouse : Vector2i:
 			else:
 				effect_unit = unit._tm.update(skill, tile_pos_mouse, varuable_mouse_pos, true, unit.tile_pos)
 
+const EXCEPTION : Array[String] = ["Targets area", "Targets in world"]
+
 func start():
 	GlobalInfo.select_ability_anybody = true
 	varuable_mouse_pos.append_array(unit._tm.init(skill, unit.tile_pos, true))
@@ -20,8 +22,8 @@ func start():
 func update():
 	tile_pos_mouse = floor(get_global_mouse_position() / 64)
 	if Input.is_action_just_pressed("RMB"):
-		if skill.type_application == "Targets area" and tile_pos_mouse in varuable_mouse_pos:
-			if effect_unit.size() < skill.count_targets:
+		if EXCEPTION.has(skill.type_application) and tile_pos_mouse in varuable_mouse_pos:
+			if effect_unit.size() < skill.targets:
 				effect_unit.append(unit._tm.add_unit_exec(tile_pos_mouse))
 			else:
 				effect_unit.append(unit._tm.add_unit_exec(tile_pos_mouse, effect_unit.front().tile_pos))

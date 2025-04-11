@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpra7bgsivwun"
-path="res://.godot/imported/madness.png-879d74968aeae1521667c3562c2fe845.ctex"
+uid="uid://don5tpwr1ihe1"
+path="res://.godot/imported/just sword.png-058b8c0614490024bd28aa2014816feb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All ability/Icon/madness.png"
-dest_files=["res://.godot/imported/madness.png-879d74968aeae1521667c3562c2fe845.ctex"]
+source_file="res://All ability/Skills/Sword sweep/just sword.png"
+dest_files=["res://.godot/imported/just sword.png-058b8c0614490024bd28aa2014816feb.ctex"]
 
 [params]
 

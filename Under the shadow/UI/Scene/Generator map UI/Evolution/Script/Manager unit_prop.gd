@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-const SKILL_DESCRIPTION = preload("res://UI/Scene/Generator map UI/Evolution/Scene/Skill description.tscn")
+const SKILL_DESCRIPTION : PackedScene = preload("res://UI/Scene/Generator map UI/Evolution/Scene/Skill description.tscn")
 
 @onready var name_l : Label = $Name
 @onready var preview_unit : TextureRect = $"CenterContainer/Preview unit"
@@ -13,7 +13,7 @@ const SKILL_DESCRIPTION = preload("res://UI/Scene/Generator map UI/Evolution/Sce
 @onready var magic_resist_value : Label = $"Stats/Magic resist value"
 @onready var will_resist_value : Label = $"Stats/Will resist value"
 @onready var dmg_amp_value : Label = $"Stats/Dmg amp value"
-@onready var skills_stores : PanelContainer = $"Skills stores"
+@onready var skills_stores : VBoxContainer = $"Skills stores"
 @onready var description : RichTextLabel = $Description
 
 func _ready() -> void:

@@ -3,7 +3,7 @@ extends HBoxContainer
 @onready var will : TextureProgressBar = $Will
 @onready var hp : TextureProgressBar = $Hp
 
-var ability_container = preload("res://UI/Scene/UI battle/Scene/Ability slot.tscn")
+var ability_container : PackedScene = preload("res://UI/Scene/UI battle/Scene/Ability slot.tscn")
 
 @onready var icon : TextureRect = $Icon/MarginContainer/Icon
 
@@ -18,8 +18,8 @@ func update_ui(data : Dictionary) -> void:
 			for child in range(6, get_children().size()):
 				get_child(child).queue_free()
 	if data.get('ability') != []:
-		var ability = data.get('ability')
-		for i in ability.size():
+		var ability : Array[Skill] = data.get('ability')
+		for i : int in ability.size():
 			var ability_instance = ability_container.instantiate()
 			ability_instance.number_skill = i + 1
 			add_child(ability_instance)
@@ -46,23 +46,23 @@ func text_tooltip(ability : Skill) -> String:
 		"Suicide":
 			text += "[wave amp=20.0 freq=5.0 connected=1][color=dim_gray]" + ability.class_spell + "[/color][/wave]"
 	text += '\nUnit: '
-	match ability.type_unit:
-		"Ally":
-			text += "[color=green]" + ability.type_unit + "[/color]"
-		"Enemy":
-			text += "[color=red]" + ability.type_unit + "[/color]"
-		"Either":
-			text += ability.type_unit
-	if ability.active:
-		text += "active"
-		text += "\n" + "Cooldown : " + str(ability.cooldown) + "\n"
-	elif ability.active == false:
-		text += "passive"
-	text += "class: " + ability.class_spell
+	#match ability.type_unit:
+		#"Ally":
+			#text += "[color=green]" + ability.type_unit + "[/color]"
+		#"Enemy":
+			#text += "[color=red]" + ability.type_unit + "[/color]"
+		#"Either":
+			#text += ability.type_unit
+	#if ability.active:
+		#text += "active"
+		#text += "\n" + "Cooldown : " + str(ability.cooldown) + "\n"
+	#elif ability.active == false:
+		#text += "passive"
+	#text += "class: " + ability.class_spell
 	return text 
 
 func update_progress_bar(hp_v : int, will_v : int, max_hp : int) -> void:
-	var hp_will_tween = create_tween()
+	var hp_will_tween : Tween = create_tween()
 	hp_will_tween.set_parallel()
 	hp_will_tween.set_ease(Tween.EASE_IN_OUT)
 	hp_will_tween.set_trans(Tween.TRANS_CUBIC)

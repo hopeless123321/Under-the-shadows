@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lqepdavqmiqi"
-path="res://.godot/imported/moon revenge.png-671cf334f2b8271bf8c124be4d00e3a3.ctex"
+uid="uid://bpra7bgsivwun"
+path="res://.godot/imported/madness.png-083d6625dd571d169007ce9b92462c38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All ability/Icon/moon revenge.png"
-dest_files=["res://.godot/imported/moon revenge.png-671cf334f2b8271bf8c124be4d00e3a3.ctex"]
+source_file="res://All ability/Skills/Madness/madness.png"
+dest_files=["res://.godot/imported/madness.png-083d6625dd571d169007ce9b92462c38.ctex"]
 
 [params]
 

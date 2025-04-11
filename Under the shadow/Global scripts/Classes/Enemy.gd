@@ -16,9 +16,10 @@ func pressed(viewport : Node, event : InputEvent, idx : int) -> void:
 
 func find_path() -> Array[Vector2i]:
 	var path_id : Array[Vector2i] = []
+	var units := get_tree().get_nodes_in_group("Ally")
 	match move_to:
 		"Close":
-			for character : Ally in get_tree().get_nodes_in_group("Ally"):
+			for character : Ally in units:
 				Grid.temp_set_solid(character.tile_pos, false)
 				if path_id.is_empty():
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
@@ -26,14 +27,13 @@ func find_path() -> Array[Vector2i]:
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
 				Grid.temp_set_solid(character.tile_pos, true)
 		"Far":
-			for character : Ally in get_tree().get_nodes_in_group("Ally"):
+			for character : Ally in units:
 				Grid.temp_set_solid(character.tile_pos, false)
 				if Grid.get_path_id(tile_pos ,character.tile_pos, free_move).size() > path_id.size():
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
 				Grid.temp_set_solid(character.tile_pos, true)
 		"Low hp":
 			while path_id.is_empty():
-				var units : Array[Node] = get_tree().get_nodes_in_group("Ally")
 				units.sort_custom(sort_by_hp.bind(true))
 				for character in units:
 					Grid.temp_set_solid(character.tile_pos, false)
@@ -41,9 +41,8 @@ func find_path() -> Array[Vector2i]:
 					Grid.temp_set_solid(character.tile_pos, true)
 		"High hp":
 			while path_id.is_empty():
-				var units = get_tree().get_nodes_in_group("Ally")
 				units.sort_custom(sort_by_hp.bind(false))
-				for character : Unit in units:
+				for character : Ally in units:
 					Grid.temp_set_solid(character.tile_pos, false)
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
 					Grid.temp_set_solid(character.tile_pos, true)
@@ -51,24 +50,21 @@ func find_path() -> Array[Vector2i]:
 			pass
 		"Low will":
 			while path_id.is_empty():
-				var units = get_tree().get_nodes_in_group("Ally")
 				units.sort_custom(sort_by_will.bind(false))
-				for character in units:
+				for character : Ally in units:
 					Grid.temp_set_solid(character.tile_pos, false)
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
 					Grid.temp_set_solid(character.tile_pos, true)
 		"High will":
 			while path_id.is_empty():
-				var units = get_tree().get_nodes_in_group("Ally")
 				units.sort_custom(sort_by_will.bind(false))
-				for character in units:
+				for character : Ally in units:
 					Grid.temp_set_solid(character.tile_pos, false)
 					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
 					Grid.temp_set_solid(character.tile_pos, true)
 		"Random":
-			var units = get_tree().get_nodes_in_group("Ally")
 			units.shuffle()
-			for character in units:
+			for character : Ally in units:
 				if path_id.is_empty():
 					break
 				Grid.temp_set_solid(character.tile_pos, false)

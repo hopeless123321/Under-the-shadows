@@ -16,7 +16,7 @@ class_name Unit_prop
 @export_category("Other info")
 @export var icon : Texture2D
 @export var icon_select : Texture2D
-@export_flags("No class", "Skelet", "Lunar", "Dead", "Ghost") var type
+@export_flags("No class", "Skelet", "Lunar", "Dead", "Ghost") var type : int
 @export var cost : int
 @export_category("Move")
 @export var animation_trans : Tween.TransitionType

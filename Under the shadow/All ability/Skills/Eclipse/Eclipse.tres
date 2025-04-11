@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://jwat6prpcd6o"]
+
+[ext_resource type="Texture2D" uid="uid://cym75ckmuf04r" path="res://All ability/Skills/Eclipse/eclipse.png" id="1_aayia"]
+[ext_resource type="Script" path="res://All ability/Skills/Eclipse/Eclipse.gd" id="2_hvt81"]
+
+[resource]
+script = ExtResource("2_hvt81")
+type_unit = "Either"
+self_target = false
+id = 5
+forename = "Eclipse"
+cost_hp = 10
+cost_will = 10
+cooldown = 2
+active = true
+description = "Затмение ведёт за собою величие Бога Луны. А он уже не разьирает своих и чужих."
+icon = ExtResource("1_aayia")
+skill_prop_in_evolve_tree = {}
+class_spell = "No type"
+type_application = "All world"
+type = 2

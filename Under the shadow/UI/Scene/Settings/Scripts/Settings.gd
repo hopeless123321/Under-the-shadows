@@ -6,7 +6,7 @@ func _ready() -> void:
 	Eventbus.connect("call_setting", change)
 	position = Vector2(0, -GlobalInfo.win_size.y)
 	
-func _input(event) -> void:
+func _input(event : InputEvent) -> void:
 	if Input.is_action_just_pressed("ESC") and reveal:
 		change()
 

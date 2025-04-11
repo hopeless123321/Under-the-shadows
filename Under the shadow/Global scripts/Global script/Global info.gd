@@ -3,6 +3,13 @@ extends Node
 const CELL_SIZE : Vector2i = Vector2i(64, 64)
 const DIFFICULT : Dictionary = {"radiant" : 15, "twilight" : 20 , "eclipse" : 30}
 # gamechanger varuables
+enum Type_room {Fight, Elite_fight, Shop, Tresuare, Event, Escape}
+var probabality_room : Dictionary = {Type_room.Fight : 40,
+							Type_room.Elite_fight : 20,
+							Type_room.Shop : 10,
+							Type_room.Tresuare : 10,
+							Type_room.Event : 10}
+
 var dungeon_size : int = 16
 var speed_scale : float = 1
 var max_team_size : int = 5

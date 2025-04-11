@@ -17,7 +17,7 @@ func _ready() -> void:
 	else:
 		continue_b.visible = false
 
-func _input(event) -> void:
+func _input(event : InputEvent) -> void:
 	if Input.is_action_just_pressed("ESC"):
 		back()
 		
@@ -56,6 +56,6 @@ func _on_eclipse_pressed() -> void:
 	
 func map_generated() -> void:
 	Teaminfo.add_ally_to_team("King")
-	Teaminfo.add_ally_to_team("Skeleton sword")
+	Teaminfo.add_ally_to_team("Skeleton spear")
 	GlobalInfo.current_location = "Chambers"
 	get_tree().change_scene_to_packed(MapGenerator)

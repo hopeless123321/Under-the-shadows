@@ -22,10 +22,10 @@ func _on_panel_mouse_exited() -> void:
 func _on_to_evolution_mouse_entered() -> void:
 	if to_evolve_enable:
 		to_main_enable = false
-		var move_tween = create_tween()
+		var move_tween := create_tween()
 		move_tween.set_parallel()
 		move_tween.set_ease(Tween.EASE_OUT)
-		move_tween.set_trans(Tween.TRANS_BOUNCE)
+		move_tween.set_trans(Tween.TRANS_SINE)
 		move_tween.tween_property(tree_creature, "position", Vector2(0,0), TIMER)
 		await move_tween.finished
 		to_main_enable = true
@@ -33,7 +33,7 @@ func _on_to_evolution_mouse_entered() -> void:
 func _on_to_main_mouse_entered() -> void:
 	if to_main_enable:
 		to_evolve_enable = false
-		var move_tween : Tween = create_tween()
+		var move_tween := create_tween()
 		move_tween.set_parallel()
 		move_tween.set_ease(Tween.EASE_IN_OUT)
 		move_tween.set_trans(Tween.TRANS_SINE)

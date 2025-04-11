@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://yo0si5u6siw"]
+
+[ext_resource type="Texture2D" uid="uid://3f7mg00lj0iy" path="res://All ability/Skills/Planning/planning.png" id="1_nmllm"]
+[ext_resource type="Script" path="res://All ability/Skills/Planning/Planning.gd" id="2_c3kmr"]
+
+[resource]
+script = ExtResource("2_c3kmr")
+buff_value = 100
+id = 1
+forename = "Planning"
+cost_hp = 0
+cost_will = 0
+cooldown = 2
+active = true
+description = "Усиливает урон от следующей способности	"
+icon = ExtResource("1_nmllm")
+skill_prop_in_evolve_tree = {}
+class_spell = "No type"
+type_application = "Self"
+type = 4

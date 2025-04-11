@@ -17,7 +17,7 @@ var icon : Texture2D
 var icon_select : Texture2D
 var type : Array[String]
 var cost : int
-var initial_status : Array[Status]
+var initial_status : Array[Status_effect]
 var animation_trans : Tween.TransitionType
 var animation_ease : Tween.EaseType
 var duration : int = 1

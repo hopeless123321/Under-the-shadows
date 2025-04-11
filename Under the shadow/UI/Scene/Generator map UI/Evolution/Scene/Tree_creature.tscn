@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bbqtehn53mx44"]
+[gd_scene load_steps=28 format=3 uid="uid://bbqtehn53mx44"]
 
 [ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/Draggable.gd" id="1_vnpra"]
 [ext_resource type="Script" path="res://Global scripts/Classes/Evolution node.gd" id="2_j7lvf"]
@@ -12,7 +12,6 @@
 [ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="9_oe2jh"]
 [ext_resource type="Resource" uid="uid://bhuql8ih7fce3" path="res://All unit/Skeleton sword/Skeleton sword prop.tres" id="10_ok15b"]
 [ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/Team container.gd" id="10_qhd3i"]
-[ext_resource type="Texture2D" uid="uid://bs5j04qe6ejxc" path="res://All unit/King/King.png" id="10_spfe1"]
 [ext_resource type="Theme" uid="uid://ba2xexmg6jjlf" path="res://UI/All theme/Button/Unit button.tres" id="11_aeajx"]
 [ext_resource type="Theme" uid="uid://dmt5neysaicbo" path="res://UI/All theme/Sep_H/Unit_list.tres" id="11_sew8x"]
 [ext_resource type="Theme" uid="uid://bbhj3rpceb6bx" path="res://UI/All theme/Richtextlabel/ability_slot.tres" id="12_bl1p4"]
@@ -53,10 +52,7 @@ border_blend = true
 shadow_offset = Vector2(-3.37, -2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynd36"]
-atlas = ExtResource("10_spfe1")
 region = Rect2(0, 0, 64, 128)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sohx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl4v0"]
 
@@ -477,9 +473,8 @@ size_flags_horizontal = 14
 theme = ExtResource("9_oe2jh")
 text = "0"
 
-[node name="Skills stores" type="PanelContainer" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
+[node name="Skills stores" type="VBoxContainer" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_2sohx")
 
 [node name="Description" type="RichTextLabel" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop"]
 layout_mode = 2

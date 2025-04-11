@@ -158,9 +158,9 @@ func pick_rng_unit_list(elite : bool) -> Unit_list:
 	
 func get_random_map() -> String:
 	var filenames : Array[String] = []
-	var dir = DirAccess.open(PATH_TO_MAPS)
+	var dir : DirAccess = DirAccess.open(PATH_TO_MAPS)
 	dir.list_dir_begin()
-	var file_name = dir.get_next()
+	var file_name : String = dir.get_next()
 	while file_name != "":
 		if file_name.contains(".png") and file_name.contains(".import") == false:
 			filenames.append(file_name)

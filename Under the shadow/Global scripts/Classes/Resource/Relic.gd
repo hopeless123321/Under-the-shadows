@@ -1,7 +1,11 @@
 extends Resource
 class_name Relic
 
+
+@export var name : String
 @export var icon : Texture2D
+@export_multiline var text_tooltip : String
+@export_enum("End of turn", "Begin of turn", "Begin of battle", "End of battle", "Event", "Each room", "Skill cast", "Once") var time_application : String
 @export_flags("Heal", "Dmg", "Status", "Spawn", "Move", "Push", "Global Varuable") var type
 const flag_names : Dictionary = {
 		1 << 0: "Heal",

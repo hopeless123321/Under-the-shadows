@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3f7mg00lj0iy"
-path="res://.godot/imported/planning.png-2987813be0018aa4edae612058f732f6.ctex"
+uid="uid://cym75ckmuf04r"
+path="res://.godot/imported/eclipse.png-fd4946b3dfbc622ddac272fd830356ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All ability/Icon/planning.png"
-dest_files=["res://.godot/imported/planning.png-2987813be0018aa4edae612058f732f6.ctex"]
+source_file="res://All ability/Skills/Eclipse/eclipse.png"
+dest_files=["res://.godot/imported/eclipse.png-fd4946b3dfbc622ddac272fd830356ac.ctex"]
 
 [params]
 

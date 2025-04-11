@@ -2,7 +2,7 @@ extends Node
 
 var team : Array[Unit_res]
 
-const PATH_TO_PROP : String = "res://All unit/?/? prop.tres"
+const PATH_TO_PROP : String = "res://All unit/[name unit]/[name unit] prop.tres"
 const TRANSLATE_PROP_NAME : Array[String] = [
 	"forename",
 	"max_hp",
@@ -42,14 +42,14 @@ func load_team() -> void:
 
 func update_team(allies : Array) -> void:
 	team.clear()
-	for unit in allies:
+	for unit : Ally in allies:
 		var unit_to_update : Unit_res = Unit_res.new()
 		copy_property(unit_to_update, unit)
 		team.append(unit_to_update)
 
 func add_ally_to_team(forename : String) -> void:
 	var new_ally : Unit_res = Unit_res.new()
-	var to_resource : String = PATH_TO_PROP.replace("?", forename)
+	var to_resource : String = PATH_TO_PROP.replace("[name unit]", forename)
 	if FileAccess.file_exists(to_resource):
 		var resouce_prop : Unit_prop = load(to_resource)
 		copy_property(new_ally, resouce_prop)
@@ -87,4 +87,7 @@ func team_to_ally(ally_res : Unit_res) -> Ally:
 
 func copy_property(unit : Object, res : Object) -> void:
 	for prop in TRANSLATE_PROP_NAME:
+		if res is Unit_prop:
+			#unit.set("type", unit.get_class_flags())
+			print(unit.type)
 		unit.set(prop, res.get(prop))

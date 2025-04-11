@@ -11,7 +11,6 @@ const VECTORS_TO_LOOP : Array[Vector2i] = [Vector2i.UP, Vector2i.DOWN, Vector2i.
 @onready var stash_room : Node2D = $"Stash room"
 @onready var camera : Camera2D= $Camera2D
 
-
 var create_room : int = 0
 var count_rooms : int = 50
 var real_size : Vector2i
@@ -38,17 +37,17 @@ func create_dungeon() -> void: # создает данж
 	while create_room != count_rooms:
 		if create_room != 0:
 			init_pos = rooms.values().pick_random()
-		var next_pos = get_next_coords() + init_pos
+		var next_pos : Vector2i = get_next_coords() + init_pos
 		if rooms.values().has(next_pos) == false:
 			create_room += 1
-			var room = make_room(next_pos)
+			var room : Room = make_room(next_pos)
 			room.connected_room.append(rooms.find_key(init_pos))
 			rooms.find_key(init_pos).connected_room.append(room)
 			rng_room_offset(room)
 			create_path(room.global_position,rooms.find_key(init_pos).global_position)
 	escaped_room()
 	make_rng_loop()
-	for room in rooms.keys():
+	for room : Room in rooms.keys():
 		room.create()
 	pick_rng_room() 
 	
@@ -81,7 +80,7 @@ func rng_room_offset(room : Room) -> void:
 	room.global_position += Vector2(CELL_SIZE.x * randi_range(-3, 3), CELL_SIZE.y * randi_range(-3, 3))
 	
 func make_room(tile_pos : Vector2i) -> Room:
-	var room = Room.new()
+	var room : Room = Room.new()
 	room.id = create_room
 	room.room_coords = tile_pos
 	room.global_position = tile_pos * ROOM_SPACE
@@ -97,15 +96,15 @@ func pick_rng_room() -> void:
 	room.overview_room()
 
 func escaped_room() -> void: 
-	var only_rooms = rooms.keys()
+	var only_rooms := rooms.keys()
 	only_rooms.shuffle()
-	for room in only_rooms:
+	for room : Room in only_rooms:
 		if escaped_rooms.size() == counts_escaped:
 			break
 		if room.connected_room.size() == 1 and room.id > count_rooms / 2:
 			escaped_rooms[room] = room.set_escaped_room()
 
-func get_to_room(room_type : Room.Type_room) -> void:
+func get_to_room(room_type : GlobalInfo.Type_room) -> void:
 	var room_i : Object
 	match room_type:
 		0: #fight

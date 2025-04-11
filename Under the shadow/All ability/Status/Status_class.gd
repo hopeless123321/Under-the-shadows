@@ -1,14 +1,5 @@
 extends Resource
-class_name Status
+class_name Status_effect
 
-var name : String
-var text_for_tooltip : String
-var duration := 0
-var type : Type
-var _value : float
-enum Type {Constant, Once, Changing}
-
-
-func calc_resist(value : int, resist : float) -> float:
-	return value / resist
-	
+@export_enum("at start turn", "at end turn", "stacking", "once") var type_application : String
+@export var duration : String

@@ -43,7 +43,7 @@ var reaction : int:
 		reaction = value
 var move_after_skill : bool = false
 var free_move : bool = true
-var ability : Array[Skill]
+var ability : Array
 var icon : Texture2D
 var icon_select : Texture2D
 var type : Array[String]
@@ -58,7 +58,7 @@ var distance : int
 var tile_pos : Vector2i:
 	get:
 		return _tm.local_to_map(global_position)
-var statuses : Array[Status]
+var statuses : Array[Status_effect]
 var path : Array[Vector2i]
 var previous_state : Node2D = null
 var current_state : Node2D = null
@@ -96,28 +96,7 @@ func hitting() -> void:
 	pass
 func end_turn() -> void:
 	recharge_skill()
-	for status in statuses:
-		# cюда particle
-		match status.type:
-			0: #Constant
-				status.execute(self)
-				if status.duration == 0:
-					status.ending(self)
-					statuses.erase(status)
-				status.duration -= 1
-			1: #Once
-				if status.duration == 0:
-					status.ending(self)
-					statuses.erase(status)
-				status.duration -= 1
-			2: #Changing
-				status.execute(self)
-				if status._value == 0 or status.duration == 0:
-					status.ending(self)
-					statuses.erase(status)
-				if status.duration != 0:
-					status.duration -= 1
-
+	
 func recharge_skill() -> void:
 	for skill in ability:
 		if skill.cooldown != 0:

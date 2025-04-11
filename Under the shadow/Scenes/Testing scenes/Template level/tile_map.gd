@@ -21,53 +21,51 @@ func init(skill : Skill, init_tile_pos : Vector2i, ally : bool) -> Array[Vector2
 			for unit in get_tree().get_nodes_in_group(SkillManager.get_group(skill, ally)):
 				set_cell(FILL_FLOOR_L, unit.tile_pos, FILL_SOURCE, SELECTED_TILE)
 			# self don't effect to skill
-			erase_cell(FILL_FLOOR_L, init_tile_pos)
+			if !skill.self_target:
+				erase_cell(FILL_FLOOR_L, init_tile_pos)
 			set_cell(CLICK_FLOOR_L, init_tile_pos, FILL_SOURCE, SELF_TILE)
 			click_cells.append(init_tile_pos)
 		"All area":
 			for cell in SkillManager.fill_obs(init_tile_pos, skill.radius):
-				if Grid.get_unit(cell) == null:
-					set_cells_terrain_connect(FILL_FLOOR_L, [cell], 1, 0, false)
-				else:
-					if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
-						set_cell(FILL_FLOOR_L, cell, FILL_SOURCE, SELECTED_TILE)
+				if GlobalInfo.size_map.has_point(cell):
+					if Grid.get_unit(cell) == null:
+						set_cells_terrain_connect(FILL_FLOOR_L, [cell], 1, 0, false)
+					else:
+						if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
+							set_cell(FILL_FLOOR_L, cell, FILL_SOURCE, SELECTED_TILE)
+			if !skill.self_target:
+				erase_cell(FILL_FLOOR_L, init_tile_pos)
 			set_cell(CLICK_FLOOR_L, init_tile_pos, FILL_SOURCE, SELF_TILE)
 			click_cells.append(init_tile_pos)
-		"Target world":
+		"Targets world":
 			for unit in get_tree().get_nodes_in_group(SkillManager.get_group(skill, ally)):
 				set_cell(CLICK_FLOOR_L, unit.tile_pos, FILL_SOURCE, CHOICE_TILE)
 				click_cells.append(unit.tile_pos)
-			erase_cell(CLICK_FLOOR_L, init_tile_pos)
+			if !skill.self_target:
+				erase_cell(CLICK_FLOOR_L, init_tile_pos)
 		"Targets area":
 			for cell in SkillManager.fill_obs(init_tile_pos, skill.radius):
-				if Grid.get_unit(cell) == null:
-					set_cells_terrain_connect(FILL_FLOOR_L, [cell], 1, 0, false)
-				else:
-					if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
-						set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, CHOICE_TILE)
-						click_cells.append(cell)
-			erase_cell(CLICK_FLOOR_L, init_tile_pos)
-		"Target area":
-			for cell in SkillManager.fill_obs(init_tile_pos, skill.radius):
-				if Grid.get_unit(cell) == null:
-					set_cells_terrain_connect(FILL_FLOOR_L, [cell], 1, 0, false)
-				else:
-					if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
-						set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, CHOICE_TILE)
-						click_cells.append(cell)
-			erase_cell(CLICK_FLOOR_L, init_tile_pos)
+				if GlobalInfo.size_map.has_point(cell):
+					if Grid.get_unit(cell) == null:
+						set_cells_terrain_connect(FILL_FLOOR_L, [cell], 1, 0, false)
+					else:
+						if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
+							set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, CHOICE_TILE)
+							click_cells.append(cell)
+			if !skill.self_target:
+				erase_cell(CLICK_FLOOR_L, init_tile_pos)
 		"Directional":
-			if skill.with_vectors:
-				for n_cell in get_surrounding_cells(init_tile_pos):
+			for n_cell in get_surrounding_cells(init_tile_pos):
+				if GlobalInfo.size_map.has_point(n_cell):
 					var dir : Vector2 = init_tile_pos - n_cell
-					for cell in skill.vectors:
+					for cell : Vector2i in skill.vectors:
 						if dir.x != 0:
 							set_cells_terrain_connect(FILL_FLOOR_L, [Vector2i(cell.x * dir.x, cell.y) + init_tile_pos], 1, 0, false)
 						elif dir.y != 0:
-							set_cells_terrain_connect(FILL_FLOOR_L, [Vector2i(cell.y, cell.x * dir.y) + init_tile_pos], 1, 0, false)
-						
-			else:
-				for cell in SkillManager.fill_obs(init_tile_pos, skill.length_to_target):
+								set_cells_terrain_connect(FILL_FLOOR_L, [Vector2i(cell.y, cell.x * dir.y) + init_tile_pos], 1, 0, false)
+		"Directinal with preset":
+			for cell in SkillManager.fill_obs(init_tile_pos, skill.length_to_target):
+				if GlobalInfo.size_map.has_point(cell):
 					set_cells_terrain_connect(FILL_FLOOR_L, [cell], 1, 0, false)
 		"Self":
 			set_cell(CLICK_FLOOR_L, init_tile_pos, FILL_SOURCE, SELF_TILE)
@@ -95,45 +93,32 @@ func update(skill : Skill, mouse_tile_pos : Vector2i, selectable_cells : Array[V
 		"All area":
 			if mouse_tile_pos in selectable_cells:
 				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
-		"Target world":
+		"Targets world":
 			if mouse_tile_pos in selectable_cells:
 				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
 		"Targets area":
 			if mouse_tile_pos in selectable_cells:
 				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
-			#if mouse_tile_pos in selectable_cells:
-				#var unit : Unit = Grid.get_unit(mouse_tile_pos)
-				##if get_used_cells_by_id(CLICK_FLOOR_L, FILL_SOURCE, SELECTED_TILE).size() >= skill.count_targets:
-					##erase_cell(CLICK_FLOOR_L, effected_unit.front().tile_pos)
-					##effected_unit.pop_front()
-				#set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
-				#if skill.multiple:
-					#effected_unit.append(unit)
-				#elif !skill.multiple and unit not in effected_unit:
-					#effected_unit.append(unit)
-		"Target area":
-			if mouse_tile_pos in selectable_cells:
-				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
 		"Directional":
 			clear_layer(CLICK_FLOOR_L)
-			if skill.with_vectors:
-				var dir : Vector2i = Vector2i(mouse_tile_pos - unit_tile_pos).sign()
-				for cell in SkillManager.dir_with_vec(skill.vectors, dir, unit_tile_pos):
+			var dir : Vector2i = Vector2i(mouse_tile_pos - unit_tile_pos).sign()
+			for cell in SkillManager.dir_with_vec(skill.vectors, dir, unit_tile_pos):
+				if Grid.get_unit(cell) == null:
+					set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, AREA_TILE)
+				else:
+					if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
+						set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, SELECTED_TILE)
+		"Directinal with preset":
+			clear_layer(CLICK_FLOOR_L)
+			for cell in SkillManager.dir_without_vec(skill.radius, unit_tile_pos, mouse_tile_pos):
+				if cell in get_used_cells(FILL_FLOOR_L):
 					if Grid.get_unit(cell) == null:
 						set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, AREA_TILE)
 					else:
 						if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
 							set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, SELECTED_TILE)
-			else:
-				for cell in SkillManager.dir_without_vec(skill.radius, unit_tile_pos, mouse_tile_pos):
-					if cell in get_used_cells(FILL_FLOOR_L):
-						if Grid.get_unit(cell) == null:
-							set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, AREA_TILE)
-						else:
-							if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
-								set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, SELECTED_TILE)
-						if skill.pierce:
-									break
+					if skill.pierce:
+						break
 		"Self":
 			if mouse_tile_pos in selectable_cells:
 				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
@@ -141,11 +126,12 @@ func update(skill : Skill, mouse_tile_pos : Vector2i, selectable_cells : Array[V
 			if mouse_tile_pos in selectable_cells:
 				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
 				for cell in SkillManager.fill_obs(mouse_tile_pos, skill.radius):
-					if Grid.get_unit(cell) == null:
-						set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, AREA_TILE)
-					else:
-						if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
-							set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, SELECTED_TILE)
+					if GlobalInfo.size_map.has_point(cell):
+						if Grid.get_unit(cell) == null:
+							set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, AREA_TILE)
+						else:
+							if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
+								set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, SELECTED_TILE)
 			else:
 				clear_layer(CLICK_FLOOR_L)
 				for cell in selectable_cells:
@@ -158,7 +144,6 @@ func update(skill : Skill, mouse_tile_pos : Vector2i, selectable_cells : Array[V
 	return effected_unit
 
 func add_unit_exec(tile_pos : Vector2i, old_tile_pos : Vector2i = Vector2(-1, -1)) -> Unit:
-	print("131")
 	if old_tile_pos != -Vector2i.ONE:
 		erase_cell(FILL_FLOOR_L, old_tile_pos)
 	set_cell(FILL_FLOOR_L, tile_pos, FILL_SOURCE, SELECTED_TILE)

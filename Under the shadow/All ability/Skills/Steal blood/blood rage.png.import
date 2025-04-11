@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://don5tpwr1ihe1"
-path="res://.godot/imported/just sword.png-f637ef33ee1fb6ff9c232d9a073fb364.ctex"
+uid="uid://3sr4dcgow3au"
+path="res://.godot/imported/blood rage.png-6febd058d213eaef037dda8a37fde15f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All ability/Icon/just sword.png"
-dest_files=["res://.godot/imported/just sword.png-f637ef33ee1fb6ff9c232d9a073fb364.ctex"]
+source_file="res://All ability/Skills/Steal blood/blood rage.png"
+dest_files=["res://.godot/imported/blood rage.png-6febd058d213eaef037dda8a37fde15f.ctex"]
 
 [params]
 
