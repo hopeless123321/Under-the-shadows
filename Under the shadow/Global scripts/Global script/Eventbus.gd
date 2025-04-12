@@ -6,9 +6,9 @@ signal update_end_battle
 signal call_setting
 signal reveal_map(on_battle : bool)
 signal next_room(room_type : String)
-signal select_char(character_stats : Dictionary) 
-signal target_camera_to(charachter_pos : Vector2i)
-signal dying(character : Unit)
+signal select_char(unit : Unit) 
+signal dying(unit : Unit)
+signal target_camera_to(unit_pos : Vector2i)
 signal update_tile_pos(old_tile : Vector2i)
 signal souls_changed(value : int)
 signal give_queue(node : Node)

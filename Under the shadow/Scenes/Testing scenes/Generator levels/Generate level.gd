@@ -11,9 +11,8 @@ const TRIGGER : int = 3
 const OBSTACLE : int = 4
 const BORDER : int = 5
 
-const PATH_TO_UNIT : String = "res://All unit/?/?.tscn"
+const PATH_TO_UNIT : String = "res://All unit/[unitname]/[unitname].tscn"
 const PATH_TO_UNIT_LIST : String = "res://Unit lists/Location/[location]/"
-
 const NODE_PATH_TM : NodePath = "Template_level_node/TileMap"
 const NODE_PATH_PL : NodePath = "Template_level_node/Units/Ally"
 const NODE_PATH_AI : NodePath = "Template_level_node/Units/Enemy"
@@ -58,7 +57,7 @@ func create(elite : bool = false) -> void:
 
 func add_ally() -> void:
 	for unit in Teaminfo.inst_ally():
-		var unit_scene : String = PATH_TO_UNIT.replace("?", unit.forename)
+		var unit_scene : String = PATH_TO_UNIT.replace("[unitname]", unit.forename)
 		var unit_instant = load(unit_scene).instantiate()
 		var state_machine_pl : Node2D = STATE_MAC_PL.instantiate()
 		get_node(NODE_PATH_PL).add_child(unit_instant)
@@ -69,7 +68,7 @@ func add_ally() -> void:
 		
 func add_enemy(unit_list : Unit_list) -> void:
 	for enemy_prop : Unit_prop in choose_char(unit_list):
-		var path_to_unit_scene : String = PATH_TO_UNIT.replace("?", enemy_prop.forename)
+		var path_to_unit_scene : String = PATH_TO_UNIT.replace("[unitname]", enemy_prop.forename)
 		var unit_instant = load(path_to_unit_scene).instantiate()
 		var state_machine_ai : Node2D = STATE_MAC_AI.instantiate()
 		var enemy : Enemy = Teaminfo.set_stat_enemy(enemy_prop)

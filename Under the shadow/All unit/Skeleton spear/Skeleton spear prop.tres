@@ -1,10 +1,7 @@
-[gd_resource type="Resource" script_class="Unit_prop" load_steps=7 format=3 uid="uid://baue0q8hetqpj"]
+[gd_resource type="Resource" script_class="Unit_prop" load_steps=4 format=3 uid="uid://baue0q8hetqpj"]
 
-[ext_resource type="Resource" uid="uid://dgtxjrhahrmwm" path="res://All ability/Skills/Madness/Madness.tres" id="1_inj7c"]
 [ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="1_jfw1u"]
 [ext_resource type="Texture2D" uid="uid://hnucsem8f52w" path="res://All unit/Skeleton spear/Skeleton spear icon.png" id="1_y2ssp"]
-[ext_resource type="Resource" uid="uid://c580dtbkfoeox" path="res://All ability/Skills/Moon revenge/Moon revenge.tres" id="2_tyhbi"]
-[ext_resource type="Resource" uid="uid://bkkd015jtlo0p" path="res://All ability/Skills/Sword sweep/Sword sweep.tres" id="3_hbfw5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3r4r"]
 atlas = ExtResource("1_y2ssp")
@@ -22,7 +19,7 @@ speed = 4
 reaction = 9
 move_after_skill = false
 free_move = false
-ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([ExtResource("1_inj7c"), ExtResource("2_tyhbi"), ExtResource("3_hbfw5")])
+skills = Array[Resource("res://Global scripts/Classes/Skill.gd")]([])
 icon = ExtResource("1_y2ssp")
 icon_select = SubResource("AtlasTexture_u3r4r")
 type = 2

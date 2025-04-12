@@ -15,7 +15,7 @@ const TRANSLATE_PROP_NAME : Array[String] = [
 	"reaction",
 	"move_after_skill",
 	"free_move",
-	"ability",
+	"skills",
 	"icon",
 	"icon_select",
 	"type",
@@ -88,6 +88,5 @@ func team_to_ally(ally_res : Unit_res) -> Ally:
 func copy_property(unit : Object, res : Object) -> void:
 	for prop in TRANSLATE_PROP_NAME:
 		if res is Unit_prop:
-			#unit.set("type", unit.get_class_flags())
 			print(unit.type)
 		unit.set(prop, res.get(prop))

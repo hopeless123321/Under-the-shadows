@@ -33,7 +33,7 @@ func update(unit_prop : Resource, from_team : bool) -> void:
 	will_resist_value.text = str(unit_prop.resist_will)
 	dmg_amp_value.text = str(unit_prop.dmg_amp)
 	
-	for skill in unit_prop.ability:
+	for skill in unit_prop.skills:
 		var skill_d : VBoxContainer = SKILL_DESCRIPTION.instantiate()
 		skills_stores.add_child(skill_d)
 		skill_d.create_skill(skill)

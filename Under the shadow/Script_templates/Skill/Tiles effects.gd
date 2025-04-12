@@ -4,8 +4,7 @@ const PROP_TO_REVEAL : Array[String] = [
 	"cost_will",
 	"active",
 	"class_spell",
-	"type_application",
-	"kind",
+	"kind_of_tile",
 	"radius",
 	"targets"
 ]

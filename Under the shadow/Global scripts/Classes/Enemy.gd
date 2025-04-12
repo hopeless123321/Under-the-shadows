@@ -94,23 +94,7 @@ func move_to_target() -> void:
 	path.clear()
 	$"AnimationPlayer".play("stay")
 func select() -> void:
-	var data := {
-			"unit" : self,
-			"hp" : hp,
-			"max_hp" : max_hp,
-			"will" : will,
-			"resist_mag_dmg" : resist_mag_dmg,
-			"resist_phys_dmg" : resist_phys_dmg,
-			"resist_will" : resist_will,
-			"speed" : speed,
-			"reaction" : reaction,
-			"ability" : ability,
-			"dmg_amp" : dmg_amp,
-			"type" : type,
-			"name" : forename,
-			"icon" : icon_select
-		}
-	Eventbus.emit_signal('select_char', data)
+	Eventbus.emit_signal('select_char', self)
 	Eventbus.emit_signal("target_camera_to", global_position)
 
 func sort_by_hp(a : Unit, b : Unit, reverse : bool) -> bool:

@@ -31,8 +31,7 @@ const TYPE_DMG_FLAGS : Dictionary = {
 		1 << 0: "Pure",
 		1 << 1: "Magic",
 		1 << 2: "Physical",
-		1 << 3: "Will"
-}
+		1 << 3: "Will"}
 
 func get_type_array() -> Array[String]:
 	var enabled_flags : Array[String] = []
@@ -48,3 +47,4 @@ func get_type_dmg() -> Array[String]:
 		if (type & flag) == flag:
 			enabled_flags.append(TYPE_DMG_FLAGS[flag])
 	return enabled_flags
+

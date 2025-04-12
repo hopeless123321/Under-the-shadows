@@ -5,7 +5,6 @@ const PROP_TO_REVEAL : Array[String] = [
 	"cost_will",
 	"active",
 	"class_spell",
-	"type_application",
 	#"scema_cast",
 	"type_unit"
 ]

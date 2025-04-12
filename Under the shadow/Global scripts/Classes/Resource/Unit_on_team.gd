@@ -12,7 +12,7 @@ var speed : int
 var reaction : int
 var move_after_skill : bool = false
 var free_move : bool = true
-var ability : Array[Skill]
+var skills : Array[Skill]
 var icon : Texture2D
 var icon_select : Texture2D
 var type : Array[String]

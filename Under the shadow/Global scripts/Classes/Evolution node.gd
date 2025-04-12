@@ -5,9 +5,10 @@ class_name EvolutionNode
 @export var connected_down : Array[EvolutionNode]
 @export var connected_up : Array[EvolutionNode]
 
-@onready var team_container = $"../../../UI Evolve/PanelContainer/Teaminfo/Team container"
-@onready var hbox = $"../../../UI Evolve/Souls container/MarginContainer/Hbox"
-@onready var draggable = $".."
+@onready var team_container : GridContainer = $"../../../UI Evolve/PanelContainer/Teaminfo/Team container"
+@onready var hbox : HBoxContainer = $"../../../UI Evolve/Souls container/MarginContainer/Hbox"
+@onready var draggable : Control = $".."
+
 
 
 var connected_lines : Array[Line_evolve_node]

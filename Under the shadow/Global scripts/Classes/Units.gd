@@ -43,7 +43,7 @@ var reaction : int:
 		reaction = value
 var move_after_skill : bool = false
 var free_move : bool = true
-var ability : Array
+var skills : Array[Skill]
 var icon : Texture2D
 var icon_select : Texture2D
 var type : Array[String]
@@ -76,7 +76,7 @@ func initiation() -> void:
 	previous_state = _st.idle
 	current_state = _st.idle
 	#make ability unique
-	ability.assign(ability.map(unique_ability))
+	skills.assign(skills.map(unique_ability))
 
 func _physics_process(_delta : float) -> void:
 	if current_state != null:
@@ -98,7 +98,7 @@ func end_turn() -> void:
 	recharge_skill()
 	
 func recharge_skill() -> void:
-	for skill in ability:
+	for skill in skills:
 		if skill.cooldown != 0:
 			skill.cooldown_timer -= 1
 

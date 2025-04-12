@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c4c4o0rhpucr2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qmm24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v4ey6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_er6l8"]
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_qmm24")
+Button/styles/focus = SubResource("StyleBoxEmpty_v4ey6")
+Button/styles/normal = SubResource("StyleBoxEmpty_er6l8")
