@@ -1,12 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://83uvu4m3msd"]
+[gd_scene load_steps=31 format=3 uid="uid://83uvu4m3msd"]
 
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Map generator.gd" id="1_hjbgk"]
 [ext_resource type="Texture2D" uid="uid://dtpngvp4naspi" path="res://Tile/Tile for map generator/dungeon generator tileset.png" id="2_nvusg"]
+[ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Room manager.gd" id="3_jqqcn"]
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Camera.gd" id="3_wmt2u"]
 [ext_resource type="PackedScene" uid="uid://bbqtehn53mx44" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree_creature.tscn" id="4_4t84h"]
 [ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="5_ah6ki"]
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree_creature.gd" id="5_qjf4a"]
 [ext_resource type="Script" path="res://UI/Scene/Generator map UI/UI on map.gd" id="6_36ked"]
 [ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="6_pe81x"]
+[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Manager upper ui.gd" id="8_nsn5f"]
+[ext_resource type="Theme" uid="uid://dqgbwui6773rj" path="res://UI/All theme/Separators/Separator upper UI.tres" id="9_abyqq"]
+[ext_resource type="Texture2D" uid="uid://chsl2tkr2w23w" path="res://UI/Sprites/UI icons.png" id="9_kbj1d"]
+[ext_resource type="Theme" uid="uid://c4c4o0rhpucr2" path="res://UI/All theme/Button/Cut excess.tres" id="11_uyn7v"]
+[ext_resource type="PackedScene" uid="uid://cqoe8jc5ucobr" path="res://UI/Scene/UI battle/Scene/Menu in gameplay.tscn" id="14_nfdg1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cobdl"]
 texture = ExtResource("2_nvusg")
@@ -97,21 +104,55 @@ terrain_set_0/terrain_0/name = "path"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_cobdl")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nikig"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dduh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1hhhc"]
-atlas = ExtResource("5_ah6ki")
-region = Rect2(0, 144, 64, 16)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssc36"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8vqfg"]
-atlas = ExtResource("5_ah6ki")
-region = Rect2(0, 128, 64, 16)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mis1w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7kyn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xprgb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_25bq3"]
 atlas = ExtResource("5_ah6ki")
 region = Rect2(0, 64, 16, 64)
+
+[sub_resource type="Theme" id="Theme_rxct7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiavs"]
+atlas = ExtResource("5_ah6ki")
+region = Rect2(0, 256, 512, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tk7ew"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("AtlasTexture_eiavs")
+texture_margin_bottom = 2.0
+expand_margin_bottom = 1.0
+axis_stretch_vertical = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6xrq"]
+atlas = ExtResource("9_kbj1d")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbyaw"]
+atlas = ExtResource("5_ah6ki")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fckfr"]
+atlas = ExtResource("5_ah6ki")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngax5"]
+atlas = ExtResource("9_kbj1d")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xymox"]
+atlas = ExtResource("9_kbj1d")
+region = Rect2(64, 64, 64, 64)
 
 [node name="Map generator" type="Node2D"]
 z_index = 955
@@ -130,7 +171,8 @@ tile_set = SubResource("TileSet_hii5k")
 format = 2
 layer_0/name = "Paths"
 
-[node name="Stash room" type="Node2D" parent="."]
+[node name="Room manager" type="Node2D" parent="."]
+script = ExtResource("3_jqqcn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 340)
@@ -144,6 +186,7 @@ z_index = 5
 anchors_preset = -1
 anchor_top = -1.0
 anchor_bottom = 0.0
+script = ExtResource("5_qjf4a")
 
 [node name="Clip frame" parent="CanvasLayer/Tree creature" index="0"]
 anchors_preset = -1
@@ -155,39 +198,20 @@ anchors_preset = -1
 [node name="Crossbow" parent="CanvasLayer/Tree creature/Clip frame/Draggable" index="4" node_paths=PackedStringArray("connected_down")]
 connected_down = [null]
 
-[node name="Scroll Up" type="PanelContainer" parent="CanvasLayer/Tree creature"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 1
+[node name="Return button" parent="CanvasLayer/Tree creature" index="2"]
 anchors_preset = -1
+anchor_left = 0.0
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.0
 anchor_bottom = 1.0
-offset_top = -15.5
-offset_right = -1.0
-offset_bottom = 15.5
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxEmpty_nikig")
-
-[node name="Container arrow" type="VBoxContainer" parent="CanvasLayer/Tree creature/Scroll Up"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = -1
-alignment = 1
-
-[node name="To main" type="TextureRect" parent="CanvasLayer/Tree creature/Scroll Up/Container arrow"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_1hhhc")
-stretch_mode = 5
-
-[node name="To evolution" type="TextureRect" parent="CanvasLayer/Tree creature/Scroll Up/Container arrow"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-size_flags_stretch_ratio = 2.28
-mouse_filter = 0
-texture = SubResource("AtlasTexture_8vqfg")
+offset_left = 16.0
+offset_top = -104.0
+offset_right = 104.0
+offset_bottom = -16.0
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3dduh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ssc36")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mis1w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t7kyn")
 
 [node name="UI on map" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -199,16 +223,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("6_36ked")
 
-[node name="Main Ui" type="Control" parent="CanvasLayer/UI on map"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="Spells" type="Control" parent="CanvasLayer/UI on map"]
+visible = false
 top_level = true
 layout_mode = 1
 anchor_left = 1.0
@@ -459,10 +475,118 @@ alignment = 1
 layout_mode = 2
 texture = SubResource("AtlasTexture_25bq3")
 
-[connection signal="mouse_entered" from="CanvasLayer/Tree creature/Scroll Up/Container arrow/To main" to="CanvasLayer/UI on map" method="_on_to_main_mouse_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/Tree creature/Scroll Up/Container arrow/To evolution" to="CanvasLayer/Tree creature/UI Evolve/PanelContainer/Teaminfo/Team container" method="_on_to_evolution_mouse_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/Tree creature/Scroll Up/Container arrow/To evolution" to="CanvasLayer/UI on map" method="_on_to_evolution_mouse_entered"]
+[node name="Upper UI" type="Panel" parent="CanvasLayer/UI on map"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme = SubResource("Theme_rxct7")
+theme_override_styles/panel = SubResource("StyleBoxTexture_tk7ew")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI on map/Upper UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -1.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Upper UI container" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+script = ExtResource("8_nsn5f")
+
+[node name="Turn" type="Label" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("6_pe81x")
+theme_override_font_sizes/font_size = 23
+text = "Left time: 6"
+
+[node name="VSeparator3" type="VSeparator" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+layout_mode = 2
+theme = ExtResource("9_abyqq")
+theme_override_constants/separation = 10
+
+[node name="Stage" type="Label" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+layout_mode = 2
+theme = ExtResource("6_pe81x")
+theme_override_font_sizes/font_size = 23
+text = "Current location: "
+
+[node name="VSeparator2" type="VSeparator" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+layout_mode = 2
+theme = ExtResource("9_abyqq")
+
+[node name="In Game timer" type="Label" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+layout_mode = 2
+theme = ExtResource("6_pe81x")
+theme_override_font_sizes/font_size = 23
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+layout_mode = 2
+theme = ExtResource("9_abyqq")
+
+[node name="Souls icon" type="TextureRect" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_y6xrq")
+stretch_mode = 5
+
+[node name="Souls" type="Label" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+layout_mode = 2
+theme = ExtResource("6_pe81x")
+theme_override_font_sizes/font_size = 23
+text = "99"
+
+[node name="HboxCont relics" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Left button" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/HboxCont relics"]
+visible = false
+layout_mode = 2
+icon = SubResource("AtlasTexture_mbyaw")
+flat = true
+
+[node name="Relic Stash" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/HboxCont relics"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Right button" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/HboxCont relics"]
+visible = false
+layout_mode = 2
+icon = SubResource("AtlasTexture_fckfr")
+flat = true
+
+[node name="Switch" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("11_uyn7v")
+icon = SubResource("AtlasTexture_ngax5")
+flat = true
+icon_alignment = 1
+
+[node name="Settings" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme = ExtResource("11_uyn7v")
+icon = SubResource("AtlasTexture_xymox")
+flat = true
+icon_alignment = 1
+
+[node name="Menu in gameplay" parent="CanvasLayer" instance=ExtResource("14_nfdg1")]
+
+[connection signal="gui_input" from="CanvasLayer/Tree creature/Clip frame/Draggable" to="CanvasLayer/Tree creature/Clip frame/Draggable" method="_on_gui_input"]
+[connection signal="pressed" from="CanvasLayer/Tree creature/Return button" to="CanvasLayer/Tree creature" method="reveal_hide_tree"]
 [connection signal="mouse_exited" from="CanvasLayer/UI on map/Spells/Panel" to="CanvasLayer/UI on map" method="_on_panel_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/UI on map/Spells/Scroll right/Container arrow/To spell" to="CanvasLayer/UI on map" method="_on_to_spell_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Switch" to="." method="_switch_button"]
+[connection signal="pressed" from="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Settings" to="CanvasLayer/Menu in gameplay" method="hide_reveal_menu"]
 
 [editable path="CanvasLayer/Tree creature"]

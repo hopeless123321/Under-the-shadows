@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bbqtehn53mx44"]
+[gd_scene load_steps=33 format=3 uid="uid://bbqtehn53mx44"]
 
 [ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/Draggable.gd" id="1_vnpra"]
 [ext_resource type="Script" path="res://Global scripts/Classes/Evolution node.gd" id="2_j7lvf"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://Global scripts/Classes/Button_unit.gd" id="12_dvn1m"]
 [ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="13_fsrxw"]
 [ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Scene/Souls counter.gd" id="19_hlk1k"]
+[ext_resource type="Theme" uid="uid://c4c4o0rhpucr2" path="res://UI/All theme/Button/Cut excess.tres" id="19_ush8b"]
+[ext_resource type="Texture2D" uid="uid://chsl2tkr2w23w" path="res://UI/Sprites/UI icons.png" id="20_ve8om"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gd22t"]
 bg_color = Color(0.145098, 0.129412, 0.121569, 1)
@@ -61,6 +63,23 @@ region = Rect2(0, 0, 64, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwcns"]
 atlas = ExtResource("7_gg1o4")
 region = Rect2(384, 224, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0wpp"]
+atlas = ExtResource("7_gg1o4")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nls62"]
+texture = SubResource("AtlasTexture_g0wpp")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppt0f"]
+atlas = ExtResource("20_ve8om")
+region = Rect2(128, 64, 64, 64)
 
 [node name="Tree creature" type="Control"]
 layout_mode = 3
@@ -538,5 +557,22 @@ theme = ExtResource("9_oe2jh")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "-"
+
+[node name="Return button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -624.0
+offset_top = 236.0
+offset_right = -536.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("19_ush8b")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nls62")
+icon = SubResource("AtlasTexture_ppt0f")
 
 [connection signal="pressed" from="UI Evolve/PanelContainer/Teaminfo/Team container/New unit" to="UI Evolve/PanelContainer/Teaminfo/Team container" method="_on_new_unit_pressed"]

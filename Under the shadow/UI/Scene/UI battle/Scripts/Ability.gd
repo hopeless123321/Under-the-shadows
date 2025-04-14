@@ -21,6 +21,7 @@ var data_skill : Skill
 
 
 func init() -> void:
+	print(get_parent())
 	action_button = "Num_" + str(get_parent().get_child_count())
 	tooltip_text = set_text_tooltip(data_skill)
 	if data_skill.cooldown != 0:

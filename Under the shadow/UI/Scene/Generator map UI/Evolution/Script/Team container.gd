@@ -16,9 +16,6 @@ func _input(event : InputEvent) -> void: #Сброс при ESC
 		for line : Line_evolve_node in get_tree().get_nodes_in_group("Line evolution"):
 			line.active = false
 
-func _on_to_evolution_mouse_entered() -> void:
-	update()
-
 func update() -> void: #обновляется каждый раз как появляется меню
 	for unit_b : Unit_button in get_children(true):
 		if unit_b.name != "New unit":

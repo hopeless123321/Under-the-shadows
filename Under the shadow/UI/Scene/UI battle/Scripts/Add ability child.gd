@@ -16,6 +16,8 @@ const QUICK_BUTTON_TEMP : String = "Num_[number]"
 @onready var will_bar : TextureProgressBar = $Will
 @onready var hp_bar : TextureProgressBar = $Hp
 
+@onready var skills_cont: HBoxContainer = $"Skills cont"
+
 @export var timer : float = 1.0
 var skill_container : PackedScene = preload("res://UI/Scene/UI battle/Scene/Ability slot.tscn")
 
@@ -41,7 +43,7 @@ func update_ui(unit : Unit) -> void:
 		var skills : Array[Skill] = unit.skills
 		for order : int in skills.size():
 			var skills_instance = skill_container.instantiate()
-			add_child(skills_instance)
+			skills_cont.add_child(skills_instance)
 			skills_instance.texture_normal = skills[order].icon
 			skills_instance.unit = unit
 			skills_instance.data_skill = skills[order]
@@ -49,9 +51,8 @@ func update_ui(unit : Unit) -> void:
 			
 
 func clear_skill_slots() -> void:
-	if get_children().size() > 6:
-			for child in range(6, get_children().size()):
-				get_child(child).queue_free()
+	for skill in skills_cont.get_children():
+		skill.queue_free()
 
 func update_progress_bar(hp_value : int, will_value : int, max_hp : int) -> void:
 	var hp_will_tween : Tween = create_tween()

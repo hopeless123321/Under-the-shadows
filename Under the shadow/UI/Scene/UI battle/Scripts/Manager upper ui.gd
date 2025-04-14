@@ -5,7 +5,10 @@ extends HBoxContainer
 @onready var in_game_timer : Label = $"In Game timer"
 @onready var souls : Label = $Souls
 @onready var relics_container : HBoxContainer = $"HboxCont relics"
-@onready var map_button : Button = $"Map button"
+@onready var switch: Button = $Switch
+
+const EVOLUTION_ICON : Rect2 = Rect2(128, 0, 64, 64)
+const MAP_ICON : Rect2 = Rect2(64, 0, 64, 64) 
 
 var time : int
 
@@ -31,6 +34,12 @@ func update_souls(value : int) -> void:
 	tween_label.set_trans(Tween.TRANS_BOUNCE)
 	tween_label.tween_property(souls, "text", str(value), 1)
 
+func switch_button(on_fight : bool, left_time : int) -> void:
+	if on_fight:
+		switch.icon.region = MAP_ICON
+		turn_label.text = "Turn: 1"
+		stage.text = "Current location: " + str(GlobalInfo.location)
+	else:
+		switch.icon.region = EVOLUTION_ICON
+		turn_label.text = "Left time: " + str(left_time)
 
-func _on_map_button_pressed() -> void:
-	Eventbus.emit_signal("reveal_map")

@@ -41,7 +41,6 @@ texture = ExtResource("2_w05yx")
 expand_mode = 1
 
 [node name="Initial" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.695
@@ -98,6 +97,7 @@ text = "Выход
 flat = true
 
 [node name="Choose difficult" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 anchor_right = 0.381
 anchor_bottom = 1.001

@@ -6,12 +6,10 @@ func _ready() -> void:
 	Eventbus.connect("select_char", update_ui)
 	Eventbus.connect("update_prop_ui", update_prop_ui)
 	
-func update_ui(data : Dictionary) -> void:
-	selected_unit = data["unit"]
+func update_ui(unit : Unit) -> void:
 	text = ""
-	print(selected_unit.forename)
-	text += data["name"] + "\n"
-	for type in data['type']:
+	text += unit.forename + "\n"
+	for type in unit.type:
 		text += type + ', '
 	text = text.erase(text.length() - 2, 2)
 	

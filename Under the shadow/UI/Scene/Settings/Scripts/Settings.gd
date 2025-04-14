@@ -16,12 +16,12 @@ func change() -> void:
 		var tween_setting : Tween = create_tween()
 		tween_setting.set_trans(Tween.TRANS_BACK)
 		tween_setting.set_ease(Tween.EASE_IN_OUT)
-		tween_setting.tween_property(self, "position", Vector2(0, 0), 1.5)
+		tween_setting.tween_property(self, "position", Vector2(0, 0), 1)
 	else:
 		var tween_setting : Tween = create_tween()
 		tween_setting.set_trans(Tween.TRANS_BACK)
 		tween_setting.set_ease(Tween.EASE_IN_OUT)
-		tween_setting.tween_property(self, "position", Vector2(0, -size.y), 1.5)
+		tween_setting.tween_property(self, "position", Vector2(0, size.y), 1)
 
 
 func _on_return_pressed() -> void:

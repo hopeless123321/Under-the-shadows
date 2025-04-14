@@ -12,7 +12,7 @@ const OBSTACLE : int = 4
 const BORDER : int = 5
 
 const PATH_TO_UNIT : String = "res://All unit/[unitname]/[unitname].tscn"
-const PATH_TO_UNIT_LIST : String = "res://Unit lists/Location/[location]/"
+const PATH_TO_UNIT_LIST : String = "res://Unit lists/Location/[location]"
 const NODE_PATH_TM : NodePath = "Template_level_node/TileMap"
 const NODE_PATH_PL : NodePath = "Template_level_node/Units/Ally"
 const NODE_PATH_AI : NodePath = "Template_level_node/Units/Enemy"
@@ -42,6 +42,8 @@ var path_to_char : String
 var tile_for_ally : Array[Vector2i]
 var tile_for_enemy : Array[Vector2i] 
 
+func _ready() -> void:
+	Eventbus.connect("to_main_menu", to_main_menu)
 
 func create(elite : bool = false) -> void:
 	Eventbus.connect("reveal_map", reveal_hide_map)
@@ -147,14 +149,9 @@ func choose_char(current_unit_list : Unit_list) -> Array[Unit_prop]:
 
 func pick_rng_unit_list(elite : bool) -> Unit_list:
 	var dir : DirAccess
-	if elite:
-		dir = DirAccess.open(PATH_TO_UNIT_LIST.replace("[location]", GlobalInfo.current_location) + "Elite/")
-	else:
-		dir = DirAccess.open(PATH_TO_UNIT_LIST.replace("[location]", GlobalInfo.current_location) + "Normal/")
+	dir = DirAccess.open(PATH_TO_UNIT_LIST.replace("[location]", GlobalInfo.location) + "/")
 	var files : PackedStringArray = dir.get_files()
-
 	return load((dir.get_current_dir() + "/" + files[randi() %  files.size()]))
-	
 func get_random_map() -> String:
 	var filenames : Array[String] = []
 	var dir : DirAccess = DirAccess.open(PATH_TO_MAPS)
@@ -192,3 +189,6 @@ func sort_by_cost(a : Unit_prop, b : Unit_prop) -> bool:
 
 func reveal_hide_map() -> void:
 	visible = !visible
+
+func to_main_menu() -> void:
+	queue_free()

@@ -2,10 +2,10 @@ extends Button
 class_name Room
 
 var id : int
-var path_to : int
 var connected_room : Array[Room]
 var room_coords : Vector2i
 var type_room : GlobalInfo.Type_room
+var map_name : String
 
 const EVENT := preload("res://Scenes/Dungeon generator/Rooms/Icons/Event.png")
 const UNKNOWN := preload("res://Scenes/Dungeon generator/Rooms/Icons/unknown.png")
@@ -50,9 +50,10 @@ func overview_room() -> void:
 	avaible_conn_room()
 
 func get_to() -> void:
-	icon = CONVERT_TO_ICON[type_room]
-	avaible_conn_room()
-	Eventbus.emit_signal("next_room", type_room)
+	#if get_p5arent().available_room(self):
+		icon = CONVERT_TO_ICON[type_room]
+		avaible_conn_room()
+		Eventbus.emit_signal("next_room", type_room)
 
 func sum_of_chance(next_value : int, accum : int) -> int:
 	return next_value + accum

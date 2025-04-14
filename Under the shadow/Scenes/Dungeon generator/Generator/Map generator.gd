@@ -8,8 +8,12 @@ const FIGHT_ROOM = preload("res://Scenes/Testing scenes/Generator levels/Generat
 const VECTORS_TO_LOOP : Array[Vector2i] = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2.RIGHT]
 
 @onready var tile_map_path : TileMap = $Paths
-@onready var stash_room : Node2D = $"Stash room"
-@onready var camera : Camera2D= $Camera2D
+@onready var room_manager : Node2D = $"Room manager"
+@onready var camera : Camera2D = $Camera2D
+@onready var tree_creature : Control = $"CanvasLayer/Tree creature"
+@onready var upper_ui_container : HBoxContainer = $"CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"
+
+var left_time : float = GlobalInfo.turns_to_way_out
 
 var create_room : int = 0
 var count_rooms : int = 50
@@ -18,7 +22,10 @@ var rooms : Dictionary
 var escaped_rooms : Dictionary
 var paths_to_room : AStarGrid2D = AStarGrid2D.new()
 var counts_escaped : int = 4
-var on_fight : bool = false
+var on_fight : bool = false:
+	set(value):
+		on_fight = value
+		upper_ui_container.switch_button(value, left_time)
 
 func _ready() -> void:
 	Eventbus.connect("next_room", get_to_room)
@@ -87,12 +94,13 @@ func make_room(tile_pos : Vector2i) -> Room:
 	room.custom_minimum_size = Vector2i(48, 48)
 	rooms[room] = room.room_coords
 	room.theme = ROOMS_THEME
-	stash_room.add_child(room)
+	room_manager.add_child(room)
 	return room
 	
 func pick_rng_room() -> void:
 	var room : Room = rooms.keys().front()
 	room.disabled = false
+	
 	room.overview_room()
 
 func escaped_room() -> void: 
@@ -128,7 +136,7 @@ func get_to_room(room_type : GlobalInfo.Type_room) -> void:
 
 func calculate_general_diff() -> int:
 	return GlobalInfo.stage * 3\
-	+ GlobalInfo.stage * GlobalInfo.DIFFICULT.get(GlobalInfo.diffucult)\
+	+ GlobalInfo.stage * GlobalInfo.difficult_on_battle\
 	* randi_range(0.9, 1.1)
 
 func reveal_hide_map() -> void:
@@ -140,3 +148,11 @@ func save_map() -> void:
 
 func battle_over() -> void:
 	on_fight = false
+
+func _switch_button() -> void:
+	if on_fight:
+		Eventbus.emit_signal("reveal_map")
+	else:
+		tree_creature.reveal_hide_tree()
+
+

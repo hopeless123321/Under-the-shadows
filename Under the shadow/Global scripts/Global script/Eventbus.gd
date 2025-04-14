@@ -1,5 +1,6 @@
 extends Node
 
+signal to_main_menu
 signal save_all
 signal update_prop_ui
 signal update_end_battle

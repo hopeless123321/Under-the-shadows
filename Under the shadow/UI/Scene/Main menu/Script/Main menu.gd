@@ -44,12 +44,10 @@ func _on_exit_pressed() -> void:
 
 func map_generated() -> void:
 	Teaminfo.add_ally_to_team("King")
-	Teaminfo.add_ally_to_team("Skeleton spear")
-	GlobalInfo.current_location = "Chambers"
+	GlobalInfo.location = "Near throne"
 	get_tree().change_scene_to_packed(MapGenerator)
 
 func _on_begin_pressed() -> void:
-	GlobalInfo.diffucult = "eclipse"
 	map_generated()
 
 

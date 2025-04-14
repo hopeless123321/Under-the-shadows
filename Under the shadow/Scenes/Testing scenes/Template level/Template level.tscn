@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cndr886j3r16p"]
+[gd_scene load_steps=16 format=3 uid="uid://cndr886j3r16p"]
 
 [ext_resource type="PackedScene" uid="uid://dyejlaprpu8ve" path="res://Scenes/Testing scenes/Camera/camera_2d.tscn" id="1_4r3br"]
 [ext_resource type="Script" path="res://UI/Particles/Gpu ash generate.gd" id="2_ndlsl"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scenes/Testing scenes/Template level/Manager.gd" id="5_shdi2"]
 [ext_resource type="Script" path="res://Scenes/Testing scenes/Template level/CanvasLayer.gd" id="6_xeg2h"]
 [ext_resource type="Script" path="res://Scenes/Testing scenes/Template level/Regeneration button.gd" id="7_pdymu"]
-[ext_resource type="PackedScene" uid="uid://cqoe8jc5ucobr" path="res://UI/Scene/UI battle/Scene/Menu in gameplay.tscn" id="8_bnji6"]
 [ext_resource type="PackedScene" uid="uid://b0v8e7ytofvta" path="res://UI/Scene/UI battle/Scene/UI battle.tscn" id="9_3kcvc"]
 
 [sub_resource type="Gradient" id="Gradient_64sni"]
@@ -119,10 +118,6 @@ offset_bottom = -0.280029
 text = "Завершение текущего уровня"
 script = ExtResource("7_pdymu")
 metadata/_edit_use_anchors_ = true
-
-[node name="Menu in gameplay" parent="CanvasLayer" instance=ExtResource("8_bnji6")]
-visible = false
-z_index = 1
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("9_3kcvc")]
 mouse_filter = 2
