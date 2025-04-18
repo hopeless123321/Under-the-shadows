@@ -2,8 +2,7 @@ extends Control
 
 @export var timer : float
 
-var MAIN_MENU : PackedScene = load("res://UI/Scene/Main menu/Scene/Main menu.tscn")
-var dodos : bool = true
+var main_menu : PackedScene = load("res://UI/Scene/Main menu/Scene/Main menu.tscn")
 var hide_setting : bool = true
 
 @onready var template_level_node : Node2D = $"../.."
@@ -66,5 +65,5 @@ func _on_exit_pressed() -> void:
 func _on_main_menu_pressed() -> void:
 	Eventbus.emit_signal("to_main_menu")
 	hiding()
-	get_tree().change_scene_to_packed(MAIN_MENU)
+	get_tree().change_scene_to_packed(main_menu)
 

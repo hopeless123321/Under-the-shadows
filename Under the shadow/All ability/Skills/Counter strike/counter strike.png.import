@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byleno15q7577"
-path="res://.godot/imported/inner_feel_explosive.png-2cb7c2ab7cbc485fea9c99c76034a042.ctex"
+uid="uid://cxwn78ybeivra"
+path="res://.godot/imported/counter strike.png-c9c3e77b8f1bbe9ac0369515a577a1fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All ability/Icon/inner_feel_explosive.png"
-dest_files=["res://.godot/imported/inner_feel_explosive.png-2cb7c2ab7cbc485fea9c99c76034a042.ctex"]
+source_file="res://All ability/Skills/Counter strike/counter strike.png"
+dest_files=["res://.godot/imported/counter strike.png-c9c3e77b8f1bbe9ac0369515a577a1fe.ctex"]
 
 [params]
 

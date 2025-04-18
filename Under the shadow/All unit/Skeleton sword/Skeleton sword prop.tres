@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Unit_prop" load_steps=4 format=3 uid="uid://bhuql8ih7fce3"]
+[gd_resource type="Resource" script_class="UnitProp" load_steps=4 format=3 uid="uid://bhuql8ih7fce3"]
 
-[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="1_scbwj"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="1_scbwj"]
 [ext_resource type="Texture2D" uid="uid://c7g8pagypwwpo" path="res://All unit/Skeleton sword/Sword skeleton icon_Preview.png" id="2_tddnd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3g1gp"]
@@ -19,13 +19,13 @@ speed = 3
 reaction = 7
 move_after_skill = false
 free_move = false
-skills = Array[Resource("res://Global scripts/Classes/Skill.gd")]([])
+skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([])
 icon = ExtResource("2_tddnd")
 icon_select = SubResource("AtlasTexture_3g1gp")
-type = 2
+type_unit = Array[int]([])
 cost = 45
 animation_trans = 0
 animation_ease = 0
 duration = 1
-move_to = "Close"
+enemy_move_to = 0
 distance = 0

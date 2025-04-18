@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Unit_prop" load_steps=3 format=3 uid="uid://bai3uak34my3k"]
+[gd_resource type="Resource" script_class="UnitProp" load_steps=3 format=3 uid="uid://bai3uak34my3k"]
 
 [ext_resource type="Texture2D" uid="uid://b7nyg8lc2yblv" path="res://All unit/Crossbow/Icon_Preview.png" id="1_34hsv"]
-[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="2_lopr6"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="2_lopr6"]
 
 [resource]
 script = ExtResource("2_lopr6")
@@ -15,13 +15,13 @@ speed = 3
 reaction = 13
 move_after_skill = false
 free_move = false
-ability = Array[Resource("res://Global scripts/Classes/Skill.gd")]([])
-icon_select = ExtResource("1_34hsv")
+skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([null])
 icon = ExtResource("1_34hsv")
-type = 2
+icon_select = ExtResource("1_34hsv")
+type_unit = Array[int]([])
 cost = 30
 animation_trans = 1
 animation_ease = 2
 duration = 1
-move_to = "Low hp"
+enemy_move_to = 3
 distance = 4

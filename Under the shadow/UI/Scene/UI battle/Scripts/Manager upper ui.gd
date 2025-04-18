@@ -4,7 +4,7 @@ extends HBoxContainer
 @onready var stage : Label = $Stage
 @onready var in_game_timer : Label = $"In Game timer"
 @onready var souls : Label = $Souls
-@onready var relics_container : HBoxContainer = $"HboxCont relics"
+@onready var relics_container : HBoxContainer = $"Relic Handler"
 @onready var switch: Button = $Switch
 
 const EVOLUTION_ICON : Rect2 = Rect2(128, 0, 64, 64)
@@ -17,6 +17,7 @@ func _ready() -> void:
 	Eventbus.connect("souls_changed", update_souls)
 	stage.text = "Stage: " + str(GlobalInfo.stage)
 	souls.text = str(GlobalInfo.souls)
+	turn_label.text = str(GlobalInfo.turns_to_way_out)
 	
 func _physics_process(_delta : float) -> void:
 	time += 1
@@ -43,3 +44,5 @@ func switch_button(on_fight : bool, left_time : int) -> void:
 		switch.icon.region = EVOLUTION_ICON
 		turn_label.text = "Left time: " + str(left_time)
 
+func update_left_time(left_time : float) -> void:
+	turn_label.text = "Left time" + str(left_time)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxwn78ybeivra"
-path="res://.godot/imported/counter_strike.png-179c4e08b252553d22b430d001a11882.ctex"
+uid="uid://4k5mff1cdo1j"
+path="res://.godot/imported/Sign slanej.png-631bdb08d2d974fd818bb417f67bd0ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All ability/Icon/counter_strike.png"
-dest_files=["res://.godot/imported/counter_strike.png-179c4e08b252553d22b430d001a11882.ctex"]
+source_file="res://Relics/Sign slanej.png"
+dest_files=["res://.godot/imported/Sign slanej.png-631bdb08d2d974fd818bb417f67bd0ea.ctex"]
 
 [params]
 

@@ -15,7 +15,7 @@
 [ext_resource type="Theme" uid="uid://ba2xexmg6jjlf" path="res://UI/All theme/Button/Unit button.tres" id="11_aeajx"]
 [ext_resource type="Theme" uid="uid://dmt5neysaicbo" path="res://UI/All theme/Sep_H/Unit_list.tres" id="11_sew8x"]
 [ext_resource type="Theme" uid="uid://bbhj3rpceb6bx" path="res://UI/All theme/Richtextlabel/ability_slot.tres" id="12_bl1p4"]
-[ext_resource type="Script" path="res://Global scripts/Classes/Button_unit.gd" id="12_dvn1m"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Button unit.gd" id="12_ghapu"]
 [ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="13_fsrxw"]
 [ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Scene/Souls counter.gd" id="19_hlk1k"]
 [ext_resource type="Theme" uid="uid://c4c4o0rhpucr2" path="res://UI/All theme/Button/Cut excess.tres" id="19_ush8b"]
@@ -309,7 +309,7 @@ layout_mode = 2
 theme = ExtResource("11_aeajx")
 theme_override_font_sizes/font_size = 40
 text = "+"
-script = ExtResource("12_dvn1m")
+script = ExtResource("12_ghapu")
 
 [node name="Unit info" type="PanelContainer" parent="UI Evolve"]
 layout_mode = 1

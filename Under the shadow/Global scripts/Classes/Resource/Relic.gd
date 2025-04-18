@@ -1,24 +1,18 @@
 extends Resource
+# Resource Class that represent items that have unique effect and unique time applicaton tim e
 class_name Relic
-
-
+# Name relics
+enum Rarity {Common, Uncommon, Rare, Unique, Specified}
+enum TimeApplication {BeginTurn, EndTurn, BeginBattle, EndBattle, EventSpecified, SkillAffect, ChangeGameGlobalVaruable}
+## Name relics
 @export var name : String
+## Visual represent on UI
 @export var icon : Texture2D
+## Text reveal when mouse entered to Icon
 @export_multiline var text_tooltip : String
-@export_enum("End of turn", "Begin of turn", "Begin of battle", "End of battle", "Event", "Each room", "Skill cast", "Once") var time_application : String
-@export_flags("Heal", "Dmg", "Status", "Spawn", "Move", "Push", "Global Varuable") var type
-const flag_names : Dictionary = {
-		1 << 0: "Heal",
-		1 << 1: "Dmg",
-		1 << 2: "Status",
-		1 << 3: "Spawn",
-		1 << 4: "Move",
-		1 << 5: "Push",
-		1 << 6: "Global Varuable"
-}
-func get_type_flags() -> Array[String]:
-	var enabled_flags : Array[String]
-	for flag in flag_names.keys():
-			if (type & flag) == flag:
-				enabled_flags.append(flag_names[flag])
-	return enabled_flags
+## Rarity relics like a reward
+@export var rarity : Rarity
+## When relics work. De-facto determine to what global signal connect relic
+@export var trigger : TimeApplication
+
+

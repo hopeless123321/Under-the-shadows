@@ -13,7 +13,7 @@ var selected_button : Unit_button:
 func _input(event : InputEvent) -> void: #Сброс при ESC
 	if Input.is_action_just_pressed("ESC") and selected_button != null:
 		selected_button.button_pressed = false
-		for line : Line_evolve_node in get_tree().get_nodes_in_group("Line evolution"):
+		for line : LineEvolveNode in get_tree().get_nodes_in_group("Line evolution"):
 			line.active = false
 
 func update() -> void: #обновляется каждый раз как появляется меню
@@ -21,7 +21,7 @@ func update() -> void: #обновляется каждый раз как поя
 		if unit_b.name != "New unit":
 			unit_b.queue_free()
 
-	for unit_resource : Unit_res in Teaminfo.team:
+	for unit_resource : UnitOnTeam in Teaminfo.team:
 		var new_button : Unit_button = Unit_button.new()
 		new_button.name = unit_resource.forename
 		new_button.icon = unit_resource.icon_select
@@ -38,18 +38,18 @@ func update() -> void: #обновляется каждый раз как поя
 				unit_b.connect("pressed", reveal_path)
 			unit_b.connect("mouse_entered", reveal_unit.bind(unit_b.unit_info))
 
-func reveal_unit(unit_info : Unit_res) -> void: #показывает хар-ки юнита в пати
+func reveal_unit(unit_info : UnitOnTeam) -> void: #показывает хар-ки юнита в пати
 	Eventbus.emit_signal("get_unit_prop", unit_info, true)
 
 func reveal_path() -> void: #показывает путь до юнита при нажатии на него и сбрысывает пути если никто не выбран
 	if unit_select() and selected_button.unit_info != null:
 		draggable.path_to(selected_button.unit_info.forename)
 	else:
-		for line : Line_evolve_node in get_tree().get_nodes_in_group("Line evolution"):
+		for line : LineEvolveNode in get_tree().get_nodes_in_group("Line evolution"):
 			line.active = false
 	
-func upgrade_unit(upgrade_to : Unit_prop) -> void: #улучшает юнита когда нажимается EvolutionNode. Создает в тиме нового юнта и удаляет старого
-	var select_unit : Unit_res = selected_button.unit_info
+func upgrade_unit(upgrade_to : UnitProp) -> void: #улучшает юнита когда нажимается EvolutionNode. Создает в тиме нового юнта и удаляет старого
+	var select_unit : UnitOnTeam = selected_button.unit_info
 	select_unit = Teaminfo.upgrade_unit(upgrade_to, select_unit)
 	selected_button.update(select_unit)
 	draggable.path_to(select_unit.forename)

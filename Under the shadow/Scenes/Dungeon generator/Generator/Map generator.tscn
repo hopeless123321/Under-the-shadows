@@ -1,13 +1,13 @@
-[gd_scene load_steps=31 format=3 uid="uid://83uvu4m3msd"]
+[gd_scene load_steps=32 format=3 uid="uid://83uvu4m3msd"]
 
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Map generator.gd" id="1_hjbgk"]
 [ext_resource type="Texture2D" uid="uid://dtpngvp4naspi" path="res://Tile/Tile for map generator/dungeon generator tileset.png" id="2_nvusg"]
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Room manager.gd" id="3_jqqcn"]
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Camera.gd" id="3_wmt2u"]
-[ext_resource type="PackedScene" uid="uid://bbqtehn53mx44" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree_creature.tscn" id="4_4t84h"]
 [ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="5_ah6ki"]
-[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree_creature.gd" id="5_qjf4a"]
+[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree creature.gd" id="5_qjf4a"]
 [ext_resource type="Script" path="res://UI/Scene/Generator map UI/UI on map.gd" id="6_36ked"]
+[ext_resource type="PackedScene" uid="uid://bbqtehn53mx44" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree creature.tscn" id="6_d6uvf"]
 [ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="6_pe81x"]
 [ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Manager upper ui.gd" id="8_nsn5f"]
 [ext_resource type="Theme" uid="uid://dqgbwui6773rj" path="res://UI/All theme/Separators/Separator upper UI.tres" id="9_abyqq"]
@@ -104,6 +104,10 @@ terrain_set_0/terrain_0/name = "path"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_cobdl")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tih6u"]
+atlas = ExtResource("9_kbj1d")
+region = Rect2(256, 64, 64, 64)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dduh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssc36"]
@@ -174,6 +178,11 @@ layer_0/name = "Paths"
 [node name="Room manager" type="Node2D" parent="."]
 script = ExtResource("3_jqqcn")
 
+[node name="Team selection" type="TextureRect" parent="Room manager"]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_tih6u")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 340)
 position_smoothing_enabled = true
@@ -181,7 +190,7 @@ script = ExtResource("3_wmt2u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Tree creature" parent="CanvasLayer" instance=ExtResource("4_4t84h")]
+[node name="Tree creature" parent="CanvasLayer" instance=ExtResource("6_d6uvf")]
 z_index = 5
 anchors_preset = -1
 anchor_top = -1.0
@@ -541,22 +550,22 @@ theme = ExtResource("6_pe81x")
 theme_override_font_sizes/font_size = 23
 text = "99"
 
-[node name="HboxCont relics" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+[node name="Relic Handler" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
-[node name="Left button" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/HboxCont relics"]
+[node name="Left button" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler"]
 visible = false
 layout_mode = 2
 icon = SubResource("AtlasTexture_mbyaw")
 flat = true
 
-[node name="Relic Stash" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/HboxCont relics"]
+[node name="Relic Stash" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Right button" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/HboxCont relics"]
+[node name="Right button" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler"]
 visible = false
 layout_mode = 2
 icon = SubResource("AtlasTexture_fckfr")

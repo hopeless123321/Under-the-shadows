@@ -8,17 +8,17 @@ extends VBoxContainer
 
 const LABEL_UI : Theme = preload("res://UI/All theme/Label/Label_Ui.tres")
 const TYPE_APPLICARION_SKILL : Dictionary = {
-	"All world" : "All unit on map",
-	 "All area" : "All unit on radius",
-	 "Targets world" : "Unit(s) on map",
-	 "Targets area" : "Unit(s) on radius",
-	 "Directional" : "On line",
-	 "Directional with preset" : "Directional area",
-	 "Self" : "Self",
-	 "Bomb like" : "Area around unit", 
-	"Tiles effects" : "On ground",
-	 "Spawn" : "Spwan"
-}
+	Skill.TypeApplication.AllWorld : "All unit on map",
+	Skill.TypeApplication.AllArea : "All unit on radius",
+	Skill.TypeApplication.TargetsWorld : "Unit(s) on map",
+	Skill.TypeApplication.TargetsArea : "Unit(s) on radius",
+	Skill.TypeApplication.Directional : "On line",
+	Skill.TypeApplication.DirectionalWithPreset : "Directional area",
+	Skill.TypeApplication.Self : "Self",
+	Skill.TypeApplication.BombLike : "Area around unit", 
+	Skill.TypeApplication.TilesEffects : "On ground",
+	Skill.TypeApplication.Spawn : "Spawn"}
+
 func _input(event : InputEvent) -> void:
 	if Input.is_action_just_pressed("Add info"):
 		prop.visible = true

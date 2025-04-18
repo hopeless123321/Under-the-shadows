@@ -1,8 +1,11 @@
 extends Unit
+## Unit that controlled by AI
 class_name Enemy
-const CLASSNAME := "Enemy"
 
+## 	Move to that target until he died
+var target : Unit
 
+## First func to create Enemy
 func creation() -> void:
 	connect("input_event", pressed)
 	hp = max_hp
@@ -93,6 +96,7 @@ func move_to_target() -> void:
 	await move_tween.finished
 	path.clear()
 	$"AnimationPlayer".play("stay")
+
 func select() -> void:
 	Eventbus.emit_signal('select_char', self)
 	Eventbus.emit_signal("target_camera_to", global_position)

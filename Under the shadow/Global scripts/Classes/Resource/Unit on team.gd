@@ -1,5 +1,6 @@
 extends Resource
-class_name Unit_res
+## Class that represent actual properties of unit on team.
+class_name UnitOnTeam
 
 var forename : String
 var max_hp : int

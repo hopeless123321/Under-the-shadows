@@ -38,14 +38,14 @@ const TRIGGERS : Color = ("NAVAJO_WHITE")
 # prelaods
 var cost_dif : int 
 var tm : TileMap
-var path_to_char : String
 var tile_for_ally : Array[Vector2i]
 var tile_for_enemy : Array[Vector2i] 
+var map : String
 
 func _ready() -> void:
 	Eventbus.connect("to_main_menu", to_main_menu)
 
-func create(elite : bool = false) -> void:
+func create() -> void:
 	Eventbus.connect("reveal_map", reveal_hide_map)
 	Grid.clear_terrain()
 	var level : Node2D = TEMPLATE_LVL.instantiate()
@@ -54,7 +54,7 @@ func create(elite : bool = false) -> void:
 	generate_level()
 	Grid.init_level(tm)
 	add_ally()
-	add_enemy(pick_rng_unit_list(elite))
+	add_enemy(pick_rng_unit_list())
 	get_node(NODE_PATH_UM).init_level()
 
 func add_ally() -> void:
@@ -68,8 +68,8 @@ func add_ally() -> void:
 		set_rng_pos(unit, true)
 		unit.creation()
 		
-func add_enemy(unit_list : Unit_list) -> void:
-	for enemy_prop : Unit_prop in choose_char(unit_list):
+func add_enemy(unit_list : UnitList) -> void:
+	for enemy_prop : UnitProp in choose_char(unit_list):
 		var path_to_unit_scene : String = PATH_TO_UNIT.replace("[unitname]", enemy_prop.forename)
 		var unit_instant = load(path_to_unit_scene).instantiate()
 		var state_machine_ai : Node2D = STATE_MAC_AI.instantiate()
@@ -92,8 +92,7 @@ func set_rng_pos(unit : Unit, PL : bool) -> void:
 		tile_for_enemy.erase(tile_pos)
 
 func generate_level() -> void:
-	var random_map : String = get_random_map()
-	var path_to_file : String = "res://Maps/" + random_map
+	var path_to_file : String = "res://Maps/" + map
 	var sprite : Image = load(path_to_file)
 	GlobalInfo.size_map = Rect2(0, 0, sprite.get_width() * SIZE_CELL, sprite.get_height() * SIZE_CELL)
 	for x : int in range(sprite.get_width()):
@@ -112,7 +111,7 @@ func generate_level() -> void:
 					else:
 						tm.set_cells_terrain_connect(4, [Vector2i(x, y)],0, 0, false)
 						if randi_range(0, 20) < 2: 
-							var light : Node2D = PATH_TO_LIGHT.instantiate()
+							var light : Sprite2D = PATH_TO_LIGHT.instantiate()
 							tm.add_child(light)
 							light.global_position = tm.map_to_local(Vector2i(x, y))
 				Color('LIGHT_PINK'):
@@ -134,12 +133,12 @@ func generate_level() -> void:
 		if tm.get_cell_source_id(4, Vector2i(x, 0)) == -1:
 			tm.set_cell(4, Vector2i(x, -1), WALL, Vector2i(0,1))
 
-func choose_char(current_unit_list : Unit_list) -> Array[Unit_prop]:
-	var units_prop : Array[Unit_prop] = []
+func choose_char(current_unit_list :  UnitList) -> Array[UnitProp]:
+	var units_prop : Array[UnitProp] = []
 	var rng_range : int = rng_count_enemy()
 	var general_calc : int = cost_dif
 	for i in rng_range:
-		var rng_unit : Unit_prop = current_unit_list.unit_list.pick_random()
+		var rng_unit : UnitProp = current_unit_list.unit_list.pick_random()
 		if rng_unit.cost - general_calc >= 0:
 			units_prop.append(rng_unit)
 			general_calc -= rng_unit.cost
@@ -147,21 +146,11 @@ func choose_char(current_unit_list : Unit_list) -> Array[Unit_prop]:
 		print("недостает очков придумай че нить")
 	return units_prop
 
-func pick_rng_unit_list(elite : bool) -> Unit_list:
+func pick_rng_unit_list() -> UnitList:
 	var dir : DirAccess
 	dir = DirAccess.open(PATH_TO_UNIT_LIST.replace("[location]", GlobalInfo.location) + "/")
 	var files : PackedStringArray = dir.get_files()
 	return load((dir.get_current_dir() + "/" + files[randi() %  files.size()]))
-func get_random_map() -> String:
-	var filenames : Array[String] = []
-	var dir : DirAccess = DirAccess.open(PATH_TO_MAPS)
-	dir.list_dir_begin()
-	var file_name : String = dir.get_next()
-	while file_name != "":
-		if file_name.contains(".png") and file_name.contains(".import") == false:
-			filenames.append(file_name)
-		file_name = dir.get_next()
-	return filenames.pick_random()
 
 func rng_count_enemy() -> int:
 	return randi_range(GlobalInfo.stage / 10 + 2 , GlobalInfo.stage / 20 + 4) + 2
@@ -182,7 +171,7 @@ func get_rng_position(type : String) -> Vector2i:
 		tile_for_ally.erase(rng_position)
 	return tm.map_to_local(rng_position)
 
-func sort_by_cost(a : Unit_prop, b : Unit_prop) -> bool:
+func sort_by_cost(a : UnitProp, b : UnitProp) -> bool:
 	if a.cost < b.cost:
 		return false
 	return true

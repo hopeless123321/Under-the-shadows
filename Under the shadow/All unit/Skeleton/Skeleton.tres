@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Unit_prop" load_steps=5 format=3 uid="uid://djwuu7m4c0pm8"]
 
-[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="1_5m75i"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="1_5m75i"]
 
 [sub_resource type="Gradient" id="Gradient_gd7sh"]
 

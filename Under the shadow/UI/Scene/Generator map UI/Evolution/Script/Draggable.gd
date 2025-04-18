@@ -11,7 +11,7 @@ func path_to(nameunit : String) -> void: #Посылает сигнал для �
 			evolve_unit.activate_con_up()
 
 func new_unit() -> void: #Показывает ветки развития для нового юнита
-	for line : Line_evolve_node in get_tree().get_nodes_in_group("Line evolution"):
+	for line : LineEvolveNode in get_tree().get_nodes_in_group("Line evolution"):
 		line.active = false
 	initial.activate_con_up()
 	actual = initial

@@ -1,6 +1,7 @@
 extends States
 
 func start() -> void:
+	print("moving")
 	Grid.update(unit.path.back(), unit.tile_pos)
 	unit.move_to_target()
 func update():

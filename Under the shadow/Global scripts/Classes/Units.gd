@@ -53,7 +53,6 @@ var animation_ease : Tween.EaseType
 var duration : int
 var move_to : String
 var distance : int
-
 #inner varuable
 var tile_pos : Vector2i:
 	get:
@@ -69,20 +68,19 @@ var current_state : Node2D = null
 
 
 func initiation() -> void:
-	_st = $States
+	_st = $States # FIX ME
 	add_to_group("Units")
 	for states in _st.get_children():
 		states.state_machine = _st
 	previous_state = _st.idle
 	current_state = _st.idle
 	#make ability unique
-	skills.assign(skills.map(unique_ability))
+	skills.assign(skills.map(unique_skill))
 
 func _physics_process(_delta : float) -> void:
 	if current_state != null:
 		change_state(current_state.update())
-		#%Label.text = str(current_state, previous_state)
-		
+## Change Unit status dependency of input
 func change_state(input : Node2D) -> void:
 	if input != null:
 		previous_state = current_state
@@ -96,15 +94,15 @@ func hitting() -> void:
 	pass
 func end_turn() -> void:
 	recharge_skill()
-	
+## Decrease cooldown all skill on unit 
 func recharge_skill() -> void:
 	for skill in skills:
 		if skill.cooldown != 0:
 			skill.cooldown_timer -= 1
-
-func unique_ability(skill : Skill) -> Skill:
+## Make unique skill for every skill on unit for 
+func unique_skill(skill : Skill) -> Skill:
 	return skill.duplicate() as Skill
 
 func self_destroy() -> void:
-	queue_free()
+	queue_free() # FIX ME
 

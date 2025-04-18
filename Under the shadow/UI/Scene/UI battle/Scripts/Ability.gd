@@ -1,27 +1,23 @@
-extends TextureButton
+extends Button
 
 const ABILITY_THEME : Theme = preload("res://UI/All theme/Richtextlabel/ability_slot.tres")
 const TYPE_APPLICARION_SKILL : Dictionary = {
-	"All world" : "All unit on map",
-	"All area" : "All unit on radius",
-	"Targets world" : "Unit(s) on map",
-	"Targets area" : "Unit(s) on radius",
-	"Directional" : "On line",
-	"Directional with preset" : "Directional area",
-	"Self" : "Self",
-	"Bomb like" : "Area around unit", 
-	"Tiles effects" : "On ground",
-	"Spawn" : "Spawn"}
-const COLOR_SPELL : Dictionary = {
-	
-}
+	Skill.TypeApplication.AllWorld : "All unit on map",
+	Skill.TypeApplication.AllArea : "All unit on radius",
+	Skill.TypeApplication.TargetsWorld : "Unit(s) on map",
+	Skill.TypeApplication.TargetsArea : "Unit(s) on radius",
+	Skill.TypeApplication.Directional : "On line",
+	Skill.TypeApplication.DirectionalWithPreset : "Directional area",
+	Skill.TypeApplication.Self : "Self",
+	Skill.TypeApplication.BombLike : "Area around unit", 
+	Skill.TypeApplication.TilesEffects : "On ground",
+	Skill.TypeApplication.Spawn : "Spawn"}
 var action_button : String
 var unit : Unit
 var data_skill : Skill
 
 
 func init() -> void:
-	print(get_parent())
 	action_button = "Num_" + str(get_parent().get_child_count())
 	tooltip_text = set_text_tooltip(data_skill)
 	if data_skill.cooldown != 0:
@@ -31,6 +27,7 @@ func init() -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if Input.is_action_just_released(action_button):
+		print("123123")
 		button_pressed = true
 		
 func set_text_tooltip(skill : Skill) -> String:
@@ -52,15 +49,15 @@ func set_text_tooltip(skill : Skill) -> String:
 		text += "[cell bg=#32211f,#1e1e1c]Spell type[/cell] [cell bg=#32211f,#1e1e1c]Passive[/cell]"
 #//
 	text += "[cell bg=#32211f,#1e1e1c]Type spell[/cell][cell bg=#32211f,#1e1e1c]"
-	match skill.class_spell:
-		"No type":
-			text += skill.class_spell 
-		"Lunar":
-			text += "[wave amp=20.0 freq=5.0 connected=1][color=beige] " + skill.class_spell + "[/color][/wave]"
-		"Blood":
-			text += "[wave amp=20.0 freq=5.0 connected=1][color=crimson]" + skill.class_spell + "[/color][/wave]"
-		"Suicide":
-			text += "[wave amp=20.0 freq=5.0 connected=1][color=dim_gray]" + skill.class_spell + "[/color][/wave]"
+	match skill.type_spell:
+		Skill.TypeSpell.NoType:
+			text += "No type"
+		Skill.TypeSpell.Lunar:
+			text += "[wave amp=10.0 freq=5.0 connected=1][color=beige] Lunar [/color][/wave]"
+		Skill.TypeSpell.Blood:
+			text += "[wave amp=10.0 freq=5.0 connected=1][color=crimson] Blood [/color][/wave]"
+		Skill.TypeSpell.Suicide:
+			text += "[wave amp=10.0 freq=5.0 connected=1][color=dim_gray] Suicide [/color][/wave]"
 	text += "[/cell]"
 #//
 	text += '[cell bg=#32211f,#1e1e1c]Type application                [/cell][cell bg=#32211f,#1e1e1c][skill_application][/cell]'.replace("[skill_application]",TYPE_APPLICARION_SKILL[skill.type_application])
@@ -77,6 +74,7 @@ func set_text_tooltip(skill : Skill) -> String:
 			4: #string
 				text += "[cell bg=#32211f,#1e1e1c]" + property + "[/cell][cell bg=#32211f,#1e1e1c]" + skill.get(property) + "[/cell]"
 	return text 
+
 func _make_custom_tooltip(for_text) -> RichTextLabel:
 	var tooltip : RichTextLabel = RichTextLabel.new()
 	tooltip.bbcode_enabled = true
@@ -87,6 +85,7 @@ func _make_custom_tooltip(for_text) -> RichTextLabel:
 	return tooltip
 
 func _on_pressed() -> void:
+	print("131253534")
 	if unit.current_state == unit._st.wait:
 		unit._st.spell_cast.skill = data_skill
 		unit.change_state(unit._st.spell_cast)

@@ -1,13 +1,14 @@
 extends Unit
+## Class represent additional funtional for players-controlled unit on game 
 class_name Ally
-const CLASSNAME := "Ally"
 
+## First function to create ally on scene
 func creation() -> void:
 	initiation()
 	connect("input_event", pressed)
 	add_to_group("Ally")
 	z_index = round(global_position.y / 64)
-
+## Create area around character that represent possible cells for move on that turn
 func fill_floor() -> void:
 	for y in range(-move_point, move_point+1):
 		for x in range(-move_point, move_point+1):
@@ -16,7 +17,7 @@ func fill_floor() -> void:
 				if Grid.is_point_solid(right_tile_pos) == false:
 					if Grid.get_path_id(tile_pos, right_tile_pos, free_move).size() <= move_point:
 						_tm.set_cell(2, right_tile_pos, 6, Vector2i(3, 0))
-
+## Move align path
 func move_to_target() -> void:
 	$"AnimationPlayer".play("walk")
 	var move_tween : Tween = create_tween()
@@ -34,11 +35,11 @@ func move_to_target() -> void:
 	await move_tween.finished
 	path.clear()
 	$"AnimationPlayer".play("stay")
-
+## Input for emit signal select
 func pressed(viewport : Node, event : InputEvent, idx : int) -> void:
 	if event is InputEventMouseButton and event.pressed and GlobalInfo.select_ability_anybody == false:
 		select()
-
+## Target camera and reveal information on UI about Unit 
 func select() -> void: 
 	Eventbus.emit_signal('select_char', self)
 	Eventbus.emit_signal("target_camera_to", global_position)

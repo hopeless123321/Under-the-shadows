@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Unit_prop" load_steps=6 format=3 uid="uid://c1onlxupvt7k6"]
+[gd_resource type="Resource" script_class="UnitProp" load_steps=6 format=3 uid="uid://c1onlxupvt7k6"]
 
-[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit_property.gd" id="1_4egtm"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="1_4egtm"]
 [ext_resource type="Resource" uid="uid://jwat6prpcd6o" path="res://All ability/Skills/Eclipse/Eclipse.tres" id="2_atuhe"]
 [ext_resource type="Texture2D" uid="uid://j6q0a326fybw" path="res://All unit/King/King icon_Preview.png" id="2_wagu1"]
 [ext_resource type="Resource" uid="uid://c580dtbkfoeox" path="res://All ability/Skills/Moon revenge/Moon revenge.tres" id="3_cjj0n"]
@@ -21,13 +21,13 @@ speed = 12
 reaction = 6
 move_after_skill = false
 free_move = false
-skills = Array[Resource("res://Global scripts/Classes/Skill.gd")]([ExtResource("3_cjj0n"), ExtResource("2_atuhe")])
+skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([ExtResource("3_cjj0n"), ExtResource("2_atuhe"), ExtResource("3_cjj0n")])
 icon = ExtResource("2_wagu1")
 icon_select = SubResource("AtlasTexture_lvwcb")
-type = 1
+type_unit = Array[int]([])
 cost = 123
 animation_trans = 1
 animation_ease = 2
 duration = 1
-move_to = "Close"
+enemy_move_to = 0
 distance = 1

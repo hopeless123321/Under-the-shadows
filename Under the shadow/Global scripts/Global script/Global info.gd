@@ -9,34 +9,37 @@ const CONVERT_LOCATION_TO_STRING : Dictionary = {
 	Location.Outside_demension : "Outside demension"}
 #Enums
 enum Location {Forest, Near_throne, Lab, Torture, Outside_demension}
-enum Type_room {Fight, Elite_fight, Shop, Tresuare, Event, Escape}
 
 
 # gamechanger varuables
-var probabality_room : Dictionary = {Type_room.Fight : 40,
-							Type_room.Elite_fight : 20,
-							Type_room.Shop : 10,
-							Type_room.Tresuare : 10,
-							Type_room.Event : 10}
+var probabality_room : Dictionary = {Room.TypeRoom.Fight : 40,
+							Room.TypeRoom.EliteFight : 20,
+							Room.TypeRoom.Shop : 10,
+							Room.TypeRoom.Tresuare : 10,
+							Room.TypeRoom.Event : 10}
 var difficult_on_battle : int = 15 
 var dungeon_size : int = 16
 var speed_scale : float = 1
 var max_team_size : int = 5
 var range_skill_mod : int = 0
-var cost_evolve_mult : int = 100
-var cost_buy_speel_mult : int = 100
-var quantity_enemy_mult : int = 100
-var effecient_altar : int = 100
-var initial_multiply_hp_evolve : int = 100
+var cost_evolve_mult : int = 0
+var cost_buy_speel_mult : int = 0
+var quantity_enemy_mult : int = 0
+var effecient_altar : int = 0
+var initial_multiply_hp_evolve : int = 0
+var enemy_hp_mult : int = 0
+var enemy_souls_mult : int = 0
+var enemy_dmg_get_mult : int = 0
+var enemy_dmg_send_mult : int = 0
+var ally_hp_mult : int = 0
+var ally_dmg_get_mult : int = 0
+var ally_dmg_send_mult : int = 0
+var add_radius : int = 0
 var turns_to_way_out : int = 30
 var chance_to_ambush : int = 5
-var enemy_hp_mult : int = 100
-var enemy_souls_mult : int = 100
-var enemy_dmg_get_mult : int = 100
-var enemy_dmg_send_mult : int = 100
-var ally_hp_mult : int = 100
-var ally_dmg_get_mult : int = 100
-var ally_dmg_send_mult : int = 100
+var add_push_power : int = 0
+var heal_multiplayer : int = 0
+
 # quality of life
 var location : String
 var win_size : Vector2: # for Control animations
@@ -44,7 +47,10 @@ var win_size : Vector2: # for Control animations
 		return DisplayServer.window_get_size()
 var stage : int = 1
 var can_choose_init : bool = false
-var relics : Array[Relic]
+var relics : Array[Relic]:
+	set(value):
+		relics.append(value)
+		value.back().initiation()
 # Local varuable for map
 var size_map : Rect2i
 var max_enemy_unit : int = 5: 

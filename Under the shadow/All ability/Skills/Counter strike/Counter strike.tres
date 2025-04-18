@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://ctafbvrraq3cj"]
+
+[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Skill.gd" id="1_f7jq2"]
+
+[resource]
+script = ExtResource("1_f7jq2")
+id = 7
+forename = "Counter strike"
+cost_hp = 10
+cost_will = 0
+cooldown = 2
+active = true
+description = "Встает в стойку, где способен контратаковать "
+skill_prop_in_evolve_tree = {}
+class_spell = "No type"
+type_application = ""
+type = 0

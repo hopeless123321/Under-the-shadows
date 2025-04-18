@@ -6,6 +6,7 @@ const GRID_SIZE := Rect2i(Vector2i(-128, -128), Vector2i(256, 256))
 const ROOMS_THEME = preload("res://UI/All theme/Button/Rooms.tres")
 const FIGHT_ROOM = preload("res://Scenes/Testing scenes/Generator levels/Generate level.tscn")
 const VECTORS_TO_LOOP : Array[Vector2i] = [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2.RIGHT]
+const PATH_TO_MAPS : String = "res://Maps/"
 
 @onready var tile_map_path : TileMap = $Paths
 @onready var room_manager : Node2D = $"Room manager"
@@ -13,8 +14,8 @@ const VECTORS_TO_LOOP : Array[Vector2i] = [Vector2i.UP, Vector2i.DOWN, Vector2i.
 @onready var tree_creature : Control = $"CanvasLayer/Tree creature"
 @onready var upper_ui_container : HBoxContainer = $"CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"
 
-var left_time : float = GlobalInfo.turns_to_way_out
 
+var left_time : float = GlobalInfo.turns_to_way_out
 var create_room : int = 0
 var count_rooms : int = 50
 var real_size : Vector2i
@@ -56,12 +57,12 @@ func create_dungeon() -> void: # создает данж
 	make_rng_loop()
 	for room : Room in rooms.keys():
 		room.create()
-	pick_rng_room() 
-	
+	set_initial_room(rooms.keys().pick_random())
+
 func make_rng_loop() -> void: # создает лупы в данже
 	for room : Room in rooms.keys():
 		if room.connected_room.size() >= 3 and randi() % 5 < 2:
-			for vector in VECTORS_TO_LOOP:
+			for vector : Vector2i in VECTORS_TO_LOOP:
 				var room_to_coon : Room = rooms.find_key(room.room_coords + vector)
 				if room_to_coon != null and room.connected_room.has(room_to_coon) == false:
 					room.connected_room.append(room_to_coon)
@@ -74,7 +75,7 @@ func create_path(next_pos : Vector2i , init_pos : Vector2i) -> void: # созд�
 	tile_map_path.set_cells_terrain_path(0, paths_to_room.get_id_path(next_pos, init_pos), 0, 0, false)
 
 func get_next_coords() -> Vector2i:
-	var rng_number := randi() % 4
+	var rng_number : int = randi() % 4
 	if rng_number < 1:
 		return Vector2i.UP
 	elif rng_number < 2: 
@@ -83,11 +84,15 @@ func get_next_coords() -> Vector2i:
 		return Vector2i.DOWN
 	return Vector2i.LEFT
 
-func rng_room_offset(room : Room) -> void:
+func rng_room_offset(room : Room) -> void: # Случайно перемещает комнаты для не создания строгой сетки
 	room.global_position += Vector2(CELL_SIZE.x * randi_range(-3, 3), CELL_SIZE.y * randi_range(-3, 3))
 	
 func make_room(tile_pos : Vector2i) -> Room:
 	var room : Room = Room.new()
+	room.expand_icon = true
+	room.flat = true
+	room.disabled = true
+	room.connect("move_dungeon", time_left)
 	room.id = create_room
 	room.room_coords = tile_pos
 	room.global_position = tile_pos * ROOM_SPACE
@@ -95,15 +100,10 @@ func make_room(tile_pos : Vector2i) -> Room:
 	rooms[room] = room.room_coords
 	room.theme = ROOMS_THEME
 	room_manager.add_child(room)
+	room.map = get_random_map()
 	return room
 	
-func pick_rng_room() -> void:
-	var room : Room = rooms.keys().front()
-	room.disabled = false
-	
-	room.overview_room()
-
-func escaped_room() -> void: 
+func escaped_room() -> void:  #set escpaed rooms
 	var only_rooms := rooms.keys()
 	only_rooms.shuffle()
 	for room : Room in only_rooms:
@@ -112,9 +112,15 @@ func escaped_room() -> void:
 		if room.connected_room.size() == 1 and room.id > count_rooms / 2:
 			escaped_rooms[room] = room.set_escaped_room()
 
-func get_to_room(room_type : GlobalInfo.Type_room) -> void:
+func set_initial_room(room : Room) -> void:
+	room.disabled = false
+	room.overview_room()
+	camera.position = room.global_position
+	room_manager.current_location_team = room
+
+func get_to_room(room : Room) -> void:
 	var room_i : Object
-	match room_type:
+	match room.type_room:
 		0: #fight
 			room_i = FIGHT_ROOM.instantiate()
 		1: #elite fight
@@ -130,6 +136,7 @@ func get_to_room(room_type : GlobalInfo.Type_room) -> void:
 	if room_i != null and !on_fight:
 		get_parent().add_child(room_i)
 		reveal_hide_map()
+		room_i.map = room.map
 		room_i.create()
 		room_i.cost_dif = calculate_general_diff()
 		on_fight = true
@@ -155,4 +162,18 @@ func _switch_button() -> void:
 	else:
 		tree_creature.reveal_hide_tree()
 
+func get_random_map() -> String:
+	var filenames : Array[String] = []
+	var dir : DirAccess = DirAccess.open(PATH_TO_MAPS)
+	dir.list_dir_begin()
+	var file_name : String = dir.get_next()
+	while file_name != "":
+		if file_name.contains(".png") and file_name.contains(".import") == false:
+			filenames.append(file_name)
+		file_name = dir.get_next()
+	return filenames.pick_random()
 
+func time_left(time : float) -> void:
+	left_time -= time
+	upper_ui_container.update_left_time(left_time)
+	

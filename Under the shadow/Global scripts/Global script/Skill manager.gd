@@ -64,19 +64,6 @@ func dir_without_vec(length : int, start_point : Vector2i, end_point : Vector2i)
 	return cells.slice(0, length)
 
 func execute(skill : Skill, units : Array[Unit], sender : Unit) -> void:
-	var typed : Array[String] = skill.get_type_array()
 	sender.hp -= skill.cost_hp
 	sender.will -= skill.cost_will
-	if "Heal" in typed:
-		skill.skill_script.heal(skill, units, sender)
-	if "Dmg" in typed:
-		skill.skill_script.dmg(skill, units, sender)
-	if "Status" in typed:
-		skill.skill_script.set_status(skill, units, sender)
-	if "Spawn" in typed:
-		skill.skill_script.spawn(skill, units, sender)
-	if "Move" in typed:
-		skill.skill_script.move(skill, units, sender)
-	if "Push" in typed:
-		skill.skill_script.push(skill, units, sender)
 	

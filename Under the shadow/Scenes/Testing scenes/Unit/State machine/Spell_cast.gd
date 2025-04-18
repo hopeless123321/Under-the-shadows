@@ -8,12 +8,12 @@ var tile_pos_mouse : Vector2i:
 		if value != tile_pos_mouse:
 			unit._tm.clear_cells(varuable_mouse_pos)
 			tile_pos_mouse = value
-			if skill.type_application == "Targets area":
+			if skill.type_application in [Skill.TypeApplication.TargetsArea, Skill.TypeApplication.TargetsWorld]:
 				unit._tm.update(skill, tile_pos_mouse, varuable_mouse_pos, true, unit.tile_pos)
 			else:
 				effect_unit = unit._tm.update(skill, tile_pos_mouse, varuable_mouse_pos, true, unit.tile_pos)
 
-const EXCEPTION : Array[String] = ["Targets area", "Targets in world"]
+const EXCEPTION : Array[Skill.TypeApplication] = [Skill.TypeApplication.TargetsArea, Skill.TypeApplication.TargetsWorld]
 
 func start():
 	GlobalInfo.select_ability_anybody = true

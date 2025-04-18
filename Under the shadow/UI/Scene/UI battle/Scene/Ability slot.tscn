@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3r57teh8hvwt"]
+[gd_scene load_steps=5 format=3 uid="uid://c3r57teh8hvwt"]
 
 [ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Ability.gd" id="1_cgvcd"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="2_qgdy2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6uer2"]
 
 [sub_resource type="Theme" id="Theme_70kto"]
 TooltipPanel/styles/panel = SubResource("StyleBoxEmpty_6uer2")
 
-[node name="Skill slot" type="TextureButton"]
+[node name="Skill slot" type="Button"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,5 +17,16 @@ grow_vertical = 2
 theme = SubResource("Theme_70kto")
 shortcut_in_tooltip = false
 script = ExtResource("1_cgvcd")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("2_qgdy2")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl6i0b2ilyo0n"
-path="res://.godot/imported/havoc.png-b35311ef9db718d36ff417bd5461afef.ctex"
+path="res://.godot/imported/Havoc.png-68aaaa39e0f9501ac79300c18a75f243.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All ability/Icon/havoc.png"
-dest_files=["res://.godot/imported/havoc.png-b35311ef9db718d36ff417bd5461afef.ctex"]
+source_file="res://All ability/Icon/Havoc.png"
+dest_files=["res://.godot/imported/Havoc.png-68aaaa39e0f9501ac79300c18a75f243.ctex"]
 
 [params]
 

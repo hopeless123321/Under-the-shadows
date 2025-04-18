@@ -25,7 +25,7 @@ func init_level(tm : TileMap) -> void:
 	for cell : Vector2i in tm.get_used_cells(4):
 		grid_ghosts.set_point_solid(cell)
 		grid_normals.set_point_solid(cell)
-	for unit : Node in get_tree().get_nodes_in_group("Units"):
+	for unit : Unit in get_tree().get_nodes_in_group("Units"):
 		grid_ghosts.set_point_solid(unit.tile_pos)
 		grid_normals.set_point_solid(unit.tile_pos)
 	for altars : Node in get_tree().get_nodes_in_group("Altars"):
