@@ -5,18 +5,17 @@
 
 [resource]
 script = ExtResource("2_xstjp")
-type_unit = "Enemy"
+type_unit = 1
 radius = 3
 length_to_target = 4
 id = 4
 forename = "Madness"
 cost_hp = 0
 cost_will = 30
-cooldown = 1
+cooldown = 4
 active = true
 description = "Накладывает безумие на противника, и на вргов вблизь него"
 icon = ExtResource("1_tocgg")
 skill_prop_in_evolve_tree = {}
-class_spell = "Lunar"
-type_application = "Bomb like"
-type = 0
+type_spell = 0
+type_application = 7

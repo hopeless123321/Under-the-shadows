@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb6wudamioaf4"
-path="res://.godot/imported/Darkest hour.png-ba0fd54af08855458db264c5535d932b.ctex"
+uid="uid://cy5og7j4gs17c"
+path="res://.godot/imported/slimy-05-1x.png-34ef488db35442a35a0be07f883aa995.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All ability/Icon/Darkest hour.png"
-dest_files=["res://.godot/imported/Darkest hour.png-ba0fd54af08855458db264c5535d932b.ctex"]
+source_file="res://Paletter/slimy-05-1x.png"
+dest_files=["res://.godot/imported/slimy-05-1x.png-34ef488db35442a35a0be07f883aa995.ctex"]
 
 [params]
 

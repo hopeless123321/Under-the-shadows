@@ -1,14 +1,13 @@
 extends Unit
 ## Unit that controlled by AI
 class_name Enemy
-
+const CLASSUNIT := Skill.TypeAppUnit.Enemy
 ## 	Move to that target until he died
 var target : Unit
 
 ## First func to create Enemy
 func creation() -> void:
 	connect("input_event", pressed)
-	hp = max_hp
 	initiation()
 	add_to_group("Enemy")
 	z_index = int(global_position.y / 64)
@@ -20,70 +19,70 @@ func pressed(viewport : Node, event : InputEvent, idx : int) -> void:
 func find_path() -> Array[Vector2i]:
 	var path_id : Array[Vector2i] = []
 	var units := get_tree().get_nodes_in_group("Ally")
-	match move_to:
-		"Close":
+	match unit_property.enemy_move_to:
+		UnitProp.EnemyTarget.Close:
 			for character : Ally in units:
 				Grid.temp_set_solid(character.tile_pos, false)
 				if path_id.is_empty():
-					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
-				elif Grid.get_path_id(tile_pos ,character.tile_pos, free_move).size() < path_id.size():
-					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
+					path_id = Grid.get_path_id(tile_pos, character.tile_pos, unit_property.free_move)
+				elif Grid.get_path_id(tile_pos ,character.tile_pos, unit_property.free_move).size() < path_id.size():
+					path_id = Grid.get_path_id(tile_pos, character.tile_pos, unit_property.free_move)
 				Grid.temp_set_solid(character.tile_pos, true)
-		"Far":
+		UnitProp.EnemyTarget.Far:
 			for character : Ally in units:
 				Grid.temp_set_solid(character.tile_pos, false)
-				if Grid.get_path_id(tile_pos ,character.tile_pos, free_move).size() > path_id.size():
-					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
+				if Grid.get_path_id(tile_pos ,character.tile_pos, unit_property.free_move).size() > path_id.size():
+					path_id = Grid.get_path_id(tile_pos, character.tile_pos, unit_property.free_move)
 				Grid.temp_set_solid(character.tile_pos, true)
-		"Low hp":
+		UnitProp.EnemyTarget.LowHp:
 			while path_id.is_empty():
 				units.sort_custom(sort_by_hp.bind(true))
 				for character in units:
 					Grid.temp_set_solid(character.tile_pos, false)
-					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
+					path_id = Grid.get_path_id(tile_pos, character.tile_pos, unit_property.free_move)
 					Grid.temp_set_solid(character.tile_pos, true)
-		"High hp":
+		UnitProp.EnemyTarget.HighHp:
 			while path_id.is_empty():
 				units.sort_custom(sort_by_hp.bind(false))
 				for character : Ally in units:
 					Grid.temp_set_solid(character.tile_pos, false)
-					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
+					path_id = Grid.get_path_id(tile_pos, character.tile_pos, unit_property.free_move)
 					Grid.temp_set_solid(character.tile_pos, true)
-		"King":
+		UnitProp.EnemyTarget.King:
 			pass
-		"Low will":
+		UnitProp.EnemyTarget.LowWill:
 			while path_id.is_empty():
 				units.sort_custom(sort_by_will.bind(false))
 				for character : Ally in units:
 					Grid.temp_set_solid(character.tile_pos, false)
-					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
+					path_id = Grid.get_path_id(tile_pos, character.tile_pos, unit_property.free_move)
 					Grid.temp_set_solid(character.tile_pos, true)
-		"High will":
+		UnitProp.EnemyTarget.HighWill:
 			while path_id.is_empty():
 				units.sort_custom(sort_by_will.bind(false))
 				for character : Ally in units:
 					Grid.temp_set_solid(character.tile_pos, false)
-					path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
+					path_id = Grid.get_path_id(tile_pos, character.tile_pos, unit_property.free_move)
 					Grid.temp_set_solid(character.tile_pos, true)
-		"Random":
+		UnitProp.EnemyTarget.Random:
 			units.shuffle()
 			for character : Ally in units:
 				if path_id.is_empty():
 					break
 				Grid.temp_set_solid(character.tile_pos, false)
-				path_id = Grid.get_path_id(tile_pos, character.tile_pos, free_move)
+				path_id = Grid.get_path_id(tile_pos, character.tile_pos, unit_property.free_move)
 				Grid.temp_set_solid(character.tile_pos, true)
-	for i in distance + 1:
+	for i in unit_property.distance + 1:
 		path_id.pop_back()
-	if path_id.size() > speed:
-		path_id.resize(speed)
+	if path_id.size() > unit_property.speed:
+		path_id.resize(unit_property.speed)
 	return path_id
 
 func move_to_target() -> void:
 	$"AnimationPlayer".play("walk")
 	var move_tween : Tween = create_tween()
-	move_tween.set_ease(animation_ease)
-	move_tween.set_trans(animation_trans)
+	move_tween.set_ease(unit_property.animation_ease)
+	move_tween.set_trans(unit_property.animation_trans)
 	for cell in path:
 		if cell.x < tile_pos.x:
 			$"Store sprite/Under".flip_h = false
@@ -91,7 +90,7 @@ func move_to_target() -> void:
 		elif cell.x > tile_pos.x:
 			$"Store sprite/Under".flip_h = true
 			$"Store sprite/Upper".flip_h = true
-		move_tween.tween_property(self, "global_position", _tm.map_to_local(cell), duration)
+		move_tween.tween_property(self, "global_position", _tm.map_to_local(cell), unit_property.duration)
 		move_point -= 1
 	await move_tween.finished
 	path.clear()

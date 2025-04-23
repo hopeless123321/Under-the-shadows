@@ -124,8 +124,13 @@ func update(skill : Skill, mouse_tile_pos : Vector2i, selectable_cells : Array[V
 			if mouse_tile_pos in selectable_cells:
 				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
 		Skill.TypeApplication.BombLike:
+			if mouse_tile_pos not in get_used_cells_by_id(CLICK_FLOOR_L, FILL_SOURCE, SELF_TILE):
+				clear_layer(CLICK_FLOOR_L)
+				for cell in selectable_cells:
+					set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, CHOICE_TILE)
 			if mouse_tile_pos in selectable_cells:
-				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
+				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELF_TILE)
+				effected_unit.append(Grid.get_unit(mouse_tile_pos))
 				for cell in SkillManager.fill_obs(mouse_tile_pos, skill.radius):
 					if GlobalInfo.size_map.has_point(cell):
 						if Grid.get_unit(cell) == null:
@@ -133,15 +138,11 @@ func update(skill : Skill, mouse_tile_pos : Vector2i, selectable_cells : Array[V
 						else:
 							if SkillManager.check_class(ally, Grid.get_unit(cell), skill.type_unit):
 								set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, SELECTED_TILE)
-			else:
-				clear_layer(CLICK_FLOOR_L)
-				for cell in selectable_cells:
-					set_cell(CLICK_FLOOR_L, cell, FILL_SOURCE, CHOICE_TILE)
 		Skill.TypeApplication.TilesEffects:
 			pass
-	#if skill.type_application != "Targets area":
-	for cell in get_used_cells_by_id(CLICK_FLOOR_L, FILL_SOURCE, SELECTED_TILE):
-		effected_unit.append(Grid.get_unit(cell))
+	if skill.type_application != Skill.TypeApplication.TargetsArea and skill.type_application != Skill.TypeApplication.TargetsWorld:
+		for cell in get_used_cells_by_id(CLICK_FLOOR_L, FILL_SOURCE, SELECTED_TILE):
+			effected_unit.append(Grid.get_unit(cell))
 	return effected_unit
 
 func add_unit_exec(tile_pos : Vector2i, old_tile_pos : Vector2i = Vector2(-1, -1)) -> Unit:

@@ -1,5 +1,5 @@
 extends Control
-
+@export var diction : Dictionary
 @onready var initial : EvolutionNode = $Initial
 var actual : EvolutionNode
 
@@ -16,6 +16,6 @@ func new_unit() -> void: #Показывает ветки развития дл�
 	initial.activate_con_up()
 	actual = initial
 
-func _on_gui_input(event: InputEvent) -> void:
+func _on_gui_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("MMB"):
 		global_position += Input.get_last_mouse_velocity() / 100

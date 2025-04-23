@@ -1,18 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://cg4u7elf2fbbp"]
 
-[ext_resource type="Script" path="res://Global scripts/Classes/Relic UI.gd" id="1_b3x37"]
-[ext_resource type="Texture2D" uid="uid://dl601bfgbgkxw" path="res://Relics/Box/Box.png" id="2_yxq5s"]
+[ext_resource type="Script" path="res://Global scripts/Classes/Relic UI.gd" id="1_bcmnx"]
+[ext_resource type="Texture2D" uid="uid://dl601bfgbgkxw" path="res://Relics/Box/Box.png" id="2_hsgp6"]
 
 [node name="Relic UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_b3x37")
+script = ExtResource("1_bcmnx")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_yxq5s")
+texture = ExtResource("2_hsgp6")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

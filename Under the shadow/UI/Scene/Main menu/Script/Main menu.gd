@@ -17,7 +17,7 @@ func _ready() -> void:
 	else:
 		continue_b.visible = false
 
-func _input(event : InputEvent) -> void:
+func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("ESC"):
 		back()
 		
@@ -43,7 +43,6 @@ func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func map_generated() -> void:
-	Teaminfo.add_ally_to_team("King")
 	GlobalInfo.location = "Near throne"
 	get_tree().change_scene_to_packed(MapGenerator)
 

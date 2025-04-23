@@ -3,23 +3,25 @@ extends Node
 func get_group(skill : Skill, ally : bool) -> String:
 	if ally:
 		match skill.type_unit:
-			"Ally":
+			Skill.TypeAppUnit.Ally:
 				return "Ally"
-			"Enemy":
+			Skill.TypeAppUnit.Enemy:
 				return "Enemy"
 	match skill.type_unit:
-		"Ally":
+		Skill.TypeAppUnit.Enemy:
 			return "Ally"
-		"Enemy":
+		Skill.TypeAppUnit.Ally:
 			return "Enemy"
 	return "Units"
 
-func check_class(ally : bool , receiver : Unit, type_rec : String) -> bool:
+func check_class(ally : bool , receiver : Unit, type_unit : Skill.TypeAppUnit) -> bool:
+	if type_unit == Skill.TypeAppUnit.Either:
+		return true
 	if ally:
-		if type_rec == "Either" or receiver.CLASSNAME == type_rec:
+		if receiver.CLASSUNIT == type_unit:
 			return true
 		return false
-	if type_rec == "Either" or receiver.CLASSNAME != type_rec:
+	if receiver.CLASSUNIT != type_unit:
 		return true
 	return false
 
@@ -64,6 +66,7 @@ func dir_without_vec(length : int, start_point : Vector2i, end_point : Vector2i)
 	return cells.slice(0, length)
 
 func execute(skill : Skill, units : Array[Unit], sender : Unit) -> void:
-	sender.hp -= skill.cost_hp
-	sender.will -= skill.cost_will
-	
+	sender.unit_property.hp -= skill.cost_hp
+	sender.unit_property.will -= skill.cost_will
+	skill.execute(sender, units) 
+	Eventbus.emit_signal("skill_execute")

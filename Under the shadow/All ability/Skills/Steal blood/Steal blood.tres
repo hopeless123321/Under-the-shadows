@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ulnup")
-type_unit = ""
+type_unit = 0
 targets = 0
 radius = 0
 self_target = false
@@ -16,6 +16,5 @@ cooldown = 0
 active = false
 description = ""
 skill_prop_in_evolve_tree = {}
-class_spell = "No type"
-type_application = ""
-type = 0
+type_spell = 0
+type_application = 0

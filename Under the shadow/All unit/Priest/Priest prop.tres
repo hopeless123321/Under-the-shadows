@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="UnitProp" load_steps=4 format=3 uid="uid://dyw1ubcd0qp4o"]
+[gd_resource type="Resource" script_class="UnitProp" load_steps=5 format=3 uid="uid://dyw1ubcd0qp4o"]
 
-[ext_resource type="Texture2D" uid="uid://dtklr17syxvjy" path="res://All unit/Priest/Icon.png" id="1_2eh8i"]
+[ext_resource type="Texture2D" uid="uid://mn14jcs7d1wm" path="res://All unit/Priest/Priest icon.png" id="1_n1pmu"]
 [ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="2_ciqk2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ekt50"]
-atlas = ExtResource("1_2eh8i")
-region = Rect2(0, 16, 63, 64)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tlrv5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5cul"]
+atlas = ExtResource("1_n1pmu")
+region = Rect2(32, 48, 64, 64)
 
 [resource]
 script = ExtResource("2_ciqk2")
 forename = "Priest"
 max_hp = 75
-dmg_amp = 0
+damage = Vector2i(15, 20)
 resist_phys_dmg = 0
 resist_mag_dmg = 25
 resist_will = 25
@@ -20,9 +22,9 @@ reaction = 7
 move_after_skill = false
 free_move = false
 skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([])
-icon = ExtResource("1_2eh8i")
-icon_select = SubResource("AtlasTexture_ekt50")
-type_unit = Array[int]([])
+icon = SubResource("CompressedTexture2D_tlrv5")
+icon_minimap = SubResource("AtlasTexture_k5cul")
+class_unit = Array[int]([0])
 cost = 50
 animation_trans = 0
 animation_ease = 0

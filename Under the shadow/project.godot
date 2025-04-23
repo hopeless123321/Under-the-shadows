@@ -23,8 +23,9 @@ GlobalInfo="*res://Global scripts/Global script/Global info.gd"
 Eventbus="*res://Global scripts/Global script/Eventbus.gd"
 Grid="*res://Global scripts/Global script/Grid.gd"
 Config="*res://Global scripts/Config.gd"
-Teaminfo="*res://Global scripts/Global script/Team.gd"
+UnitManager="*res://Global scripts/Global script/Unit manager.gd"
 SkillManager="*res://Global scripts/Global script/Skill manager.gd"
+Translater="*res://Global scripts/Global script/Translater.gd"
 
 [debug]
 

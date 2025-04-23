@@ -8,7 +8,12 @@ const PROP_TO_REVEAL : Array[String] = [
 	"radius",
 	"spawn",
 ]
-@export_category("spawn mandatory")
+@export_group("spawn mandatory")
 @export var radius : int
-@export var spawn : Unit_prop
+@export var spawn : UnitProp
 # //
+func execute(sender : Unit, recievers : Array[Unit]) -> void:
+	pass
+func reveal_result_action(sender : Unit, recievers : Array[Unit]) -> String:
+	var text : String
+	return text

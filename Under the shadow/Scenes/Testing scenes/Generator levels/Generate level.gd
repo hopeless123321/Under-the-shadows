@@ -58,27 +58,35 @@ func create() -> void:
 	get_node(NODE_PATH_UM).init_level()
 
 func add_ally() -> void:
-	for unit in Teaminfo.inst_ally():
-		var unit_scene : String = PATH_TO_UNIT.replace("[unitname]", unit.forename)
-		var unit_instant = load(unit_scene).instantiate()
+	for unit : UnitOnTeam in UnitManager.team:
+		var unit_template_scene : String = PATH_TO_UNIT.replace("[unitname]", unit.forename)
+		var unit_instant : CharacterBody2D = load(unit_template_scene).instantiate()
 		var state_machine_pl : Node2D = STATE_MAC_PL.instantiate()
+		var ally : Ally = Ally.new()
+		ally.unit_property = unit
 		get_node(NODE_PATH_PL).add_child(unit_instant)
-		unit_instant.replace_by(unit)
-		unit.add_child(state_machine_pl)
-		set_rng_pos(unit, true)
-		unit.creation()
+		unit_instant.replace_by(ally)
+		ally.add_child(state_machine_pl)
+		set_rng_pos(ally, true)
+		activate_unit(ally)
 		
 func add_enemy(unit_list : UnitList) -> void:
-	for enemy_prop : UnitProp in choose_char(unit_list):
-		var path_to_unit_scene : String = PATH_TO_UNIT.replace("[unitname]", enemy_prop.forename)
-		var unit_instant = load(path_to_unit_scene).instantiate()
+	for unit : UnitOnTeam in choose_char(unit_list):
+		var path_to_unit_scene : String = PATH_TO_UNIT.replace("[unitname]", unit.forename)
+		var unit_instant : CharacterBody2D = load(path_to_unit_scene).instantiate()
 		var state_machine_ai : Node2D = STATE_MAC_AI.instantiate()
-		var enemy : Enemy = Teaminfo.set_stat_enemy(enemy_prop)
+		var enemy : Enemy = Enemy.new()
+		enemy.unit_property = unit
 		get_node(NODE_PATH_AI).add_child(unit_instant)
 		unit_instant.replace_by(enemy)
 		enemy.add_child(state_machine_ai)
 		set_rng_pos(enemy, false)
-		enemy.creation()
+		activate_unit(enemy)
+
+func activate_unit(unit : Unit) -> void:
+	unit.input_pickable = true
+	unit.creation()
+
 
 func set_rng_pos(unit : Unit, PL : bool) -> void:
 	if PL:
@@ -133,19 +141,19 @@ func generate_level() -> void:
 		if tm.get_cell_source_id(4, Vector2i(x, 0)) == -1:
 			tm.set_cell(4, Vector2i(x, -1), WALL, Vector2i(0,1))
 
-func choose_char(current_unit_list :  UnitList) -> Array[UnitProp]:
-	var units_prop : Array[UnitProp] = []
+func choose_char(current_unit_list :  UnitList) -> Array[UnitOnTeam]:
+	var units_prop : Array[UnitOnTeam] = []
 	var rng_range : int = rng_count_enemy()
 	var general_calc : int = cost_dif
 	for i in rng_range:
 		var rng_unit : UnitProp = current_unit_list.unit_list.pick_random()
 		if rng_unit.cost - general_calc >= 0:
-			units_prop.append(rng_unit)
+			units_prop.append(UnitManager.new_unit("", rng_unit))
 			general_calc -= rng_unit.cost
 	if cost_dif / 10 < general_calc:
 		print("недостает очков придумай че нить")
 	return units_prop
-
+	
 func pick_rng_unit_list() -> UnitList:
 	var dir : DirAccess
 	dir = DirAccess.open(PATH_TO_UNIT_LIST.replace("[location]", GlobalInfo.location) + "/")

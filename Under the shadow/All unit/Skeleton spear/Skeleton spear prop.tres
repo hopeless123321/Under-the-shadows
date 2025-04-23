@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="UnitProp" load_steps=4 format=3 uid="uid://baue0q8hetqpj"]
 
+[ext_resource type="Texture2D" uid="uid://bfj4bdrj8lely" path="res://All unit/Skeleton spear/Skeleton sword icon.png" id="1_5fs38"]
 [ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="1_jfw1u"]
-[ext_resource type="Texture2D" uid="uid://hnucsem8f52w" path="res://All unit/Skeleton spear/Skeleton spear icon.png" id="1_y2ssp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u3r4r"]
-atlas = ExtResource("1_y2ssp")
-region = Rect2(0, 64, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtuj5"]
+atlas = ExtResource("1_5fs38")
+region = Rect2(48, 32, 64, 64)
 
 [resource]
 script = ExtResource("1_jfw1u")
 forename = "Skeleton spear"
 max_hp = 90
-dmg_amp = 0
+damage = Vector2i(17, 22)
 resist_phys_dmg = 15
 resist_mag_dmg = 0
 resist_will = 10
@@ -20,9 +20,9 @@ reaction = 9
 move_after_skill = false
 free_move = false
 skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([])
-icon = ExtResource("1_y2ssp")
-icon_select = SubResource("AtlasTexture_u3r4r")
-type_unit = Array[int]([])
+icon = ExtResource("1_5fs38")
+icon_minimap = SubResource("AtlasTexture_qtuj5")
+class_unit = Array[int]([1, 3])
 cost = 45
 animation_trans = 0
 animation_ease = 2

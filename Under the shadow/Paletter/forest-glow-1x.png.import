@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7g8pagypwwpo"
-path="res://.godot/imported/Sword skeleton icon_Preview.png-0e57895b287a8ba8cd8c8e85c6b61345.ctex"
+uid="uid://us1c412hlo8m"
+path="res://.godot/imported/forest-glow-1x.png-ed151f1a7903388a09ecd27274a6c091.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://All unit/Skeleton sword/Sword skeleton icon_Preview.png"
-dest_files=["res://.godot/imported/Sword skeleton icon_Preview.png-0e57895b287a8ba8cd8c8e85c6b61345.ctex"]
+source_file="res://Paletter/forest-glow-1x.png"
+dest_files=["res://.godot/imported/forest-glow-1x.png-ed151f1a7903388a09ecd27274a6c091.ctex"]
 
 [params]
 

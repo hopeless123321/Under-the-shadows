@@ -1,8 +1,15 @@
 extends States
+const EXCEPTION : Array[Skill.TypeApplication] = [Skill.TypeApplication.TargetsArea, Skill.TypeApplication.TargetsWorld]
 
 var skill : Skill
 var varuable_mouse_pos : Array[Vector2i]
-var effect_unit : Array[Unit]
+var effect_unit : Array[Unit]:
+	set(value):
+		if !value.is_empty():
+			Eventbus.emit_signal("reveal_result_skill", skill.reveal_result_action(unit, value))
+		else: 
+			Eventbus.emit_signal("reveal_result_skill", "No target")
+		effect_unit = value
 var tile_pos_mouse : Vector2i:
 	set(value):
 		if value != tile_pos_mouse:
@@ -11,13 +18,13 @@ var tile_pos_mouse : Vector2i:
 			if skill.type_application in [Skill.TypeApplication.TargetsArea, Skill.TypeApplication.TargetsWorld]:
 				unit._tm.update(skill, tile_pos_mouse, varuable_mouse_pos, true, unit.tile_pos)
 			else:
-				effect_unit = unit._tm.update(skill, tile_pos_mouse, varuable_mouse_pos, true, unit.tile_pos)
-
-const EXCEPTION : Array[Skill.TypeApplication] = [Skill.TypeApplication.TargetsArea, Skill.TypeApplication.TargetsWorld]
+				if effect_unit != unit._tm.update(skill, tile_pos_mouse, varuable_mouse_pos, true, unit.tile_pos):
+					effect_unit = unit._tm.update(skill, tile_pos_mouse, varuable_mouse_pos, true, unit.tile_pos)
 
 func start():
 	GlobalInfo.select_ability_anybody = true
 	varuable_mouse_pos.append_array(unit._tm.init(skill, unit.tile_pos, true))
+	Eventbus.emit_signal("reveal_result_skill", skill.reveal_result_action(unit, effect_unit))
 
 func update():
 	tile_pos_mouse = floor(get_global_mouse_position() / 64)
@@ -28,7 +35,7 @@ func update():
 			else:
 				effect_unit.append(unit._tm.add_unit_exec(tile_pos_mouse, effect_unit.front().tile_pos))
 				effect_unit.pop_front()
-	if Input.is_action_just_pressed("LMB"):
+	if Input.is_action_just_pressed("LMB") and !effect_unit.is_empty():
 		skill.cooldown_timer = skill.cooldown
 		SkillManager.execute(skill, effect_unit, unit)
 		return unit._st.end_turn
@@ -36,6 +43,7 @@ func update():
 		return unit._st.wait
 
 func end():
+	Eventbus.emit_signal("select_char", unit)
 	Eventbus.emit_signal("update_prop_ui")
 	unit._tm.clear_layer(2)
 	unit._tm.clear_layer(3)

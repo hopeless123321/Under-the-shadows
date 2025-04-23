@@ -56,7 +56,7 @@ limit_left = -256
 limit_top = -256
 editor_draw_limits = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="Ash" type="GPUParticles2D" parent="."]
 z_index = 1000
 position = Vector2(41.745, 0)
 amount = 300
@@ -121,8 +121,35 @@ script = ExtResource("7_pdymu")
 metadata/_edit_use_anchors_ = true
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("9_3kcvc")]
+z_index = 1
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Description" parent="CanvasLayer/UI/Under UI/MarginContainer/VBoxContainer" index="8"]
+mouse_force_pass_scroll_events = false
+text = "[ul] sfddsfgdsfsd 
+sdfgdsgf
+sdgfsd
+gsdf
+gsfd
+gfs
+dfgsd
+gf
+sd
+gfs
+dgfsdgsdg
+sdfg
+sd
+gs
+d
+gsd
+g
+fg"
+scroll_following = true
+
+[node name="Stash queue" parent="CanvasLayer/UI" index="2"]
+anchor_bottom = 0.137
+offset_bottom = 0.199997
 
 [connection signal="pressed" from="CanvasLayer/New turn" to="Units" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/End battle" to="CanvasLayer/End battle" method="_on_pressed"]

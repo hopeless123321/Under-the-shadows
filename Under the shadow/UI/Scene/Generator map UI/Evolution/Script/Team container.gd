@@ -10,7 +10,7 @@ var selected_button : Unit_button:
 	get:
 		return BUTTON_GROUP_UNIT_BUTTON.get_pressed_button()
 
-func _input(event : InputEvent) -> void: #Сброс при ESC
+func _input(_event : InputEvent) -> void: #Сброс при ESC
 	if Input.is_action_just_pressed("ESC") and selected_button != null:
 		selected_button.button_pressed = false
 		for line : LineEvolveNode in get_tree().get_nodes_in_group("Line evolution"):
@@ -21,10 +21,10 @@ func update() -> void: #обновляется каждый раз как поя
 		if unit_b.name != "New unit":
 			unit_b.queue_free()
 
-	for unit_resource : UnitOnTeam in Teaminfo.team:
+	for unit_resource : UnitOnTeam in UnitManager.team:
 		var new_button : Unit_button = Unit_button.new()
 		new_button.name = unit_resource.forename
-		new_button.icon = unit_resource.icon_select
+		new_button.icon = unit_resource.icon_minimap
 		new_button.unit_info = unit_resource
 		new_button.toggle_mode = true
 		new_button.theme = UNIT_BUTTON
@@ -33,13 +33,8 @@ func update() -> void: #обновляется каждый раз как поя
 		move_child(new_button, get_child_count() - 2)
 
 	for unit_b in get_children(true):
-		if unit_b.name != "New unit":
-			if unit_b.name != "King":
-				unit_b.connect("pressed", reveal_path)
-			unit_b.connect("mouse_entered", reveal_unit.bind(unit_b.unit_info))
-
-func reveal_unit(unit_info : UnitOnTeam) -> void: #показывает хар-ки юнита в пати
-	Eventbus.emit_signal("get_unit_prop", unit_info, true)
+		if unit_b.name != "New unit" or unit_b.name != "King":
+			unit_b.connect("pressed", reveal_path)
 
 func reveal_path() -> void: #показывает путь до юнита при нажатии на него и сбрысывает пути если никто не выбран
 	if unit_select() and selected_button.unit_info != null:
@@ -50,7 +45,7 @@ func reveal_path() -> void: #показывает путь до юнита пр�
 	
 func upgrade_unit(upgrade_to : UnitProp) -> void: #улучшает юнита когда нажимается EvolutionNode. Создает в тиме нового юнта и удаляет старого
 	var select_unit : UnitOnTeam = selected_button.unit_info
-	select_unit = Teaminfo.upgrade_unit(upgrade_to, select_unit)
+	select_unit = UnitManager.upgrade_unit(upgrade_to, select_unit)
 	selected_button.update(select_unit)
 	draggable.path_to(select_unit.forename)
 	
@@ -66,6 +61,7 @@ func _on_new_unit_pressed() -> void: #Когда нажимается кнопк
 		add_child(new_ally)
 		move_child(new_ally, get_child_count() - 2)
 		draggable.new_unit()
+		new_ally.connect("pressed", reveal_path)
 
 func unit_select() -> bool: #проверка выбран ли юнит
 	if selected_button != null:

@@ -18,8 +18,9 @@ const SKILL_DESCRIPTION : PackedScene = preload("res://UI/Scene/Generator map UI
 
 func _ready() -> void:
 	Eventbus.connect("get_unit_prop", update)
-		
-func update(unit_prop : Resource, from_team : bool) -> void:
+	Eventbus.connect("get_unit_on_team", update)
+	
+func update(unit_prop : Resource) -> void:
 	for skill in skills_stores.get_children():
 		skill.queue_free()
 	class_value.text = ""
@@ -31,18 +32,18 @@ func update(unit_prop : Resource, from_team : bool) -> void:
 	phys_resist_value.text = str(unit_prop.resist_phys_dmg)
 	magic_resist_value.text = str(unit_prop.resist_mag_dmg)
 	will_resist_value.text = str(unit_prop.resist_will)
-	dmg_amp_value.text = str(unit_prop.dmg_amp)
+	dmg_amp_value.text = str(unit_prop.damage.x) + "-" + str(unit_prop.damage.y)
 	
-	for skill in unit_prop.skills:
+	if unit_prop is UnitOnTeam:
+		hp_value.text = str(unit_prop.hp)
+	elif unit_prop is UnitProp:
+		hp_value.text = str(unit_prop.max_hp)
+	
+	for skill : Skill in unit_prop.skills:
 		var skill_d : VBoxContainer = SKILL_DESCRIPTION.instantiate()
 		skills_stores.add_child(skill_d)
 		skill_d.create_skill(skill)
-	
-	if from_team:
-		for unit_class in unit_prop.type:
-			class_value.text += unit_class + " "
-			hp_value.text = str(unit_prop.hp)
-	else:
-		for unit_class in unit_prop.get_class_flags():
-			class_value.text += unit_class + " "
-		hp_value.text = str(unit_prop.max_hp)
+	for unit_class : int in unit_prop.class_unit:
+		class_value.text += Translater.UNIT_CLASS[unit_class] + ", "
+	class_value.text = class_value.text.left(-2)
+

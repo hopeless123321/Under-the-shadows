@@ -6,12 +6,16 @@ const PROP_TO_REVEAL : Array[String] = [
 	"active",
 	"class_spell",
 	"area",
-	"self_target",
-	"type_unit"
+	"self_target"
 ]
 
-@export_category("All in area mandatory")
-@export_enum("Ally", "Enemy", "Either") var type_unit : String
+@export_group("All in area mandatory")
+@export var type_unit : TypeAppUnit
 @export var area : int 
 @export var self_target : bool
 # //
+func execute(sender : Unit, recievers : Array[Unit]) -> void:
+	pass
+func reveal_result_action(sender : Unit, recievers : Array[Unit]) -> String:
+	var text : String
+	return text

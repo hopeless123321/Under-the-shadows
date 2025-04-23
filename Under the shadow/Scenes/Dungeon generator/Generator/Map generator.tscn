@@ -204,7 +204,7 @@ pivot_offset = Vector2(640, 340)
 [node name="Draggable" parent="CanvasLayer/Tree creature/Clip frame" index="0"]
 anchors_preset = -1
 
-[node name="Crossbow" parent="CanvasLayer/Tree creature/Clip frame/Draggable" index="4" node_paths=PackedStringArray("connected_down")]
+[node name="Crossbow" parent="CanvasLayer/Tree creature/Clip frame/Draggable" index="7" node_paths=PackedStringArray("connected_down")]
 connected_down = [null]
 
 [node name="Return button" parent="CanvasLayer/Tree creature" index="2"]

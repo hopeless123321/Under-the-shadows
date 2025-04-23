@@ -4,13 +4,16 @@ const PROP_TO_REVEAL : Array[String] = [
 	"cost_hp",
 	"cost_will",
 	"active",
-	"class_spell",
-	#"scema_cast",
-	"type_unit"
+	"class_spell"
 ]
 
-@export_category("Directional with preset madatory")
-@export_enum("Ally", "Enemy", "Either") var type_unit : String
+@export_group("Directional with preset madatory")
+@export var type_unit : TypeAppUnit
 @export var preset : Array[Vector2i]
 # //
 
+func execute(sender : Unit, recievers : Array[Unit]) -> void:
+	pass
+func reveal_result_action(sender : Unit, recievers : Array[Unit]) -> String:
+	var text : String
+	return text

@@ -183,24 +183,6 @@ expand_icon = true
 script = ExtResource("2_j7lvf")
 unit_prop = ExtResource("9_7a7cm")
 
-[node name="Crossbow" type="Button" parent="Clip frame/Draggable"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -448.0
-offset_top = -84.0
-offset_right = -384.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_icon = true
-script = ExtResource("2_j7lvf")
-unit_prop = ExtResource("6_wvmxx")
-
 [node name="Skeleton sword" type="Button" parent="Clip frame/Draggable" node_paths=PackedStringArray("connected_up")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
@@ -218,9 +200,9 @@ grow_vertical = 2
 expand_icon = true
 script = ExtResource("2_j7lvf")
 unit_prop = ExtResource("10_ok15b")
-connected_up = [NodePath("../Moon guide"), NodePath("../Priest"), NodePath("../Crossbow")]
+connected_up = [NodePath("../Moon guide"), NodePath("../Priest")]
 
-[node name="Priest" type="Button" parent="Clip frame/Draggable"]
+[node name="Priest" type="Button" parent="Clip frame/Draggable" node_paths=PackedStringArray("connected_up")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 8
@@ -237,6 +219,7 @@ grow_vertical = 2
 expand_icon = true
 script = ExtResource("2_j7lvf")
 unit_prop = ExtResource("7_ii2lk")
+connected_up = [NodePath("../Crossbow")]
 
 [node name="Moon guide" type="Button" parent="Clip frame/Draggable" node_paths=PackedStringArray("connected_up")]
 custom_minimum_size = Vector2(64, 64)
@@ -256,6 +239,23 @@ expand_icon = true
 script = ExtResource("2_j7lvf")
 unit_prop = ExtResource("8_l2hbc")
 connected_up = [NodePath("../Skeleton spear")]
+
+[node name="Crossbow" type="Button" parent="Clip frame/Draggable"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -368.0
+offset_top = -100.0
+offset_right = -304.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_j7lvf")
+unit_prop = ExtResource("6_wvmxx")
 
 [node name="UI Evolve" type="Control" parent="."]
 layout_mode = 1
@@ -484,7 +484,7 @@ theme = ExtResource("11_sew8x")
 layout_mode = 2
 size_flags_horizontal = 14
 theme = ExtResource("9_oe2jh")
-text = "Dmg amp"
+text = "Dmg "
 
 [node name="Dmg amp value" type="Label" parent="UI Evolve/Unit info/ScrollContainer/Margin unit list/Manager unit_prop/Stats"]
 layout_mode = 2

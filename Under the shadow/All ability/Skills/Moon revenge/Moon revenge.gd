@@ -6,13 +6,16 @@ const PROP_TO_REVEAL : Array[String] = [
 	"active",
 	"class_spell",
 	"radius",
-	"pierce",
-	"type_unit"
+	"pierce"
 ]
 
-@export_category("Directional madatory")
-@export_enum("Ally", "Enemy", "Either") var type_unit : String
+@export_group("Directional madatory")
+@export var type_unit : TypeAppUnit
 @export var radius : int
 @export var pierce : bool
 # //
-
+func execute(sender : Unit, recievers : Array[Unit]) -> void:
+	pass
+func reveal_result_action(sender : Unit, recievers : Array[Unit]) -> String:
+	var text : String
+	return text

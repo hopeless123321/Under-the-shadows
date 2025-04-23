@@ -73,6 +73,7 @@ region = Rect2(320, 0, 192, 64)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqop1"]
 
 [node name="Control" type="Control"]
+light_mask = 0
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,7 +184,7 @@ columns = 2
 [node name="Damage amp" type="Label" parent="Under UI/MarginContainer/VBoxContainer/Right_stat_cont"]
 layout_mode = 2
 theme = ExtResource("2_u5k2f")
-text = "Damage amp."
+text = "Damage "
 
 [node name="Damage amp value" type="Label" parent="Under UI/MarginContainer/VBoxContainer/Right_stat_cont"]
 layout_mode = 2
@@ -245,12 +246,11 @@ theme = ExtResource("5_7itc1")
 [node name="Skills cont" type="HBoxContainer" parent="Under UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="description" type="RichTextLabel" parent="Under UI/MarginContainer/VBoxContainer"]
+[node name="Description" type="RichTextLabel" parent="Under UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_r2qv7")
-text = "Name ; King
-Class : No classified"
+bbcode_enabled = true
 
 [node name="Queue" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0)

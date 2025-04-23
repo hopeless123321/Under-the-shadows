@@ -2,80 +2,39 @@ extends CharacterBody2D
 class_name Unit
 #Базовый класс всех существ
 
-var forename : String
-var max_hp : int:
-	set(value):
-		Eventbus.emit_signal("prop_char_change", value - max_hp, "max_hp", global_position)
-		max_hp = value
-var hp : int:
-	set(value):
-		Eventbus.emit_signal("prop_char_change", value - hp, "hp", global_position)
-		if value < hp:
-			hitting()
-		hp = clamp(value,0, max_hp)
-var will : int:
-	set(value):
-		Eventbus.emit_signal("prop_char_change", value - will, "will", global_position)
-		will = clamp(value, 0, 100)
-var dmg_amp: float:
-	set(value):
-		Eventbus.emit_signal("prop_char_change", value - dmg_amp, "dmg_amp", global_position)
-		dmg_amp = Utility.round_place(clamp(value, 0 , 100), 2)
-var resist_phys_dmg : int:
-	set(value):
-		Eventbus.emit_signal("prop_char_change", value - resist_phys_dmg, "resist_phys_dmg", global_position)
-var resist_mag_dmg : int:
-	set(value):
-		Eventbus.emit_signal("prop_char_change", value - resist_mag_dmg, "resist_mag_dmg", global_position)
-var resist_will : int:
-	set(value):
-		Eventbus.emit_signal("prop_char_change", value - resist_will, "resist_will", global_position)
-var speed : int:
-	set(value):
-		Eventbus.emit_signal("prop_char_change", value - speed, "speed", global_position)
-		speed = value
-var move_point : int:
-	set(value):
-		move_point = clamp(value,0,speed)
-var reaction : int:
-	set(value):
-		Eventbus.emit_signal("prop_char_change", value - speed, "speed", global_position)
-		reaction = value
-var move_after_skill : bool = false
-var free_move : bool = true
-var skills : Array[Skill]
-var icon : Texture2D
-var icon_select : Texture2D
-var type : Array[String]
-var cost : int
-var animation_trans : Tween.TransitionType
-var animation_ease : Tween.EaseType
-var duration : int
-var move_to : String
-var distance : int
+var unit_property : UnitOnTeam
 #inner varuable
 var tile_pos : Vector2i:
 	get:
 		return _tm.local_to_map(global_position)
-var statuses : Array[Status_effect]
+var status_effects : Array[Status_effect]
 var path : Array[Vector2i]
 var previous_state : Node2D = null
 var current_state : Node2D = null
+var move_point : int : 
+	set(value):
+		move_point = clamp(value, 0, unit_property.speed)
 #link to other node
 
 @onready var _tm : TileMap = $"../../../TileMap"
 @onready var _st : Node2D
+@onready var hp_progress_bar : TextureProgressBar
+@onready var will_progress_bar : TextureProgressBar
+
 
 
 func initiation() -> void:
+	if !unit_property:
+		pass
+	# NEED add status effect on begin of battle to Unit 
 	_st = $States # FIX ME
+	hp_progress_bar = $"Hp Progress bar"
+	will_progress_bar = $"Will progress bar"
 	add_to_group("Units")
 	for states in _st.get_children():
 		states.state_machine = _st
 	previous_state = _st.idle
 	current_state = _st.idle
-	#make ability unique
-	skills.assign(skills.map(unique_skill))
 
 func _physics_process(_delta : float) -> void:
 	if current_state != null:
@@ -88,21 +47,35 @@ func change_state(input : Node2D) -> void:
 		previous_state.end()
 		current_state.start()
 
-func pushing() -> void:
-	pass
-func hitting() -> void:
-	pass
+func begin_turn() -> void: 
+	update_status_effect(true)
+
 func end_turn() -> void:
+	update_status_effect(false)
 	recharge_skill()
 ## Decrease cooldown all skill on unit 
 func recharge_skill() -> void:
-	for skill in skills:
+	for skill in unit_property.skills:
 		if skill.cooldown != 0:
 			skill.cooldown_timer -= 1
-## Make unique skill for every skill on unit for 
-func unique_skill(skill : Skill) -> Skill:
-	return skill.duplicate() as Skill
+
+func update_status_effect(begin_turn : bool) -> void:
+	if begin_turn:
+		pass
+	else:
+		pass
 
 func self_destroy() -> void:
 	queue_free() # FIX ME
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Add info"):
+		hp_progress_bar.visible = true
+		will_progress_bar.visible = true
+		hp_progress_bar.max_value = unit_property.max_hp
+		hp_progress_bar.value = unit_property.hp
+		will_progress_bar.value = unit_property.will
+	elif Input.is_action_just_released("Add info"):
+		hp_progress_bar.visible = false
+		will_progress_bar.visible = false
+		

@@ -19,10 +19,10 @@ func reveal() -> void:
 	for icon in h_box_container.get_children():
 		icon.queue_free()
 	Eventbus.emit_signal("give_queue", self)
-	for character in queue:
+	for character : Unit in queue:
 		var icon_queue : TextureRect = icon_scene.instantiate()
 		icon_queue.unit = character
-		icon_queue.texture = character.icon_select
+		icon_queue.texture = character.unit_property.icon_minimap
 		h_box_container.add_child(icon_queue)
 	var tween_reveal : Tween = create_tween()
 	tween_reveal.set_ease(Tween.EASE_IN_OUT)

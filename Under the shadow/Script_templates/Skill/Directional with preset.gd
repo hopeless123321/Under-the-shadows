@@ -6,11 +6,16 @@ const PROP_TO_REVEAL : Array[String] = [
 	"active",
 	"class_spell",
 	#"scema_cast",
-	"type_unit"
+	
 ]
-@export_category("Directional with preset madatory")
+@export_group("Directional with preset madatory")
 
-@export_enum("Ally", "Enemy", "Either") var type_unit : String
+@export var type_unit : TypeAppUnit
 @export var preset : Array[Vector2i]
 @export var schema_cast : Texture2D
 # //
+func execute(sender : Unit, recievers : Array[Unit]) -> void:
+	pass
+func reveal_result_action(sender : Unit, recievers : Array[Unit]) -> String:
+	var text : String
+	return text

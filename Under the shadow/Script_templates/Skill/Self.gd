@@ -6,3 +6,8 @@ const PROP_TO_REVEAL : Array[String] = [
 	"active",
 	"class_spell",
 ]
+func execute(sender : Unit, recievers : Array[Unit]) -> void:
+	pass
+func reveal_result_action(sender : Unit, recievers : Array[Unit]) -> String:
+	var text : String
+	return text

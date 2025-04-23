@@ -5,17 +5,18 @@
 
 [resource]
 script = ExtResource("2_hvt81")
-type_unit = "Either"
+type_unit = 2
 self_target = false
+dmg = 2.0
+type_dmg = 0
 id = 5
 forename = "Eclipse"
 cost_hp = 10
 cost_will = 10
 cooldown = 2
 active = true
-description = "Затмение ведёт за собою величие Бога Луны. А он уже не разьирает своих и чужих."
+description = "Затмение ведёт за собою величие Бога Луны. А он уже не разбирает своих и чужих."
 icon = ExtResource("1_aayia")
 skill_prop_in_evolve_tree = {}
-class_spell = "No type"
-type_application = "All world"
-type = 2
+type_spell = 0
+type_application = 0

@@ -144,7 +144,7 @@ func get_to_room(room : Room) -> void:
 func calculate_general_diff() -> int:
 	return GlobalInfo.stage * 3\
 	+ GlobalInfo.stage * GlobalInfo.difficult_on_battle\
-	* randi_range(0.9, 1.1)
+	* randf_range(0.9, 1.1)
 
 func reveal_hide_map() -> void:
 	visible = !visible

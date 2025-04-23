@@ -27,7 +27,6 @@ func init() -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if Input.is_action_just_released(action_button):
-		print("123123")
 		button_pressed = true
 		
 func set_text_tooltip(skill : Skill) -> String:
@@ -85,7 +84,6 @@ func _make_custom_tooltip(for_text) -> RichTextLabel:
 	return tooltip
 
 func _on_pressed() -> void:
-	print("131253534")
 	if unit.current_state == unit._st.wait:
 		unit._st.spell_cast.skill = data_skill
 		unit.change_state(unit._st.spell_cast)

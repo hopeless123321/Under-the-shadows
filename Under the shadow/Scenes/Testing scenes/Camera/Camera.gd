@@ -28,8 +28,7 @@ func target_to(tile_pos : Vector2i) -> void:
 func _def() -> void:
 	limit_bottom = GlobalInfo.size_map.size.y + OFFSET
 	limit_right = GlobalInfo.size_map.size.x + OFFSET
-	@warning_ignore("integer_division")
-	global_position = Vector2i(GlobalInfo.size_map.size.x / 2, GlobalInfo.size_map.size.y / 2)
+	global_position = Vector2(GlobalInfo.size_map.size.x / 2, GlobalInfo.size_map.size.y / 2)
 
 func reveal_hide_map() -> void:
 	enabled = !enabled

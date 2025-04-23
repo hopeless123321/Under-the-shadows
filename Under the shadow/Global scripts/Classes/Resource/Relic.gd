@@ -1,9 +1,9 @@
 extends Resource
-# Resource Class that represent items that have unique effect and unique time applicaton tim e
+## Resource Class that represent items that have unique effect and unique time applicaton tim e
 class_name Relic
-# Name relics
-enum Rarity {Common, Uncommon, Rare, Unique, Specified}
-enum TimeApplication {BeginTurn, EndTurn, BeginBattle, EndBattle, EventSpecified, SkillAffect, ChangeGameGlobalVaruable}
+## Name relics
+enum Rarity {Common = 50 , Uncommon = 30, Rare = 15, Unique = 5, Specified = 0}
+enum TimeApplication {BeginTurn, BeginTurnAll, EndTurn, EndTrnAll, BeginBattle, EndBattle, EventSpecified, SkillAffect, ChangeGameGlobalVaruable}
 ## Name relics
 @export var name : String
 ## Visual represent on UI

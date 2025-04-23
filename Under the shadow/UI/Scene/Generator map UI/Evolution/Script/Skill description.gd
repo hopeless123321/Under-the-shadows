@@ -19,7 +19,7 @@ const TYPE_APPLICARION_SKILL : Dictionary = {
 	Skill.TypeApplication.TilesEffects : "On ground",
 	Skill.TypeApplication.Spawn : "Spawn"}
 
-func _input(event : InputEvent) -> void:
+func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("Add info"):
 		prop.visible = true
 		prop_grid.visible = true
@@ -33,6 +33,8 @@ func create_skill(skill : Skill) -> void:
 		skill_name.text = skill.forename
 		description_skill.text = skill.description
 		create_skill_des("Type application: ", TYPE_APPLICARION_SKILL[skill.type_application])
+		if skill.get('type_unit') != null:
+			create_skill_des("Type unit to applicate: ", Translater.SKILL_TYPE_UNIT[skill.type_unit])
 		for property : String in skill.PROP_TO_REVEAL:
 			match typeof(skill.get(property)):
 				1: #bool

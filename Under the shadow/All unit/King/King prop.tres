@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="1_4egtm"]
 [ext_resource type="Resource" uid="uid://jwat6prpcd6o" path="res://All ability/Skills/Eclipse/Eclipse.tres" id="2_atuhe"]
 [ext_resource type="Texture2D" uid="uid://j6q0a326fybw" path="res://All unit/King/King icon_Preview.png" id="2_wagu1"]
-[ext_resource type="Resource" uid="uid://c580dtbkfoeox" path="res://All ability/Skills/Moon revenge/Moon revenge.tres" id="3_cjj0n"]
+[ext_resource type="Resource" uid="uid://dgtxjrhahrmwm" path="res://All ability/Skills/Madness/Madness.tres" id="4_xppk5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvwcb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w25eg"]
 atlas = ExtResource("2_wagu1")
 region = Rect2(0, 16, 64, 64)
 
@@ -13,18 +13,18 @@ region = Rect2(0, 16, 64, 64)
 script = ExtResource("1_4egtm")
 forename = "King"
 max_hp = 135
-dmg_amp = 0
-resist_phys_dmg = 0
-resist_mag_dmg = 0
+damage = Vector2i(15, 25)
+resist_phys_dmg = 20
+resist_mag_dmg = 22
 resist_will = 200
 speed = 12
 reaction = 6
 move_after_skill = false
 free_move = false
-skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([ExtResource("3_cjj0n"), ExtResource("2_atuhe"), ExtResource("3_cjj0n")])
+skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([ExtResource("2_atuhe"), ExtResource("4_xppk5")])
 icon = ExtResource("2_wagu1")
-icon_select = SubResource("AtlasTexture_lvwcb")
-type_unit = Array[int]([])
+icon_minimap = SubResource("AtlasTexture_w25eg")
+class_unit = Array[int]([])
 cost = 123
 animation_trans = 1
 animation_ease = 2

@@ -9,8 +9,8 @@ func _ready() -> void:
 	Eventbus.connect("souls_changed", update)
 	Eventbus.connect("get_unit_prop", reveal_dif)
 	
-func reveal_dif(unit_prop : Resource, check : bool) -> void:
-	if !check:
+func reveal_dif(unit_prop : Resource) -> void:
+	#if !check:
 		var tween_reveal_dif : Tween = create_tween()
 		tween_reveal_dif.set_ease(Tween.EASE_IN_OUT)
 		tween_reveal_dif.set_trans(Tween.TRANS_SINE)

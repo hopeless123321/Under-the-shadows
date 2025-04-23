@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d3rc4lpdd0c27"]
+
+[ext_resource type="Texture2D" uid="uid://bb6wudamioaf4" path="res://All ability/Skills/Darkest hour/Darkest hour.png" id="1_lvp5t"]
+[ext_resource type="Script" path="res://All ability/Skills/Darkest hour/Darkest hour.gd" id="2_qh2ge"]
+
+[resource]
+script = ExtResource("2_qh2ge")
+type_unit = 2
+targets = 3
+self_target = false
+dmg = 2
+id = 12
+forename = "Darkest Hour"
+cost_hp = 10
+cost_will = 2
+cooldown = 2
+active = true
+description = "В темнейший час бла-бла-бла	"
+icon = ExtResource("1_lvp5t")
+skill_prop_in_evolve_tree = {}
+type_spell = 2
+type_application = 2

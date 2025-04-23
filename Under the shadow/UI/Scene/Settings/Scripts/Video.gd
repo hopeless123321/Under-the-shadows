@@ -1,13 +1,13 @@
-extends TabBar
+extends MarginContainer
 
-@onready var resolution_n : OptionButton = $MarginContainerVideo/VBoxContainer/GridContainer/Resolution
-@onready var fullscreen_n : CheckBox = $MarginContainerVideo/VBoxContainer/GridContainer/fullscreen
-@onready var vsync_n : CheckBox = $MarginContainerVideo/VBoxContainer/GridContainer/vsync
-@onready var vineete_n : HSlider = $MarginContainerVideo/VBoxContainer/GridContainer2/Vineete
-@onready var vinneete_opacity_n : HSlider = $"MarginContainerVideo/VBoxContainer/GridContainer2/Vinneete opacity"
-@onready var aberration_n : HSlider = $MarginContainerVideo/VBoxContainer/GridContainer2/Aberration
-@onready var britness_n : HSlider = $MarginContainerVideo/VBoxContainer/GridContainer2/Britness
-@onready var curve_screen_n : HSlider = $MarginContainerVideo/VBoxContainer/GridContainer2/Curve_screen
+@onready var resolution_n : OptionButton = $VBoxContainer/GridContainer/Resolution
+@onready var fullscreen_n : CheckBox = $VBoxContainer/GridContainer/fullscreen
+@onready var vsync_n : CheckBox = $VBoxContainer/GridContainer/vsync
+@onready var vineete_n : HSlider = $VBoxContainer/GridContainer2/Vineete
+@onready var vinneete_opacity_n : HSlider = $"VBoxContainer/GridContainer2/Vinneete opacity"
+@onready var aberration_n : HSlider = $VBoxContainer/GridContainer2/Aberration
+@onready var britness_n : HSlider = $VBoxContainer/GridContainer2/Britness
+@onready var curve_screen_n : HSlider = $VBoxContainer/GridContainer2/Curve_screen
 
 
 const VHS = preload("res://Shaders/vhs.gdshader")

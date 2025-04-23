@@ -9,3 +9,8 @@ const PROP_TO_REVEAL : Array[String] = [
 
 @export var buff_value : int
 
+func execute(sender : Unit, recievers : Array[Unit]) -> void:
+	pass
+func reveal_result_action(sender : Unit, recievers : Array[Unit]) -> String:
+	var text : String
+	return text

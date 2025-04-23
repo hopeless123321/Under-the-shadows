@@ -13,7 +13,7 @@ const MAP_ICON : Rect2 = Rect2(64, 0, 64, 64)
 var time : int
 
 func _ready() -> void:
-	Eventbus.connect("end_turn", update_turn)
+	Eventbus.connect("new_turn_for_everyone", update_turn)
 	Eventbus.connect("souls_changed", update_souls)
 	stage.text = "Stage: " + str(GlobalInfo.stage)
 	souls.text = str(GlobalInfo.souls)
@@ -22,9 +22,9 @@ func _ready() -> void:
 func _physics_process(_delta : float) -> void:
 	time += 1
 	var sec : String = str((time % 3600) / 60).pad_zeros(2)
-	var min : String = str((time % 216000) / 3660).pad_zeros(2)
+	var minute : String = str((time % 216000) / 3660).pad_zeros(2)
 	var hour : String = str(time / 216000).pad_zeros(2)
-	in_game_timer.text = hour + ":" + min + ":" + sec
+	in_game_timer.text = hour + ":" + minute + ":" + sec
 
 func update_turn(turn : int) -> void:
 	turn_label.text = "Turn: " + str(turn)

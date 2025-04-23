@@ -1,7 +1,6 @@
 extends Node
 
 const CELL_SIZE : Vector2i = Vector2i(64, 64)
-const DIFFICULT : Dictionary = {"radiant" : 15, "twilight" : 20 , "eclipse" : 30}
 const CONVERT_LOCATION_TO_STRING : Dictionary = {
 	Location.Forest : "Forest",
 	Location.Near_throne : "Near throne",
@@ -9,7 +8,6 @@ const CONVERT_LOCATION_TO_STRING : Dictionary = {
 	Location.Outside_demension : "Outside demension"}
 #Enums
 enum Location {Forest, Near_throne, Lab, Torture, Outside_demension}
-
 
 # gamechanger varuables
 var probabality_room : Dictionary = {Room.TypeRoom.Fight : 40,

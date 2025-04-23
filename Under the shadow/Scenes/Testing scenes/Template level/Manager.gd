@@ -17,6 +17,7 @@ func init_level() -> void:
 	queue.sort_custom(sort_by_reaction)
 
 func change_turn() -> void:
+	Eventbus.emit_signal("begin_turn_all")
 	queue[wrapi(index - 1, 0, queue.size())].change_state(queue[wrapi(index - 1, 0, queue.size())]._st.end_turn)
 	queue[wrapi(index - 1, 0, queue.size())].end_turn()
 	if index == 0:
@@ -29,10 +30,11 @@ func change_turn() -> void:
 	index = wrapi(index + 1, 0 , queue.size())
 	if index == 1:
 		turn += 1
-		Eventbus.emit_signal("end_turn", turn)
+		Eventbus.emit_signal("new_turn_for_everyone", turn)
+	Eventbus.emit_signal("end_turn_all")
 
 func sort_by_reaction(a : Unit, b : Unit) -> bool:
-	if a.reaction > b.reaction:
+	if a.unit_property.reaction > b.unit_property.reaction:
 		return true
 	else:
 		return false
