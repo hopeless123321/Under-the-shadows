@@ -1,5 +1,7 @@
 extends States
+
 const EXCEPTION : Array[Skill.TypeApplication] = [Skill.TypeApplication.TargetsArea, Skill.TypeApplication.TargetsWorld]
+const NO_CHANGE_SKILL_TYPE : Array[Skill.TypeApplication] = [Skill.TypeApplication.AllArea, Skill.TypeApplication.AllWorld]
 
 var skill : Skill
 var varuable_mouse_pos : Array[Vector2i]
@@ -24,7 +26,8 @@ var tile_pos_mouse : Vector2i:
 func start():
 	GlobalInfo.select_ability_anybody = true
 	varuable_mouse_pos.append_array(unit._tm.init(skill, unit.tile_pos, true))
-	Eventbus.emit_signal("reveal_result_skill", skill.reveal_result_action(unit, effect_unit))
+	if skill.TypeApplication in NO_CHANGE_SKILL_TYPE:
+		Eventbus.emit_signal("reveal_result_skill", skill.reveal_result_action(unit, effect_unit))
 
 func update():
 	tile_pos_mouse = floor(get_global_mouse_position() / 64)

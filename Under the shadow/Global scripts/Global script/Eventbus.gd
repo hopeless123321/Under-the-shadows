@@ -33,7 +33,7 @@ signal target_camera_to(unit_pos : Vector2i)
 signal prop_char_change(dif : float, prop : String, positive : bool)
 signal reveal_unit_hp_will(visible : bool)
 signal reveal_result_skill(result_text : String)
-
+signal create_spell(unit : Unit, skill_name : Skill)
 ## Other
 signal souls_changed(value : int)
 

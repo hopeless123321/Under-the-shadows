@@ -38,7 +38,7 @@ enum ClassUnit {NoClass, Skelet, Lunar, Ghost}
 ## Price on the evolution tree, reward for kill enemy and generate level compute 
 @export var cost : int
 ## Debuff ot buff implement to unit if he has low will on fight
-@export var status_effect_low_will : Status_effect
+@export var status_effect_low_will : StatusEffect
 @export_group("Move")
 @export var animation_trans : Tween.TransitionType
 @export var animation_ease : Tween.EaseType

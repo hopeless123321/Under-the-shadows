@@ -127,24 +127,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Description" parent="CanvasLayer/UI/Under UI/MarginContainer/VBoxContainer" index="8"]
 mouse_force_pass_scroll_events = false
-text = "[ul] sfddsfgdsfsd 
-sdfgdsgf
-sdgfsd
-gsdf
-gsfd
-gfs
-dfgsd
-gf
-sd
-gfs
-dgfsdgsdg
-sdfg
-sd
-gs
-d
-gsd
-g
-fg"
 scroll_following = true
 
 [node name="Stash queue" parent="CanvasLayer/UI" index="2"]

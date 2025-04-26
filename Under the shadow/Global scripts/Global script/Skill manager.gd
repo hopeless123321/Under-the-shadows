@@ -69,4 +69,4 @@ func execute(skill : Skill, units : Array[Unit], sender : Unit) -> void:
 	sender.unit_property.hp -= skill.cost_hp
 	sender.unit_property.will -= skill.cost_will
 	skill.execute(sender, units) 
-	Eventbus.emit_signal("skill_execute")
+	#Eventbus.emit_signal("skill_execute")

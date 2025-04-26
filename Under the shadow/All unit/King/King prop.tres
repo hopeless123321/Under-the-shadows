@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="UnitProp" load_steps=6 format=3 uid="uid://c1onlxupvt7k6"]
+[gd_resource type="Resource" script_class="UnitProp" load_steps=5 format=3 uid="uid://c1onlxupvt7k6"]
 
 [ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="1_4egtm"]
-[ext_resource type="Resource" uid="uid://jwat6prpcd6o" path="res://All ability/Skills/Eclipse/Eclipse.tres" id="2_atuhe"]
 [ext_resource type="Texture2D" uid="uid://j6q0a326fybw" path="res://All unit/King/King icon_Preview.png" id="2_wagu1"]
 [ext_resource type="Resource" uid="uid://dgtxjrhahrmwm" path="res://All ability/Skills/Madness/Madness.tres" id="4_xppk5"]
 
@@ -21,7 +20,7 @@ speed = 12
 reaction = 6
 move_after_skill = false
 free_move = false
-skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([ExtResource("2_atuhe"), ExtResource("4_xppk5")])
+skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([ExtResource("4_xppk5")])
 icon = ExtResource("2_wagu1")
 icon_minimap = SubResource("AtlasTexture_w25eg")
 class_unit = Array[int]([])

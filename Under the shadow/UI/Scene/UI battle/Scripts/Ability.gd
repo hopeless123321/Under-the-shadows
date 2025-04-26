@@ -22,8 +22,8 @@ func init() -> void:
 	tooltip_text = set_text_tooltip(data_skill)
 	if data_skill.cooldown != 0:
 		if data_skill.cooldown_timer != 0:
-			$PanelContainer.visible = true
-			$PanelContainer/Label.text = str(data_skill.cooldown_timer)
+			disabled = true
+			$Label.text = str(data_skill.cooldown_timer)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if Input.is_action_just_released(action_button):

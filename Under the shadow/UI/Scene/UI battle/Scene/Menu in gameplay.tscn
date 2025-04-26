@@ -292,7 +292,7 @@ offset_right = 0.0
 offset_bottom = -0.320007
 current_tab = 2
 
-[node name="Video" parent="Setting/TabContainer" index="2"]
+[node name="Game" parent="Setting/TabContainer" index="1"]
 visible = false
 
 [node name="Audio" parent="Setting/TabContainer" index="3"]

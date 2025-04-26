@@ -1,7 +1,7 @@
 extends Resource
 class_name Skill
 
-enum TypeSpell {NoType, Lunar, Blood, Suicide}
+enum TypeSpell {NoType, Lunar, Blood, Suicide, Melee, Ranged, Magic, Fire}
 enum TypeApplication {AllWorld, AllArea, TargetsWorld, TargetsArea, Directional, DirectionalWithPreset, Self, BombLike, TilesEffects, Spawn} 
 @export_group("Main")
 @export var id : int
@@ -66,5 +66,12 @@ func dmg_with_resist(dmg_amp : int, resist : float, damage : Vector2i) -> int:
 	elif resist < 0: 
 		return dmg_rng * ((resist / 100) + 1)
 	return dmg_rng 
-#endregion
+
+func will_dmg_resist(dmg : int, resist : float) -> int:
+	if resist > 0:
+		return dmg / ((resist / 100) + 1)
+	elif resist < 0:
+		return dmg * ((resist / 100) + 1)
+	return dmg
+#endregion 
 	

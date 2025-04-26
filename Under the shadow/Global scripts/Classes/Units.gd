@@ -1,26 +1,30 @@
 extends CharacterBody2D
+## Base class that represent every unit on battle 
 class_name Unit
-#Базовый класс всех существ
+## Signal emit when unit begin his turn for status effects
+signal begin_turn_effects
+## Signal emit when unit begin his turn for status effects
+signal end_turn_effects 
 
 var unit_property : UnitOnTeam
 #inner varuable
 var tile_pos : Vector2i:
 	get:
 		return _tm.local_to_map(global_position)
-var status_effects : Array[Status_effect]
+var status_effects : Array[StatusEffect]
 var path : Array[Vector2i]
 var previous_state : Node2D = null
 var current_state : Node2D = null
 var move_point : int : 
 	set(value):
 		move_point = clamp(value, 0, unit_property.speed)
-#link to other node
 
 @onready var _tm : TileMap = $"../../../TileMap"
-@onready var _st : Node2D
-@onready var hp_progress_bar : TextureProgressBar
-@onready var will_progress_bar : TextureProgressBar
 
+var _st : Node2D
+var hp_progress_bar : TextureProgressBar
+var will_progress_bar : TextureProgressBar
+var status_effect_handler : HBoxContainer
 
 
 func initiation() -> void:
@@ -30,6 +34,8 @@ func initiation() -> void:
 	_st = $States # FIX ME
 	hp_progress_bar = $"Hp Progress bar"
 	will_progress_bar = $"Will progress bar"
+	status_effect_handler =  $"Status effect handler"
+	unit_property.connect("update_hp_will",update_progress_bars)
 	add_to_group("Units")
 	for states in _st.get_children():
 		states.state_machine = _st
@@ -39,35 +45,45 @@ func initiation() -> void:
 func _physics_process(_delta : float) -> void:
 	if current_state != null:
 		change_state(current_state.update())
+
 ## Change Unit status dependency of input
 func change_state(input : Node2D) -> void:
 	if input != null:
+		if !status_effects.is_empty():
+			print(input)
 		previous_state = current_state
 		current_state = input
 		previous_state.end()
 		current_state.start()
 
-func begin_turn() -> void: 
-	update_status_effect(true)
-
+func begin_turn() -> void:
+	emit_signal('begin_turn_effects')
+	
 func end_turn() -> void:
-	update_status_effect(false)
+	emit_signal('end_turn_effects')
 	recharge_skill()
+
 ## Decrease cooldown all skill on unit 
 func recharge_skill() -> void:
 	for skill in unit_property.skills:
 		if skill.cooldown != 0:
 			skill.cooldown_timer -= 1
-
-func update_status_effect(begin_turn : bool) -> void:
-	if begin_turn:
-		pass
-	else:
-		pass
-
+## Safety kill self
 func self_destroy() -> void:
 	queue_free() # FIX ME
-
+## Smothly change value on progress bar when bars visible
+func update_progress_bars(hp_prop : bool, value : int) -> void:
+	if !hp_progress_bar.visible:
+		return
+	var tween_change : Tween = create_tween()
+	tween_change.set_ease(Tween.EASE_IN_OUT)
+	tween_change.set_trans(Tween.TRANS_SINE)
+	tween_change.set_parallel()
+	if hp_prop: 
+		tween_change.tween_property(hp_progress_bar, "value", value, 0.5)
+	else: 
+		tween_change.tween_property(will_progress_bar, "value", value, 0.5)	
+## On Alt make bars visible
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Add info"):
 		hp_progress_bar.visible = true
@@ -78,4 +94,13 @@ func _input(event: InputEvent) -> void:
 	elif Input.is_action_just_released("Add info"):
 		hp_progress_bar.visible = false
 		will_progress_bar.visible = false
-		
+
+func apply_status_effect(status : StatusEffect) -> void:
+	status_effect_handler.add_status(status)
+	status.connect("update_signal_ui",  update_status_effect)
+func update_status_effect(status : StatusEffect) -> void:
+	status_effect_handler.update_status_ui(status_effects.find(status), status)
+## Delete status from status effect and status bar
+func free_from_status_effect(status : StatusEffect) -> void:
+	status_effects.erase(status)
+	status_effect_handler.delete_excess(status_effects.find(status)) 

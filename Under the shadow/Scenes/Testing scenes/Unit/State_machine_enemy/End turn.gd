@@ -5,4 +5,4 @@ func start():
 func update():
 	return unit._st.idle
 func end():
-	pass
+	unit.end_turn()
