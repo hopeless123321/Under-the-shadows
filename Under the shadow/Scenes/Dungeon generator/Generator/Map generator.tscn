@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://83uvu4m3msd"]
+[gd_scene load_steps=33 format=3 uid="uid://83uvu4m3msd"]
 
 [ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Map generator.gd" id="1_hjbgk"]
 [ext_resource type="Texture2D" uid="uid://dtpngvp4naspi" path="res://Tile/Tile for map generator/dungeon generator tileset.png" id="2_nvusg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Theme" uid="uid://dqgbwui6773rj" path="res://UI/All theme/Separators/Separator upper UI.tres" id="9_abyqq"]
 [ext_resource type="Texture2D" uid="uid://chsl2tkr2w23w" path="res://UI/Sprites/UI icons.png" id="9_kbj1d"]
 [ext_resource type="Theme" uid="uid://c4c4o0rhpucr2" path="res://UI/All theme/Button/Cut excess.tres" id="11_uyn7v"]
+[ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Relic Handler.gd" id="13_1w1q1"]
 [ext_resource type="PackedScene" uid="uid://cqoe8jc5ucobr" path="res://UI/Scene/UI battle/Scene/Menu in gameplay.tscn" id="14_nfdg1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cobdl"]
@@ -531,6 +532,7 @@ layout_mode = 2
 theme = ExtResource("9_abyqq")
 
 [node name="In Game timer" type="Label" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 theme = ExtResource("6_pe81x")
 theme_override_font_sizes/font_size = 23
@@ -551,23 +553,34 @@ theme_override_font_sizes/font_size = 23
 text = "99"
 
 [node name="Relic Handler" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 2
+theme_override_constants/separation = 0
+script = ExtResource("13_1w1q1")
 
 [node name="Left button" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler"]
-visible = false
 layout_mode = 2
+theme = ExtResource("11_uyn7v")
 icon = SubResource("AtlasTexture_mbyaw")
 flat = true
 
-[node name="Relic Stash" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler"]
+[node name="Relic Stash" type="Control" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler"]
+clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 3
+
+[node name="Relic handler" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler/Relic Stash"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 1664.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
 
 [node name="Right button" type="Button" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler"]
-visible = false
 layout_mode = 2
+theme = ExtResource("11_uyn7v")
 icon = SubResource("AtlasTexture_fckfr")
 flat = true
 
@@ -593,8 +606,11 @@ icon_alignment = 1
 
 [connection signal="gui_input" from="CanvasLayer/Tree creature/Clip frame/Draggable" to="CanvasLayer/Tree creature/Clip frame/Draggable" method="_on_gui_input"]
 [connection signal="pressed" from="CanvasLayer/Tree creature/Return button" to="CanvasLayer/Tree creature" method="reveal_hide_tree"]
+[connection signal="resized" from="CanvasLayer/UI on map" to="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler" method="_on_ui_on_map_resized"]
 [connection signal="mouse_exited" from="CanvasLayer/UI on map/Spells/Panel" to="CanvasLayer/UI on map" method="_on_panel_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/UI on map/Spells/Scroll right/Container arrow/To spell" to="CanvasLayer/UI on map" method="_on_to_spell_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler/Left button" to="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler" method="_on_left_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler/Right button" to="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Relic Handler" method="_on_right_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Switch" to="." method="_switch_button"]
 [connection signal="pressed" from="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container/Settings" to="CanvasLayer/Menu in gameplay" method="hide_reveal_menu"]
 

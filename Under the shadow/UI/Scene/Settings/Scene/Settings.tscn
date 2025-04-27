@@ -43,9 +43,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_xabo4")
 tab_alignment = 1
+current_tab = 1
 drag_to_rearrange_enabled = true
 
 [node name="Game" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
@@ -83,7 +85,6 @@ popup/item_1/text = "English"
 popup/item_1/id = 1
 
 [node name="Video" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
@@ -294,4 +295,12 @@ icon = SubResource("AtlasTexture_mb4p2")
 flat = true
 expand_icon = true
 
+[connection signal="item_selected" from="TabContainer/Video/VBoxContainer/GridContainer/Resolution" to="TabContainer/Video" method="_on_resolution_item_selected"]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/GridContainer/fullscreen" to="TabContainer/Video" method="_on_fulscreen_pressed"]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/GridContainer/vsync" to="TabContainer/Video" method="_on_vsync_pressed"]
+[connection signal="value_changed" from="TabContainer/Video/VBoxContainer/GridContainer2/Vineete" to="TabContainer/Video" method="_on_vineete_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/VBoxContainer/GridContainer2/Vinneete opacity" to="TabContainer/Video" method="_on_vinneete_opacity_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/VBoxContainer/GridContainer2/Aberration" to="TabContainer/Video" method="_on_aberration_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/VBoxContainer/GridContainer2/Britness" to="TabContainer/Video" method="_on_britness_value_changed"]
+[connection signal="value_changed" from="TabContainer/Video/VBoxContainer/GridContainer2/Curve_screen" to="TabContainer/Video" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

@@ -140,7 +140,7 @@ func get_to_room(room : Room) -> void:
 		room_i.create()
 		room_i.cost_dif = calculate_general_diff()
 		on_fight = true
-
+	Eventbus.emit_signal("new_room")
 func calculate_general_diff() -> int:
 	return GlobalInfo.stage * 3\
 	+ GlobalInfo.stage * GlobalInfo.difficult_on_battle\

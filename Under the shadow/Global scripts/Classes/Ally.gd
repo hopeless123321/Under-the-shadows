@@ -37,7 +37,7 @@ func move_to_target() -> void:
 	$"AnimationPlayer".play("stay")
 ## Input for emit signal select
 func pressed(viewport : Node, event : InputEvent, idx : int) -> void:
-	if event is InputEventMouseButton and event.pressed and GlobalInfo.select_ability_anybody == false:
+	if Input.is_action_just_pressed("LMB") and GlobalInfo.select_ability_anybody == false:
 		select()
 ## Target camera and reveal information on UI about Unit 
 func select() -> void: 

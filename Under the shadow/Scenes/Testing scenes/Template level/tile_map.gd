@@ -15,6 +15,7 @@ const FILL_FLOOR_L : int = 3
 func _ready() -> void:
 	clear()
 	
+
 func init(skill : Skill, init_tile_pos : Vector2i, ally : bool) -> Array[Vector2i]:
 	var click_cells : Array[Vector2i] = []
 	match skill.type_application:

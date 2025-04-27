@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Things on map/Temples/altar.gd" id="1_fh1th"]
 [ext_resource type="Shader" path="res://Shaders/altar_outline.gdshader" id="2_bqi30"]
-[ext_resource type="Texture2D" uid="uid://cfw137n6vy1hw" path="res://Altars/Chaos/Chaos_Preview_Stay.png" id="3_j0jfe"]
-[ext_resource type="Texture2D" uid="uid://dxh0iuikoyfoa" path="res://Altars/Chaos/Chaos_Normal buffer_Stay.png" id="4_n5v6g"]
+[ext_resource type="Texture2D" uid="uid://cfw137n6vy1hw" path="res://Things on map/Altars/Chaos/Chaos_Preview_Stay.png" id="3_022hc"]
+[ext_resource type="Texture2D" uid="uid://dxh0iuikoyfoa" path="res://Things on map/Altars/Chaos/Chaos_Normal buffer_Stay.png" id="4_hi48o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3s01"]
 size = Vector2(64, 56)
@@ -17,8 +17,8 @@ shader_parameter/minimal_flickering_alpha = 0.9
 shader_parameter/select = false
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x7r7b"]
-diffuse_texture = ExtResource("3_j0jfe")
-normal_texture = ExtResource("4_n5v6g")
+diffuse_texture = ExtResource("3_022hc")
+normal_texture = ExtResource("4_hi48o")
 
 [sub_resource type="Animation" id="Animation_qadc7"]
 length = 0.001
@@ -64,12 +64,12 @@ input_pickable = true
 script = ExtResource("1_fh1th")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 36)
+position = Vector2(0, 55)
 shape = SubResource("RectangleShape2D_j3s01")
 
 [node name="Altar" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pm1gl")
-position = Vector2(2, 32)
+position = Vector2(1, 49)
 texture = SubResource("CanvasTexture_x7r7b")
 hframes = 24
 region_rect = Rect2(128, 160, 64, 96)

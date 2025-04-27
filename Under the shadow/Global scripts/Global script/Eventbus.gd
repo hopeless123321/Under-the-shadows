@@ -19,6 +19,7 @@ signal get_unit_prop(unit_prop : UnitProp)
 signal new_turn_for_everyone(turn : int)
 
 ## Regular signal
+signal new_room
 signal begin_turn_all
 signal end_turn_all
 signal begin_battle

@@ -3,7 +3,7 @@ extends Resource
 class_name Relic
 ## Name relics
 enum Rarity {Common = 50 , Uncommon = 30, Rare = 15, Unique = 5, Specified = 0}
-enum TimeApplication {BeginTurn, BeginTurnAll, EndTurn, EndTrnAll, BeginBattle, EndBattle, EventSpecified, SkillAffect, ChangeGameGlobalVaruable}
+enum TimeApplication {BeginTurn, BeginTurnAll, EndTurn, BeginBattle, EndBattle, NewRoom, EventSpecified, SkillAffect, ChangeGameGlobalVaruable}
 ## Name relics
 @export var name : String
 ## Visual represent on UI
@@ -16,3 +16,26 @@ enum TimeApplication {BeginTurn, BeginTurnAll, EndTurn, EndTrnAll, BeginBattle, 
 @export var trigger : TimeApplication
 
 
+func initiation() -> void: 
+	match  trigger:
+		TimeApplication.BeginTurn:
+			pass
+		TimeApplication.BeginTurnAll:
+			pass
+		TimeApplication.EndTurn:
+			pass
+		TimeApplication.BeginBattle:
+			pass
+		TimeApplication.EndBattle:
+			pass
+		TimeApplication.EventSpecified:
+			pass
+		TimeApplication.SkillAffect:
+			pass
+		TimeApplication.ChangeGameGlobalVaruable:
+			pass
+		TimeApplication.NewRoom:
+			Eventbus.connect("new_room", execute)
+			
+func execute() -> void:
+	pass

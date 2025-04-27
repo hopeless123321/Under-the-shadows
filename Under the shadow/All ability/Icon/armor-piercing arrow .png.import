@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfw137n6vy1hw"
-path="res://.godot/imported/Chaos_Preview_Stay.png-2e3173bd7ea93a84174a944cc4bfb3ee.ctex"
+uid="uid://dkniebfnhij4f"
+path="res://.godot/imported/armor-piercing arrow .png-22d6973dbade8ba91496a29da4b0a241.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Altars/Chaos/Chaos_Preview_Stay.png"
-dest_files=["res://.godot/imported/Chaos_Preview_Stay.png-2e3173bd7ea93a84174a944cc4bfb3ee.ctex"]
+source_file="res://All ability/Icon/armor-piercing arrow .png"
+dest_files=["res://.godot/imported/armor-piercing arrow .png-22d6973dbade8ba91496a29da4b0a241.ctex"]
 
 [params]
 

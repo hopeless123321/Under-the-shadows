@@ -13,7 +13,7 @@ func creation() -> void:
 	z_index = int(global_position.y / 64)
 
 func pressed(viewport : Node, event : InputEvent, idx : int) -> void:
-	if event is InputEventMouseButton and event.pressed and GlobalInfo.select_ability_anybody == false:
+	if Input.is_action_just_pressed("LMB") and GlobalInfo.select_ability_anybody == false:
 		select()
 
 func find_path() -> Array[Vector2i]:

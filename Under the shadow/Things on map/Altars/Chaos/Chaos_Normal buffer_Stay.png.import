@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxh0iuikoyfoa"
-path="res://.godot/imported/Chaos_Normal buffer_Stay.png-2b120b2a7ab543833483d0a99478c15b.ctex"
+path="res://.godot/imported/Chaos_Normal buffer_Stay.png-d1d2c5a727388280f78c70eece495775.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Altars/Chaos/Chaos_Normal buffer_Stay.png"
-dest_files=["res://.godot/imported/Chaos_Normal buffer_Stay.png-2b120b2a7ab543833483d0a99478c15b.ctex"]
+source_file="res://Things on map/Altars/Chaos/Chaos_Normal buffer_Stay.png"
+dest_files=["res://.godot/imported/Chaos_Normal buffer_Stay.png-d1d2c5a727388280f78c70eece495775.ctex"]
 
 [params]
 

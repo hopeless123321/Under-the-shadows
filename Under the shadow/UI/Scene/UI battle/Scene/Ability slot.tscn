@@ -1,12 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3r57teh8hvwt"]
+[gd_scene load_steps=6 format=3 uid="uid://c3r57teh8hvwt"]
 
 [ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Ability.gd" id="1_cgvcd"]
+[ext_resource type="Theme" uid="uid://chqfcstv6wxdv" path="res://UI/All theme/Tooltip/Tooltip empty.tres" id="1_te13v"]
 [ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="2_qgdy2"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6uer2"]
-
-[sub_resource type="Theme" id="Theme_70kto"]
-TooltipPanel/styles/panel = SubResource("StyleBoxEmpty_6uer2")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpfbd"]
 
@@ -18,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_70kto")
+theme = ExtResource("1_te13v")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_bpfbd")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_auo4m")
 shortcut_in_tooltip = false

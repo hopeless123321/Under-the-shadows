@@ -6,11 +6,14 @@ extends HBoxContainer
 @onready var souls : Label = $Souls
 @onready var relics_container : HBoxContainer = $"Relic Handler"
 @onready var switch: Button = $Switch
+@onready var relic_handler: HBoxContainer = $"Relic Handler/Relic Stash/Relic handler"
+
 
 const EVOLUTION_ICON : Rect2 = Rect2(128, 0, 64, 64)
 const MAP_ICON : Rect2 = Rect2(64, 0, 64, 64) 
 
 var time : int
+const BOX = preload("res://Relics/Box/Box.tres")
 
 func _ready() -> void:
 	Eventbus.connect("new_turn_for_everyone", update_turn)
@@ -18,7 +21,10 @@ func _ready() -> void:
 	stage.text = "Stage: " + str(GlobalInfo.stage)
 	souls.text = str(GlobalInfo.souls)
 	turn_label.text = str(GlobalInfo.turns_to_way_out)
-	
+	for i in range(1, 26):
+		var relic_ui :RelicUI = RelicUI.new()
+		relic_ui.added(BOX)
+		relic_handler.add_child(relic_ui)
 func _physics_process(_delta : float) -> void:
 	time += 1
 	var sec : String = str((time % 3600) / 60).pad_zeros(2)
