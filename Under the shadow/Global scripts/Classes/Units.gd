@@ -1,10 +1,17 @@
 extends CharacterBody2D
+
+
 ## Base class that represent every unit on battle 
 class_name Unit
+
 ## Signal emit when unit begin his turn for status effects
 signal begin_turn_effects
+
 ## Signal emit when unit begin his turn for status effects
 signal end_turn_effects 
+
+## Signal emit when someone cast skill to this unit. Need for some statuseffect that depend to skill
+signal cast_skill_to_unit(skill : Skill, sender : Unit)
 
 var unit_property : UnitOnTeam
 #inner varuable
@@ -49,16 +56,16 @@ func _physics_process(_delta : float) -> void:
 ## Change Unit status dependency of input
 func change_state(input : Node2D) -> void:
 	if input != null:
-		if !status_effects.is_empty():
-			print(input)
 		previous_state = current_state
 		current_state = input
 		previous_state.end()
 		current_state.start()
 
+## Like signal just emit begin turn 
 func begin_turn() -> void:
 	emit_signal('begin_turn_effects')
 	
+## Like signal just emit end turn
 func end_turn() -> void:
 	emit_signal('end_turn_effects')
 	recharge_skill()
@@ -68,9 +75,11 @@ func recharge_skill() -> void:
 	for skill in unit_property.skills:
 		if skill.cooldown != 0:
 			skill.cooldown_timer -= 1
+
 ## Safety kill self
 func self_destroy() -> void:
 	queue_free() # FIX ME
+
 ## Smothly change value on progress bar when bars visible
 func update_progress_bars(hp_prop : bool, value : int) -> void:
 	if !hp_progress_bar.visible:
@@ -82,7 +91,8 @@ func update_progress_bars(hp_prop : bool, value : int) -> void:
 	if hp_prop: 
 		tween_change.tween_property(hp_progress_bar, "value", value, 0.5)
 	else: 
-		tween_change.tween_property(will_progress_bar, "value", value, 0.5)	
+		tween_change.tween_property(will_progress_bar, "value", value, 0.5)
+
 ## On Alt make bars visible
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Add info"):
@@ -95,12 +105,25 @@ func _input(event: InputEvent) -> void:
 		hp_progress_bar.visible = false
 		will_progress_bar.visible = false
 
+##Apply status effect to unit and conncet signal to StatusEffect bar
 func apply_status_effect(status : StatusEffect) -> void:
+	status_effects.append(status)
 	status_effect_handler.add_status(status)
 	status.connect("update_signal_ui",  update_status_effect)
+
+## Update info about skill status on unit 
 func update_status_effect(status : StatusEffect) -> void:
 	status_effect_handler.update_status_ui(status_effects.find(status), status)
+
 ## Delete status from status effect and status bar
 func free_from_status_effect(status : StatusEffect) -> void:
 	status_effects.erase(status)
 	status_effect_handler.delete_excess(status_effects.find(status)) 
+
+func absorb_skill(skill : Skill, sender : Unit) -> bool:
+	emit_signal("cast_skill_to_unit", skill, sender)
+	for status_effect : StatusEffect in status_effects:
+		if status_effect.absorb_skill(skill, sender):
+			return true
+	return false
+

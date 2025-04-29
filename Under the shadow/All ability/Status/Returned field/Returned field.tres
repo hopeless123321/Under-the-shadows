@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://yerthkqpbp7j"]
+
+[ext_resource type="Texture2D" uid="uid://dlumccimnm3t7" path="res://All ability/Status/Returned field/Returned field icon.png" id="1_jtxuk"]
+[ext_resource type="Script" path="res://All ability/Status/Returned field/Returned field.gd" id="1_q6xcl"]
+
+[resource]
+script = ExtResource("1_q6xcl")
+type_skill = 6
+name = "Reflected field "
+apply_time = 2
+tooltip_text = "Поглащает скилл и возвращает владельу 30 % урона"
+mini_icon = ExtResource("1_jtxuk")
+max_stack_one = false
+dissipation_over_time = false

@@ -66,7 +66,14 @@ func dir_without_vec(length : int, start_point : Vector2i, end_point : Vector2i)
 	return cells.slice(0, length)
 
 func execute(skill : Skill, units : Array[Unit], sender : Unit) -> void:
+	var new_units_array : Array[Unit] = units.filter(effect_to_unit.bind(skill, sender))
 	sender.unit_property.hp -= skill.cost_hp
 	sender.unit_property.will -= skill.cost_will
-	skill.execute(sender, units) 
+	skill.execute(sender, new_units_array) 
 	#Eventbus.emit_signal("skill_execute")
+
+
+func effect_to_unit(unit : Unit, skill : Skill, sender : Unit) -> bool:
+	if !unit.absorb_skill(skill, sender):
+		return true
+	return false

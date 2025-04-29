@@ -525,7 +525,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme = ExtResource("6_pe81x")
 theme_override_font_sizes/font_size = 23
-text = "Current location: "
+text = "Current location: 	Near throne"
 
 [node name="VSeparator2" type="VSeparator" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
 layout_mode = 2
@@ -547,10 +547,10 @@ texture = SubResource("AtlasTexture_y6xrq")
 stretch_mode = 5
 
 [node name="Souls" type="Label" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme = ExtResource("6_pe81x")
 theme_override_font_sizes/font_size = 23
-text = "99"
 
 [node name="Relic Handler" type="HBoxContainer" parent="CanvasLayer/UI on map/Upper UI/MarginContainer/Upper UI container"]
 clip_contents = true

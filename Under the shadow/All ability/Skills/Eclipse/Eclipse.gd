@@ -14,12 +14,15 @@ const PROP_TO_REVEAL : Array[String] = [
 # //
 @export var dmg : float
 @export var type_dmg : TypeDmgSkill
+@export var status_effect : StatusEffect
+@export var duration : int = 3
 func execute(sender : Unit, recievers : Array[Unit]) -> void: 
 	for unit : Unit in recievers:
 		unit.unit_property.hp -= dmg_with_resist(dmg, 
 		calc_resist(unit, TypeDmgSkill.Magic), 
 		sender.unit_property.damage)
-
+		var stat : StatusEffect = status_effect.duplicate()
+		stat.initialization(unit, duration)
 func reveal_result_action(sender : Unit, recievers : Array[Unit]) -> String:
 	var text : String
 	for unit : Unit in recievers:

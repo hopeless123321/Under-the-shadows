@@ -30,7 +30,7 @@ var cost : int
 var initial_status : Array[StatusEffect]
 var animation_trans : Tween.TransitionType
 var animation_ease : Tween.EaseType
-var duration : int = 15
+var duration : int = 1
 var distance : int
 var enemy_move_to : UnitProp.EnemyTarget
 

@@ -5,8 +5,10 @@
 
 [resource]
 script = ExtResource("1_c50ia")
-description = "Reduce will resist) and will per turn"
+description = "Reduce will resist on [reduce_will_resist] and reduce will without resist on [will_per_turn] for [duration] turn(s) every start of turn ->>> текст внизу должен быть "
 name = "Madness"
 apply_time = 0
 tooltip_text = "В начале хода снижает волю противника"
 mini_icon = ExtResource("1_2mh7m")
+max_stack_one = false
+dissipation_over_time = false

@@ -18,6 +18,8 @@ func init_level() -> void:
 
 func change_turn() -> void:
 	Eventbus.emit_signal("begin_turn_all")
+	if queue[wrapi(index - 1, 0, queue.size())].current_state == queue[wrapi(index - 1, 0, queue.size())]._st.wait:
+		queue[wrapi(index - 1, 0, queue.size())].change_state(queue[wrapi(index - 1, 0, queue.size())]._st.end_turn)
 	if index == 0:
 		queue.clear()
 		for unit in get_tree().get_nodes_in_group("Units"):

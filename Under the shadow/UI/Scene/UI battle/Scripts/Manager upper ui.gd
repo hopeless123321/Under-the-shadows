@@ -18,9 +18,8 @@ const BOX = preload("res://Relics/Box/Box.tres")
 func _ready() -> void:
 	Eventbus.connect("new_turn_for_everyone", update_turn)
 	Eventbus.connect("souls_changed", update_souls)
-	stage.text = "Stage: " + str(GlobalInfo.stage)
 	souls.text = str(GlobalInfo.souls)
-	turn_label.text = str(GlobalInfo.turns_to_way_out)
+	turn_label.text = "Left time:" + str(GlobalInfo.turns_to_way_out)
 	for i in range(1, 26):
 		var relic_ui :RelicUI = RelicUI.new()
 		relic_ui.added(BOX)

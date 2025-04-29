@@ -40,7 +40,7 @@ func _on_right_button_pressed() -> void:
 
 func _on_ui_on_map_resized() -> void:
 	if is_node_ready():
-		relic_stash.custom_minimum_size.x = snapped(ui_on_map.size.x - 1016, 64)
+		relic_stash.custom_minimum_size.x = snapped(ui_on_map.size.x - 1160, 64)
 		relic_handler.position.x = 0
 		page_count = ceil(relic_handler.get_child_count() * 64 / relic_stash.custom_minimum_size.x) + 1
 		current_page = 0

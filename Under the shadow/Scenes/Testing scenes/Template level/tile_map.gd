@@ -21,11 +21,11 @@ func init(skill : Skill, init_tile_pos : Vector2i, ally : bool) -> Array[Vector2
 	match skill.type_application:
 		Skill.TypeApplication.AllWorld:
 			for unit in get_tree().get_nodes_in_group(SkillManager.get_group(skill, ally)):
-				set_cell(FILL_FLOOR_L, unit.tile_pos, FILL_SOURCE, SELECTED_TILE)
+				set_cell(CLICK_FLOOR_L, unit.tile_pos, FILL_SOURCE, SELECTED_TILE)
 			# self don't effect to skill
 			if skill.type_application != Skill.TypeApplication.Self:
-				erase_cell(FILL_FLOOR_L, init_tile_pos)
-			set_cell(CLICK_FLOOR_L, init_tile_pos, FILL_SOURCE, SELF_TILE)
+				erase_cell(CLICK_FLOOR_L, init_tile_pos)
+			set_cell(FILL_FLOOR_L, init_tile_pos, FILL_SOURCE, SELF_TILE)
 			click_cells.append(init_tile_pos)
 		Skill.TypeApplication.AllArea:
 			for cell in SkillManager.fill_obs(init_tile_pos, skill.radius):
@@ -91,7 +91,7 @@ func update(skill : Skill, mouse_tile_pos : Vector2i, selectable_cells : Array[V
 	match skill.type_application:
 		Skill.TypeApplication.AllWorld:
 			if mouse_tile_pos in selectable_cells:
-				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
+				set_cell(FILL_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
 		Skill.TypeApplication.AllArea:
 			if mouse_tile_pos in selectable_cells:
 				set_cell(CLICK_FLOOR_L, mouse_tile_pos, FILL_SOURCE, SELECTED_TILE)
