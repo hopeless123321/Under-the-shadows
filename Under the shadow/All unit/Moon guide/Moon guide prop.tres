@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="UnitProp" load_steps=4 format=3 uid="uid://dge5tfiu36rds"]
+[gd_resource type="Resource" script_class="UnitProp" load_steps=5 format=3 uid="uid://dge5tfiu36rds"]
 
 [ext_resource type="Texture2D" uid="uid://cyyjyksdjqe82" path="res://All unit/Moon guide/Moon guide icon.png" id="1_1ox5b"]
-[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="2_dfdak"]
+[ext_resource type="Script" uid="uid://ikclj42frdmn" path="res://Global scripts/Classes/Resource/Unit property.gd" id="2_dfdak"]
+[ext_resource type="Script" uid="uid://lta82kljms53" path="res://Global scripts/Classes/Resource/Skill.gd" id="3_dwqn2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2046x"]
 atlas = ExtResource("1_1ox5b")
@@ -19,7 +20,7 @@ speed = 3
 reaction = 10
 move_after_skill = false
 free_move = false
-skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([])
+skills = Array[ExtResource("3_dwqn2")]([])
 icon = ExtResource("1_1ox5b")
 icon_minimap = SubResource("AtlasTexture_2046x")
 class_unit = Array[int]([0])

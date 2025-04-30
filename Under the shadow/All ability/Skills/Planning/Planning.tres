@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://yo0si5u6siw"]
 
 [ext_resource type="Texture2D" uid="uid://3f7mg00lj0iy" path="res://All ability/Skills/Planning/planning.png" id="1_nmllm"]
-[ext_resource type="Script" path="res://All ability/Skills/Planning/Planning.gd" id="2_c3kmr"]
+[ext_resource type="Script" uid="uid://bacplmv43cmlr" path="res://All ability/Skills/Planning/Planning.gd" id="2_c3kmr"]
 
 [resource]
 script = ExtResource("2_c3kmr")
@@ -15,6 +15,5 @@ active = true
 description = "Усиливает урон от следующей способности	"
 icon = ExtResource("1_nmllm")
 skill_prop_in_evolve_tree = {}
-class_spell = "No type"
-type_application = "Self"
-type = 4
+type_spell = 0
+type_application = 0

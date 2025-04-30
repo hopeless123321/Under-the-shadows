@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://rojwbx3vap2l"]
 
-[ext_resource type="Script" path="res://Things on map/Temples/altar.gd" id="1_fh1th"]
-[ext_resource type="Shader" path="res://Shaders/altar_outline.gdshader" id="2_bqi30"]
+[ext_resource type="Script" uid="uid://bava08n6lncp6" path="res://Things on map/Temples/altar.gd" id="1_fh1th"]
+[ext_resource type="Shader" uid="uid://clavyycbld4c1" path="res://Shaders/altar_outline.gdshader" id="2_bqi30"]
 [ext_resource type="Texture2D" uid="uid://cfw137n6vy1hw" path="res://Things on map/Altars/Chaos/Chaos_Preview_Stay.png" id="3_022hc"]
 [ext_resource type="Texture2D" uid="uid://dxh0iuikoyfoa" path="res://Things on map/Altars/Chaos/Chaos_Normal buffer_Stay.png" id="4_hi48o"]
 
@@ -54,8 +54,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7f0rx"]
 _data = {
-"RESET": SubResource("Animation_qadc7"),
-"Stay": SubResource("Animation_i7na4")
+&"RESET": SubResource("Animation_qadc7"),
+&"Stay": SubResource("Animation_i7na4")
 }
 
 [node name="Altar" type="CharacterBody2D"]

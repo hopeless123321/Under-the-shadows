@@ -46,4 +46,3 @@ func update(unit_prop : Resource) -> void:
 	for unit_class : int in unit_prop.class_unit:
 		class_value.text += Translater.UNIT_CLASS[unit_class] + ", "
 	class_value.text = class_value.text.left(-2)
-

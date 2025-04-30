@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://dh1qkmiopay5f"]
 
 [ext_resource type="Texture2D" uid="uid://b2hx2wll66v3s" path="res://All ability/Status/Madness/Madness icon.png" id="1_2mh7m"]
-[ext_resource type="Script" path="res://All ability/Status/Madness/Madness.gd" id="1_c50ia"]
+[ext_resource type="Script" uid="uid://cdb3l6xfqy0ek" path="res://All ability/Status/Madness/Madness.gd" id="1_c50ia"]
 
 [resource]
 script = ExtResource("1_c50ia")

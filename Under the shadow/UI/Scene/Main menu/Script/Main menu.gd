@@ -48,5 +48,3 @@ func map_generated() -> void:
 
 func _on_begin_pressed() -> void:
 	map_generated()
-
-

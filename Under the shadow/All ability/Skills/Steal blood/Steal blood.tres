@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://bh3scipmqo7ac"]
 
-[ext_resource type="Script" path="res://All ability/Skills/Steal blood/Steal blood.gd" id="1_ulnup"]
+[ext_resource type="Script" uid="uid://bqccn0eaayn1a" path="res://All ability/Skills/Steal blood/Steal blood.gd" id="1_ulnup"]
 
 [resource]
 script = ExtResource("1_ulnup")

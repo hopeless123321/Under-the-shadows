@@ -126,4 +126,3 @@ func absorb_skill(skill : Skill, sender : Unit) -> bool:
 		if status_effect.absorb_skill(skill, sender):
 			return true
 	return false
-

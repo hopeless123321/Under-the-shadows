@@ -38,6 +38,3 @@ signal create_spell(unit : Unit, skill_name : Skill)
 
 ## Other
 signal souls_changed(value : int)
-
-
-

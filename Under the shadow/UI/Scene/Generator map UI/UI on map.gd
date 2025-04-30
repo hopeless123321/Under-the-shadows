@@ -18,5 +18,3 @@ func _on_panel_mouse_exited() -> void:
 	reveal_tween.set_trans(Tween.TRANS_SINE)
 	reveal_tween.set_ease(Tween.EASE_IN_OUT)
 	reveal_tween.tween_property(spells, "position", Vector2(GlobalInfo.win_size.x, spells.position.y), TIMER)
-
-

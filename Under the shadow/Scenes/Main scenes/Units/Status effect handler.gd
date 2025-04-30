@@ -3,7 +3,7 @@ extends HBoxContainer
 const STATUS_EFFECT_ICON = preload("res://UI/Scene/UI battle/Scene/Status effect icon.tscn")
 
 func add_status(status_effect : StatusEffect) -> void:
-	var icon = STATUS_EFFECT_ICON.instantiate()
+	var icon := STATUS_EFFECT_ICON.instantiate()
 	icon.texture = status_effect.mini_icon
 	icon.get_child(0).text = status_effect.prop_on_label()
 	add_child(icon)

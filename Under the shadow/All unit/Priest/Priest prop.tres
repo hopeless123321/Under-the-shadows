@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="UnitProp" load_steps=5 format=3 uid="uid://dyw1ubcd0qp4o"]
+[gd_resource type="Resource" script_class="UnitProp" load_steps=6 format=3 uid="uid://dyw1ubcd0qp4o"]
 
 [ext_resource type="Texture2D" uid="uid://mn14jcs7d1wm" path="res://All unit/Priest/Priest icon.png" id="1_n1pmu"]
-[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="2_ciqk2"]
+[ext_resource type="Script" uid="uid://ikclj42frdmn" path="res://Global scripts/Classes/Resource/Unit property.gd" id="2_ciqk2"]
+[ext_resource type="Script" uid="uid://lta82kljms53" path="res://Global scripts/Classes/Resource/Skill.gd" id="3_gq2yw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tlrv5"]
 
@@ -21,7 +22,7 @@ speed = 4
 reaction = 7
 move_after_skill = false
 free_move = false
-skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([])
+skills = Array[ExtResource("3_gq2yw")]([])
 icon = SubResource("CompressedTexture2D_tlrv5")
 icon_minimap = SubResource("AtlasTexture_k5cul")
 class_unit = Array[int]([0])

@@ -9,7 +9,7 @@ extends StatusEffect
 func apply_effect() -> void:
 	pass # Here apply all mandatory properties
 
-func absorb_skill(skill : Skill) -> bool:
+func absorb_skill(skill : Skill, sender : Unit) -> bool:
 	return true
 	
 func effect(skill : Skill = null, sender : Unit = null) -> void:
@@ -21,4 +21,3 @@ func remove_effect() -> void:
 	
 func for_tooltip_text() -> String:
 	return ""
-

@@ -1,19 +1,19 @@
 [gd_scene load_steps=33 format=3 uid="uid://83uvu4m3msd"]
 
-[ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Map generator.gd" id="1_hjbgk"]
+[ext_resource type="Script" uid="uid://bhtfbp3eehybx" path="res://Scenes/Dungeon generator/Generator/Map generator.gd" id="1_hjbgk"]
 [ext_resource type="Texture2D" uid="uid://dtpngvp4naspi" path="res://Tile/Tile for map generator/dungeon generator tileset.png" id="2_nvusg"]
-[ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Room manager.gd" id="3_jqqcn"]
-[ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Camera.gd" id="3_wmt2u"]
+[ext_resource type="Script" uid="uid://b3mpex581thun" path="res://Scenes/Dungeon generator/Generator/Room manager.gd" id="3_jqqcn"]
+[ext_resource type="Script" uid="uid://botc4sfyi8ily" path="res://Scenes/Dungeon generator/Generator/Camera.gd" id="3_wmt2u"]
 [ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="5_ah6ki"]
-[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree creature.gd" id="5_qjf4a"]
-[ext_resource type="Script" path="res://UI/Scene/Generator map UI/UI on map.gd" id="6_36ked"]
+[ext_resource type="Script" uid="uid://c7sq4nnmen0q6" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree creature.gd" id="5_qjf4a"]
+[ext_resource type="Script" uid="uid://dl3vjpic1bjsi" path="res://UI/Scene/Generator map UI/UI on map.gd" id="6_36ked"]
 [ext_resource type="PackedScene" uid="uid://bbqtehn53mx44" path="res://UI/Scene/Generator map UI/Evolution/Scene/Tree creature.tscn" id="6_d6uvf"]
 [ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="6_pe81x"]
-[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Manager upper ui.gd" id="8_nsn5f"]
+[ext_resource type="Script" uid="uid://brfkeh30bts05" path="res://UI/Scene/UI battle/Scripts/Manager upper ui.gd" id="8_nsn5f"]
 [ext_resource type="Theme" uid="uid://dqgbwui6773rj" path="res://UI/All theme/Separators/Separator upper UI.tres" id="9_abyqq"]
 [ext_resource type="Texture2D" uid="uid://chsl2tkr2w23w" path="res://UI/Sprites/UI icons.png" id="9_kbj1d"]
 [ext_resource type="Theme" uid="uid://c4c4o0rhpucr2" path="res://UI/All theme/Button/Cut excess.tres" id="11_uyn7v"]
-[ext_resource type="Script" path="res://Scenes/Dungeon generator/Generator/Relic Handler.gd" id="13_1w1q1"]
+[ext_resource type="Script" uid="uid://lmc0stmrsf8o" path="res://Scenes/Dungeon generator/Generator/Relic Handler.gd" id="13_1w1q1"]
 [ext_resource type="PackedScene" uid="uid://cqoe8jc5ucobr" path="res://UI/Scene/UI battle/Scene/Menu in gameplay.tscn" id="14_nfdg1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cobdl"]
@@ -109,13 +109,13 @@ sources/1 = SubResource("TileSetAtlasSource_cobdl")
 atlas = ExtResource("9_kbj1d")
 region = Rect2(256, 64, 64, 64)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dduh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssc36"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7kyn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mis1w"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7kyn"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dduh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssc36"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xprgb"]
 
@@ -218,10 +218,10 @@ offset_left = 16.0
 offset_top = -104.0
 offset_right = 104.0
 offset_bottom = -16.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t7kyn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mis1w")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3dduh")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ssc36")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_mis1w")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_t7kyn")
 
 [node name="UI on map" type="Control" parent="CanvasLayer"]
 layout_mode = 3

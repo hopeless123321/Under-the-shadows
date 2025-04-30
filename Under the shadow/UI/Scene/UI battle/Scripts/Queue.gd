@@ -42,4 +42,3 @@ func hiding() -> void:
 	tween_reveal.tween_property(self, "modulate", Color(1,1,1,0), 1)
 	tween_reveal.tween_property(container, "custom_minimum_size", Vector2(0,64), 1)
 	tween_reveal.tween_property(container, "modulate", Color(1,1,1,0), 1)
-

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://drg4p5kmyedbw"]
 
 [ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="1_ft4y1"]
-[ext_resource type="Script" path="res://Scenes/Main scenes/Units/Status effect handler.gd" id="1_sjwni"]
+[ext_resource type="Script" uid="uid://djc3keoaqccpe" path="res://Scenes/Main scenes/Units/Status effect handler.gd" id="1_sjwni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0utt"]
 size = Vector2(64, 64)
@@ -100,12 +100,12 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5pnxm"]
 _data = {
-"RESET": SubResource("Animation_ps2dd"),
-"skill one": SubResource("Animation_av733"),
-"skill three": SubResource("Animation_8ulwq"),
-"skill two": SubResource("Animation_og5tp"),
-"stay": SubResource("Animation_j6my0"),
-"walk": SubResource("Animation_r67u5")
+&"RESET": SubResource("Animation_ps2dd"),
+&"skill one": SubResource("Animation_av733"),
+&"skill three": SubResource("Animation_8ulwq"),
+&"skill two": SubResource("Animation_og5tp"),
+&"stay": SubResource("Animation_j6my0"),
+&"walk": SubResource("Animation_r67u5")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_by4wn"]
@@ -132,7 +132,7 @@ shape = SubResource("RectangleShape2D_d0utt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5pnxm")
+&"": SubResource("AnimationLibrary_5pnxm")
 }
 autoplay = "stay"
 

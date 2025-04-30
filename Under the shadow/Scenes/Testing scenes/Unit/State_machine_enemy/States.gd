@@ -6,6 +6,3 @@ extends Node2D
 @onready var spell_cast : Node2D = $"Spell cast"
 @onready var end_turn : Node2D = $"End turn"
 @onready var dying : Node2D = $Dying
-
-
-

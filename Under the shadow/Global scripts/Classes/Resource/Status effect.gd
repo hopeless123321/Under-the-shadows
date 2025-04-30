@@ -80,4 +80,3 @@ func for_tooltip_text() -> String:
 
 func prop_on_label() -> String:
 	return ""
-

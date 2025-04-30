@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bylvcmwo1ivfg" path="res://Tile/Tile 64x64/Adding stuff/Светильник.png" id="1_r4l86"]
 [ext_resource type="Texture2D" uid="uid://bjducqoxh61go" path="res://Tile/Tile 64x64/Adding stuff/Normal map lighing.png" id="2_mmbab"]
-[ext_resource type="Script" path="res://Tile/Tile 64x64/Adding stuff/lighting/PointLight2D.gd" id="3_b88a3"]
+[ext_resource type="Script" uid="uid://ce3ns4e8njj8t" path="res://Tile/Tile 64x64/Adding stuff/lighting/PointLight2D.gd" id="3_b88a3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wn6qo"]
 diffuse_texture = ExtResource("1_r4l86")
@@ -15,7 +15,7 @@ loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5vlo5"]
 _data = {
-"fire": SubResource("Animation_jxryd")
+&"fire": SubResource("Animation_jxryd")
 }
 
 [sub_resource type="Gradient" id="Gradient_pie7a"]

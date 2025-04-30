@@ -49,4 +49,3 @@ enum ClassUnit {NoClass, Skelet, Lunar, Ghost}
 @export var enemy_move_to : EnemyTarget
 ## Maximum distance to target unit
 @export var distance : int
-

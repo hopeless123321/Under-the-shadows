@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rsrg5govg8wu"]
 
-[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Icon.gd" id="1_16noc"]
+[ext_resource type="Script" uid="uid://cr48dmkh0jhnk" path="res://UI/Scene/UI battle/Scripts/Icon.gd" id="1_16noc"]
 
 [node name="icon" type="TextureRect"]
 clip_contents = true

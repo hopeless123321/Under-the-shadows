@@ -33,4 +33,3 @@ var animation_ease : Tween.EaseType
 var duration : int = 1
 var distance : int
 var enemy_move_to : UnitProp.EnemyTarget
-

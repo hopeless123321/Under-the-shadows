@@ -66,4 +66,3 @@ func _on_main_menu_pressed() -> void:
 	Eventbus.emit_signal("to_main_menu")
 	hiding()
 	get_tree().change_scene_to_packed(main_menu)
-

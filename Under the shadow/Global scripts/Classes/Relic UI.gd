@@ -40,4 +40,3 @@ func scale_down() -> void:
 	scale_up_tween.set_ease(Tween.EASE_IN_OUT)
 	scale_up_tween.set_trans(Tween.TRANS_SINE)
 	scale_up_tween.tween_property(self, "scale", Vector2(1, 1), 0.5)
-

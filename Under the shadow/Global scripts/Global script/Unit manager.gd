@@ -53,4 +53,3 @@ func upgrade_unit(upgrade_to : UnitProp, upgrade_from : UnitOnTeam = null) -> Un
 
 func unique_skill(skills : Array[Skill]) -> Array[Skill]:
 	return skills.duplicate(true)
-

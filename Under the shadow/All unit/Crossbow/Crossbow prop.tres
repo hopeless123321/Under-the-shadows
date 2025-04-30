@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="UnitProp" load_steps=4 format=3 uid="uid://bai3uak34my3k"]
+[gd_resource type="Resource" script_class="UnitProp" load_steps=5 format=3 uid="uid://bai3uak34my3k"]
 
 [ext_resource type="Texture2D" uid="uid://bu0hch0cd4dgf" path="res://All unit/Crossbow/Crossbow_icon.png" id="1_58d8b"]
-[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="2_lopr6"]
+[ext_resource type="Script" uid="uid://ikclj42frdmn" path="res://Global scripts/Classes/Resource/Unit property.gd" id="2_lopr6"]
+[ext_resource type="Script" uid="uid://lta82kljms53" path="res://Global scripts/Classes/Resource/Skill.gd" id="3_adh3a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlxny"]
 atlas = ExtResource("1_58d8b")
@@ -19,7 +20,7 @@ speed = 3
 reaction = 13
 move_after_skill = false
 free_move = false
-skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([])
+skills = Array[ExtResource("3_adh3a")]([])
 icon = ExtResource("1_58d8b")
 icon_minimap = SubResource("AtlasTexture_qlxny")
 class_unit = Array[int]([0])

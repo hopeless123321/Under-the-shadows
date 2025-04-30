@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://djx4h76g6a05o"]
 
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/States.gd" id="1_2y0kl"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State machine/Idle.gd" id="2_5qown"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State machine/Wait.gd" id="3_rxjsh"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State machine/Move.gd" id="4_dfcpa"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State machine/Spell_cast.gd" id="5_g7oey"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State machine/End_turn.gd" id="6_6vqiq"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State machine/Dying.gd" id="7_bprxa"]
+[ext_resource type="Script" uid="uid://b06qp5bi77sh4" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/States.gd" id="1_2y0kl"]
+[ext_resource type="Script" uid="uid://cc44dask80pb0" path="res://Scenes/Testing scenes/Unit/State machine/Idle.gd" id="2_5qown"]
+[ext_resource type="Script" uid="uid://ddl8bgc6p34oj" path="res://Scenes/Testing scenes/Unit/State machine/Wait.gd" id="3_rxjsh"]
+[ext_resource type="Script" uid="uid://o8bt7wmfjqtx" path="res://Scenes/Testing scenes/Unit/State machine/Move.gd" id="4_dfcpa"]
+[ext_resource type="Script" uid="uid://cnjcl1nn4ljkl" path="res://Scenes/Testing scenes/Unit/State machine/Spell_cast.gd" id="5_g7oey"]
+[ext_resource type="Script" uid="uid://cy05eoxeyf2sr" path="res://Scenes/Testing scenes/Unit/State machine/End_turn.gd" id="6_6vqiq"]
+[ext_resource type="Script" uid="uid://kr42wyixxkqv" path="res://Scenes/Testing scenes/Unit/State machine/Dying.gd" id="7_bprxa"]
 
 [node name="States" type="Node2D"]
 script = ExtResource("1_2y0kl")

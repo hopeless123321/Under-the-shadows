@@ -10,4 +10,3 @@ func update():
 	pass
 func end():
 	pass
-

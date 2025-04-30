@@ -1,13 +1,15 @@
 [gd_scene load_steps=17 format=3 uid="uid://0ol6bh768f8t"]
 
-[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/UI unit prop.gd" id="1_8l826"]
 [ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="2_g0uee"]
-[ext_resource type="Script" path="res://UI/Scene/Generator map UI/Evolution/Script/Manager unit_prop.gd" id="3_vku3t"]
+[ext_resource type="Script" uid="uid://b0q3vn2qvnwdo" path="res://UI/Scene/Generator map UI/Evolution/Script/Manager unit_prop.gd" id="3_vku3t"]
 [ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="4_7mux7"]
 [ext_resource type="Texture2D" uid="uid://bs5j04qe6ejxc" path="res://All unit/King/King.png" id="5_c55ud"]
 [ext_resource type="Theme" uid="uid://dmt5neysaicbo" path="res://UI/All theme/Sep_H/Unit_list.tres" id="6_dp1p5"]
 [ext_resource type="Theme" uid="uid://bbhj3rpceb6bx" path="res://UI/All theme/Richtextlabel/ability_slot.tres" id="7_uu2h6"]
 [ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="8_1edie"]
+
+[sub_resource type="Resource" id="Resource_raiua"]
+metadata/__load_path__ = "res://UI/Scene/Generator map UI/Evolution/Script/UI unit prop.gd"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glt5k"]
 
@@ -47,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8l826")
+script = SubResource("Resource_raiua")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

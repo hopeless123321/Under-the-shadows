@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=3 uid="uid://jwat6prpcd6o"]
 
 [ext_resource type="Texture2D" uid="uid://cym75ckmuf04r" path="res://All ability/Skills/Eclipse/eclipse.png" id="1_aayia"]
-[ext_resource type="Script" path="res://All ability/Skills/Eclipse/Eclipse.gd" id="2_hvt81"]
+[ext_resource type="Script" uid="uid://b77dhl753vulr" path="res://All ability/Skills/Eclipse/Eclipse.gd" id="2_hvt81"]
 [ext_resource type="Resource" uid="uid://yerthkqpbp7j" path="res://All ability/Status/Returned field/Returned field.tres" id="3_ydkgf"]
 
 [resource]

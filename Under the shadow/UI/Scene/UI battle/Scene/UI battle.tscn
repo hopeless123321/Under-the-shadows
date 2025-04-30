@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="1_w41g3"]
 [ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="2_u5k2f"]
-[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Add ability child.gd" id="4_was1u"]
+[ext_resource type="Script" uid="uid://df2s0r5jkxxed" path="res://UI/Scene/UI battle/Scripts/Add ability child.gd" id="4_was1u"]
 [ext_resource type="Theme" uid="uid://dce2r1lgfg10" path="res://UI/All theme/Separators/Separtor under UI.tres" id="5_7itc1"]
 [ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/Custom font/DreiFraktur.ttf" id="5_dpa85"]
-[ext_resource type="Script" path="res://UI/Scene/UI battle/Scripts/Queue.gd" id="8_ioi7v"]
+[ext_resource type="Script" uid="uid://cn02d125p554k" path="res://UI/Scene/UI battle/Scripts/Queue.gd" id="8_ioi7v"]
 
 [sub_resource type="Theme" id="Theme_3ocqj"]
 

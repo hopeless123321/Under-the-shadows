@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c580dtbkfoeox"]
 
-[ext_resource type="Script" path="res://All ability/Skills/Moon revenge/Moon revenge.gd" id="1_kmbwx"]
+[ext_resource type="Script" uid="uid://ca7jbalu6uod" path="res://All ability/Skills/Moon revenge/Moon revenge.gd" id="1_kmbwx"]
 [ext_resource type="Texture2D" uid="uid://lqepdavqmiqi" path="res://All ability/Skills/Moon revenge/moon revenge.png" id="1_y65nf"]
 
 [resource]
 script = ExtResource("1_kmbwx")
-type_unit = "Either"
+type_unit = 0
 radius = 4
 pierce = false
 id = 2
@@ -17,6 +17,5 @@ active = true
 description = "Взамен на плоть за услугу Богу луны, персонаж совершает 	"
 icon = ExtResource("1_y65nf")
 skill_prop_in_evolve_tree = {}
-class_spell = "Lunar"
-type_application = "Directional"
-type = 2
+type_spell = 0
+type_application = 0

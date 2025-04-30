@@ -14,19 +14,19 @@ const VHS = preload("res://Shaders/vhs.gdshader")
 var fullsize := true
 var vsync := true
 
-const RESOLUTION_SIZE := {
-	"1024x768" : Vector2i(1024, 768),
-	"1152x864" : Vector2i(1152, 864),
-	"1280x720" : Vector2i(1280, 720),
-	"1280x800" : Vector2i(1280, 800),
-	"1280x960" : Vector2i(1280, 960),
-	"1280x1024": Vector2i(1280, 1024),
-	"1360x768" : Vector2i(1360, 768),
-	"1366x768" : Vector2i(1366, 768),
-	"1600x900" : Vector2i(1600, 900),
-	"1680x1050": Vector2i(1680, 1050),
-	"1920x1080": Vector2i(1920, 1080)
-}
+const RESOLUTION_SIZE := [
+	Vector2i(1024, 768),
+	Vector2i(1152, 864),
+	Vector2i(1280, 720),
+	Vector2i(1280, 800),
+	Vector2i(1280, 960),
+	Vector2i(1280, 1024),
+	Vector2i(1360, 768),
+	Vector2i(1366, 768),
+	Vector2i(1600, 900),
+	Vector2i(1680, 1050),
+	Vector2i(1920, 1080)
+]
 
 
 func _ready() -> void:
@@ -36,11 +36,12 @@ func _ready() -> void:
 func load_settings() -> void:
 	var video_setting : Dictionary = Config.load_video()
 	#resolution setup
-	for index in range(0, resolution_n.item_count):
-		if resolution_n.get_item_text(index) == video_setting.resolution:
-			resolution_n.select(index)
-			_on_resolution_item_selected(index)
-			break
+	#for index in range(0, resolution_n.item_count):
+		#if resolution_n.get_item_text(index) == video_setting.resolution:
+			#resolution_n.select(index)
+			#_on_resolution_item_selected(index)
+			#break
+	resolution_n.select(video_setting.resolution)
 	fullscreen_n.button_pressed = video_setting.fullscreen
 	fullsize = !video_setting.fullscreen
 	_on_fulscreen_pressed()
@@ -49,20 +50,24 @@ func load_settings() -> void:
 	_on_vsync_pressed()
 	
 	var overlay_setting : Dictionary = Config.load_overlay()
+	
 	vineete_n.value = overlay_setting.vineete_intensity
 	_on_vineete_value_changed(overlay_setting.vineete_intensity)
+	
 	vinneete_opacity_n.value = overlay_setting.vineete_opacity
 	_on_vinneete_opacity_value_changed(overlay_setting.vineete_opacity)
+	
 	aberration_n.value = overlay_setting.abberation
 	_on_aberration_value_changed(overlay_setting.abberation)
+	
 	britness_n.value = overlay_setting.brithness
 	_on_britness_value_changed(overlay_setting.brithness)
+	
 	curve_screen_n.value = overlay_setting.curve_screen
 	_on_h_slider_value_changed(overlay_setting.curve_screen)
 	
 func _on_resolution_item_selected(index : int) -> void:
-	var key : String= resolution_n.get_item_text(index)
-	DisplayServer.window_set_size(RESOLUTION_SIZE.get(key))
+	DisplayServer.window_set_size(RESOLUTION_SIZE[index])
 
 func _on_fulscreen_pressed() -> void:
 	fullsize = !fullsize
@@ -94,7 +99,7 @@ func _on_h_slider_value_changed(value : float) -> void:
 	Eventbus.emit_signal("change_overlay", "warp_amount", value)
 
 func save_all() -> void:
-	Config.save_video("resolution", resolution_n.get_item_text(resolution_n.selected))
+	Config.save_video("resolution", resolution_n.selected)
 	Config.save_video("vsync", vsync)
 	Config.save_video("fullscreen", fullsize)
 	

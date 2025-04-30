@@ -76,4 +76,3 @@ func update_progress_bar(hp_value : int, will_value : int, max_hp : int) -> void
 	hp_will_tween.tween_property(will_bar, "value", will_value, timer)
 	hp_will_tween.tween_property(hp_bar, "value", hp_value, timer)
 	hp_will_tween.tween_property(hp_bar, "max_value", max_hp, timer)
-

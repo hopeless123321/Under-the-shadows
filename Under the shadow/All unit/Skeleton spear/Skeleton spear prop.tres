@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="UnitProp" load_steps=4 format=3 uid="uid://baue0q8hetqpj"]
+[gd_resource type="Resource" script_class="UnitProp" load_steps=5 format=3 uid="uid://baue0q8hetqpj"]
 
 [ext_resource type="Texture2D" uid="uid://bfj4bdrj8lely" path="res://All unit/Skeleton spear/Skeleton sword icon.png" id="1_5fs38"]
-[ext_resource type="Script" path="res://Global scripts/Classes/Resource/Unit property.gd" id="1_jfw1u"]
+[ext_resource type="Script" uid="uid://ikclj42frdmn" path="res://Global scripts/Classes/Resource/Unit property.gd" id="1_jfw1u"]
+[ext_resource type="Script" uid="uid://lta82kljms53" path="res://Global scripts/Classes/Resource/Skill.gd" id="3_34vby"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qtuj5"]
 atlas = ExtResource("1_5fs38")
@@ -19,7 +20,7 @@ speed = 4
 reaction = 9
 move_after_skill = false
 free_move = false
-skills = Array[Resource("res://Global scripts/Classes/Resource/Skill.gd")]([])
+skills = Array[ExtResource("3_34vby")]([])
 icon = ExtResource("1_5fs38")
 icon_minimap = SubResource("AtlasTexture_qtuj5")
 class_unit = Array[int]([1, 3])

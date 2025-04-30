@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://doqvvplrxkn8g"]
 
-[ext_resource type="Script" path="res://Global scripts/Classes/Enemy.gd" id="1_jiptl"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/Animation Control.gd" id="2_n2gw2"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State machine/States_enemy.gd" id="3_tf35m"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Idle.gd" id="4_0nrx1"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Wait.gd" id="5_l3whb"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Move.gd" id="6_hduei"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Spell cast.gd" id="7_1gw8t"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/End turn.gd" id="8_656s2"]
-[ext_resource type="Script" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Dying.gd" id="9_vlf0b"]
+[ext_resource type="Script" uid="uid://2176aoe4yjj4" path="res://Global scripts/Classes/Enemy.gd" id="1_jiptl"]
+[ext_resource type="Script" uid="uid://dod6gb38dboj" path="res://Scenes/Testing scenes/Unit/Animation Control.gd" id="2_n2gw2"]
+[ext_resource type="Script" uid="uid://wnmgtc4ovrju" path="res://Scenes/Testing scenes/Unit/State machine/States_enemy.gd" id="3_tf35m"]
+[ext_resource type="Script" uid="uid://gftprkpwvyt3" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Idle.gd" id="4_0nrx1"]
+[ext_resource type="Script" uid="uid://b5uh3eljgcqfh" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Wait.gd" id="5_l3whb"]
+[ext_resource type="Script" uid="uid://wx364ej2rjfg" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Move.gd" id="6_hduei"]
+[ext_resource type="Script" uid="uid://bukju6yudc7jp" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Spell cast.gd" id="7_1gw8t"]
+[ext_resource type="Script" uid="uid://5s5kvhfsmkal" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/End turn.gd" id="8_656s2"]
+[ext_resource type="Script" uid="uid://q0v1ooyf72a" path="res://Scenes/Testing scenes/Unit/State_machine_enemy/Dying.gd" id="9_vlf0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4h3sl"]
 size = Vector2(64, 64)

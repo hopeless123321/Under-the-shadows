@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://chqfcstv6wxdv" path="res://UI/All theme/Tooltip/Tooltip empty.tres" id="1_22i78"]
 [ext_resource type="FontFile" uid="uid://b2572to7mqhmt" path="res://UI/Custom font/dymsmall.ttf" id="2_txxyn"]
-[ext_resource type="Script" path="res://UI/Scene/UI battle/Scene/Status effect icon.gd" id="2_u6ije"]
+[ext_resource type="Script" uid="uid://bq53b5dkjkkfj" path="res://UI/Scene/UI battle/Scene/Status effect icon.gd" id="2_u6ije"]
 
 [node name="Status effect" type="TextureRect"]
 custom_minimum_size = Vector2(16, 16)
@@ -21,7 +21,7 @@ offset_right = 22.0
 offset_bottom = 18.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
 theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_txxyn")
 theme_override_font_sizes/font_size = 10

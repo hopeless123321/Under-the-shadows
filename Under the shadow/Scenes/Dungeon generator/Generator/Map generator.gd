@@ -19,7 +19,7 @@ var left_time : float = GlobalInfo.turns_to_way_out
 var create_room : int = 0
 var count_rooms : int = 50
 var real_size : Vector2i
-var rooms : Dictionary
+var rooms : Dictionary[Room, Vector2i]
 var escaped_rooms : Dictionary
 var paths_to_room : AStarGrid2D = AStarGrid2D.new()
 var counts_escaped : int = 4

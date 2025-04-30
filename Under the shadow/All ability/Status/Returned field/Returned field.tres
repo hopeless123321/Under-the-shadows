@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://yerthkqpbp7j"]
 
 [ext_resource type="Texture2D" uid="uid://dlumccimnm3t7" path="res://All ability/Status/Returned field/Returned field icon.png" id="1_jtxuk"]
-[ext_resource type="Script" path="res://All ability/Status/Returned field/Returned field.gd" id="1_q6xcl"]
+[ext_resource type="Script" uid="uid://cwqmue1qjts2j" path="res://All ability/Status/Returned field/Returned field.gd" id="1_q6xcl"]
 
 [resource]
 script = ExtResource("1_q6xcl")
