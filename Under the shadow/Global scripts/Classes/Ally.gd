@@ -1,22 +1,29 @@
 extends Unit
+
 ## Class represent additional funtional for players-controlled unit on game 
 class_name Ally
 const CLASSUNIT := Skill.TypeAppUnit.Ally
 ## First function to create ally on scene
+
+
 func creation() -> void:
 	initiation()
 	connect("input_event", pressed)
 	add_to_group("Ally")
 	z_index = round(global_position.y / 64)
+
 ## Create area around character that represent possible cells for move on that turn
 func fill_floor() -> void:
-	for y in range(-move_point, move_point+1):
-		for x in range(-move_point, move_point+1):
-			var right_tile_pos : Vector2i = Vector2i(x,y) + tile_pos
-			if Grid.check_point_in_grid(right_tile_pos) and abs(x) + abs(y) <= move_point:
-				if Grid.is_point_solid(right_tile_pos) == false:
-					if Grid.get_path_id(tile_pos, right_tile_pos, unit_property.free_move).size() <= move_point:
-						_tm.set_cell(2, right_tile_pos, 6, Vector2i(3, 0))
+	_tm.set_cells_terrain_connect(2, Grid.grid_normals.fill_floor(tile_pos, move_point), 1, 0, false)
+	
+	#for y in range(-move_point, move_point+1):
+		#for x in range(-move_point, move_point+1):
+			#var right_tile_pos : Vector2i = Vector2i(x,y) + tile_pos
+			#if Grid.check_point_in_grid(right_tile_pos) and abs(x) + abs(y) <= move_point:
+				#if Grid.is_point_solid(right_tile_pos) == false:
+					#if Grid.get_path_id(tile_pos, right_tile_pos, unit_property.free_move).size() <= move_point:
+						#_tm.set_cell(2, right_tile_pos, 6, Vector2i(3, 0))
+
 ## Move align path
 func move_to_target() -> void:
 	$"AnimationPlayer".play("walk")
@@ -35,10 +42,12 @@ func move_to_target() -> void:
 	await move_tween.finished
 	path.clear()
 	$"AnimationPlayer".play("stay")
+
 ## Input for emit signal select
 func pressed(viewport : Node, event : InputEvent, idx : int) -> void:
 	if Input.is_action_just_pressed("LMB") and GlobalInfo.select_ability_anybody == false:
 		select()
+		
 ## Target camera and reveal information on UI about Unit 
 func select() -> void: 
 	Eventbus.emit_signal('select_char', self)

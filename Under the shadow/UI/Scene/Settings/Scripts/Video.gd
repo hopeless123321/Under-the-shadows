@@ -10,7 +10,6 @@ extends MarginContainer
 @onready var curve_screen_n : HSlider = $VBoxContainer/GridContainer2/Curve_screen
 
 
-const VHS = preload("res://Shaders/vhs.gdshader")
 var fullsize := true
 var vsync := true
 

@@ -1,36 +1,36 @@
 extends Node2D
 
-var grid_ghosts : AStarGrid2D = AStarGrid2D.new()
-var grid_normals : AStarGrid2D = AStarGrid2D.new()
+var grid_ghosts : ModifiedAstarGrid2D = ModifiedAstarGrid2D.new()
+var grid_normals : ModifiedAstarGrid2D = ModifiedAstarGrid2D.new()
 
 func _ready() -> void:
 	Eventbus.connect("dying", char_die)
 
-func init_level(tm : TileMap) -> void:
+func init_level(tm : TileMapManager) -> void:
 	grid_ghosts.clear()
 	grid_normals.clear()
-	
-	grid_normals.cell_size = GlobalInfo.CELL_SIZE
-	grid_normals.region = tm.get_used_rect()
-	grid_normals.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	grid_normals.update()
-	for cell : Vector2i in tm.get_used_cells(1):
-		grid_normals.set_point_solid(cell)
-	await get_tree().create_timer(0.1).timeout
 
-	grid_ghosts.cell_size = GlobalInfo.CELL_SIZE
-	grid_ghosts.region = tm.get_used_rect()
-	grid_ghosts.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	grid_ghosts.update()
-	for cell : Vector2i in tm.get_used_cells(4):
-		grid_ghosts.set_point_solid(cell)
-		grid_normals.set_point_solid(cell)
-	for unit : Unit in get_tree().get_nodes_in_group("Units"):
-		grid_ghosts.set_point_solid(unit.tile_pos)
-		grid_normals.set_point_solid(unit.tile_pos)
-	for altars : Node in get_tree().get_nodes_in_group("Altars"):
-		grid_ghosts.set_point_solid(altars.global_position / 64)
-		grid_normals.set_point_solid(altars.global_position / 64)
+	#grid_normals.cell_size = GlobalInfo.CELL_SIZE
+	grid_normals.region = GlobalInfo.size_map
+	#grid_normals.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	grid_normals.update()
+	#for cell : Vector2i in tm.get_used_cells(1):
+		#grid_normals.set_point_solid(cell)
+	#await get_tree().create_timer(0.1).timeout
+#
+	#grid_ghosts.cell_size = GlobalInfo.CELL_SIZE
+	#grid_ghosts.region = tm.get_used_rect()
+	#grid_ghosts.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	#grid_ghosts.update()
+	#for cell : Vector2i in tm.get_used_cells(4):
+		#grid_ghosts.set_point_solid(cell)
+		#grid_normals.set_point_solid(cell)
+	#for unit : Unit in get_tree().get_nodes_in_group("Units"):
+		#grid_ghosts.set_point_solid(unit.tile_pos)
+		#grid_normals.set_point_solid(unit.tile_pos)
+	#for altars : Node in get_tree().get_nodes_in_group("Altars"):
+		#grid_ghosts.set_point_solid(altars.global_position / 64)
+		#grid_normals.set_point_solid(altars.global_position / 64)
 
 func clear_terrain() -> void:
 	grid_normals.clear()

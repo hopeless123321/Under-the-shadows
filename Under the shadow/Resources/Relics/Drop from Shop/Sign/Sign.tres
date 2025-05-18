@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cflqjpfif3cva"]
+
+[ext_resource type="Texture2D" uid="uid://4k5mff1cdo1j" path="res://Resources/Relics/Drop from Shop/Sign/Sign slanej.png" id="1_7n1pw"]
+[ext_resource type="Script" uid="uid://v4h5d7fyky76" path="res://Resources/Relics/Drop from Shop/Sign/Sign.gd" id="2_yc7xy"]
+
+[resource]
+script = ExtResource("2_yc7xy")
+name = "Sign"
+icon = ExtResource("1_7n1pw")
+text_tooltip = ""
+text_description = ""
+rarity = 0
+trigger = 0
+appear_in = 0
+cost = 0
+number_of_uses = -1
+metadata/_custom_type_script = "uid://b2yriun7s1mo7"

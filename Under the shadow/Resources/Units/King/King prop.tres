@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="UnitProp" load_steps=7 format=3 uid="uid://c1onlxupvt7k6"]
+
+[ext_resource type="Script" uid="uid://ikclj42frdmn" path="res://Global scripts/Classes/Resource/Unit property.gd" id="1_4egtm"]
+[ext_resource type="Texture2D" uid="uid://j6q0a326fybw" path="res://Resources/Units/King/King icon_Preview.png" id="2_wagu1"]
+[ext_resource type="Script" uid="uid://lta82kljms53" path="res://Global scripts/Classes/Resource/Skill.gd" id="3_5x1s4"]
+[ext_resource type="Resource" uid="uid://jwat6prpcd6o" path="res://Resources/Abilities/Skills/Eclipse/Eclipse.tres" id="4_p60qv"]
+[ext_resource type="Resource" uid="uid://dgtxjrhahrmwm" path="res://Resources/Abilities/Skills/Madness/Madness.tres" id="4_xppk5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w25eg"]
+atlas = ExtResource("2_wagu1")
+region = Rect2(0, 16, 64, 64)
+
+[resource]
+script = ExtResource("1_4egtm")
+forename = "King"
+max_hp = 135
+damage = Vector2i(15, 25)
+resist_phys_dmg = 20
+resist_mag_dmg = 22
+resist_will = 200
+speed = 12
+reaction = 6
+move_after_skill = false
+free_move = false
+skills = Array[ExtResource("3_5x1s4")]([ExtResource("4_xppk5"), ExtResource("4_p60qv")])
+icon = ExtResource("2_wagu1")
+icon_minimap = SubResource("AtlasTexture_w25eg")
+class_unit = Array[int]([])
+cost = 123
+animation_trans = 1
+animation_ease = 2
+duration = 1
+enemy_move_to = 0
+distance = 1

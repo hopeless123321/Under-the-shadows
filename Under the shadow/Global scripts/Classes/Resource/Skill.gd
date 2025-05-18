@@ -60,7 +60,7 @@ func calc_resist(unit : Unit, type_dmg : TypeDmgSkill) -> int:
 	return 50
 
 func dmg_with_resist(dmg_amp : int, resist : float, damage : Vector2i) -> int:
-	var dmg_rng = randi_range(damage.x, damage.y) * dmg_amp
+	var dmg_rng : int = randi_range(damage.x, damage.y) * dmg_amp
 	if resist > 0:
 		return dmg_rng / ((resist / 100) + 1)
 	elif resist < 0: 

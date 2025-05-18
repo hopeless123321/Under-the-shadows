@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://m8chqgg12rg5"]
+
+[ext_resource type="Texture2D" uid="uid://c7dfurcbf017w" path="res://Resources/Relics/Drop from Shop/Shoes/Shoe.png" id="1_8wqhh"]
+[ext_resource type="Script" uid="uid://b2yriun7s1mo7" path="res://Global scripts/Classes/Resource/Relic.gd" id="1_tdofe"]
+
+[resource]
+script = ExtResource("1_tdofe")
+name = "Shoe "
+icon = ExtResource("1_8wqhh")
+text_tooltip = "бал бла 		"
+text_description = "бла бла бла "
+rarity = 0
+trigger = 0
+appear_in = 2
+cost = 120
+number_of_uses = -1
+metadata/_custom_type_script = "uid://b2yriun7s1mo7"

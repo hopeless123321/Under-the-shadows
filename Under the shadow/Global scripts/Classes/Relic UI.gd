@@ -1,8 +1,8 @@
 extends TextureRect
 class_name RelicUI
 
-const EMPTY_TOOLTIP_THEME = preload("res://UI/All theme/Tooltip/Tooltip empty.tres")
-const TOOLTIP_THEME = preload("res://UI/All theme/Richtextlabel/ability_slot.tres")
+const EMPTY_TOOLTIP_THEME = preload("res://UI/Themes/Tooltip/Tooltip empty.tres")
+const TOOLTIP_THEME = preload("res://UI/Themes/Richtextlabel/Ability slot.tres")
 const CENTER_RELIC_UI : Vector2i = Vector2i(32, 32)
 @export var relic : Relic
 
@@ -15,7 +15,6 @@ func _ready() -> void:
 func added(added_relic : Relic) -> void:
 	relic = added_relic
 	texture = added_relic.icon
-	relic.initiation()
 	_make_custom_tooltip(relic.text_tooltip)
 
 func _make_custom_tooltip(for_text: String) -> Object:

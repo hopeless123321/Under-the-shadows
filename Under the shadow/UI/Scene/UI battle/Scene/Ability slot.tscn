@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3r57teh8hvwt"]
 
 [ext_resource type="Script" uid="uid://2altggkg3vq7" path="res://UI/Scene/UI battle/Scripts/Ability.gd" id="1_cgvcd"]
-[ext_resource type="Theme" uid="uid://chqfcstv6wxdv" path="res://UI/All theme/Tooltip/Tooltip empty.tres" id="1_te13v"]
-[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="2_qgdy2"]
+[ext_resource type="Theme" uid="uid://chqfcstv6wxdv" path="res://UI/Themes/Tooltip/Tooltip empty.tres" id="1_te13v"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/Themes/Label/Label_Ui.tres" id="2_qgdy2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_auo4m"]
 

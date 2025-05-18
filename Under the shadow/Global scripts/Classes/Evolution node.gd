@@ -1,3 +1,4 @@
+@icon("res://Global scripts/Classes/Icons/Evolution node.svg")
 extends Button
 ## Class that storage UnitProp for can add to Team, and other EvolutionNode that restrict Evolution 
 class_name EvolutionNode

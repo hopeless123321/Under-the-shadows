@@ -24,7 +24,6 @@ signal begin_turn_all
 signal end_turn_all
 signal begin_battle
 signal update_end_battle
-signal next_room(room_type : String)
 
 ## Unit signal
 signal update_tile_pos(old_tile : Vector2i)

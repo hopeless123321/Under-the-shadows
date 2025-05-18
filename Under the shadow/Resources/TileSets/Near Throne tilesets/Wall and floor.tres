@@ -1,0 +1,55 @@
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bhew51f4wvmtl"]
+
+[ext_resource type="Texture2D" uid="uid://cybt82np8t8v5" path="res://Tile/Tile 64x64/Obstacle no fly/wall.png" id="1_xe4jp"]
+[ext_resource type="Texture2D" uid="uid://shobxar3qjqj" path="res://Tile/Tile 64x64/Freezone/empty tile.png" id="2_4lgxo"]
+[ext_resource type="Texture2D" uid="uid://dxe4ynykhsxeo" path="res://Tile/Tile 64x64/Freezone/NormalMap (4).png" id="3_sfkgo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3chcu"]
+resource_name = "Walls"
+texture = ExtResource("1_xe4jp")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrains_peering_bit/bottom_side = 0
+0:1/0 = 0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_moou6"]
+diffuse_texture = ExtResource("2_4lgxo")
+normal_texture = ExtResource("3_sfkgo")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lm40w"]
+resource_name = "Floor"
+texture = SubResource("CanvasTexture_moou6")
+texture_region_size = Vector2i(64, 64)
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "Wall"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_3chcu")
+sources/1 = SubResource("TileSetAtlasSource_lm40w")

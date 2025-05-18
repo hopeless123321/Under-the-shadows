@@ -8,17 +8,31 @@
 
 config_version=5
 
+[addons]
+
+resources_spreadsheet_view/array_color_tint=100.0
+resources_spreadsheet_view/color_rows=true
+resources_spreadsheet_view/array_min_width=128.0
+resources_spreadsheet_view/resource_preview_size=32.0
+resources_spreadsheet_view/clip_headers=false
+resources_spreadsheet_view/dupe_arrays=true
+resources_spreadsheet_view/context_menu_on_leftclick=false
+resources_spreadsheet_view/fold_docks=true
+resources_spreadsheet_view/resource_cell_label_mode=1
+resources_spreadsheet_view/freeze_first_column=true
+
 [application]
 
 config/name="Under the shadow"
 config/version="0.06"
 run/main_scene="res://UI/Scene/Main menu/Scene/Main menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
+run/max_fps=60
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 
 [autoload]
 
-Overlay="*res://UI/Scene/Shader/vhs_shader.tscn"
+Overlay="*res://Global scripts/Global Overlay.tscn"
 GlobalInfo="*res://Global scripts/Global script/Global info.gd"
 Eventbus="*res://Global scripts/Global script/Eventbus.gd"
 Grid="*res://Global scripts/Global script/Grid.gd"
@@ -36,11 +50,29 @@ gdscript/warnings/integer_division=0
 
 window/size/viewport_width=1280
 window/size/viewport_height=680
-mouse_cursor/custom_image="res://UI/Custom mouse/cursour.png"
+mouse_cursor/custom_image="res://UI/UI assets/Custom mouse/cursour.png"
+mouse_cursor/tooltip_position_offset=Vector2(30, 30)
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/any_icon.editor/plugin.cfg", "res://addons/bbcode_edit.editor/plugin.cfg")
+enabled=PackedStringArray("res://addons/any_icon.editor/plugin.cfg", "res://addons/bbcode_edit.editor/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Resources/Abilities/": "teal",
+"res://Resources/Locations/": "blue",
+"res://Resources/Relics/": "purple",
+"res://Resources/Relics/Drop after Elite Battle/": "red",
+"res://Resources/Relics/Drop from Boss/": "orange",
+"res://Resources/Relics/Drop from Event/": "yellow",
+"res://Resources/Relics/Drop from Shop/": "green",
+"res://Resources/TileSets/": "teal",
+"res://Resources/Unit lists/": "pink",
+"res://Resources/Units/": "gray",
+"res://Scenes/Battle scenes/Unit/State machine Ally/": "green",
+"res://Scenes/Battle scenes/Unit/State machine Enemy/": "red"
+}
 
 [gui]
 
@@ -151,6 +183,16 @@ bbcode_edit/toggle_strike={
 bbcode_edit/editor/open_current_file_documentation={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":true,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194332,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+"Save test"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
+]
+}
+"Load test"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":108,"location":0,"echo":false,"script":null)
 ]
 }
 

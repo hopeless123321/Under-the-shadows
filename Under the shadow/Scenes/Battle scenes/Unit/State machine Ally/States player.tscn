@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://djx4h76g6a05o"]
+
+[ext_resource type="Script" uid="uid://b06qp5bi77sh4" path="res://Scenes/Battle scenes/Unit/State machine Enemy/States.gd" id="1_i2g8d"]
+[ext_resource type="Script" uid="uid://cc44dask80pb0" path="res://Scenes/Battle scenes/Unit/State machine Ally/Idle.gd" id="2_ak4d0"]
+[ext_resource type="Script" uid="uid://ddl8bgc6p34oj" path="res://Scenes/Battle scenes/Unit/State machine Ally/Wait.gd" id="3_fy5q2"]
+[ext_resource type="Script" uid="uid://o8bt7wmfjqtx" path="res://Scenes/Battle scenes/Unit/State machine Ally/Move.gd" id="4_4st5v"]
+[ext_resource type="Script" uid="uid://cnjcl1nn4ljkl" path="res://Scenes/Battle scenes/Unit/State machine Ally/Spell cast.gd" id="5_e2e1p"]
+[ext_resource type="Script" uid="uid://cy05eoxeyf2sr" path="res://Scenes/Battle scenes/Unit/State machine Ally/End turn.gd" id="6_drnmp"]
+[ext_resource type="Script" uid="uid://kr42wyixxkqv" path="res://Scenes/Battle scenes/Unit/State machine Ally/Dying.gd" id="7_21nto"]
+
+[node name="States" type="Node2D"]
+script = ExtResource("1_i2g8d")
+
+[node name="Idle" type="Node2D" parent="."]
+script = ExtResource("2_ak4d0")
+
+[node name="Wait" type="Node2D" parent="."]
+script = ExtResource("3_fy5q2")
+
+[node name="Move" type="Node2D" parent="."]
+script = ExtResource("4_4st5v")
+
+[node name="Spell cast" type="Node2D" parent="."]
+script = ExtResource("5_e2e1p")
+
+[node name="End turn" type="Node2D" parent="."]
+script = ExtResource("6_drnmp")
+
+[node name="Dying" type="Node2D" parent="."]
+script = ExtResource("7_21nto")

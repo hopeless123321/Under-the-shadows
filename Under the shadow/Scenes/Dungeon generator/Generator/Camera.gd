@@ -1,6 +1,5 @@
 extends Camera2D
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("MMB") and enabled:
 		global_position -= Input.get_last_mouse_velocity() / 100

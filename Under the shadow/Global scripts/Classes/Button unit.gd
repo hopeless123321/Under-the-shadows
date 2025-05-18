@@ -1,3 +1,4 @@
+@icon("res://Global scripts/Classes/Icons/UnitonButton.svg")
 extends Button
 ## Class for represent unit on Team
 class_name Unit_button

@@ -35,7 +35,7 @@ texture = SubResource("CanvasTexture_wn6qo")
 
 [node name="AnimationTree" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5vlo5")
+&"": SubResource("AnimationLibrary_5vlo5")
 }
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

@@ -1,7 +1,6 @@
 extends Node
 
-var team : Array[UnitOnTeam]
-const PATH_TO_PROP : String = "res://All unit/[name unit]/[name unit] prop.tres"
+const PATH_TO_PROP : String = "res://Resources/Units/[name unit]/[name unit] prop.tres"
 const TRANSLATE_PROP_NAME : Array[String] = [
 	"forename",
 	"max_hp",
@@ -23,6 +22,8 @@ const TRANSLATE_PROP_NAME : Array[String] = [
 	"duration",
 	"distance",
 	"enemy_move_to"]
+
+var team : Array[UnitOnTeam]
 
 func _ready() -> void:
 	team.append(new_unit("King"))

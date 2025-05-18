@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="EventAction" load_steps=7 format=3 uid="uid://1yumke5xsqqm"]
+
+[ext_resource type="Texture2D" uid="uid://cdk78nx053vrq" path="res://Tile/photo_2024-03-10_15-34-10.jpg" id="1_8pgu1"]
+[ext_resource type="Script" uid="uid://bx4xw3kuy2j4t" path="res://Global scripts/Classes/Resource/EventTreeAction.gd" id="1_mgnce"]
+[ext_resource type="Resource" uid="uid://bfsbqjqt8pvte" path="res://Resources/Locations/Near throne.tres" id="3_6hkqo"]
+
+[sub_resource type="Resource" id="Resource_6bw04"]
+script = ExtResource("1_mgnce")
+title = ""
+description = ""
+paths = Array[Resource]([])
+metadata/_custom_type_script = "uid://bx4xw3kuy2j4t"
+
+[sub_resource type="Resource" id="Resource_q7qd0"]
+script = ExtResource("1_mgnce")
+title = ""
+description = ""
+paths = Array[Resource]([])
+metadata/_custom_type_script = "uid://bx4xw3kuy2j4t"
+
+[sub_resource type="Resource" id="Resource_7bqa6"]
+script = ExtResource("1_mgnce")
+title = ""
+description = ""
+paths = Array[Resource]([])
+metadata/_custom_type_script = "uid://bx4xw3kuy2j4t"
+
+[resource]
+script = ExtResource("1_mgnce")
+stage_appear = ExtResource("3_6hkqo")
+title = "Gods welcome you "
+image = ExtResource("1_8pgu1")
+description = "Some thing bla bla bla bla"
+paths = Array[ExtResource("1_mgnce")]([SubResource("Resource_6bw04"), SubResource("Resource_q7qd0"), SubResource("Resource_7bqa6")])
+metadata/_custom_type_script = "uid://bx4xw3kuy2j4t"

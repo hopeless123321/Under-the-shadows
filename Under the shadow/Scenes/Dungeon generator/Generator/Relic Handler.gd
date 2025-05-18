@@ -6,7 +6,6 @@ extends HBoxContainer
 @onready var relic_stash: Control = $"Relic Stash"
 @onready var ui_on_map: Control = $"../../../.."
 
-
 var page_count : int
 var current_page : int:
 	set(value):
@@ -33,10 +32,8 @@ func move_handler(to_position_x : int) -> void:
 func _on_left_button_pressed() -> void:
 	current_page -= 1
 
-
 func _on_right_button_pressed() -> void:
 	current_page += 1
-
 
 func _on_ui_on_map_resized() -> void:
 	if is_node_ready():
@@ -44,4 +41,3 @@ func _on_ui_on_map_resized() -> void:
 		relic_handler.position.x = 0
 		page_count = ceil(relic_handler.get_child_count() * 64 / relic_stash.custom_minimum_size.x) + 1
 		current_page = 0
-		

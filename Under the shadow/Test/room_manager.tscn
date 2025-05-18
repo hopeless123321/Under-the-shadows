@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk2jtpxboyxov"]
+
+[ext_resource type="Script" uid="uid://b3mpex581thun" path="res://Scenes/Dungeon generator/Generator/Room manager.gd" id="1_4trom"]
+
+[node name="RoomManager" type="Node2D"]
+script = ExtResource("1_4trom")
+metadata/_custom_type_script = "uid://b3mpex581thun"

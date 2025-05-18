@@ -13,7 +13,7 @@ const EVOLUTION_ICON : Rect2 = Rect2(128, 0, 64, 64)
 const MAP_ICON : Rect2 = Rect2(64, 0, 64, 64) 
 
 var time : int
-const BOX = preload("res://Relics/Box/Box.tres")
+const BOX = preload("res://Resources/Relics/Drop from Shop/Box/Box.tres")
 
 func _ready() -> void:
 	Eventbus.connect("new_turn_for_everyone", update_turn)

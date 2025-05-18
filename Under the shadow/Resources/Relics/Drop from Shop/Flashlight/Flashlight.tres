@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b0upjoxwoq34k"]
+
+[ext_resource type="Texture2D" uid="uid://3t6uck7tyuut" path="res://Resources/Relics/Drop from Shop/Flashlight/Flashlight.png" id="1_2xxp2"]
+[ext_resource type="Script" uid="uid://c51hw60hinen1" path="res://Resources/Relics/Drop from Shop/Flashlight/Flashlight.gd" id="2_kggum"]
+
+[resource]
+script = ExtResource("2_kggum")
+name = "Flashlight"
+icon = ExtResource("1_2xxp2")
+text_tooltip = "При перемещении по карте вы видите на одну команут дальше"
+text_description = "Освещает путь перед вами показывая ваше будущее."
+rarity = 2
+trigger = 8
+appear_in = 2
+cost = 250
+number_of_uses = -1
+metadata/_custom_type_script = "uid://b2yriun7s1mo7"

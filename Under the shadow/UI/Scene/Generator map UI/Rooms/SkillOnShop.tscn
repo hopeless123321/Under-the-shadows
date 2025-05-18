@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://h2bdellkaspd"]
+
+[ext_resource type="Script" uid="uid://cmm8445buuyya" path="res://Global scripts/Classes/SkillOnShop.gd" id="1_q4di4"]
+[ext_resource type="Texture2D" uid="uid://byleno15q7577" path="res://Resources/Abilities/Icon/Inner feel explosive.png" id="2_28cww"]
+[ext_resource type="Theme" uid="uid://j46fm6m8xft7" path="res://UI/Themes/Richtextlabel/Label price.tres" id="3_p3mmt"]
+
+[node name="Skill on shop" type="VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 44.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+script = ExtResource("1_q4di4")
+
+[node name="Item" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("2_28cww")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Price" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme = ExtResource("3_p3mmt")
+bbcode_enabled = true
+text = "43"
+fit_content = true
+horizontal_alignment = 1

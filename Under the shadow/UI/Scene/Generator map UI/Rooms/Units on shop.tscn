@@ -1,0 +1,140 @@
+[gd_scene load_steps=15 format=3 uid="uid://3y1y0cirpemq"]
+
+[ext_resource type="Script" uid="uid://c3hpjttx84nua" path="res://Global scripts/Classes/Icons/Single class/UnitsOnShop.gd" id="1_2ay2f"]
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/UI assets/Sprites/Ui interface battle.png" id="2_dynwb"]
+[ext_resource type="Texture2D" uid="uid://b7nyg8lc2yblv" path="res://Resources/Units/Crossbow/Icon_Preview.png" id="3_8m6ce"]
+[ext_resource type="Theme" uid="uid://cimhmqkkink43" path="res://UI/Themes/Button/Classic button.tres" id="4_dynwb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dynwb"]
+atlas = ExtResource("2_dynwb")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8m6ce"]
+texture = SubResource("AtlasTexture_dynwb")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m6ce"]
+atlas = ExtResource("2_dynwb")
+region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w522m"]
+texture = SubResource("AtlasTexture_8m6ce")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt5xb"]
+atlas = ExtResource("2_dynwb")
+region = Rect2(6, 372, 68, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nco1p"]
+atlas = ExtResource("2_dynwb")
+region = Rect2(6, 324, 68, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o7em"]
+atlas = ExtResource("2_dynwb")
+region = Rect2(6, 340, 68, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbdhg"]
+atlas = ExtResource("2_dynwb")
+region = Rect2(6, 372, 68, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngvjq"]
+atlas = ExtResource("2_dynwb")
+region = Rect2(6, 324, 68, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spt52"]
+atlas = ExtResource("2_dynwb")
+region = Rect2(6, 356, 68, 9)
+
+[node name="Unit on Shop" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.24
+anchor_bottom = 0.146
+offset_right = 2.79999
+offset_bottom = -0.280006
+theme_override_styles/panel = SubResource("StyleBoxTexture_8m6ce")
+script = ExtResource("1_2ay2f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+focus_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_w522m")
+
+[node name="Unit icon" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("3_8m6ce")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Bars handler" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 4.41
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 17
+columns = 2
+
+[node name="Hp bar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/Bars handler"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 58
+stretch_margin_top = 9
+stretch_margin_right = 58
+texture_under = SubResource("AtlasTexture_yt5xb")
+texture_over = SubResource("AtlasTexture_nco1p")
+texture_progress = SubResource("AtlasTexture_6o7em")
+
+[node name="Hp up" type="Button" parent="MarginContainer/VBoxContainer/Bars handler"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_dynwb")
+text = "+20(40)"
+
+[node name="Will bar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/Bars handler"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 38.0
+nine_patch_stretch = true
+stretch_margin_left = 58
+stretch_margin_top = 9
+stretch_margin_right = 58
+texture_under = SubResource("AtlasTexture_lbdhg")
+texture_over = SubResource("AtlasTexture_ngvjq")
+texture_progress = SubResource("AtlasTexture_spt52")
+
+[node name="Will up" type="Button" parent="MarginContainer/VBoxContainer/Bars handler"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_dynwb")
+theme_override_font_sizes/font_size = 16
+text = "+20(40)"
+
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/PanelContainer" to="." method="_on_panel_container_gui_input"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Bars handler/Hp up" to="." method="_on_hp_up_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Bars handler/Will up" to="." method="_on_will_up_pressed"]

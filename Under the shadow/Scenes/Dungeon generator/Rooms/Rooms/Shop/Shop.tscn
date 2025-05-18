@@ -1,0 +1,239 @@
+[gd_scene load_steps=23 format=3 uid="uid://cy3dqii2rvt0"]
+
+[ext_resource type="Script" uid="uid://dy7s2bkcdg0ak" path="res://Global scripts/Classes/Shop.gd" id="1_hsord"]
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/UI assets/Sprites/Ui interface battle.png" id="2_wqoar"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/Themes/Label/Label_Ui.tres" id="3_ycua6"]
+[ext_resource type="Script" uid="uid://by35dl4i72b0" path="res://Scenes/Dungeon generator/Rooms/Rooms/Shop/unit_container.gd" id="4_r85je"]
+[ext_resource type="PackedScene" uid="uid://dnxog14h5hrjy" path="res://Scenes/Dungeon generator/Rooms/Rooms/Shop/Shop item.tscn" id="4_t8ry0"]
+[ext_resource type="PackedScene" uid="uid://h2bdellkaspd" path="res://UI/Scene/Generator map UI/Rooms/SkillOnShop.tscn" id="6_t8ry0"]
+[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/UI assets/Custom font/MainFont.ttf" id="7_r85je"]
+
+[sub_resource type="Gradient" id="Gradient_t8ry0"]
+interpolation_color_space = 1
+colors = PackedColorArray(0, 0, 0, 1, 0.145098, 0.129412, 0.121569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r85je"]
+gradient = SubResource("Gradient_t8ry0")
+width = 874
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx2y3"]
+atlas = ExtResource("2_wqoar")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3l8v3"]
+texture = SubResource("AtlasTexture_jx2y3")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="Theme" id="Theme_hohjv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsord"]
+bg_color = Color(0.08, 0.0714667, 0.0672, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+anti_aliasing = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8ry0"]
+atlas = ExtResource("2_wqoar")
+region = Rect2(448, 64, 6, 192)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r85je"]
+texture = SubResource("AtlasTexture_t8ry0")
+texture_margin_top = 90.0
+texture_margin_bottom = 93.0
+axis_stretch_vertical = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r85je"]
+atlas = ExtResource("2_wqoar")
+region = Rect2(454, 64, 6, 192)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cn328"]
+texture = SubResource("AtlasTexture_r85je")
+texture_margin_top = 90.0
+texture_margin_bottom = 93.0
+axis_stretch_vertical = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2nkg"]
+atlas = ExtResource("2_wqoar")
+region = Rect2(460, 64, 6, 192)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s8r43"]
+texture = SubResource("AtlasTexture_e2nkg")
+texture_margin_top = 90.0
+texture_margin_bottom = 93.0
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_t8ry0"]
+color = Color(0.06, 0.0536, 0.0504, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_r85je"]
+color = Color(0.17, 0.17, 0.17, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="Theme" id="Theme_wqoar"]
+ScrollContainer/styles/panel = SubResource("StyleBoxFlat_hsord")
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_pressed = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_pressed = null
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_r85je")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_cn328")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_s8r43")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_t8ry0")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxLine_r85je")
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hsord")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_r85je")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -874.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_3l8v3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 2
+theme = SubResource("Theme_hohjv")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Window" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="Title" type="Label" parent="Background/MarginContainer/Window"]
+layout_mode = 2
+theme = ExtResource("3_ycua6")
+theme_override_font_sizes/font_size = 22
+text = "Gods welcomes you"
+horizontal_alignment = 1
+
+[node name="Main window" type="HBoxContainer" parent="Background/MarginContainer/Window"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="Units containter" type="ScrollContainer" parent="Background/MarginContainer/Window/Main window"]
+layout_mode = 2
+theme = SubResource("Theme_wqoar")
+scroll_vertical_custom_step = 189.647
+horizontal_scroll_mode = 0
+
+[node name="Unit container" type="VBoxContainer" parent="Background/MarginContainer/Window/Main window/Units containter"]
+layout_mode = 2
+script = ExtResource("4_r85je")
+
+[node name="Right" type="VBoxContainer" parent="Background/MarginContainer/Window/Main window"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 15
+
+[node name="Relic buy container" type="VBoxContainer" parent="Background/MarginContainer/Window/Main window/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Relis title" type="Label" parent="Background/MarginContainer/Window/Main window/Right/Relic buy container"]
+layout_mode = 2
+theme = ExtResource("3_ycua6")
+text = "Relics"
+horizontal_alignment = 1
+
+[node name="Relic handler" type="HBoxContainer" parent="Background/MarginContainer/Window/Main window/Right/Relic buy container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Shop item" parent="Background/MarginContainer/Window/Main window/Right/Relic buy container/Relic handler" instance=ExtResource("4_t8ry0")]
+layout_mode = 2
+
+[node name="Shop item2" parent="Background/MarginContainer/Window/Main window/Right/Relic buy container/Relic handler" instance=ExtResource("4_t8ry0")]
+layout_mode = 2
+
+[node name="Shop item3" parent="Background/MarginContainer/Window/Main window/Right/Relic buy container/Relic handler" instance=ExtResource("4_t8ry0")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Background/MarginContainer/Window/Main window/Right"]
+layout_mode = 2
+
+[node name="Skill buy container" type="VBoxContainer" parent="Background/MarginContainer/Window/Main window/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_ycua6")
+
+[node name="Skill Title" type="Label" parent="Background/MarginContainer/Window/Main window/Right/Skill buy container"]
+layout_mode = 2
+text = "Skill"
+horizontal_alignment = 1
+
+[node name="Skill handler" type="HBoxContainer" parent="Background/MarginContainer/Window/Main window/Right/Skill buy container"]
+layout_mode = 2
+
+[node name="Skill on shop" parent="Background/MarginContainer/Window/Main window/Right/Skill buy container/Skill handler" instance=ExtResource("6_t8ry0")]
+layout_mode = 2
+
+[node name="Skill on shop2" parent="Background/MarginContainer/Window/Main window/Right/Skill buy container/Skill handler" instance=ExtResource("6_t8ry0")]
+layout_mode = 2
+
+[node name="Skill on shop3" parent="Background/MarginContainer/Window/Main window/Right/Skill buy container/Skill handler" instance=ExtResource("6_t8ry0")]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="Background/MarginContainer/Window/Main window/Right"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Random buff" type="Button" parent="Background/MarginContainer/Window/Main window/Right"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_r85je")
+text = "Random buff for next fight"
+
+[node name="Price and effect buffs" type="Label" parent="Background/MarginContainer/Window/Main window/Right"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("7_r85je")
+text = "(20) courage"
+horizontal_alignment = 1
+
+[node name="Exit" type="Button" parent="Background/MarginContainer/Window/Main window/Right"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_r85je")
+text = "Выход"

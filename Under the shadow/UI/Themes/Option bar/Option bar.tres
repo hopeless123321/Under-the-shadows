@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c0ce0r05m4sws"]
+
+[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/UI assets/Custom font/MainFont.ttf" id="1_rfqbo"]
+[ext_resource type="Texture2D" uid="uid://chav637umpf48" path="res://UI/Themes/Sprites for ui/Sliders.png" id="2_3ksmx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th7cn"]
+atlas = ExtResource("2_3ksmx")
+region = Rect2(32, 48, 16, 16)
+
+[resource]
+OptionButton/fonts/font = ExtResource("1_rfqbo")
+OptionButton/icons/arrow = SubResource("AtlasTexture_th7cn")

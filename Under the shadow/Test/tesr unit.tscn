@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://byl80gfebbqky"]
+
+[ext_resource type="PackedScene" uid="uid://drg4p5kmyedbw" path="res://Scenes/Templates scenes/Units/Unit scene.tscn" id="1_jrg2q"]
+[ext_resource type="Texture2D" uid="uid://bf5ww4wmap1gu" path="res://Test/skelet save anima1.png" id="2_v7pjh"]
+
+[node name="Unit" instance=ExtResource("1_jrg2q")]
+
+[node name="Upper" parent="Store sprite" index="0"]
+position = Vector2(0, -46)
+texture = ExtResource("2_v7pjh")
+vframes = 16
+
+[node name="Under" parent="Store sprite" index="1"]
+texture = ExtResource("2_v7pjh")
+vframes = 16
+
+[node name="Status effect handler" parent="UI compnent" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 64.0
+offset_bottom = 16.0

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://lusd777lhht0"]
+
+[ext_resource type="Texture2D" uid="uid://si0mfb2embf2" path="res://Resources/Relics/Drop from Shop/Pulsing heart/pulsing heart.png" id="1_e3ngy"]
+[ext_resource type="Script" uid="uid://b2yriun7s1mo7" path="res://Global scripts/Classes/Resource/Relic.gd" id="2_4umw5"]
+
+[resource]
+script = ExtResource("2_4umw5")
+name = "Pulsing heart "
+icon = ExtResource("1_e3ngy")
+text_tooltip = "При использовании скилла который восстанавливает здоровье, переносит часть иселения на всех союзников"
+text_description = "Пульсирующее сердце неизвестного существа. Сердце по какой-то причине начинает периодически пульсировать."
+rarity = 0
+trigger = 7
+appear_in = 2
+cost = 125
+number_of_uses = -1
+metadata/_custom_type_script = "uid://b2yriun7s1mo7"

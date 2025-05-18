@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dgtxjrhahrmwm"]
+
+[ext_resource type="Texture2D" uid="uid://bpra7bgsivwun" path="res://Resources/Abilities/Skills/Madness/madness.png" id="1_tocgg"]
+[ext_resource type="Script" uid="uid://ba2ayhl7r8bv1" path="res://Resources/Abilities/Skills/Madness/Madness.gd" id="2_xstjp"]
+[ext_resource type="Resource" uid="uid://dh1qkmiopay5f" path="res://Resources/Abilities/Status/Madness/Madness.tres" id="3_ugmp7"]
+
+[resource]
+script = ExtResource("2_xstjp")
+type_unit = 1
+radius = 3
+length_to_target = 4
+status_effect_apply = ExtResource("3_ugmp7")
+time_effected = 3
+will_per_turn = 10
+reduce_will_resist = 20
+reduce_will_non_target = 20
+id = 4
+forename = "Madness"
+cost_hp = 0
+cost_will = 30
+cooldown = 4
+active = true
+description = "Накладывает безумие на противника, и на вргов вблизь него"
+icon = ExtResource("1_tocgg")
+skill_prop_in_evolve_tree = {}
+type_spell = 6
+type_application = 7

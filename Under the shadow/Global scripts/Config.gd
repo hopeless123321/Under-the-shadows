@@ -33,7 +33,6 @@ func save_video(key : String, value : float) -> void:
 func load_video() -> Dictionary[String, float]:
 	var settings : Dictionary[String, float] = {}
 	for key in config.get_section_keys("video"):
-		print(key)
 		settings[key] = config.get_value("video", key)
 	return settings
 
@@ -66,3 +65,9 @@ func load_audio() -> Dictionary[String, float]:
 func save_audio(key : String, value : float) -> void:
 	config.set_value("audio", key, value)
 	config.save(PATH_TO_CONFIG)
+
+func save_not_settings() -> void: 
+	pass
+	
+func load_not_settings() -> void: 
+	pass

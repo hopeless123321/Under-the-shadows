@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://476be5v88k5w"]
 
 [ext_resource type="Script" uid="uid://b3ekhwr60f70" path="res://UI/Scene/Settings/Scripts/Settings.gd" id="1_swiu1"]
-[ext_resource type="Theme" uid="uid://yigd5uaiecns" path="res://UI/All theme/Tabs/Settings_tabs.tres" id="2_xabo4"]
-[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/All theme/Label/Label_Ui.tres" id="3_d4j3a"]
-[ext_resource type="Theme" uid="uid://qnpd5dj141jh" path="res://UI/All theme/Checkbox/Checkbox_settings.tres" id="4_akgib"]
+[ext_resource type="Theme" uid="uid://yigd5uaiecns" path="res://UI/Themes/Tabs/Settings_tabs.tres" id="2_xabo4"]
+[ext_resource type="Theme" uid="uid://dgb1fpy0jmrhl" path="res://UI/Themes/Label/Label_Ui.tres" id="3_d4j3a"]
+[ext_resource type="Theme" uid="uid://qnpd5dj141jh" path="res://UI/Themes/Checkbox/Checkbox_settings.tres" id="4_akgib"]
 [ext_resource type="Script" uid="uid://d00n3i20xjg03" path="res://UI/Scene/Settings/Scripts/Video.gd" id="5_2ixli"]
-[ext_resource type="Theme" uid="uid://c0ce0r05m4sws" path="res://UI/All theme/Option bar/Option bar.tres" id="6_8kshl"]
-[ext_resource type="Theme" uid="uid://cy82owlntjhru" path="res://UI/All theme/Sliders/Sliders_h.tres" id="7_dvpn7"]
-[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/Sprites/Ui interface battle.png" id="8_iposn"]
+[ext_resource type="Theme" uid="uid://c0ce0r05m4sws" path="res://UI/Themes/Option bar/Option bar.tres" id="6_8kshl"]
+[ext_resource type="Theme" uid="uid://cy82owlntjhru" path="res://UI/Themes/Sliders/Sliders_h.tres" id="7_dvpn7"]
+[ext_resource type="Texture2D" uid="uid://cafqrboarlj01" path="res://UI/UI assets/Sprites/Ui interface battle.png" id="8_iposn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1beb"]
 

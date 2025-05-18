@@ -6,7 +6,7 @@ extends VBoxContainer
 @onready var prop : Label = $Prop
 @onready var prop_grid : GridContainer = $"Prop Grid"
 
-const LABEL_UI : Theme = preload("res://UI/All theme/Label/Label_Ui.tres")
+const LABEL_UI : Theme = preload("res://UI/Themes/Label/Label_Ui.tres")
 const TYPE_APPLICARION_SKILL : Dictionary = {
 	Skill.TypeApplication.AllWorld : "All unit on map",
 	Skill.TypeApplication.AllArea : "All unit on radius",

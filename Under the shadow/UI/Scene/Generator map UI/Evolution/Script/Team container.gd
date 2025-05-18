@@ -4,8 +4,8 @@ extends GridContainer
 @onready var draggable : Control = $"../../../../Clip frame/Draggable"
 
 
-const BUTTON_GROUP_UNIT_BUTTON = preload("res://UI/Buttongroup/Button group unit button.tres")
-const UNIT_BUTTON = preload("res://UI/All theme/Button/Unit button.tres")
+const BUTTON_GROUP_UNIT_BUTTON = preload("res://UI/UI assets/Buttongroup/Button group unit button.tres")
+const UNIT_BUTTON = preload("res://UI/Themes/Button/Unit button.tres")
 var selected_button : Unit_button:
 	get:
 		return BUTTON_GROUP_UNIT_BUTTON.get_pressed_button()

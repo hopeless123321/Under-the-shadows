@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 ## Base class that represent every unit on battle 
 class_name Unit
 
@@ -26,21 +25,22 @@ var move_point : int :
 	set(value):
 		move_point = clamp(value, 0, unit_property.speed)
 
-@onready var _tm : TileMap = $"../../../TileMap"
+@onready var _tm : Node2D = $"../../../Tilemaps manager"
 
 var _st : Node2D
-var hp_progress_bar : TextureProgressBar
-var will_progress_bar : TextureProgressBar
+var hp_progress_bar : TextureProgressBar 
+@onready var will_progress_bar: TextureProgressBar = %"Will progress bar"
 var status_effect_handler : HBoxContainer
 
+func _init(blank_unit : CharacterBody2D) -> void:
+	blank_unit.replace_by(self)
 
 func initiation() -> void:
 	if !unit_property:
 		pass
 	# NEED add status effect on begin of battle to Unit 
-	_st = $States # FIX ME
+	_st = $States # FIX M
 	hp_progress_bar = $"Hp Progress bar"
-	will_progress_bar = $"Will progress bar"
 	status_effect_handler =  $"Status effect handler"
 	unit_property.connect("update_hp_will",update_progress_bars)
 	add_to_group("Units")

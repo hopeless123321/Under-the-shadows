@@ -1,0 +1,40 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bi8c8u3yjvvu2"]
+
+[ext_resource type="Texture2D" uid="uid://chsl2tkr2w23w" path="res://UI/UI assets/Sprites/UI icons.png" id="1_3q5jf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_734y2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iysdf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_prui6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q5jf"]
+atlas = ExtResource("1_3q5jf")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hqfr"]
+texture = SubResource("AtlasTexture_3q5jf")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hqfr"]
+atlas = ExtResource("1_3q5jf")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vb00c"]
+texture = SubResource("AtlasTexture_3hqfr")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[resource]
+Button/colors/icon_disabled_color = Color(0.470076, 0.470076, 0.470076, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_734y2")
+Button/styles/focus = SubResource("StyleBoxEmpty_iysdf")
+Button/styles/hover = SubResource("StyleBoxEmpty_prui6")
+Button/styles/normal = SubResource("StyleBoxTexture_3hqfr")
+Button/styles/pressed = SubResource("StyleBoxTexture_vb00c")

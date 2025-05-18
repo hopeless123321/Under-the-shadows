@@ -5,11 +5,10 @@ extends Control
 var main_menu : PackedScene = load("res://UI/Scene/Main menu/Scene/Main menu.tscn")
 var hide_setting : bool = true
 
+@onready var blur_screen : ColorRect = $"Blur screen"
 @onready var template_level_node : Node2D = $"../.."
 @onready var setting : Control = $Setting
 @onready var menu : PanelContainer = $Menu
-@onready var blur_screen : ColorRect = $"Blur screen"
-
 
 func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("ESC"):
@@ -23,7 +22,7 @@ func hide_reveal_menu() -> void:
 		hiding()
 	else:
 		reveal()
-		
+
 func hiding() -> void:
 	var blur_tween : Tween = create_tween()
 	blur_tween.set_parallel()

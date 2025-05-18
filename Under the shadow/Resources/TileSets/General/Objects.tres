@@ -1,0 +1,71 @@
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://cxslsb88rrb8x"]
+
+[ext_resource type="PackedScene" uid="uid://cbvfj5wjmtg0i" path="res://Tile/Tile 64x64/Adding stuff/lighting/lighting.tscn" id="1_fvm7m"]
+[ext_resource type="PackedScene" uid="uid://rojwbx3vap2l" path="res://Tile/Tile scene/Altars/Altar.tscn" id="2_kwvec"]
+[ext_resource type="Texture2D" uid="uid://b6koqfpwo510n" path="res://Tile/Tile scene/Portal scene/Portals icons .png" id="3_xjdpj"]
+[ext_resource type="Texture2D" uid="uid://debrj70llgxaw" path="res://Tile/Tile scene/Portal scene/SyncPortal.png" id="4_5w4b7"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bauld"]
+resource_name = "Lights "
+scenes/1/scene = ExtResource("1_fvm7m")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u1fha"]
+resource_name = "Altars"
+scenes/1/scene = ExtResource("2_kwvec")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tqtom"]
+resource_name = "Portal Async "
+texture = ExtResource("3_xjdpj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/custom_data_0 = 1
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+1:0/0/custom_data_1 = true
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 2
+3:0/0/custom_data_1 = true
+0:1/0 = 0
+0:1/0/custom_data_0 = 3
+1:1/0 = 0
+1:1/0/custom_data_0 = 3
+1:1/0/custom_data_1 = true
+2:1/0 = 0
+2:1/0/custom_data_0 = 4
+3:1/0 = 0
+3:1/0/custom_data_0 = 4
+3:1/0/custom_data_1 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_boou4"]
+resource_name = "Portal Sync"
+texture = ExtResource("4_5w4b7")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/custom_data_0 = 1
+1:0/0 = 0
+1:0/0/custom_data_0 = 2
+2:0/0 = 0
+2:0/0/custom_data_0 = 3
+3:0/0 = 0
+3:0/0/custom_data_0 = 4
+0:1/0 = 0
+0:1/0/custom_data_0 = 5
+1:1/0 = 0
+1:1/0/custom_data_0 = 6
+2:1/0 = 0
+2:1/0/custom_data_0 = 7
+3:1/0 = 0
+3:1/0/custom_data_0 = 8
+
+[resource]
+tile_size = Vector2i(64, 64)
+custom_data_layer_0/name = "Port"
+custom_data_layer_0/type = 2
+custom_data_layer_1/name = "Reciever"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetScenesCollectionSource_bauld")
+sources/1 = SubResource("TileSetScenesCollectionSource_u1fha")
+sources/2 = SubResource("TileSetAtlasSource_tqtom")
+sources/3 = SubResource("TileSetAtlasSource_boou4")

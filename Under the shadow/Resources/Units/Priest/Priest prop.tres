@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="UnitProp" load_steps=6 format=3 uid="uid://dyw1ubcd0qp4o"]
+
+[ext_resource type="Texture2D" uid="uid://mn14jcs7d1wm" path="res://Resources/Units/Priest/Priest icon.png" id="1_n1pmu"]
+[ext_resource type="Script" uid="uid://ikclj42frdmn" path="res://Global scripts/Classes/Resource/Unit property.gd" id="2_ciqk2"]
+[ext_resource type="Script" uid="uid://lta82kljms53" path="res://Global scripts/Classes/Resource/Skill.gd" id="3_gq2yw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tlrv5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5cul"]
+atlas = ExtResource("1_n1pmu")
+region = Rect2(32, 48, 64, 64)
+
+[resource]
+script = ExtResource("2_ciqk2")
+forename = "Priest"
+max_hp = 75
+damage = Vector2i(15, 20)
+resist_phys_dmg = 0
+resist_mag_dmg = 25
+resist_will = 25
+speed = 4
+reaction = 7
+move_after_skill = false
+free_move = false
+skills = Array[ExtResource("3_gq2yw")]([])
+icon = SubResource("CompressedTexture2D_tlrv5")
+icon_minimap = SubResource("AtlasTexture_k5cul")
+class_unit = Array[int]([0])
+cost = 50
+animation_trans = 0
+animation_ease = 0
+duration = 1
+enemy_move_to = 0
+distance = 3

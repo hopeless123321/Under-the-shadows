@@ -2,14 +2,13 @@ extends Control
 
 const PATH_TO_SAVE_FILE = "res://Save.ini"
 
-
 @onready var setting : Control = $Setting
 @onready var choose_difficult : VBoxContainer = $"Choose difficult"
 @onready var initial : VBoxContainer = $Initial
 @onready var continue_b : Button = $Initial/Continue
 
 
-var MapGenerator : PackedScene = preload("res://Scenes/Dungeon generator/Generator/Map generator.tscn")
+const MAP_GENERATOR : PackedScene = preload("res://Scenes/Dungeon generator/Generator/Map generator.tscn")
 
 func _ready() -> void:
 	if FileAccess.file_exists(PATH_TO_SAVE_FILE):
@@ -43,8 +42,8 @@ func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func map_generated() -> void:
-	GlobalInfo.location = "Near throne"
-	get_tree().change_scene_to_packed(MapGenerator)
+	get_tree().change_scene_to_packed(MAP_GENERATOR)
+	GlobalInfo.current_location = preload("res://Resources/Locations/Near throne.tres")
 
 func _on_begin_pressed() -> void:
 	map_generated()

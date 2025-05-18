@@ -4,7 +4,7 @@ var reveal := false
 
 func _ready() -> void:
 	Eventbus.connect("call_setting", change)
-	position = Vector2(0, -GlobalInfo.win_size.y)
+	position = Vector2(0, GlobalInfo.win_size.y + 120)
 	
 func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("ESC") and reveal:

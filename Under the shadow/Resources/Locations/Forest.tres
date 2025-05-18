@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Location" load_steps=2 format=3 uid="uid://b7q2r6a1kfltd"]
+
+[ext_resource type="Script" uid="uid://bi8bqbuglwgcf" path="res://Global scripts/Classes/Resource/Location.gd" id="1_1rgjd"]
+
+[resource]
+script = ExtResource("1_1rgjd")
+name = "Forest"
+map_pool = ""
+unit_list_pool = ""
+quantity_room = 0
+quantity_loops_on_dungeon = 0
+percent_hidden_room = 0
+exit_to = Array[ExtResource("1_1rgjd")]([])
+metadata/_custom_type_script = "uid://bi8bqbuglwgcf"

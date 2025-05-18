@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://j46fm6m8xft7"]
+
+[ext_resource type="FontFile" uid="uid://c8wtl8lth42ho" path="res://UI/UI assets/Custom font/MainFont.ttf" id="1_nhqxk"]
+
+[resource]
+RichTextLabel/constants/outline_size = 2
+RichTextLabel/fonts/normal_font = ExtResource("1_nhqxk")

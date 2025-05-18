@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b3d30eiwm0n8k"]
+
+[ext_resource type="Script" uid="uid://dk775y5amkc73" path="res://Resources/Relics/Drop from Shop/Box/Box.gd" id="1_c5b3d"]
+[ext_resource type="Texture2D" uid="uid://dl601bfgbgkxw" path="res://Resources/Box.png" id="1_i4p2c"]
+
+[resource]
+script = ExtResource("1_c5b3d")
+name = "Box "
+icon = ExtResource("1_i4p2c")
+text_tooltip = "Каждую комнату даёт допольнительные души"
+rarity = 0
+trigger = 5
+appear_in = 2
+cost = 50
+number_of_uses = -1

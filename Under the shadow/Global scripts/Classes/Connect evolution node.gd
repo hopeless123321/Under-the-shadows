@@ -3,8 +3,8 @@ extends Line2D
 ## Every line have direction that represent relationship of every EvolutionNode
 class_name LineEvolveNode
 
-const LINE_2D_ACTIVE = preload("res://UI/All theme/Line 2d sprite/Line 2D active.png")
-const LINE_2D_DISABLE = preload("res://UI/All theme/Line 2d sprite/Line 2D disable.png")
+const LINE_2D_ACTIVE = preload("res://UI/Themes/Line 2d sprite/Line 2D active.png")
+const LINE_2D_DISABLE = preload("res://UI/Themes/Line 2d sprite/Line 2D disable.png")
 ## Offset for right visualization line on Evolution tree
 const OFFSET = Vector2(32, 32)
 ## Parent EvolutionNode

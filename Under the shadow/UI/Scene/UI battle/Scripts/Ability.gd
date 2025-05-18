@@ -1,6 +1,6 @@
 extends Button
 
-const ABILITY_THEME : Theme = preload("res://UI/All theme/Richtextlabel/ability_slot.tres")
+const ABILITY_THEME : Theme = preload("res://UI/Themes/Richtextlabel/Ability slot.tres")
 const TYPE_APPLICARION_SKILL : Dictionary = {
 	Skill.TypeApplication.AllWorld : "All unit on map",
 	Skill.TypeApplication.AllArea : "All unit on radius",
@@ -11,7 +11,8 @@ const TYPE_APPLICARION_SKILL : Dictionary = {
 	Skill.TypeApplication.Self : "Self",
 	Skill.TypeApplication.BombLike : "Area around unit", 
 	Skill.TypeApplication.TilesEffects : "On ground",
-	Skill.TypeApplication.Spawn : "Spawn"}
+	Skill.TypeApplication.Spawn : "Spawn",
+	}
 var action_button : String
 var unit : Unit
 var data_skill : Skill

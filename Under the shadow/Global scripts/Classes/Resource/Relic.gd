@@ -2,40 +2,84 @@ extends Resource
 ## Resource Class that represent items that have unique effect and unique time applicaton tim e
 class_name Relic
 ## Name relics
-enum Rarity {Common = 50 , Uncommon = 30, Rare = 15, Unique = 5, Specified = 0}
-enum TimeApplication {BeginTurn, BeginTurnAll, EndTurn, BeginBattle, EndBattle, NewRoom, EventSpecified, SkillAffect, ChangeGameGlobalVaruable}
+enum Rarity {
+	COMMON,
+	UNCOMMON, 
+	RARE, 
+	UNIQUEE, 
+	SPEСIFIED,
+	}
+enum TimeApplication {
+	BEGIN_BATTLE,
+	END_BATTLE, 
+	BEGIN_TURN, 
+	END_TURN, 
+	BEGIN_ROUND, 
+	NEW_ROOM, 
+	EVENT_ONLY, 
+	SKILL_EFFECTED, 
+	ON_APPEAR,
+	}
+enum Appears {
+	EVENT, 
+	ELITE_BATTLE, 
+	SHOP, 
+	BOSS,
+	}
 ## Name relics
 @export var name : String
 ## Visual represent on UI
 @export var icon : Texture2D
-## Text reveal when mouse entered to Icon
+## What doing relic 
 @export_multiline var text_tooltip : String
+## Description relic and his lore
+@export_multiline var text_description : String
 ## Rarity relics like a reward
 @export var rarity : Rarity
 ## When relics work. De-facto determine to what global signal connect relic
 @export var trigger : TimeApplication
+## Where relic can appear on game
+@export var appear_in : Appears
+## Cost on shop without discount
+@export var cost : int 
+## Some relics have unique, but limited for uses effect
+@export var number_of_uses : int = -1
 
 
-func initiation() -> void: 
-	match  trigger:
-		TimeApplication.BeginTurn:
+func _init() -> void: 
+	match trigger:
+		TimeApplication.BEGIN_BATTLE:
 			pass
-		TimeApplication.BeginTurnAll:
+		TimeApplication.END_BATTLE:
 			pass
-		TimeApplication.EndTurn:
+		TimeApplication.BEGIN_TURN:
 			pass
-		TimeApplication.BeginBattle:
+		TimeApplication.END_TURN:
 			pass
-		TimeApplication.EndBattle:
+		TimeApplication.BEGIN_ROUND:
 			pass
-		TimeApplication.EventSpecified:
+		TimeApplication.EVENT_ONLY:
 			pass
-		TimeApplication.SkillAffect:
+		TimeApplication.SKILL_EFFECTED:
 			pass
-		TimeApplication.ChangeGameGlobalVaruable:
+		TimeApplication.ON_APPEAR:
 			pass
-		TimeApplication.NewRoom:
-			Eventbus.connect("new_room", execute)
-			
-func execute() -> void:
+		TimeApplication.NEW_ROOM:
+			Eventbus.connect("new_room", used)
+
+func used() -> void: 
+	_execute()
+	if number_of_uses != -1:
+		number_of_uses -= 1
+	if number_of_uses == 0: 
+		delete()
+
+
+## Virtual method that set logic with description 
+func _execute() -> void:
 	pass
+
+## If number of uses is exhausted disconnect signal 
+func delete() -> void: 
+	pass
+	# может быть сделать дисконект сигнала

@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=4 uid="uid://d2tp40fflpsjw"]
+
+[ext_resource type="Script" uid="uid://cnonxtcyjhqi5" path="res://Tile/Tile scene/Template map.gd" id="1_vh6oj"]
+[ext_resource type="TileSet" uid="uid://bhew51f4wvmtl" path="res://Resources/TileSets/Near Throne tilesets/Wall and floor.tres" id="2_ep01v"]
+[ext_resource type="TileSet" uid="uid://bwwxdiqfvsos7" path="res://Resources/TileSets/General/Fill floor.tres" id="3_i1twv"]
+[ext_resource type="TileSet" uid="uid://dv2ab77ftnopg" path="res://Resources/TileSets/General/Arrow path.tres" id="4_r7lgn"]
+[ext_resource type="TileSet" uid="uid://cvcl2vvedyw5b" path="res://Resources/TileSets/Decorations/Decorations.tres" id="5_vh6oj"]
+[ext_resource type="TileSet" uid="uid://cxslsb88rrb8x" path="res://Resources/TileSets/General/Objects.tres" id="6_6yi1d"]
+[ext_resource type="TileSet" uid="uid://1beydv8s4f8u" path="res://Resources/TileSets/General/Spawn zone.tres" id="7_6nuih"]
+
+[node name="Tilemaps manager" type="Node2D"]
+script = ExtResource("1_vh6oj")
+
+[node name="Floor and wall" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAACAAAAAAA=")
+tile_set = ExtResource("2_ep01v")
+
+[node name="Fill floor" type="TileMapLayer" parent="."]
+tile_set = ExtResource("3_i1twv")
+
+[node name="Arrow path" type="TileMapLayer" parent="."]
+tile_set = ExtResource("4_r7lgn")
+
+[node name="Decorations" type="TileMapLayer" parent="."]
+tile_set = ExtResource("5_vh6oj")
+
+[node name="Objects" type="TileMapLayer" parent="."]
+tile_set = ExtResource("6_6yi1d")
+
+[node name="Spawn regions" type="TileMapLayer" parent="."]
+tile_set = ExtResource("7_6nuih")
